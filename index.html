@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .tag{padding:4px 11px;border:1px solid var(--blue);font-family:var(--label);font-size:0.58rem;letter-spacing:0.08em;color:var(--blue);border-radius:20px;}
 .catalog-head{font-family:var(--serif);font-size:1.3rem;font-weight:300;margin-bottom:8px;padding-top:40px;border-top:1px solid var(--light);}
 .catalog-lead{font-size:0.9rem;color:var(--mid);margin-bottom:20px;line-height:1.9;}
-.catalog-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;width:100%;}
+.catalog-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;width:100%;overflow:hidden;}
 .catalog-img-item{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:3/4;width:100%;}
 .catalog-img-item img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.5s ease;}
 .catalog-img-item:hover img{transform:scale(1.06);}
@@ -137,9 +137,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 #staff{background:var(--cream);}
 .staff-top{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px;}
 .staff-bottom{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px;}
-.staff-card-item{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 3px 16px rgba(30,70,120,0.07);transition:all 0.3s ease;}
+.staff-card-item{background:var(--white);border-radius:12px;box-shadow:0 3px 16px rgba(30,70,120,0.07);transition:all 0.3s ease;}
 .staff-card-item:hover{transform:translateY(-3px);box-shadow:0 9px 30px rgba(30,70,120,0.12);}
+.staff-avatar{overflow:hidden;border-radius:12px 12px 0 0;}
 .staff-avatar img{width:100%;height:180px;object-fit:cover;object-position:center top;display:block;}
+.staff-avatar-sm{overflow:hidden;border-radius:12px 12px 0 0;}
 .staff-avatar-sm img{width:100%;height:140px;object-fit:cover;object-position:center top;display:block;}
 .staff-info-inner{padding:20px;}
 .staff-role{font-family:var(--label);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
