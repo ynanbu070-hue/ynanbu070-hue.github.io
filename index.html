@@ -41,8 +41,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .hero-title em{font-style:italic;color:var(--blue);}
 .hero-lead{font-size:0.93rem;color:var(--mid);line-height:1.9;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.section-wrap{padding:60px 28px;}
-.section-inner{max-width:1060px;margin:0 auto;}
+.section-wrap{padding:60px 28px;width:100%;overflow-x:hidden;}
+.section-inner{max-width:1060px;margin:0 auto;width:100%;}
 .section-eyebrow{font-family:var(--label);font-size:0.67rem;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
 .section-title{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.3rem);font-weight:300;line-height:1.35;color:var(--navy);margin-bottom:10px;}
 .section-line{width:100%;height:1px;background:linear-gradient(to right,var(--blue) 0%,rgba(91,154,200,0.2) 60%,transparent 100%);margin-bottom:28px;}
@@ -69,10 +69,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .catalog-head{font-family:var(--serif);font-size:1.3rem;font-weight:300;margin-bottom:8px;padding-top:40px;border-top:1px solid var(--light);}
 .catalog-lead{font-size:0.9rem;color:var(--mid);margin-bottom:20px;line-height:1.9;}
 .catalog-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;width:100%;overflow:hidden;}
-.catalog-img-item{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:3/4;width:100%;}
-.catalog-img-item img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.5s ease;}
-.catalog-img-item:hover img{transform:scale(1.06);}
-.catalog-img-label{position:absolute;bottom:0;left:0;right:0;padding:20px 12px 10px;background:linear-gradient(transparent,rgba(10,25,55,0.7));color:#fff;font-family:var(--sans);font-size:0.78rem;font-weight:500;text-align:center;}
+.catalog-img-item{overflow:hidden;border-radius:8px;width:100%;}
+.catalog-img-photo{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:8px 8px 0 0;}
+.catalog-img-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.5s ease;}
+.catalog-img-item:hover .catalog-img-photo img{transform:scale(1.06);}
+.catalog-img-label{background:var(--navy);color:#fff;font-family:var(--sans);font-size:0.78rem;font-weight:500;text-align:center;padding:7px 10px;border-radius:0 0 8px 8px;}
 .use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .use-case{background:var(--sky);border-radius:8px;padding:20px 16px;}
 .use-case-num{font-family:var(--display);font-size:1.8rem;font-weight:300;color:rgba(91,154,200,0.3);line-height:1;margin-bottom:8px;}
@@ -141,8 +142,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .staff-card-item:hover{transform:translateY(-3px);box-shadow:0 9px 30px rgba(30,70,120,0.12);}
 .staff-avatar{overflow:hidden;border-radius:12px 12px 0 0;}
 .staff-avatar img{width:100%;height:180px;object-fit:cover;object-position:center top;display:block;}
-.staff-avatar-sm{overflow:hidden;border-radius:12px 12px 0 0;}
-.staff-avatar-sm img{width:100%;height:140px;object-fit:cover;object-position:center top;display:block;}
+.staff-avatar-sm{display:flex;justify-content:center;align-items:center;padding:24px 24px 0;}
+.staff-avatar-sm img{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:center;display:block;box-shadow:0 4px 16px rgba(30,70,120,0.12);}
 .staff-info-inner{padding:20px;}
 .staff-role{font-family:var(--label);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;}
 .staff-name{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--navy);margin-bottom:2px;}
@@ -167,354 +168,360 @@ footer{background:#0D1F35;color:rgba(255,255,255,0.38);padding:24px 40px;display
 .footer-logo-text{font-family:var(--serif);font-size:0.95rem;color:rgba(255,255,255,0.55);}
 .footer-logo-text span{color:var(--blue);}
 @media(max-width:768px){
-  nav{padding:10px 14px;}
-  .nav-links{display:none;}
-  .section-wrap{padding:48px 16px;}
-  .hero-model-yui img,.hero-model-haruto img{height:380px;}
-  .catch-main{font-size:1.05rem;}
-  .models-grid{grid-template-columns:1fr 1fr;gap:14px;}
-  .model-img-wrap img{height:220px;}
-  .philo-grid,.legal-grid{grid-template-columns:1fr;}
-  .staff-top,.staff-bottom{grid-template-columns:1fr 1fr;}
-  .catalog-imgs{grid-template-columns:1fr 1fr;}
-  .use-cases{grid-template-columns:1fr 1fr;}
-  .ai-merits{grid-template-columns:1fr 1fr;}
-  .pricing-grid{grid-template-columns:1fr 1fr;}
-  .price-card{padding:20px 14px;}
-  .price-amount{font-size:1.9rem;}
-  .why-benefits{grid-template-columns:1fr;}
-  .benefit-card{display:flex;align-items:center;gap:16px;text-align:left;padding:16px 18px;}
-  .benefit-icon{font-size:1.6rem;margin-bottom:0;flex-shrink:0;}
-  footer{flex-direction:column;gap:8px;text-align:center;}
+nav{padding:10px 14px;}
+.nav-links{display:none;}
+.section-wrap{padding:40px 16px;}
+.hero-model-yui img,.hero-model-haruto img{height:320px;}
+.catch-main{font-size:1rem;}
+.models-grid{grid-template-columns:1fr;gap:28px;}
+.model-img-wrap img{height:300px;}
+.philo-grid,.legal-grid,.pricing-grid{grid-template-columns:1fr;}
+.staff-top,.staff-bottom{grid-template-columns:1fr;}
+.catalog-imgs{grid-template-columns:1fr 1fr;}
+.use-cases{grid-template-columns:1fr;}
+.ai-merits{grid-template-columns:1fr 1fr;}
+.price-card{padding:20px 14px;}
+.price-amount{font-size:1.9rem;}
+.why-benefits{grid-template-columns:1fr;}
+.benefit-card{display:flex;align-items:center;gap:16px;text-align:left;padding:16px 18px;}
+.benefit-icon{font-size:1.6rem;margin-bottom:0;flex-shrink:0;}
+footer{flex-direction:column;gap:8px;text-align:center;padding:20px 16px;}
 }
 </style>
 </head>
 <body>
 <nav>
-  <div class="nav-logo">
-    <img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co.">
-    <div class="nav-logo-text">YUU <span>&</span> Co.</div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#models">Models</a></li>
-    <li><a href="#why">Why YUU?</a></li>
-    <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#legal">Notes</a></li>
-    <li><a href="#staff">Staff</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<div class="nav-logo">
+<img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co.">
+<div class="nav-logo-text">YUU <span>&</span> Co.</div>
+</div>
+<ul class="nav-links">
+<li><a href="#models">Models</a></li>
+<li><a href="#why">Why YUU?</a></li>
+<li><a href="#philosophy">Philosophy</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#legal">Notes</a></li>
+<li><a href="#staff">Staff</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
-
 <section id="hero">
-  <div class="hero-sun"></div>
-  <div class="hero-rays"></div>
-  <div class="hero-models">
-    <div class="hero-model-yui">
-      <img src="https://i.imgur.com/1OJ17Aq.png" alt="AIモデル 結衣">
-    </div>
-    <div class="hero-model-haruto">
-      <img src="https://i.imgur.com/3drpd9D.png" alt="AIモデル 遥斗">
-    </div>
-    <div class="hero-overlay">
-      <p class="catch-main">「実在しない。でも、嘘をつかない。」</p>
-      <span class="catch-icon"><span>🌿</span><span>YUU &amp; Co. · AI Virtual Models</span><span>🕊</span></span>
-    </div>
-  </div>
-  <div class="hero-text">
-    <p class="hero-eyebrow">AI Visual Production</p>
-    <h1 class="hero-title">綺麗なだけじゃ、<em>終わらない。</em></h1>
-    <p class="hero-lead">AIモデル「結衣」と「遥斗」が、御社のブランドを視覚化します。<br>起用するだけで、ブランドの世界観が変わる。</p>
-  </div>
+<div class="hero-sun"></div>
+<div class="hero-rays"></div>
+<div class="hero-models">
+<div class="hero-model-yui">
+<img src="https://i.imgur.com/1OJ17Aq.png" alt="AIモデル 結衣">
+</div>
+<div class="hero-model-haruto">
+<img src="https://i.imgur.com/3drpd9D.png" alt="AIモデル 遥斗">
+</div>
+<div class="hero-overlay">
+<p class="catch-main">「実在しない。でも、嘘をつかない。」</p>
+<span class="catch-icon"><span>🌿</span><span>YUU &amp; Co. · AI Virtual Models</span><span>🕊</span></span>
+</div>
+</div>
+<div class="hero-text">
+<p class="hero-eyebrow">AI Visual Production</p>
+<h1 class="hero-title">綺麗なだけじゃ、<em>終わらない。</em></h1>
+<p class="hero-lead">AIモデル「結衣」と「遥斗」が、御社のブランドを視覚化します。<br>起用するだけで、ブランドの世界観が変わる。</p>
+</div>
 </section>
-
 <section class="section-wrap" id="models">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Our AI Models</p>
-    <h2 class="section-title reveal">Creative Team ─ 結衣 &amp; 遥斗</h2>
-    <div class="section-line reveal"></div>
-    <p class="body-text reveal" style="margin-bottom:32px">結衣と遥斗は、AIが生み出した次世代ビジュアルモデルです。実在しないからこそ、スキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせて、あらゆるシーンを制作できます。</p>
-    <div class="models-grid">
-      <div class="reveal">
-        <div class="model-img-wrap">
-          <img src="https://i.imgur.com/ooEWqR6.png" alt="結衣">
-          <div class="model-badge">結衣 / Yui</div>
-        </div>
-        <h3 class="model-name">結衣 <span style="font-size:0.9rem;font-weight:300;color:var(--mid)">Yui</span></h3>
-        <p class="model-sub">Female AI Model · Professional</p>
-        <div class="model-profile-grid">
-          <div class="profile-item"><span class="profile-label">Height</span><span class="profile-value">162cm</span></div>
-          <div class="profile-item"><span class="profile-label">Weight</span><span class="profile-value">46kg</span></div>
-          <div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div>
-          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">清楚・知的</span></div>
-        </div>
-        <div class="model-about">
-          <p class="model-about-title">About Yui</p>
-          <p>「都会の孤独と、ふとした瞬間の笑顔」をテーマにしたモデル。透明感を大切に、どんな世界観にも自然に溶け込む存在。黒髪の清楚な佇まいが、御社の誠実さと信頼感を際立てます。</p>
-        </div>
-        <div class="model-tags"><span class="tag">信頼感</span><span class="tag">清潔感</span><span class="tag">知性</span><span class="tag">親しみやすさ</span><span class="tag">透明感</span></div>
-      </div>
-      <div class="reveal">
-        <div class="model-img-wrap">
-          <img src="https://i.imgur.com/IivBXbL.png" alt="遥斗">
-          <div class="model-badge">遥斗 / Haruto</div>
-        </div>
-        <h3 class="model-name">遥斗 <span style="font-size:0.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3>
-        <p class="model-sub">Male AI Model · Executive</p>
-        <div class="model-profile-grid">
-          <div class="profile-item"><span class="profile-label">Height</span><span class="profile-value">180cm</span></div>
-          <div class="profile-item"><span class="profile-label">Weight</span><span class="profile-value">67kg</span></div>
-          <div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div>
-          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・プロ</span></div>
-        </div>
-        <div class="model-about">
-          <p class="model-about-title">About Haruto</p>
-          <p>「まっすぐで誠実、そっと寄り添う優しさ」をテーマにしたモデル。ナチュラルな魅力と穏やかな雰囲気で、見る人の心に残る存在。御社の格と信頼性を視覚的に表現します。</p>
-        </div>
-        <div class="model-tags"><span class="tag">プロ意識</span><span class="tag">誠実</span><span class="tag">清潔感</span><span class="tag">信頼</span><span class="tag">存在感</span></div>
-      </div>
-    </div>
-    <div class="reveal">
-      <h3 class="catalog-head">🌿 起用イメージ ─ 業種別カタログ</h3>
-      <p class="catalog-lead">様々な業種・シーンで活躍する結衣と遥斗。御社のブランドに合わせて自在にカスタマイズできます。</p>
-      <div class="catalog-imgs">
-        <div class="catalog-img-item"><img src="https://i.imgur.com/v6n0aQt.png" alt="美容・医療"><div class="catalog-img-label">美容・医療</div></div>
-        <div class="catalog-img-item"><img src="https://i.imgur.com/5mmjKIS.png" alt="不動産・金融"><div class="catalog-img-label">不動産・金融</div></div>
-        <div class="catalog-img-item"><img src="https://i.imgur.com/6HYadTW.png" alt="建設"><div class="catalog-img-label">建設・施工</div></div>
-        <div class="catalog-img-item"><img src="https://i.imgur.com/OK4tniG.png" alt="ゴルフ"><div class="catalog-img-label">スポーツ・ゴルフ</div></div>
-        <div class="catalog-img-item"><img src="https://i.imgur.com/uzkElU6.png" alt="IT・コンサル"><div class="catalog-img-label">IT・コンサル</div></div>
-        <div class="catalog-img-item"><img src="https://i.imgur.com/ZcXau68.png" alt="採用・HR"><div class="catalog-img-label">採用・HR</div></div>
-      </div>
-      <div class="use-cases">
-        <div class="use-case"><div class="use-case-num">01</div><h4>採用・HR</h4><p>求人広告、会社説明会資料、採用LP。AIモデルが御社の魅力を伝えます。</p></div>
-        <div class="use-case"><div class="use-case-num">02</div><h4>Web・LP</h4><p>コーポレートサイト、サービスLP、ランディングページのビジュアルに。</p></div>
-        <div class="use-case"><div class="use-case-num">03</div><h4>SNS運用</h4><p>LinkedIn・Instagram・X・Facebookへの定期投稿用ビジュアルを月次納品。</p></div>
-        <div class="use-case"><div class="use-case-num">04</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主・投資家向け資料のアイキャッチに。</p></div>
-        <div class="use-case"><div class="use-case-num">05</div><h4>広告・チラシ</h4><p>展示会ブース、パンフレット、プレゼン資料など印刷物にも対応。</p></div>
-        <div class="use-case"><div class="use-case-num">06</div><h4>カスタムシーン</h4><p>「こういう場面で使いたい」のご要望をヒアリングし専用シーンを制作。</p></div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow reveal">Our AI Models</p>
+<h2 class="section-title reveal">Creative Team ─ 結衣 &amp; 遥斗</h2>
+<div class="section-line reveal"></div>
+<p class="body-text reveal" style="margin-bottom:32px">結衣と遥斗は、AIが生み出した次世代ビジュアルモデルです。実在しないからこそ、スキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせて、あらゆるシーンを制作できます。</p>
+<div class="models-grid">
+<div class="reveal">
+<div class="model-img-wrap">
+<img src="https://i.imgur.com/ooEWqR6.png" alt="結衣">
+<div class="model-badge">結衣 / Yui</div>
+</div>
+<h3 class="model-name">結衣 <span style="font-size:0.9rem;font-weight:300;color:var(--mid)">Yui</span></h3>
+<p class="model-sub">Female AI Model · Professional</p>
+<div class="model-profile-grid">
+<div class="profile-item"><span class="profile-label">Height</span><span class="profile-value">162cm</span></div>
+<div class="profile-item"><span class="profile-label">Weight</span><span class="profile-value">46kg</span></div>
+<div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div>
+<div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">清楚・知的</span></div>
+</div>
+<div class="model-about">
+<p class="model-about-title">About Yui</p>
+<p>「都会の孤独と、ふとした瞬間の笑顔」をテーマにしたモデル。透明感を大切に、どんな世界観にも自然に溶け込む存在。黒髪の清楚な佇まいが、御社の誠実さと信頼感を際立てます。</p>
+</div>
+<div class="model-tags"><span class="tag">信頼感</span><span class="tag">清潔感</span><span class="tag">知性</span><span class="tag">親しみやすさ</span><span class="tag">透明感</span></div>
+</div>
+<div class="reveal">
+<div class="model-img-wrap">
+<img src="https://i.imgur.com/IivBXbL.png" alt="遥斗">
+<div class="model-badge">遥斗 / Haruto</div>
+</div>
+<h3 class="model-name">遥斗 <span style="font-size:0.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3>
+<p class="model-sub">Male AI Model · Executive</p>
+<div class="model-profile-grid">
+<div class="profile-item"><span class="profile-label">Height</span><span class="profile-value">180cm</span></div>
+<div class="profile-item"><span class="profile-label">Weight</span><span class="profile-value">67kg</span></div>
+<div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div>
+<div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・プロ</span></div>
+</div>
+<div class="model-about">
+<p class="model-about-title">About Haruto</p>
+<p>「まっすぐで誠実、そっと寄り添う優しさ」をテーマにしたモデル。ナチュラルな魅力と穏やかな雰囲気で、見る人の心に残る存在。御社の格と信頼性を視覚的に表現します。</p>
+</div>
+<div class="model-tags"><span class="tag">プロ意識</span><span class="tag">誠実</span><span class="tag">清潔感</span><span class="tag">信頼</span><span class="tag">存在感</span></div>
+</div>
+</div>
+<div class="reveal">
+<h3 class="catalog-head">🌿 起用イメージ ─ 業種別カタログ</h3>
+<p class="catalog-lead">様々な業種・シーンで活躍する結衣と遥斗。御社のブランドに合わせて自在にカスタマイズできます。</p>
+<div class="catalog-imgs">
+<div class="catalog-img-item">
+<div class="catalog-img-photo"><img src="https://i.imgur.com/v6n0aQt.png" alt="美容・医療"></div>
+<div class="catalog-img-label">美容・医療</div>
+</div>
+<div class="catalog-img-item">
+<div class="catalog-img-photo"><img src="https://i.imgur.com/5mmjKIS.png" alt="不動産・金融"></div>
+<div class="catalog-img-label">不動産・金融</div>
+</div>
+<div class="catalog-img-item">
+<div class="catalog-img-photo"><img src="https://i.imgur.com/6HYadTW.png" alt="建設"></div>
+<div class="catalog-img-label">建設・施工</div>
+</div>
+<div class="catalog-img-item">
+<div class="catalog-img-photo"><img src="https://i.imgur.com/OK4tniG.png" alt="ゴルフ"></div>
+<div class="catalog-img-label">スポーツ・ゴルフ</div>
+</div>
+<div class="catalog-img-item">
+<div class="catalog-img-photo"><img src="https://i.imgur.com/uzkElU6.png" alt="採用・HR"></div>
+<div class="catalog-img-label">採用・HR</div>
+</div>
+<div class="catalog-img-item">
+<div class="catalog-img-photo"><img src="https://i.imgur.com/ZcXau68.png" alt="IT・コンサル"></div>
+<div class="catalog-img-label">IT・コンサル</div>
+</div>
+</div>
+<div class="use-cases">
+<div class="use-case"><div class="use-case-num">01</div><h4>採用・HR</h4><p>求人広告、会社説明会資料、採用LP。AIモデルが御社の魅力を伝えます。</p></div>
+<div class="use-case"><div class="use-case-num">02</div><h4>Web・LP</h4><p>コーポレートサイト、サービスLP、ランディングページのビジュアルに。</p></div>
+<div class="use-case"><div class="use-case-num">03</div><h4>SNS運用</h4><p>LinkedIn・Instagram・X・Facebookへの定期投稿用ビジュアルを月次納品。</p></div>
+<div class="use-case"><div class="use-case-num">04</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主・投資家向け資料のアイキャッチに。</p></div>
+<div class="use-case"><div class="use-case-num">05</div><h4>広告・チラシ</h4><p>展示会ブース、パンフレット、プレゼン資料など印刷物にも対応。</p></div>
+<div class="use-case"><div class="use-case-num">06</div><h4>カスタムシーン</h4><p>「こういう場面で使いたい」のご要望をヒアリングし専用シーンを制作。</p></div>
+</div>
+</div>
+</div>
 </section>
-
 <section class="section-wrap" id="why">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Why YUU?</p>
-    <h2 class="section-title reveal">起用するメリット</h2>
-    <div class="section-line reveal"></div>
-    <p class="body-text reveal" style="margin-bottom:28px">起用するだけで、ブランドの世界観がこんなにも変わります。</p>
-    <div class="before-after-wrap reveal">
-      <img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before After 1">
-    </div>
-    <div class="before-after-wrap reveal" style="margin-top:16px;">
-      <img src="https://i.imgur.com/kdxljCc.jpeg" alt="Before After 2">
-    </div>
-    <div class="why-benefits" style="margin-top:32px;">
-      <div class="benefit-card reveal"><span class="benefit-icon">💡</span><p class="benefit-title">印象が強くなる</p><p class="benefit-desc">透明感と洗練されたビジュアルで、見る人の記憶に深く刻まれるブランドへ。</p></div>
-      <div class="benefit-card reveal"><span class="benefit-icon">🤝</span><p class="benefit-title">信頼感が高まる</p><p class="benefit-desc">誠実さと清潔感のある世界観が、クライアントとの信頼関係を自然に構築します。</p></div>
-      <div class="benefit-card reveal"><span class="benefit-icon">🌟</span><p class="benefit-title">記憶に残りやすい</p><p class="benefit-desc">「なんとなく好き」を設計するYUUのビジュアルが、ブランド価値を最大化します。</p></div>
-    </div>
-    <div class="ai-merits" style="margin-top:20px;">
-      <div class="ai-merit reveal"><span class="ai-merit-icon">📷</span><p class="ai-merit-title">撮影不要</p><p class="ai-merit-desc">スタジオ・カメラマン手配は不要。</p></div>
-      <div class="ai-merit reveal"><span class="ai-merit-icon">🚌</span><p class="ai-merit-title">交通費ゼロ</p><p class="ai-merit-desc">出張・移動のコストを大幅カット。</p></div>
-      <div class="ai-merit reveal"><span class="ai-merit-icon">⏰</span><p class="ai-merit-title">24時間制作OK</p><p class="ai-merit-desc">いつでもスピーディにモデルを用意。</p></div>
-      <div class="ai-merit reveal"><span class="ai-merit-icon">☀️</span><p class="ai-merit-title">天候に左右されない</p><p class="ai-merit-desc">雨・雪・暑さの影響なく理想の撮影が可能。</p></div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow reveal">Why YUU?</p>
+<h2 class="section-title reveal">起用するメリット</h2>
+<div class="section-line reveal"></div>
+<p class="body-text reveal" style="margin-bottom:28px">起用するだけで、ブランドの世界観がこんなにも変わります。</p>
+<div class="before-after-wrap reveal">
+<img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before After 1">
+</div>
+<div class="before-after-wrap reveal" style="margin-top:16px;">
+<img src="https://i.imgur.com/kdxljCc.jpeg" alt="Before After 2">
+</div>
+<div class="why-benefits" style="margin-top:32px;">
+<div class="benefit-card reveal"><span class="benefit-icon">💡</span><p class="benefit-title">印象が強くなる</p><p class="benefit-desc">透明感と洗練されたビジュアルで、見る人の記憶に深く刻まれるブランドへ。</p></div>
+<div class="benefit-card reveal"><span class="benefit-icon">🤝</span><p class="benefit-title">信頼感が高まる</p><p class="benefit-desc">誠実さと清潔感のある世界観が、クライアントとの信頼関係を自然に構築します。</p></div>
+<div class="benefit-card reveal"><span class="benefit-icon">🌟</span><p class="benefit-title">記憶に残りやすい</p><p class="benefit-desc">「なんとなく好き」を設計するYUUのビジュアルが、ブランド価値を最大化します。</p></div>
+</div>
+<div class="ai-merits" style="margin-top:20px;">
+<div class="ai-merit reveal"><span class="ai-merit-icon">📷</span><p class="ai-merit-title">撮影不要</p><p class="ai-merit-desc">スタジオ・カメラマン手配は不要。</p></div>
+<div class="ai-merit reveal"><span class="ai-merit-icon">🚌</span><p class="ai-merit-title">交通費ゼロ</p><p class="ai-merit-desc">出張・移動のコストを大幅カット。</p></div>
+<div class="ai-merit reveal"><span class="ai-merit-icon">⏰</span><p class="ai-merit-title">24時間制作OK</p><p class="ai-merit-desc">いつでもスピーディにモデルを用意。</p></div>
+<div class="ai-merit reveal"><span class="ai-merit-icon">☀️</span><p class="ai-merit-title">天候に左右されない</p><p class="ai-merit-desc">雨・雪・暑さの影響なく理想の撮影が可能。</p></div>
+</div>
+</div>
 </section>
-
 <section class="section-wrap" id="philosophy">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Philosophy &amp; Story</p>
-    <h2 class="section-title reveal">会社理念と、私の想い</h2>
-    <div class="section-line reveal"></div>
-    <div class="philo-grid">
-      <div class="philo-text reveal">
-        <p>YUU &amp; Co.は、<span class="hl">「AIが人の想いを纏う」</span>というコンセプトのもと、企業の本質的な価値を視覚化するビジュアル制作サービスです。</p><br>
-        <p>AIモデルは実在しません。でも、その佇まいが伝えるメッセージは本物です。御社のブランドが持つ誠実さ、信頼感、プロフェッショナリズム—それをありのままに表現することが私たちの使命です。</p><br>
-        <p>「嘘をつかないAI」という言葉の中に、企業コミュニケーションの本質があると信じています。</p>
-      </div>
-      <div class="philo-values">
-        <div class="value-item reveal"><p class="value-title">想いを、置いていかない。</p><p class="value-desc">ただ綺麗なだけでは、人の記憶には残らない。ブランドに込められた想いまで丁寧に形にします。</p></div>
-        <div class="value-item reveal"><p class="value-title">"なんとなく良い"を、設計する。</p><p class="value-desc">空気感。透明感。世界観。言葉では説明できない魅力を、ビジュアルとして届けます。</p></div>
-        <div class="value-item reveal"><p class="value-title">AIを、冷たく終わらせない。</p><p class="value-desc">効率だけじゃなく、感情まで届く表現へ。AIと人の感性を融合させ、ブランド表現を追求します。</p></div>
-        <div class="value-item reveal"><p class="value-title">初めてでも、安心できる存在へ。</p><p class="value-desc">「こんなこと相談していいのかな」そんな不安ごと、一緒に整理するところから始めます。</p></div>
-      </div>
-    </div>
-    <div class="philo-story reveal">
-      <p>私がこのビジネスを始めたのは、ひとつのシンプルな問いからです。「なぜ企業のビジュアルは、こんなにも画一的なのか。」</p>
-      <p>モデルの起用には費用がかかり、スキャンダルのリスクもある。だから多くの企業は、無難なストック写真を使い続ける。でもそれでは、本当のブランドは伝わらない。</p>
-      <p>AIモデルという選択肢は、その問いへの答えです。<span class="hl">実在しないが故の自由と、AIが持つ再現性の高さ。</span>その組み合わせが、これからの企業ビジュアルを変えると信じています。</p>
-      <div class="philo-icons"><span>🌿</span><span>あなたの想いが、誰かの心に届くまで。YUUは、ずっと寄り添い続けます。</span><span>🕊</span></div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow reveal">Philosophy &amp; Story</p>
+<h2 class="section-title reveal">会社理念と、私の想い</h2>
+<div class="section-line reveal"></div>
+<div class="philo-grid">
+<div class="philo-text reveal">
+<p>YUU &amp; Co.は、<span class="hl">「AIが人の想いを纏う」</span>というコンセプトのもと、企業の本質的な価値を視覚化するビジュアル制作サービスです。</p><br>
+<p>AIモデルは実在しません。でも、その佇まいが伝えるメッセージは本物です。御社のブランドが持つ誠実さ、信頼感、プロフェッショナリズム—それをありのままに表現することが私たちの使命です。</p><br>
+<p>「嘘をつかないAI」という言葉の中に、企業コミュニケーションの本質があると信じています。</p>
+</div>
+<div class="philo-values">
+<div class="value-item reveal"><p class="value-title">想いを、置いていかない。</p><p class="value-desc">ただ綺麗なだけでは、人の記憶には残らない。ブランドに込められた想いまで丁寧に形にします。</p></div>
+<div class="value-item reveal"><p class="value-title">"なんとなく良い"を、設計する。</p><p class="value-desc">空気感。透明感。世界観。言葉では説明できない魅力を、ビジュアルとして届けます。</p></div>
+<div class="value-item reveal"><p class="value-title">AIを、冷たく終わらせない。</p><p class="value-desc">効率だけじゃなく、感情まで届く表現へ。AIと人の感性を融合させ、ブランド表現を追求します。</p></div>
+<div class="value-item reveal"><p class="value-title">初めてでも、安心できる存在へ。</p><p class="value-desc">「こんなこと相談していいのかな」そんな不安ごと、一緒に整理するところから始めます。</p></div>
+</div>
+</div>
+<div class="philo-story reveal">
+<p>私がこのビジネスを始めたのは、ひとつのシンプルな問いからです。「なぜ企業のビジュアルは、こんなにも画一的なのか。」</p>
+<p>モデルの起用には費用がかかり、スキャンダルのリスクもある。だから多くの企業は、無難なストック写真を使い続ける。でもそれでは、本当のブランドは伝わらない。</p>
+<p>AIモデルという選択肢は、その問いへの答えです。<span class="hl">実在しないが故の自由と、AIが持つ再現性の高さ。</span>その組み合わせが、これからの企業ビジュアルを変えると信じています。</p>
+<div class="philo-icons"><span>🌿</span><span>あなたの想いが、誰かの心に届くまで。YUUは、ずっと寄り添い続けます。</span><span>🕊</span></div>
+</div>
+</div>
 </section>
-
 <section class="section-wrap" id="pricing">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Pricing</p>
-    <h2 class="section-title reveal">料金プラン</h2>
-    <div class="section-line reveal"></div>
-    <p class="body-text reveal" style="margin-bottom:24px">企業のブランドイメージを、信頼と感性で伝える。結衣と遥斗が、貴社の魅力を最大限に引き出します。</p>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <p class="price-name">Standard · 1人起用</p>
-        <div class="price-amount">¥49,800</div>
-        <p class="price-unit">月額（税込）· 結衣 または 遥斗</p>
-        <ul class="price-features">
-          <li>ホームページ掲載OK</li><li>SNS掲載OK</li><li>広告・販促物利用OK</li>
-          <li>企業イメージに合わせたビジュアル制作</li>
-          <li>月3回まで無料修正対応</li><li>全国オンライン対応</li>
-          <li>電子契約（LINEまたはメール）</li>
-        </ul>
-      </div>
-      <div class="price-card featured reveal">
-        <div class="rec-badge">おすすめ</div>
-        <p class="price-name">Premium · 2人起用</p>
-        <div class="price-amount">¥98,000</div>
-        <p class="price-unit">月額（税込）· 結衣 &amp; 遥斗 2名</p>
-        <ul class="price-features">
-          <li>ホームページ掲載OK</li><li>SNS掲載OK</li><li>広告・販促物利用OK</li>
-          <li>世界観統一ビジュアル制作</li>
-          <li>企業イメージに合わせたビジュアル制作</li>
-          <li>月3回まで無料修正対応</li><li>全国オンライン対応</li>
-          <li>電子契約（LINEまたはメール）</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow reveal">Pricing</p>
+<h2 class="section-title reveal">料金プラン</h2>
+<div class="section-line reveal"></div>
+<p class="body-text reveal" style="margin-bottom:24px">企業のブランドイメージを、信頼と感性で伝える。結衣と遥斗が、貴社の魅力を最大限に引き出します。</p>
+<div class="pricing-grid">
+<div class="price-card reveal">
+<p class="price-name">Standard · 1人起用</p>
+<div class="price-amount">¥49,800</div>
+<p class="price-unit">月額（税込）· 結衣 または 遥斗</p>
+<ul class="price-features">
+<li>ホームページ掲載OK</li><li>SNS掲載OK</li><li>広告・販促物利用OK</li>
+<li>企業イメージに合わせたビジュアル制作</li>
+<li>月3回まで無料修正対応</li><li>全国オンライン対応</li>
+<li>電子契約（LINEまたはメール）</li>
+</ul>
+</div>
+<div class="price-card featured reveal">
+<div class="rec-badge">おすすめ</div>
+<p class="price-name">Premium · 2人起用</p>
+<div class="price-amount">¥98,000</div>
+<p class="price-unit">月額（税込）· 結衣 &amp; 遥斗 2名</p>
+<ul class="price-features">
+<li>ホームページ掲載OK</li><li>SNS掲載OK</li><li>広告・販促物利用OK</li>
+<li>世界観統一ビジュアル制作</li>
+<li>企業イメージに合わせたビジュアル制作</li>
+<li>月3回まで無料修正対応</li><li>全国オンライン対応</li>
+<li>電子契約（LINEまたはメール）</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-
 <section class="section-wrap" id="legal">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Notes</p>
-    <h2 class="section-title reveal">ご利用について</h2>
-    <div class="section-line reveal"></div>
-    <div class="legal-grid">
-      <div class="legal-box reveal">
-        <h4>世界観・モデル保護について</h4>
-        <ul>
-          <li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU & Co.オリジナル制作物です</li>
-          <li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li>
-          <li>AIモデルの画像であることを明示してご利用ください</li>
-          <li>人物の実在を誤解させる使い方はお控えください</li>
-          <li>反社会的勢力へのご利用はお断りします</li>
-        </ul>
-      </div>
-      <div class="legal-box reveal">
-        <h4>ご利用範囲・修正対応</h4>
-        <ul>
-          <li>制作したビジュアルは、契約範囲内でご利用いただけます</li>
-          <li>ホームページ・SNS・広告・LP・企業PRなど幅広くご利用可能</li>
-          <li>企業イメージに合わせた調整を、月3回まで無料対応</li>
-          <li>「高級感を強めたい」「柔らかい雰囲気にしたい」など細かな空気感まで丁寧に調整</li>
-          <li>4回目以降は追加料金となります</li>
-        </ul>
-      </div>
-      <div class="legal-box reveal">
-        <h4>個人情報の取り扱い</h4>
-        <ul>
-          <li>ご提供いただいた情報はサービス提供のみに使用します</li>
-          <li>第三者への提供は法令に基づく場合を除き行いません</li>
-          <li>個人情報の開示・訂正・削除はご連絡ください</li>
-          <li>電子契約はLINEまたはメールにて締結します</li>
-          <li>管轄裁判所：群馬県太田市の裁判所</li>
-        </ul>
-      </div>
-      <div class="legal-box reveal">
-        <h4>YUUが大切にしていること</h4>
-        <ul>
-          <li>私たちは、"画像を作る"だけの会社ではありません</li>
-          <li>ブランドの空気感まで設計し、「この世界観、好き。」と感じてもらえる表現を大切にしています</li>
-          <li>大切なブランドを守るため、すべてのお客様に安心してご利用いただけるよう、ルールを設けております</li>
-          <li>ご理解・ご協力のほど、よろしくお願いいたします</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow reveal">Notes</p>
+<h2 class="section-title reveal">ご利用について</h2>
+<div class="section-line reveal"></div>
+<div class="legal-grid">
+<div class="legal-box reveal">
+<h4>世界観・モデル保護について</h4>
+<ul>
+<li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU & Co.オリジナル制作物です</li>
+<li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li>
+<li>AIモデルの画像であることを明示してご利用ください</li>
+<li>人物の実在を誤解させる使い方はお控えください</li>
+<li>反社会的勢力へのご利用はお断りします</li>
+</ul>
+</div>
+<div class="legal-box reveal">
+<h4>ご利用範囲・修正対応</h4>
+<ul>
+<li>制作したビジュアルは、契約範囲内でご利用いただけます</li>
+<li>ホームページ・SNS・広告・LP・企業PRなど幅広くご利用可能</li>
+<li>企業イメージに合わせた調整を、月3回まで無料対応</li>
+<li>「高級感を強めたい」「柔らかい雰囲気にしたい」など細かな空気感まで丁寧に調整</li>
+<li>4回目以降は追加料金となります</li>
+</ul>
+</div>
+<div class="legal-box reveal">
+<h4>個人情報の取り扱い</h4>
+<ul>
+<li>ご提供いただいた情報はサービス提供のみに使用します</li>
+<li>第三者への提供は法令に基づく場合を除き行いません</li>
+<li>個人情報の開示・訂正・削除はご連絡ください</li>
+<li>電子契約はLINEまたはメールにて締結します</li>
+<li>管轄裁判所：群馬県太田市の裁判所</li>
+</ul>
+</div>
+<div class="legal-box reveal">
+<h4>YUUが大切にしていること</h4>
+<ul>
+<li>私たちは、"画像を作る"だけの会社ではありません</li>
+<li>ブランドの空気感まで設計し、「この世界観、好き。」と感じてもらえる表現を大切にしています</li>
+<li>大切なブランドを守るため、すべてのお客様に安心してご利用いただけるよう、ルールを設けております</li>
+<li>ご理解・ご協力のほど、よろしくお願いいたします</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-
 <section class="section-wrap" id="staff">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Staff</p>
-    <h2 class="section-title reveal">スタッフ紹介</h2>
-    <div class="section-line reveal"></div>
-    <div class="staff-top">
-      <div class="staff-card-item reveal">
-        <div class="staff-avatar">
-          <img src="https://i.imgur.com/WSBSpel.png" alt="Yuko">
-        </div>
-        <div class="staff-info-inner">
-          <p class="staff-role">企画・制作・ブランディング担当</p>
-          <p class="staff-name">Yuko</p>
-          <p class="staff-name-sub">Founder &amp; Director</p>
-          <p class="staff-desc">群馬県太田市を拠点に、AIモデルを活用した企業向けビジュアル制作「YUU &amp; Co.」を運営。ブランドの世界観を設計し、企画から制作まで一貫してプロデュース。「丁寧さが信頼になる」という信念のもと、一社一社と向き合います。</p>
-        </div>
-      </div>
-      <div class="staff-card-item reveal">
-        <div class="staff-avatar">
-          <img src="https://i.imgur.com/kVEWOGH.png" alt="Masayuki">
-        </div>
-        <div class="staff-info-inner">
-          <p class="staff-role">クライアント対応・営業担当</p>
-          <p class="staff-name">Masayuki</p>
-          <p class="staff-name-sub">Client Relations &amp; Sales</p>
-          <p class="staff-desc">お客様の課題やご要望に寄り添い、最適なご提案を行います。ビジネスの現場で培った経験をもとに、クライアントとの長期的な信頼関係を構築。「お客様の成功が私たちの成功」という姿勢で誠実に向き合います。</p>
-        </div>
-      </div>
-    </div>
-    <div class="staff-bottom">
-      <div class="staff-card-item reveal">
-        <div class="staff-avatar-sm">
-          <img src="https://i.imgur.com/INiJPoO.png" alt="Sachiko">
-        </div>
-        <div class="staff-info-inner">
-          <p class="staff-role">ブランド戦略・コンサル担当</p>
-          <p class="staff-name">Sachiko</p>
-          <p class="staff-name-sub">Brand Strategy &amp; Consulting</p>
-          <p class="staff-desc">市場分析やコンセプト設計を通じて、ブランド価値を最大化。「なんとなく好き」を言語化しビジュアル戦略に落とし込む専門家。競合との差別化からブランドの根幹まで支えます。</p>
-        </div>
-      </div>
-      <div class="staff-card-item reveal">
-        <div class="staff-avatar-sm">
-          <img src="https://i.imgur.com/1TXP3qF.png" alt="Kosuke">
-        </div>
-        <div class="staff-info-inner">
-          <p class="staff-role">AI・システム開発担当</p>
-          <p class="staff-name">Kosuke</p>
-          <p class="staff-name-sub">AI &amp; System Development</p>
-          <p class="staff-desc">AI・システム開発をリードし高品質なサービスを支えます。最先端AI技術で結衣と遥斗のビジュアルクオリティを継続的に向上。技術と感性の融合でYUUならではのAIビジュアルを実現します。</p>
-        </div>
-      </div>
-    </div>
-    <div class="staff-footer reveal"><span>🌿</span><span>それぞれの専門性を活かし、最高の価値をお届けします。</span><span>🕊</span></div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow reveal">Staff</p>
+<h2 class="section-title reveal">スタッフ紹介</h2>
+<div class="section-line reveal"></div>
+<div class="staff-top">
+<div class="staff-card-item reveal">
+<div class="staff-avatar">
+<img src="https://i.imgur.com/WSBSpel.png" alt="Yuko">
+</div>
+<div class="staff-info-inner">
+<p class="staff-role">企画・制作・ブランディング担当</p>
+<p class="staff-name">Yuko</p>
+<p class="staff-name-sub">Founder &amp; Director</p>
+<p class="staff-desc">群馬県太田市を拠点に、AIモデルを活用した企業向けビジュアル制作「YUU &amp; Co.」を運営。ブランドの世界観を設計し、企画から制作まで一貫してプロデュース。「丁寧さが信頼になる」という信念のもと、一社一社と向き合います。</p>
+</div>
+</div>
+<div class="staff-card-item reveal">
+<div class="staff-avatar">
+<img src="https://i.imgur.com/kVEWOGH.png" alt="Masayuki">
+</div>
+<div class="staff-info-inner">
+<p class="staff-role">クライアント対応・営業担当</p>
+<p class="staff-name">Masayuki</p>
+<p class="staff-name-sub">Client Relations &amp; Sales</p>
+<p class="staff-desc">お客様の課題やご要望に寄り添い、最適なご提案を行います。ビジネスの現場で培った経験をもとに、クライアントとの長期的な信頼関係を構築。「お客様の成功が私たちの成功」という姿勢で誠実に向き合います。</p>
+</div>
+</div>
+</div>
+<div class="staff-bottom">
+<div class="staff-card-item reveal">
+<div class="staff-avatar-sm">
+<img src="https://i.imgur.com/INiJPoO.png" alt="Sachiko">
+</div>
+<div class="staff-info-inner">
+<p class="staff-role">ブランド戦略・コンサル担当</p>
+<p class="staff-name">Sachiko</p>
+<p class="staff-name-sub">Brand Strategy &amp; Consulting</p>
+<p class="staff-desc">市場分析やコンセプト設計を通じて、ブランド価値を最大化。「なんとなく好き」を言語化しビジュアル戦略に落とし込む専門家。競合との差別化からブランドの根幹まで支えます。</p>
+</div>
+</div>
+<div class="staff-card-item reveal">
+<div class="staff-avatar-sm">
+<img src="https://i.imgur.com/1TXP3qF.png" alt="Kosuke">
+</div>
+<div class="staff-info-inner">
+<p class="staff-role">AI・システム開発担当</p>
+<p class="staff-name">Kosuke</p>
+<p class="staff-name-sub">AI &amp; System Development</p>
+<p class="staff-desc">AI・システム開発をリードし高品質なサービスを支えます。最先端AI技術で結衣と遥斗のビジュアルクオリティを継続的に向上。技術と感性の融合でYUUならではのAIビジュアルを実現します。</p>
+</div>
+</div>
+</div>
+<div class="staff-footer reveal"><span>🌿</span><span>それぞれの専門性を活かし、最高の価値をお届けします。</span><span>🕊</span></div>
+</div>
 </section>
-
 <section class="section-wrap" id="contact">
-  <div class="section-inner">
-    <p class="section-eyebrow">Contact</p>
-    <h2 class="section-title">お問い合わせ</h2>
-    <div class="section-line"></div>
-    <p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、まずはお気軽にLINEよりご連絡ください。丁寧にご対応いたします。</p>
-    <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a>
-    <div class="social-links reveal">
-      
-      <a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="social-link" target="_blank">Instagram</a>
-      <a href="https://x.com/yuu_co_ltd?s=21" class="social-link" target="_blank">X（Twitter）</a>
-      <a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="social-link" target="_blank">Facebook</a>
-    </div>
-  </div>
+<div class="section-inner">
+<p class="section-eyebrow">Contact</p>
+<h2 class="section-title">お問い合わせ</h2>
+<div class="section-line"></div>
+<p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、まずはお気軽にLINEよりご連絡ください。丁寧にご対応いたします。</p>
+<a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a>
+<div class="social-links reveal">
+<a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="social-link" target="_blank">Instagram</a>
+<a href="https://x.com/yuu_co_ltd?s=21" class="social-link" target="_blank">X（Twitter）</a>
+<a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="social-link" target="_blank">Facebook</a>
+</div>
+</div>
 </section>
-
 <footer>
-  <div class="footer-logo">
-    <img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co.">
-    <div class="footer-logo-text">🌿 YUU <span>&</span> Co. 🕊</div>
-  </div>
-  <div>© 2026 YUU &amp; Co. 南部祐子 · 群馬県太田市 · All Rights Reserved</div>
+<div class="footer-logo">
+<img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co.">
+<div class="footer-logo-text">🌿 YUU <span>&</span> Co. 🕊</div>
+</div>
+<div>© 2026 YUU &amp; Co. 南部祐子 · 群馬県太田市 · All Rights Reserved</div>
 </footer>
-
 <script>
 const reveals=document.querySelectorAll('.reveal');
 const io=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*55);});},{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
