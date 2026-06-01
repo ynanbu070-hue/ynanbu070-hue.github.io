@@ -48,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .body-text{font-size:.95rem;line-height:2;color:var(--mid)}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.models-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:56px}
+.models-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:56px;align-items:start}
 .model-img-wrap{position:relative;overflow:hidden;border-radius:8px;margin-bottom:18px}
 .model-img-wrap img{width:100%;height:380px;object-fit:cover;object-position:top;display:block;transition:transform .6s ease}
 .model-img-wrap:hover img{transform:scale(1.04)}
@@ -232,7 +232,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
   </div>
   <div class="hero-text">
     <p class="hero-eyebrow">AI Visual Production</p>
-    <h1 class="hero-title">撮影費ゼロ。制作コスト大幅削減。<br>お金を無駄にしない<br>次世代の宣伝戦略。</h1>
+    <h1 class="hero-title" style="text-align:left">撮影費ゼロ。<br><span style="padding-left:1.5em">制作コスト大幅削減。</span><br>お金を無駄にしない<br><span style="padding-left:3em">次世代の宣伝戦略。</span></h1>
     <p class="hero-lead">AIモデルたちが、御社のブランドを視覚化します。<br>起用するだけで、ブランドの世界観が変わる。</p>
   </div>
 </section>
@@ -283,7 +283,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="model-sub">Female AI Model · Caring</p>
         <div class="model-profile-grid">
           <div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">50歳</span></div>
-          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">笑顔の絶えない女性</span></div>
+          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">笑顔が絶えない</span></div>
         </div>
         <div class="model-about"><p class="model-about-title">About Tomoko</p><p>温かみと優しさを兼ね備えた母親像。医療・介護・教育分野で親しみやすさと安心感を届けます。</p></div>
         <div class="model-tags"><span class="tag">温かさ</span><span class="tag">優しさ</span><span class="tag">親しみやすさ</span><span class="tag">安心感</span></div>
@@ -294,9 +294,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="model-sub">Male AI Model · Senior</p>
         <div class="model-profile-grid">
           <div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">70歳</span></div>
-          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実</span></div>
-          <div class="profile-item"><span class="profile-label">Character</span><span class="profile-value">真面目</span></div>
-          <div class="profile-item"><span class="profile-label">Strength</span><span class="profile-value">頼りがい</span></div>
+          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・真面目</span></div>
         </div>
         <div class="model-about"><p class="model-about-title">About Makoto</p><p>誠実さと頼りがいを体現するシニアモデル。介護・保険・医療・シニア向けサービスに最適です。</p></div>
         <div class="model-tags"><span class="tag">誠実</span><span class="tag">真面目</span><span class="tag">頼りがい</span><span class="tag">温かさ</span></div>
@@ -307,9 +305,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="model-sub">Female AI Model · Senior</p>
         <div class="model-profile-grid">
           <div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">68歳</span></div>
-          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">優しい</span></div>
-          <div class="profile-item"><span class="profile-label">Character</span><span class="profile-value">明るい</span></div>
-          <div class="profile-item"><span class="profile-label">Strength</span><span class="profile-value">温もり</span></div>
+          <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">優しく明るい</span></div>
         </div>
         <div class="model-about"><p class="model-about-title">About Yoko</p><p>温かく優しい笑顔が印象的なシニア女性モデル。介護・医療・保険のビジュアルに温もりと安心感を添えます。</p></div>
         <div class="model-tags"><span class="tag">温かさ</span><span class="tag">優しさ</span><span class="tag">笑顔</span><span class="tag">安心感</span></div>
