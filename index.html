@@ -54,7 +54,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .model-img-wrap:hover img{transform:scale(1.04)}
 .model-badge{position:absolute;bottom:0;left:0;right:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(10,25,55,.72));font-family:var(--serif);font-size:1rem;color:#fff;border-radius:0 0 8px 8px;letter-spacing:.05em}
 .model-name{font-family:var(--serif);font-size:1.75rem;font-weight:300;margin-bottom:2px;margin-top:14px}
-.model-sub{font-family:var(--label);font-size:.6rem;font-weight:400;letter-spacing:.17em;text-transform:uppercase;color:var(--blue);margin-bottom:13px}
+.model-sub{font-family:var(--label);font-size:.6rem;font-weight:400;letter-spacing:.17em;text-transform:uppercase;color:var(--blue);margin-bottom:13px;white-space:nowrap}
 .model-profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
 .profile-item{background:var(--light);padding:8px 11px;border-radius:4px}
 .profile-label{font-family:var(--label);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:2px}
@@ -121,7 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .price-name{font-family:var(--label);font-size:.62rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
 .price-card.featured .price-name{color:rgba(184,216,240,.9)}
 .price-card.best-value .price-name{color:#C87800}
-.price-num{font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--navy);line-height:1;margin-bottom:4px}
+.price-num{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:6px;letter-spacing:.02em;border-bottom:2px solid var(--blue);padding-bottom:6px;display:inline-block}
 .price-card.featured .price-num{color:#fff}
 .price-card.best-value .price-num{color:#C87800}
 .price-amount{font-family:var(--display);font-size:2.4rem;font-weight:300;color:var(--navy);line-height:1;margin-bottom:3px}
@@ -302,7 +302,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
       <div class="reveal">
         <div class="model-img-wrap"><img src="https://i.imgur.com/MFGU7N5.jpeg" alt="洋子" loading="lazy"><div class="model-badge">洋子 / Yoko</div></div>
         <h3 class="model-name">洋子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yoko</span></h3>
-        <p class="model-sub">Female AI Model · Senior</p>
+        <p class="model-sub">Female AI Model · Senior&nbsp;</p>
         <div class="model-profile-grid">
           <div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">68歳</span></div>
           <div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">優しく明るい</span></div>
