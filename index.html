@@ -358,58 +358,130 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <div class="section-line reveal"></div>
         <p class="body-text reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。詳しくは料金プランをご確認ください。</span></p>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 結衣 / Yui</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/fcXN2eK.png" alt="結衣 不動産" loading="lazy"><div class="catalog-img-label">不動産・コンサル</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" alt="結衣 建設" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" alt="結衣 カフェ" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/7fUZB1X.png" alt="結衣 マーケティング" loading="lazy"><div class="catalog-img-label">マーケティング</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/x5fYUAP.png" alt="結衣 福祉" loading="lazy"><div class="catalog-img-label">福祉・社会貢献</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/uzkElU6.png" alt="結衣 IT" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div>
+        <!-- アコーディオンCSS -->
+        <style>
+        .acc-block{margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid var(--light)}
+        .acc-header{display:flex;align-items:center;gap:0;cursor:pointer;background:var(--white);border:none;width:100%;padding:0;position:relative}
+        .acc-cover{width:90px;height:90px;object-fit:cover;object-position:top;flex-shrink:0}
+        .acc-title{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--navy);padding:0 14px;flex:1;text-align:left}
+        .acc-arrow{font-size:.8rem;color:var(--blue);padding-right:14px;transition:transform .3s;flex-shrink:0}
+        .acc-arrow.open{transform:rotate(180deg)}
+        .acc-body{display:none;padding:10px;background:var(--cream)}
+        .acc-body.open{display:block}
+        .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+        </style>
+
+        <!-- 結衣 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/fcXN2eK.png" alt="結衣">
+            <span class="acc-title">🌿 結衣 / Yui</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="catalog-img-label">マーケティング</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="catalog-img-label">福祉・社会貢献</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div>
+            </div>
+          </div>
         </div>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 遥斗 / Haruto</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/ndSYEFv.png" alt="遥斗 不動産" loading="lazy"><div class="catalog-img-label">不動産</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" alt="遥斗 建設" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" alt="遥斗 ジム" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/wUUfvpp.png" alt="遥斗 採用" loading="lazy"><div class="catalog-img-label">採用・説明会</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/tCr7JbR.png" alt="遥斗 金融" loading="lazy"><div class="catalog-img-label">金融・資産運用</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/pI4qCeX.png" alt="遥斗 IT" loading="lazy"><div class="catalog-img-label">IT・オフィス</div></div>
+        <!-- 遥斗 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/esPWG1f.png" alt="遥斗">
+            <span class="acc-title">🌿 遥斗 / Haruto</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="catalog-img-label">採用・説明会</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="catalog-img-label">金融・資産運用</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="catalog-img-label">IT・オフィス</div></div>
+            </div>
+          </div>
         </div>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 結衣 &amp; 遥斗</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/Y1mbzJr.jpeg" alt="打ち合わせ" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/FMsYy8i.jpeg" alt="パネル" loading="lazy"><div class="catalog-img-label">展示会・パネル</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/Tt65vHu.jpeg" alt="建設パネル" loading="lazy"><div class="catalog-img-label">建設・採用</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/1VWLBAO.jpeg" alt="不動産内覧" loading="lazy"><div class="catalog-img-label">不動産・内覧</div></div>
+        <!-- 結衣&遥斗 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗">
+            <span class="acc-title">🌿 結衣 &amp; 遥斗</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="catalog-img-label">展示会・パネル</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="catalog-img-label">建設・採用</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="catalog-img-label">不動産・内覧</div></div>
+            </div>
+          </div>
         </div>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 健一 / Kenichi</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/zkI4efM.png" alt="健一 リフォーム" loading="lazy"><div class="catalog-img-label">リフォーム会社</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/DRd2YzI.png" alt="健一 保険" loading="lazy"><div class="catalog-img-label">保険代理店</div></div>
+        <!-- 健一 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/zkI4efM.png" alt="健一">
+            <span class="acc-title">🌿 健一 / Kenichi</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="catalog-img-label">保険代理店</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div>
+            </div>
+          </div>
         </div>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 智子 / Tomoko</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/Pn7Pyc9.png" alt="智子 リハビリ" loading="lazy"><div class="catalog-img-label">リハビリ施設</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/xwfCAKB.png" alt="智子 ケアプランナー" loading="lazy"><div class="catalog-img-label">ケアプランナー</div></div>
+        <!-- 智子 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子">
+            <span class="acc-title">🌿 智子 / Tomoko</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="catalog-img-label">ケアプランナー</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="catalog-img-label">医療・介護</div></div>
+            </div>
+          </div>
         </div>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 誠 &amp; 洋子 / Makoto &amp; Yoko</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/ZHOTOVp.png" alt="シニア" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/E1Epia2.jpeg" alt="老人ホーム" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div>
+        <!-- 誠&洋子 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子">
+            <span class="acc-title">🌿 誠 &amp; 洋子 / Makoto &amp; Yoko</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div>
+            </div>
+          </div>
         </div>
 
-        <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 蒼空 &amp; 紬 / Sora &amp; Tsumugi</h4>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/8q289kc.jpeg" alt="蒼空 サッカー" loading="lazy"><div class="catalog-img-label">スポーツ・サッカー</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/5sFQzhp.jpeg" alt="YUUFC" loading="lazy"><div class="catalog-img-label">スポーツクラブ</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/EPSgget.png" alt="英会話スクール" loading="lazy"><div class="catalog-img-label">英会話スクール</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/lc3hU31.jpeg" alt="身長計" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div>
+        <!-- 蒼空&紬 -->
+        <div class="acc-block reveal">
+          <button class="acc-header" onclick="toggleAcc(this)">
+            <img class="acc-cover" src="https://i.imgur.com/8q289kc.jpeg" alt="蒼空&紬">
+            <span class="acc-title">🌿 蒼空 &amp; 紬 / Sora &amp; Tsumugi</span>
+            <span class="acc-arrow">▼</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-grid">
+              <div class="catalog-img-item"><img src="https://i.imgur.com/5sFQzhp.jpeg" loading="lazy"><div class="catalog-img-label">スポーツクラブ</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="catalog-img-label">英会話スクール</div></div>
+              <div class="catalog-img-item"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div>
+            </div>
+          </div>
         </div>
 
         <div class="use-cases" style="margin-top:36px">
@@ -481,24 +553,24 @@ footer{flex-direction:column;gap:8px;text-align:center}
       <p>人数が増えるほど<strong>おトクな</strong>料金設計です。</p>
       <p class="savings">🎉 4名起用で1名あたり約39,500円！<br>1名より約41,200円おトク！</p>
     </div>
+    <!-- 全プラン共通 -->
+    <div class="reveal" style="background:var(--sky);border-radius:10px;padding:18px 20px;margin-bottom:24px">
+      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px">全プラン共通</p>
+      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px">
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月5シーン制作（用途無制限）</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>HP・SNS・広告・印刷物など全て使用OK</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月3回まで無料修正対応</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>全国オンライン対応</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>電子契約（LINEまたはメール）</li>
+      </ul>
+    </div>
     <div class="pricing-grid">
       <div class="price-card reveal">
         <p class="price-num">1名起用</p>
         <p class="price-name">Basic</p>
         <div class="price-amount">¥49,800</div>
         <p class="price-unit">月額（税込）</p>
-        <p style="font-size:.8rem;color:var(--blue);margin-bottom:16px;padding:8px 12px;background:var(--sky);border-radius:6px;line-height:1.7">💡 2名以上の起用は<br>まとめてお得なプランがあります</p>
-        <ul class="price-features">
-          <li>月5シーン制作（用途無制限）</li>
-          <li>LP・HP・SNS・印刷物・看板など全て使用OK</li>
-          <li>ホームページ掲載OK</li>
-          <li>SNS掲載OK</li>
-          <li>広告・販促物利用OK</li>
-          <li>企業イメージに合わせたビジュアル制作</li>
-          <li>月3回まで無料修正対応</li>
-          <li>全国オンライン対応</li>
-          <li>電子契約（LINEまたはメール）</li>
-        </ul>
+        <p style="font-size:.8rem;color:var(--blue);margin-top:8px;line-height:1.7">企業イメージに合わせたビジュアル制作</p>
       </div>
       <div class="price-card featured reveal">
         <div class="rec-badge">おすすめ</div>
@@ -506,19 +578,8 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="price-name">Standard</p>
         <div class="price-amount">¥98,000</div>
         <p class="price-unit">月額（税込）</p>
-        <p class="price-savings">💰 男女1名ずつで世界観を統一</p>
+        <p class="price-savings">💰 男女1名ずつで世界観統一</p>
         <p class="price-per">1名あたり約¥49,000</p>
-        <ul class="price-features">
-          <li>月5シーン制作（用途無制限）</li>
-          <li>LP・HP・SNS・印刷物・看板など全て使用OK</li>
-          <li>ホームページ掲載OK</li>
-          <li>SNS掲載OK</li>
-          <li>広告・販促物利用OK</li>
-          <li>世界観統一ビジュアル制作</li>
-          <li>月3回まで無料修正対応</li>
-          <li>全国オンライン対応</li>
-          <li>電子契約（LINEまたはメール）</li>
-        </ul>
       </div>
       <div class="price-card reveal">
         <p class="price-num">3名起用</p>
@@ -527,17 +588,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="price-unit">月額（税込）</p>
         <p class="price-savings">💰 通常比 ¥20,400おトク</p>
         <p class="price-per">1名あたり約¥43,000</p>
-        <ul class="price-features">
-          <li>月5シーン制作（用途無制限）</li>
-          <li>LP・HP・SNS・印刷物・看板など全て使用OK</li>
-          <li>ホームページ掲載OK</li>
-          <li>SNS掲載OK</li>
-          <li>広告・販促物利用OK</li>
-          <li>世界観統一ビジュアル制作</li>
-          <li>月3回まで無料修正対応</li>
-          <li>全国オンライン対応</li>
-          <li>電子契約（LINEまたはメール）</li>
-        </ul>
       </div>
       <div class="price-card best-value reveal">
         <div class="best-badge">最大おトク</div>
@@ -547,17 +597,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="price-unit">月額（税込）</p>
         <p class="price-savings">🎉 通常比 ¥41,200おトク！</p>
         <p class="price-per">1名あたり約¥39,500</p>
-        <ul class="price-features">
-          <li>月5シーン制作（用途無制限）</li>
-          <li>LP・HP・SNS・印刷物・看板など全て使用OK</li>
-          <li>ホームページ掲載OK</li>
-          <li>SNS掲載OK</li>
-          <li>広告・販促物利用OK</li>
-          <li>世界観統一ビジュアル制作</li>
-          <li>月3回まで無料修正対応</li>
-          <li>全国オンライン対応</li>
-          <li>電子契約（LINEまたはメール）</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -640,10 +679,14 @@ footer{flex-direction:column;gap:8px;text-align:center}
     <p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、まずはお気軽にLINEよりご連絡ください。丁寧にご対応いたします。</p>
     <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a><br>
     <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="linkedin-btn reveal" target="_blank">💼 LinkedInで繋がる</a>
-    <div class="social-links reveal">
-      <a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="social-link" target="_blank">Instagram</a>
-      <a href="https://x.com/yuu_co_ltd?s=21" class="social-link" target="_blank">X（Twitter）</a>
-      <a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="social-link" target="_blank">Facebook</a>
+    <div class="social-links reveal" style="display:flex;flex-direction:column;align-items:center;gap:12px;max-width:360px;margin:0 auto 28px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%">
+        <a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="social-link" target="_blank">Instagram</a>
+        <a href="https://x.com/yuu_co_ltd?s=21" class="social-link" target="_blank">X（Twitter）</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;width:50%">
+        <a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="social-link" target="_blank">Facebook</a>
+      </div>
     </div>
   </div>
 </section>
@@ -657,6 +700,12 @@ footer{flex-direction:column;gap:8px;text-align:center}
 </footer>
 
 <script>
+function toggleAcc(btn){
+  const body=btn.nextElementSibling;
+  const arrow=btn.querySelector('.acc-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
 const io=new IntersectionObserver((e)=>{e.forEach((el,i)=>{if(el.isIntersecting)setTimeout(()=>el.target.classList.add('visible'),i*55)})},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 2px 16px rgba(30,70,120,.1)':'none'});
