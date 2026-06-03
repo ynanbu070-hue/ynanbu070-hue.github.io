@@ -7,7 +7,7 @@
 <link rel="icon" href="https://i.imgur.com/18S3zeq.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--sky:#E8F4FF;--white:#fff;--cream:#FAFCFF;--navy:#1A2E4A;--mid:#4A5568;--light:#EEF5FB;--blue:#5B9AC8;--serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;--display:'Cormorant Garamond',serif;--label:'Montserrat',sans-serif}
+:root{--sky:#E8F4FF;--white:#fff;--cream:#FAFCFF;--navy:#1A2E4A;--mid:#2D3748;--light:#EEF5FB;--blue:#5B9AC8;--serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;--display:'Cormorant Garamond',serif;--label:'Montserrat',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--white);color:var(--navy);overflow-x:hidden;font-size:16px;line-height:1.8}
@@ -97,17 +97,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 #philosophy .section-title{color:#fff}
 #philosophy .section-line{background:linear-gradient(to right,rgba(184,216,240,.6),transparent)}
 .philo-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.philo-text{font-family:var(--serif);font-size:.94rem;line-height:2.3;color:rgba(255,255,255,.78)}
+.philo-text{font-family:var(--serif);font-size:.94rem;line-height:2.3;color:rgba(255,255,255,.92)}
 .philo-text .hl{color:#8FCAF0;font-style:italic}
 .philo-values{display:grid;gap:24px}
 .value-item{border-left:2px solid rgba(184,216,240,.4);padding-left:18px}
 .value-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:5px}
-.value-desc{font-size:.86rem;line-height:1.95;color:rgba(255,255,255,.65)}
+.value-desc{font-size:.86rem;line-height:1.95;color:rgba(255,255,255,.88)}
 .philo-story{margin-top:48px;padding:32px 36px;border:1px solid rgba(184,216,240,.18);border-radius:8px}
-.philo-story p{font-family:var(--serif);font-size:.93rem;line-height:2.3;color:rgba(255,255,255,.75);margin-bottom:14px}
+.philo-story p{font-family:var(--serif);font-size:.93rem;line-height:2.3;color:rgba(255,255,255,.92);margin-bottom:14px}
 .philo-story p:last-child{margin-bottom:0}
 .philo-story .hl{color:#8FCAF0;font-style:italic}
-.philo-icons{text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.45);font-family:var(--serif);font-size:.88rem}
+.philo-icons{text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.75);font-family:var(--serif);font-size:.88rem}
 #pricing{background:var(--white)}
 .pricing-intro{text-align:center;margin-bottom:32px;padding:24px;background:linear-gradient(135deg,var(--sky),var(--light));border-radius:12px}
 .pricing-intro p{font-size:.9rem;color:var(--mid);line-height:1.9}
@@ -174,8 +174,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .social-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:360px;margin:0 auto 28px}
 .social-link{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border:1px solid rgba(184,216,240,.35);color:#fff;text-decoration:none;font-family:var(--label);font-size:.7rem;font-weight:400;letter-spacing:.13em;border-radius:6px;transition:all .3s}
 .social-link:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
-.line-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 44px;background:#06C755;color:#fff;font-family:var(--label);font-size:.78rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:28px;box-shadow:0 4px 18px rgba(6,199,85,.38)}
+.line-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 44px;background:#06C755;color:#fff;font-family:var(--label);font-size:.78rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:16px;box-shadow:0 4px 18px rgba(6,199,85,.38)}
 .line-btn:hover{background:#05B34A;transform:translateY(-2px)}
+.linkedin-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 36px;background:#0A66C2;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:28px;box-shadow:0 4px 18px rgba(10,102,194,.35)}
+.linkedin-btn:hover{background:#0858A8;transform:translateY(-2px)}
 footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:.63rem;font-weight:300;letter-spacing:.1em}
 .footer-logo{display:flex;align-items:center;gap:8px}
 .footer-logo img{width:28px;height:28px;border-radius:50%;opacity:.7}
@@ -352,54 +354,54 @@ footer{flex-direction:column;gap:8px;text-align:center}
 
       <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
         <p class="section-eyebrow reveal">Sample Gallery</p>
-        <h3 class="section-title reveal" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3>
+        <h3 class="section-title reveal" id="samples" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3>
         <div class="section-line reveal"></div>
         <p class="body-text reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。詳しくは料金プランをご確認ください。</span></p>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 結衣 / Yui</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/fcXN2eK.png" alt="結衣 客と打ち合わせ" loading="lazy"><div class="catalog-img-label">不動産・コンサル</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" alt="結衣 電光掲示板" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" alt="結衣 カフェ店員" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/v6n0aQt.png" alt="結衣 美容医療" loading="lazy"><div class="catalog-img-label">美容・医療</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/5mmjKIS.png" alt="結衣 採用" loading="lazy"><div class="catalog-img-label">採用・HR</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/fcXN2eK.png" alt="結衣 不動産" loading="lazy"><div class="catalog-img-label">不動産・コンサル</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" alt="結衣 建設" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" alt="結衣 カフェ" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/7fUZB1X.png" alt="結衣 マーケティング" loading="lazy"><div class="catalog-img-label">マーケティング</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/x5fYUAP.png" alt="結衣 福祉" loading="lazy"><div class="catalog-img-label">福祉・社会貢献</div></div>
           <div class="catalog-img-item"><img src="https://i.imgur.com/uzkElU6.png" alt="結衣 IT" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div>
         </div>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 遥斗 / Haruto</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
           <div class="catalog-img-item"><img src="https://i.imgur.com/ndSYEFv.png" alt="遥斗 不動産" loading="lazy"><div class="catalog-img-label">不動産</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" alt="遥斗 電光掲示板" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" alt="遥斗 スポーツジム" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/OK4tniG.png" alt="遥斗 ゴルフ" loading="lazy"><div class="catalog-img-label">スポーツ・ゴルフ</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/6HYadTW.png" alt="遥斗 建設" loading="lazy"><div class="catalog-img-label">建設・施工</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/u8MU0IL.jpeg" alt="遥斗 採用" loading="lazy"><div class="catalog-img-label">採用・HR</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" alt="遥斗 建設" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" alt="遥斗 ジム" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/wUUfvpp.png" alt="遥斗 採用" loading="lazy"><div class="catalog-img-label">採用・説明会</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/tCr7JbR.png" alt="遥斗 金融" loading="lazy"><div class="catalog-img-label">金融・資産運用</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/pI4qCeX.png" alt="遥斗 IT" loading="lazy"><div class="catalog-img-label">IT・オフィス</div></div>
         </div>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 結衣 &amp; 遥斗</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/HqONyvC.png" alt="印刷会社" loading="lazy"><div class="catalog-img-label">印刷・広告会社</div></div>
           <div class="catalog-img-item"><img src="https://i.imgur.com/Y1mbzJr.jpeg" alt="打ち合わせ" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div>
           <div class="catalog-img-item"><img src="https://i.imgur.com/FMsYy8i.jpeg" alt="パネル" loading="lazy"><div class="catalog-img-label">展示会・パネル</div></div>
           <div class="catalog-img-item"><img src="https://i.imgur.com/Tt65vHu.jpeg" alt="建設パネル" loading="lazy"><div class="catalog-img-label">建設・採用</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/1VWLBAO.jpeg" alt="不動産内覧" loading="lazy"><div class="catalog-img-label">不動産・内覧</div></div>
         </div>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 健一 / Kenichi</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/h5FyaQY.jpeg" alt="健一 リフォーム" loading="lazy"><div class="catalog-img-label">リフォーム会社</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/uzhXyzp.png" alt="健一 保険" loading="lazy"><div class="catalog-img-label">保険代理店</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/zkI4efM.png" alt="健一 リフォーム" loading="lazy"><div class="catalog-img-label">リフォーム会社</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/DRd2YzI.png" alt="健一 保険" loading="lazy"><div class="catalog-img-label">保険代理店</div></div>
         </div>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 智子 / Tomoko</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/e5Zxx20.png" alt="智子 施設案内" loading="lazy"><div class="catalog-img-label">介護施設</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/S2kqXka.png" alt="智子 リハビリ" loading="lazy"><div class="catalog-img-label">リハビリ病院</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/Pn7Pyc9.png" alt="智子 リハビリ" loading="lazy"><div class="catalog-img-label">リハビリ施設</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/xwfCAKB.png" alt="智子 ケアプランナー" loading="lazy"><div class="catalog-img-label">ケアプランナー</div></div>
         </div>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 誠 &amp; 洋子 / Makoto &amp; Yoko</h4>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px" class="reveal">
-          <div class="catalog-img-item"><img src="https://i.imgur.com/wiVlA6w.png" alt="誠と洋子" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/4WOyva7.jpeg" alt="老人ホーム" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/ZHOTOVp.png" alt="シニア" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/E1Epia2.jpeg" alt="老人ホーム" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div>
         </div>
 
         <h4 class="reveal" style="font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:var(--navy)">🌿 蒼空 &amp; 紬 / Sora &amp; Tsumugi</h4>
@@ -407,7 +409,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
           <div class="catalog-img-item"><img src="https://i.imgur.com/8q289kc.jpeg" alt="蒼空 サッカー" loading="lazy"><div class="catalog-img-label">スポーツ・サッカー</div></div>
           <div class="catalog-img-item"><img src="https://i.imgur.com/5sFQzhp.jpeg" alt="YUUFC" loading="lazy"><div class="catalog-img-label">スポーツクラブ</div></div>
           <div class="catalog-img-item"><img src="https://i.imgur.com/EPSgget.png" alt="英会話スクール" loading="lazy"><div class="catalog-img-label">英会話スクール</div></div>
-          <div class="catalog-img-item"><img src="https://i.imgur.com/Sas4D1n.jpeg" alt="身長計" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div>
+          <div class="catalog-img-item"><img src="https://i.imgur.com/lc3hU31.jpeg" alt="身長計" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div>
         </div>
 
         <div class="use-cases" style="margin-top:36px">
@@ -504,7 +506,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="price-name">Standard</p>
         <div class="price-amount">¥98,000</div>
         <p class="price-unit">月額（税込）</p>
-        <p class="price-savings">💰 通常比 ¥1,600おトク</p>
+        <p class="price-savings">💰 男女1名ずつで世界観を統一</p>
         <p class="price-per">1名あたり約¥49,000</p>
         <ul class="price-features">
           <li>月5シーン制作（用途無制限）</li>
@@ -622,7 +624,7 @@ footer{flex-direction:column;gap:8px;text-align:center}
           <p class="staff-role">企画・制作・ブランディング担当</p>
           <p class="staff-name">Yuko</p>
           <p class="staff-name-sub">Founder &amp; Director</p>
-          <p class="staff-desc">はじめまして、YUU &amp; Co.の南部祐子です。<br><br>人の想いに寄り添い、未来を少しだけ明るくする。それが私の仕事です。<br><br>群馬県館林市を拠点に、AIモデルを活用した企業向けビジュアル制作をしています。撮影不要・スキャンダルなし・著作権なし。御社のブランドが持つ誠実さ・信頼感・温かさを、AIが纏います。<br><br>7ヶ月間、収入はゼロでした。それでも続けてきたのは、いつか誰かに、このAIモデルの価値を認めてもらえると信じていたから。<br><br>あなたの会社の想いを、私が形にします。</p>
+          <p class="staff-desc">はじめまして、YUU &amp; Co.の南部祐子です。<br><br>群馬県館林市を拠点に、AIモデルを活用した企業向けビジュアル制作をしています。<br><br>「御社のブランドが持つ誠実さ・信頼感・温かさを、もっと多くの人に届けたい。」<br><br>その想いから、AIモデルという新しい表現手段を追い求めてきました。撮影不要・スキャンダルなし・著作権なし。でも伝わるメッセージは本物です。<br><br>ビジュアルを変えることで、御社のブランドが変わる。そう信じています。<br><br>あなたの会社の想いを、私が形にします。</p>
         </div>
       </div>
     </div>
@@ -636,7 +638,8 @@ footer{flex-direction:column;gap:8px;text-align:center}
     <h2 class="section-title">お問い合わせ</h2>
     <div class="section-line"></div>
     <p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、まずはお気軽にLINEよりご連絡ください。丁寧にご対応いたします。</p>
-    <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a>
+    <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a><br>
+    <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="linkedin-btn reveal" target="_blank">💼 LinkedInで繋がる</a>
     <div class="social-links reveal">
       <a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="social-link" target="_blank">Instagram</a>
       <a href="https://x.com/yuu_co_ltd?s=21" class="social-link" target="_blank">X（Twitter）</a>
