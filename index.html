@@ -113,7 +113,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .pricing-intro p{font-size:.9rem;color:var(--mid);line-height:1.9}
 .pricing-intro .savings{font-family:var(--serif);font-size:1.1rem;color:var(--navy);font-weight:500;margin-top:8px}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.price-card{border:1px solid #DDE8F5;border-radius:12px;padding:28px 22px;position:relative;transition:all .3s ease}
+.price-card{border:1px solid #DDE8F5;border-radius:12px;padding:28px 22px;position:relative;transition:all .3s ease;display:flex;flex-direction:column}
+.price-features{list-style:none;border-top:1px solid #DDE8F5;padding-top:18px;flex:1}
 .price-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(91,154,200,.13);transform:translateY(-2px)}
 .price-card.featured{background:var(--navy);color:#fff;border-color:var(--navy)}
 .price-card.best-value{border:2px solid #E8A000;background:linear-gradient(135deg,#FFF9EC,#FFFDF5)}
@@ -410,8 +411,8 @@ footer{flex-direction:column;gap:8px;text-align:center}
     <h2 class="section-title reveal">料金プラン</h2>
     <div class="section-line reveal"></div>
     <div class="pricing-intro reveal">
-      <p>人数が増えるほど、<strong>おトクになる</strong>料金設計です。</p>
-      <p class="savings">🎉 4名起用なら1名あたり約39,500円！1名起用より約41,200円もおトク！</p>
+      <p>人数が増えるほど<strong>おトクな</strong>料金設計です。</p>
+      <p class="savings">🎉 4名起用で1名あたり約39,500円！<br>1名より約41,200円おトク！</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card reveal">
@@ -419,6 +420,8 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <p class="price-name">Basic</p>
         <div class="price-amount">¥49,800</div>
         <p class="price-unit">月額（税込）</p>
+        <p class="price-savings" style="visibility:hidden">─</p>
+        <p class="price-per" style="visibility:hidden">─</p>
         <ul class="price-features">
           <li>月5シーン制作（用途無制限）</li>
           <li>LP・HP・SNS・印刷物・看板など全て使用OK</li>
