@@ -176,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .social-link:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
 .line-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 44px;background:#06C755;color:#fff;font-family:var(--label);font-size:.78rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:16px;box-shadow:0 4px 18px rgba(6,199,85,.38)}
 .line-btn:hover{background:#05B34A;transform:translateY(-2px)}
-.linkedin-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 36px;background:#0A66C2;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:28px;box-shadow:0 4px 18px rgba(10,102,194,.35)}
+.linkedin-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 36px;background:#0A66C2;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:16px;box-shadow:0 4px 18px rgba(10,102,194,.35)}
 .linkedin-btn:hover{background:#0858A8;transform:translateY(-2px)}
 footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:.63rem;font-weight:300;letter-spacing:.1em}
 .footer-logo{display:flex;align-items:center;gap:8px}
@@ -358,7 +358,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
         <div class="section-line reveal"></div>
         <p class="body-text reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。詳しくは料金プランをご確認ください。</span></p>
 
-        <!-- アコーディオンCSS -->
         <style>
         .acc-block{margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid var(--light)}
         .acc-header{display:flex;align-items:center;gap:0;cursor:pointer;background:var(--white);border:none;width:100%;padding:0;position:relative}
@@ -371,7 +370,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
         .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
         </style>
 
-        <!-- 結衣 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/fcXN2eK.png" alt="結衣">
@@ -390,7 +388,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
           </div>
         </div>
 
-        <!-- 遥斗 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/esPWG1f.png" alt="遥斗">
@@ -409,7 +406,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
           </div>
         </div>
 
-        <!-- 結衣&遥斗 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗">
@@ -426,7 +422,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
           </div>
         </div>
 
-        <!-- 健一 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/zkI4efM.png" alt="健一">
@@ -441,7 +436,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
           </div>
         </div>
 
-        <!-- 智子 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子">
@@ -456,7 +450,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
           </div>
         </div>
 
-        <!-- 誠&洋子 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子">
@@ -471,7 +464,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
           </div>
         </div>
 
-        <!-- 蒼空&紬 -->
         <div class="acc-block reveal">
           <button class="acc-header" onclick="toggleAcc(this)">
             <img class="acc-cover" src="https://i.imgur.com/5sFQzhp.jpeg" alt="蒼空&紬">
@@ -557,7 +549,6 @@ footer{flex-direction:column;gap:8px;text-align:center}
       <p>人数が増えるほど<strong>おトクな</strong>料金設計です。</p>
       <p class="savings">🎉 4名起用で1名あたり約39,500円！<br>1名より約41,200円おトク！</p>
     </div>
-    <!-- 全プラン共通 -->
     <div class="reveal" style="background:var(--sky);border-radius:10px;padding:18px 20px;margin-bottom:24px">
       <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px">全プラン共通</p>
       <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px">
@@ -671,8 +662,9 @@ footer{flex-direction:column;gap:8px;text-align:center}
     <p class="section-eyebrow">Contact</p>
     <h2 class="section-title">お問い合わせ</h2>
     <div class="section-line"></div>
-    <p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、まずはお気軽にLINEよりご連絡ください。丁寧にご対応いたします。</p>
+    <p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、お気軽にLINEまたはメールよりご連絡ください。丁寧にご対応いたします。</p>
     <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a><br>
+    <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="linkedin-btn reveal" style="background:#2C5F8A;box-shadow:0 4px 18px rgba(44,95,138,.35)">📧 メールで相談する</a><br>
     <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="linkedin-btn reveal" target="_blank">💼 LinkedInで繋がる</a>
     <div class="social-links reveal" style="display:flex;flex-direction:column;align-items:center;gap:12px;max-width:360px;margin:0 auto 28px">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%">
