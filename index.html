@@ -24,36 +24,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 /* ===== HERO ===== */
 #hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:48px;background:linear-gradient(180deg,#2E8FC8 0%,#4AAEE0 8%,#75C8EE 20%,#A8DCF0 35%,#C8EAF8 52%,#E0F4FF 70%,#F2FAFF 85%,#fff 100%)}
 
-/* 放射光線CSS版（迫力あり・アニメーション確実） */
-.hero-rays-wrap{position:absolute;top:0;left:50%;transform:translateX(-50%);width:200%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
-.ray-css{position:absolute;top:0;left:50%;transform-origin:top center;height:110%}
-.ray-css:nth-child(1){width:70px;margin-left:-35px;transform:rotate(-75deg);background:linear-gradient(to bottom,rgba(255,248,140,.85) 0%,rgba(255,240,80,.4) 35%,transparent 75%);animation:rayPulse 2.2s ease-in-out infinite 0s}
-.ray-css:nth-child(2){width:45px;margin-left:-22px;transform:rotate(-60deg);background:linear-gradient(to bottom,rgba(255,252,170,.9) 0%,rgba(255,245,100,.45) 40%,transparent 75%);animation:rayPulse 2.8s ease-in-out infinite .25s}
-.ray-css:nth-child(3){width:90px;margin-left:-45px;transform:rotate(-45deg);background:linear-gradient(to bottom,rgba(255,248,140,.8) 0%,rgba(255,238,70,.3) 45%,transparent 78%);animation:rayPulse 2.5s ease-in-out infinite .5s}
-.ray-css:nth-child(4){width:35px;margin-left:-17px;transform:rotate(-30deg);background:linear-gradient(to bottom,rgba(255,255,190,.85) 0%,transparent 65%);animation:rayPulse 3s ease-in-out infinite .75s}
-.ray-css:nth-child(5){width:110px;margin-left:-55px;transform:rotate(-15deg);background:linear-gradient(to bottom,rgba(255,250,150,.9) 0%,rgba(255,242,90,.35) 38%,transparent 72%);animation:rayPulse 2.3s ease-in-out infinite 1s}
-.ray-css:nth-child(6){width:55px;margin-left:-27px;transform:rotate(0deg);background:linear-gradient(to bottom,rgba(255,252,180,1) 0%,rgba(255,245,120,.5) 30%,transparent 68%);animation:rayPulse 2s ease-in-out infinite 1.25s}
-.ray-css:nth-child(7){width:110px;margin-left:-55px;transform:rotate(15deg);background:linear-gradient(to bottom,rgba(255,250,150,.9) 0%,rgba(255,242,90,.35) 38%,transparent 72%);animation:rayPulse 2.3s ease-in-out infinite 1.5s}
-.ray-css:nth-child(8){width:35px;margin-left:-17px;transform:rotate(30deg);background:linear-gradient(to bottom,rgba(255,255,190,.85) 0%,transparent 65%);animation:rayPulse 3s ease-in-out infinite 1.75s}
-.ray-css:nth-child(9){width:90px;margin-left:-45px;transform:rotate(45deg);background:linear-gradient(to bottom,rgba(255,248,140,.8) 0%,rgba(255,238,70,.3) 45%,transparent 78%);animation:rayPulse 2.5s ease-in-out infinite 2s}
-.ray-css:nth-child(10){width:45px;margin-left:-22px;transform:rotate(60deg);background:linear-gradient(to bottom,rgba(255,252,170,.9) 0%,rgba(255,245,100,.45) 40%,transparent 75%);animation:rayPulse 2.8s ease-in-out infinite 2.25s}
-.ray-css:nth-child(11){width:70px;margin-left:-35px;transform:rotate(75deg);background:linear-gradient(to bottom,rgba(255,248,140,.85) 0%,rgba(255,240,80,.4) 35%,transparent 75%);animation:rayPulse 2.2s ease-in-out infinite 2.5s}
-@keyframes rayPulse{0%{opacity:.2}50%{opacity:1}100%{opacity:.2}}
+/* ゴールドの光が降り注ぐ */
+.gold-rain{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:2;overflow:hidden}
+.gold-drop{position:absolute;top:-120px;width:2px;border-radius:99px;animation:goldFall linear infinite;opacity:0}
+@keyframes goldFall{
+  0%{opacity:0;transform:translateY(0) scaleY(1)}
+  10%{opacity:.9}
+  80%{opacity:.4}
+  100%{opacity:0;transform:translateY(110vh) scaleY(1.2)}
+}
 
-/* 中心の光源 */
-.hero-light{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:360px;height:360px;background:radial-gradient(circle,rgba(255,250,160,1) 0%,rgba(255,235,80,.7) 18%,rgba(255,220,50,.3) 38%,transparent 62%);border-radius:50%;animation:lightPulse 2.2s ease-in-out infinite;pointer-events:none;z-index:2;filter:blur(1px)}
-.hero-light2{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:560px;height:560px;background:radial-gradient(circle,transparent 30%,rgba(255,242,100,.2) 42%,rgba(255,230,60,.08) 54%,transparent 64%);border-radius:50%;animation:lightPulse 2.2s ease-in-out infinite reverse;pointer-events:none;z-index:2}
+/* 中心の光源（ゴールド） */
+.hero-light{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:360px;height:360px;background:radial-gradient(circle,rgba(255,220,80,1) 0%,rgba(255,200,50,.7) 18%,rgba(255,180,30,.3) 38%,transparent 62%);border-radius:50%;animation:lightPulse 2.2s ease-in-out infinite;pointer-events:none;z-index:2;filter:blur(2px)}
+.hero-light2{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:560px;height:560px;background:radial-gradient(circle,transparent 30%,rgba(255,210,80,.2) 42%,rgba(255,190,40,.08) 54%,transparent 64%);border-radius:50%;animation:lightPulse 2.2s ease-in-out infinite reverse;pointer-events:none;z-index:2}
 @keyframes lightPulse{0%,100%{transform:translateX(-50%) scale(1);opacity:.8}50%{transform:translateX(-50%) scale(1.18);opacity:1}}
 
 /* 浮遊絵文字 */
 .floaters{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
 .floater{position:absolute;animation:floatDrift linear infinite;opacity:0}
 @keyframes floatDrift{0%{opacity:0;transform:translateY(80vh) rotate(0deg)}15%{opacity:.6}85%{opacity:.25}100%{opacity:0;transform:translateY(-15vh) rotate(200deg)}}
-
-/* キラキラパーティクル */
-.sparkles{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
-.sparkle{position:absolute;animation:sparklePop ease-in-out infinite;opacity:0}
-@keyframes sparklePop{0%{opacity:0;transform:scale(0) rotate(0deg)}30%{opacity:1;transform:scale(1) rotate(180deg)}60%{opacity:.6;transform:scale(.7) rotate(270deg)}100%{opacity:0;transform:scale(0) rotate(360deg)}}
 
 .hero-models{position:relative;z-index:5;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto;padding-top:90px}
 .hero-model-yui{width:50%;animation:heroL 1.2s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-60px)}
@@ -171,9 +160,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .price-features li::before{content:'✓';color:var(--blue);flex-shrink:0}
 .price-card.best-value .price-features li::before{color:#C87800}
 
+/* ===== VOICE ===== */
+#voice{background:linear-gradient(135deg,var(--sky) 0%,var(--light) 100%);position:relative;overflow:hidden}
+.voice-inner{max-width:760px;margin:0 auto;text-align:center}
+.voice-card{background:#fff;border-radius:16px;padding:40px 32px 36px;box-shadow:0 4px 32px rgba(26,46,74,.1);text-align:left;position:relative;border-top:4px solid var(--blue);max-width:640px;margin:0 auto}
+.voice-quote{font-size:5rem;color:rgba(91,154,200,.18);line-height:1;position:absolute;top:12px;left:20px;font-family:var(--display);pointer-events:none}
+.voice-text{font-family:var(--serif);font-size:1.15rem;line-height:2;color:var(--navy);margin:28px 0 24px;padding-left:4px;font-weight:400}
+.voice-divider{width:36px;height:2px;background:var(--blue);margin-bottom:20px;opacity:.5}
+.voice-meta{display:flex;align-items:center;gap:12px}
+.voice-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.voice-company{font-size:.9rem;font-weight:700;color:var(--navy);margin:0}
+.voice-detail{font-size:.76rem;color:#888;margin:3px 0 0}
+.voice-note{font-size:.72rem;color:#bbb;margin-top:24px;text-align:center}
+
 /* ===== NOTES ===== */
 #legal{background:linear-gradient(145deg,#a8d8f0 0%,#c5e8f8 20%,#dff2ff 45%,#eef8ff 70%,#f5fbff 100%);position:relative;overflow:hidden}
-/* 波紋アニメーション */
 .legal-ripple{position:absolute;border-radius:50%;pointer-events:none;animation:rippleExpand ease-out infinite;opacity:0}
 .legal-ripple-1{width:200px;height:200px;top:10%;left:-50px;border:1px solid rgba(91,154,200,.2);animation-duration:6s;animation-delay:0s}
 .legal-ripple-2{width:300px;height:300px;top:30%;right:-80px;border:1px solid rgba(91,154,200,.15);animation-duration:8s;animation-delay:2s}
@@ -185,7 +186,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .legal-bg-deco-3{top:50%;right:10%;font-size:3rem;opacity:.05;animation:decoSway 20s ease-in-out infinite 3s}
 @keyframes decoSway{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .legal-grid{display:grid;gap:22px;position:relative;z-index:1}
-/* カードが左右から交互にスライドイン */
 .legal-box-new{background:rgba(255,255,255,.75);border-radius:24px;padding:30px 26px 26px;border:1px solid rgba(255,255,255,.9);box-shadow:0 8px 32px rgba(91,154,200,.12),inset 0 1px 0 rgba(255,255,255,.8);backdrop-filter:blur(12px);position:relative;overflow:hidden;opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease,box-shadow .4s ease}
 .legal-box-new.visible{opacity:1;transform:translateX(0)}
 .legal-box-new:nth-child(even){transform:translateX(40px)}
@@ -205,13 +205,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 
 /* ===== STAFF ===== */
 #staff{background:linear-gradient(175deg,#eef7ff 0%,#dff0ff 30%,#e8f5ff 60%,#f5fbff 100%);position:relative;overflow:hidden}
-/* 流れ星 */
 .shooting-star{position:absolute;pointer-events:none;animation:shootStar linear infinite;opacity:0}
 @keyframes shootStar{0%{opacity:0;transform:translateX(0) translateY(0)}10%{opacity:.8}80%{opacity:.3}100%{opacity:0;transform:translateX(150px) translateY(80px)}}
 #staff::before{content:'🌿';position:absolute;top:20px;right:16px;font-size:5rem;opacity:.07;pointer-events:none;animation:staffDeco 16s ease-in-out infinite}
 #staff::after{content:'🕊';position:absolute;bottom:36px;left:12px;font-size:4rem;opacity:.07;pointer-events:none;animation:staffDeco 20s ease-in-out infinite reverse}
 @keyframes staffDeco{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(5deg)}}
-/* カードが下からふわっと+回転で登場 */
 .staff-card-item{background:rgba(255,255,255,.9);border-radius:24px;box-shadow:0 8px 32px rgba(30,70,120,.1),inset 0 1px 0 rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.9);overflow:hidden;position:relative;backdrop-filter:blur(8px);opacity:0;transform:translateY(50px) scale(.95);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
 .staff-card-item.visible{opacity:1;transform:translateY(0) scale(1)}
 .staff-card-item:hover{transform:translateY(-6px) scale(1.01) !important;box-shadow:0 20px 56px rgba(30,70,120,.16)}
@@ -219,7 +217,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 @keyframes shimmer2{0%{background-position:0%}100%{background-position:200%}}
 .staff-avatar{background:linear-gradient(135deg,#c5e8f8,#dff2ff);padding:24px;display:flex;justify-content:center;position:relative;overflow:hidden}
 .staff-avatar::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(91,154,200,.15),transparent 70%)}
-/* アバターが回転しながら登場 */
 .staff-avatar img{width:100%;max-width:160px;height:auto;display:block;border-radius:50%;box-shadow:0 6px 28px rgba(91,154,200,.3);position:relative;z-index:1;transition:transform .6s ease}
 .staff-card-item:hover .staff-avatar img{transform:scale(1.06) rotate(3deg)}
 .staff-info-inner{padding:24px}
@@ -227,7 +224,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .staff-name{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--navy);margin-bottom:2px}
 .staff-name-sub{font-family:var(--label);font-size:.6rem;color:var(--mid);margin-bottom:12px}
 .staff-desc{font-size:.87rem;line-height:2;color:var(--mid)}
-/* テキストは常時表示 */
 .staff-desc-line{opacity:1;transform:none}
 .staff-footer{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.87rem;color:var(--mid);font-style:italic;font-family:var(--serif);padding:18px;border-top:1px solid rgba(91,154,200,.15);background:linear-gradient(135deg,rgba(200,232,255,.3),rgba(220,242,255,.2))}
 
@@ -255,20 +251,15 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
 <body>
 <nav>
   <div class="nav-logo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co." loading="lazy"><div class="nav-logo-text">YUU <span>&</span> Co.</div></div>
-  <ul class="nav-links"><li><a href="#models">Models</a></li><li><a href="#samples">Samples</a></li><li><a href="#why">Why YUU?</a></li><li><a href="#philosophy">Philosophy</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#legal">Notes</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
+  <ul class="nav-links"><li><a href="#models">Models</a></li><li><a href="#samples">Samples</a></li><li><a href="#why">Why YUU?</a></li><li><a href="#philosophy">Philosophy</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#voice">Voice</a></li><li><a href="#legal">Notes</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
 </nav>
 
 <section id="hero">
-  <div class="hero-rays-wrap">
-    <div class="ray-css"></div><div class="ray-css"></div><div class="ray-css"></div>
-    <div class="ray-css"></div><div class="ray-css"></div><div class="ray-css"></div>
-    <div class="ray-css"></div><div class="ray-css"></div><div class="ray-css"></div>
-    <div class="ray-css"></div><div class="ray-css"></div>
-  </div>
+  <!-- ゴールドの光が降り注ぐ -->
+  <div class="gold-rain" id="goldRain"></div>
   <div class="hero-light"></div>
   <div class="hero-light2"></div>
   <div class="floaters" id="floaters"></div>
-  <div class="sparkles" id="sparkles"></div>
   <div class="hero-models">
     <div class="hero-model-yui"><img src="https://i.imgur.com/1OJ17Aq.png" alt="AIモデル 結衣"></div>
     <div class="hero-model-haruto"><img src="https://i.imgur.com/3drpd9D.png" alt="AIモデル 遥斗"></div>
@@ -281,6 +272,36 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
     <p class="hero-eyebrow">AI Visual Production</p>
     <h1 class="hero-title" style="text-align:left">撮影費ゼロ。<br><span style="padding-left:1.5em">制作コスト大幅削減。</span><br>お金を無駄にしない<br><span style="padding-left:3em">次世代の宣伝戦略。</span></h1>
     <p class="hero-lead">AIモデルたちが、御社のブランドを視覚化します。<br>起用するだけで、ブランドの世界観が変わる。</p>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="section-wrap" id="voice">
+  <div class="section-inner">
+    <div class="voice-inner">
+      <p class="section-eyebrow reveal">Voice</p>
+      <h2 class="section-title reveal">お客様の声</h2>
+      <div class="section-line reveal"></div>
+      <p class="body-text reveal" style="margin-bottom:32px;text-align:center">🌿 ご利用いただいた企業様からのご感想 🕊</p>
+      <div class="voice-card reveal">
+        <div class="voice-quote">"</div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <img src="https://i.imgur.com/JyFqmdc.jpeg" alt="制作サンプル" style="width:100px;height:136px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;box-shadow:0 4px 16px rgba(26,46,74,.15)">
+          <div style="flex:1;padding-left:2px">
+            <p class="voice-text">完璧でございます。<br>イメージ通りを超えた。</p>
+            <div class="voice-divider"></div>
+            <div class="voice-meta">
+              <div class="voice-avatar">🏢</div>
+              <div>
+                <p class="voice-company">合同会社プランBカンパニー 様</p>
+                <p class="voice-detail">不動産業 ／ AIモデル：遥斗（Haruto）使用</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="voice-note reveal">※掲載はご本人様の許可をいただいております。</p>
+    </div>
   </div>
 </section>
 
@@ -436,7 +457,29 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
 <script>
 function toggleAcc(btn){const body=btn.nextElementSibling;const arrow=btn.querySelector('.acc-arrow');body.classList.toggle('open');arrow.classList.toggle('open')}
 
-// Canvas削除済み
+// ゴールドの光が降り注ぐ
+(function(){
+  const wrap=document.getElementById('goldRain');
+  if(!wrap)return;
+  const colors=['rgba(255,215,0,','rgba(255,200,50,','rgba(255,235,100,','rgba(255,180,30,','rgba(255,245,150,'];
+  for(let i=0;i<40;i++){
+    const el=document.createElement('div');
+    el.className='gold-drop';
+    const c=colors[Math.floor(Math.random()*colors.length)];
+    const h=Math.random()*120+40;
+    const op=(Math.random()*.6+.3).toFixed(2);
+    el.style.cssText=`
+      left:${Math.random()*100}%;
+      width:${Math.random()*2+1}px;
+      height:${h}px;
+      background:linear-gradient(to bottom,${c}${op}) 0%,${c}0) 100%);
+      animation-duration:${Math.random()*3+2}s;
+      animation-delay:${Math.random()*5}s;
+      filter:blur(${Math.random()>.5?'0.5px':'0px'});
+    `;
+    wrap.appendChild(el);
+  }
+})();
 
 // 浮遊絵文字
 (function(){
@@ -450,7 +493,7 @@ function toggleAcc(btn){const body=btn.nextElementSibling;const arrow=btn.queryS
   });
 })();
 
-// スクロールreveal（legal-box-newも対応）
+// スクロールreveal
 const io=new IntersectionObserver((entries)=>{
   entries.forEach((entry,i)=>{
     if(entry.isIntersecting){
