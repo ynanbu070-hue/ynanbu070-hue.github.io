@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .model-img-wrap{position:relative;overflow:hidden;border-radius:8px;margin-bottom:18px}
 .model-img-wrap img{width:100%;height:380px;object-fit:cover;object-position:top;display:block;transition:transform .6s ease}
 .model-img-wrap:hover img{transform:scale(1.04)}
-.model-badge{position:absolute;bottom:0;left:0;right:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(10,25,55,.72));font-family:var(--serif);font-size:1rem;color:#fff;border-radius:0 0 8px 8px;letter-spacing:.05em}
+.model-badge{position:absolute;bottom:0;left:0;right:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(10,25,55,.72));font-family:var(--serif);font-size:1rem;color:#fff;border-radius:0 0 8px 8px;letter-spacing:.05em}.hero-models .model-badge{display:none}
 .model-name{font-family:var(--serif);font-size:1.75rem;font-weight:300;margin-bottom:2px;margin-top:14px}
 .model-sub{font-family:var(--label);font-size:.55rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:13px}
 .model-profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
@@ -147,6 +147,70 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .price-features li::before{content:'✓';color:var(--blue);flex-shrink:0}
 .price-card.best-value .price-features li::before{color:#C87800}
 
+/* ===== アニメーション共通 ===== */
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.95);transition:opacity .7s ease,transform .7s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* ===== 他社比較（行カード形式・スマホ最適化） ===== */
+#compare{background:linear-gradient(160deg,#EAF4FF 0%,#F5F9FF 100%);position:relative;overflow:hidden}
+#compare::before{content:'';position:absolute;top:-60px;right:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(91,154,200,.1),transparent 65%);pointer-events:none}
+#compare .section-inner{position:relative;z-index:1}
+#compare .section-eyebrow{color:var(--blue)}
+#compare .section-title{color:var(--navy)}
+#compare .section-line{background:linear-gradient(to right,var(--blue),rgba(91,154,200,.2) 60%,transparent)}
+
+/* 比較ヘッダー */
+.compare-header{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
+.compare-header-cell{padding:10px 8px;border-radius:10px;text-align:center;font-family:var(--label);font-size:.58rem;letter-spacing:.1em;font-weight:500}
+.compare-header-cell.h-other{background:#F0F4F8;color:#999}
+.compare-header-cell.h-yuu{background:var(--navy);color:var(--gold);position:relative}
+.compare-header-cell.h-yuu span{display:block;font-size:.48rem;color:rgba(200,168,75,.6);margin-top:3px;letter-spacing:.08em}
+
+/* 比較行 */
+.compare-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.compare-row{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(26,46,74,.06)}
+.compare-row-label{background:linear-gradient(135deg,#EAF4FF,#F5F9FF);padding:10px 16px;font-size:.8rem;font-weight:700;color:var(--navy);border-bottom:1px solid #E8F0F8}
+.compare-row-values{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.compare-val{padding:12px 10px;text-align:center;font-size:.82rem;line-height:1.4}
+.compare-val.v-other{color:#bbb;background:#fff}
+.compare-val.v-yuu{background:linear-gradient(135deg,#F0F6FF,#EAF4FF);color:var(--blue);font-weight:700;font-size:.88rem}
+.compare-val:not(:last-child){border-right:1px solid #EEF3F8}
+.compare-note{text-align:center;margin-top:8px;font-size:.72rem;color:#aaa;font-family:var(--serif);font-style:italic}
+
+/* ===== 新プランセクション（明るく・青空） ===== */
+#newplan{background:linear-gradient(160deg,#C8E8FF 0%,#E0F4FF 35%,#EEF9FF 65%,#D4EEFF 100%);position:relative;overflow:hidden}
+#newplan::before{content:'';position:absolute;top:-80px;left:-60px;width:350px;height:350px;background:radial-gradient(circle,rgba(255,255,255,.6),transparent 65%);pointer-events:none}
+#newplan::after{content:'';position:absolute;bottom:-60px;right:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(91,154,200,.15),transparent 65%);pointer-events:none}
+#newplan .section-inner{position:relative;z-index:1}
+#newplan .section-eyebrow{color:var(--blue)}
+#newplan .section-title{color:var(--navy)}
+#newplan .section-line{background:linear-gradient(to right,var(--blue),rgba(91,154,200,.2) 60%,transparent)}
+.newplan-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 12px 48px rgba(26,46,74,.15);position:relative}
+.newplan-card-top{background:linear-gradient(135deg,#1A2E4A,#2A4870);padding:32px 28px 28px;position:relative;overflow:hidden}
+.newplan-card-top::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,168,75,.15),transparent 65%)}
+.newplan-card-top::after{content:'';position:absolute;bottom:-30px;left:-20px;width:160px;height:160px;background:radial-gradient(circle,rgba(91,154,200,.12),transparent 65%)}
+.newplan-badge{display:inline-block;background:var(--gold);color:#08111E;font-family:var(--label);font-size:.55rem;letter-spacing:.2em;padding:5px 14px;border-radius:20px;margin-bottom:16px;position:relative;z-index:1}
+.newplan-title{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:#fff;line-height:1.6;margin-bottom:8px;position:relative;z-index:1}
+.newplan-target{font-family:var(--label);font-size:.6rem;letter-spacing:.15em;color:rgba(200,168,75,.7);position:relative;z-index:1}
+.newplan-price-block{display:flex;align-items:flex-end;gap:10px;margin-top:20px;position:relative;z-index:1}
+.newplan-price{font-family:var(--display);font-size:3.2rem;font-weight:300;color:var(--gold);line-height:1}
+.newplan-price-sub{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.7;padding-bottom:6px}
+.newplan-savings-tag{display:inline-block;margin-top:12px;background:rgba(200,168,75,.15);border:1px solid rgba(200,168,75,.35);color:var(--gold);font-size:.75rem;padding:5px 14px;border-radius:20px;position:relative;z-index:1}
+.newplan-card-body{padding:28px 28px 32px;background:#fff}
+.newplan-steps{display:grid;gap:14px}
+.newplan-step{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:linear-gradient(135deg,#F0F8FF,#F8FCFF);border-radius:12px;border-left:3px solid var(--blue);transition:transform .3s,box-shadow .3s}
+.newplan-step:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(91,154,200,.12)}
+.newplan-step-num{font-family:var(--display);font-size:1.6rem;font-weight:300;color:var(--blue);line-height:1;flex-shrink:0;width:32px}
+.newplan-step-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.newplan-step-desc{font-size:.78rem;color:var(--mid);line-height:1.7}
+.newplan-floating-icons{position:absolute;pointer-events:none;z-index:0}
+.float-icon{position:absolute;animation:floatIcon ease-in-out infinite;opacity:.15}
+@keyframes floatIcon{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(8deg)}}
+
 #voice{background:linear-gradient(135deg,var(--sky) 0%,var(--light) 100%);position:relative;overflow:hidden}
 .voice-inner{max-width:760px;margin:0 auto;text-align:center}
 .voice-card{background:#fff;border-radius:16px;padding:40px 32px 36px;box-shadow:0 4px 32px rgba(26,46,74,.1);text-align:left;position:relative;border-top:4px solid var(--blue);max-width:640px;margin:0 auto}
@@ -188,72 +252,40 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .legal-list-new li:last-child{border-bottom:none;padding-bottom:0}
 .legal-list-new li::before{content:'🕊';position:absolute;left:0;top:10px;font-size:.62rem;opacity:.6}
 
-/* ===== 代表挨拶 洗練リデザイン ===== */
 #staff{background:#08111E;position:relative;overflow:hidden;padding:0}
-
-/* 背景の光 */
 #staff::before{content:'';position:absolute;top:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(91,154,200,.06) 0%,transparent 65%);pointer-events:none;z-index:0}
 #staff::after{content:'';position:absolute;bottom:-150px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(200,168,75,.04) 0%,transparent 65%);pointer-events:none;z-index:0}
-
-/* ゴールドのノイズライン（上下） */
 .staff-border-top{height:1px;background:linear-gradient(to right,transparent 0%,rgba(200,168,75,.15) 20%,rgba(200,168,75,.5) 50%,rgba(200,168,75,.15) 80%,transparent 100%);position:relative;z-index:2}
 .staff-border-bottom{height:1px;background:linear-gradient(to right,transparent 0%,rgba(91,154,200,.15) 20%,rgba(91,154,200,.4) 50%,rgba(91,154,200,.15) 80%,transparent 100%);position:relative;z-index:2}
-
 .staff-section-inner{max-width:520px;margin:0 auto;position:relative;z-index:1;padding:64px 28px}
-
-/* eyebrow & title */
 #staff .section-eyebrow{color:rgba(200,168,75,.8);letter-spacing:.3em;margin-bottom:6px}
 #staff .section-title{color:#fff;font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:300;letter-spacing:.06em}
 #staff .section-line{background:linear-gradient(to right,rgba(200,168,75,.5),rgba(91,154,200,.3) 50%,transparent);margin-bottom:40px}
-
-/* 画像ブロック */
 .founder-img-block{position:relative;overflow:hidden;border-radius:2px;margin-bottom:0}
-
-/* パララックス用 */
 .founder-img-block img{width:100%;height:480px;object-fit:cover;object-position:top center;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1);filter:brightness(.85) contrast(1.08) saturate(.95)}
 .founder-img-block:hover img{transform:scale(1.03)}
-
-/* ゴールドの縁取り */
 .founder-img-block::before{content:'';position:absolute;inset:0;border:1px solid rgba(200,168,75,.2);z-index:2;pointer-events:none;border-radius:2px}
-
-/* 画像上のオーバーレイ */
 .founder-img-block::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,rgba(8,17,30,.98));z-index:1;pointer-events:none}
-
-/* 画像内テキスト */
 .founder-img-text{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:32px 28px 28px}
-
-/* 細いゴールドライン */
 .founder-gold-line{width:32px;height:1px;background:linear-gradient(to right,rgba(200,168,75,.8),rgba(200,168,75,.2));margin-bottom:14px}
-
 .founder-role-label{font-family:var(--label);font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,168,75,.75);margin-bottom:8px;display:block}
 .founder-name-big{font-family:var(--display);font-size:clamp(3rem,10vw,5rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:.04em;margin-bottom:10px;opacity:.97}
 .founder-location{font-family:var(--label);font-size:.6rem;letter-spacing:.18em;color:rgba(184,216,240,.55);font-weight:300}
-
-/* 区切り */
 .founder-sep{display:flex;align-items:center;gap:0;margin:0;background:#08111E;padding:0 28px}
 .founder-sep-line{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,75,.3),rgba(91,154,200,.2))}
 .founder-sep-line-r{flex:1;height:1px;background:linear-gradient(to left,rgba(200,168,75,.3),rgba(91,154,200,.2))}
 .founder-sep-center{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:#08111E;flex-shrink:0}
 .founder-sep-icon{font-size:.75rem;opacity:.5}
-
-/* テキストブロック */
-.founder-text-block{background:#08111E;padding:28px 28px 36px;position:relative}
+.founder-text-block{background:#08111E;padding:28px 24px 36px;position:relative;overflow:hidden}
 .founder-text-block::before{content:'';position:absolute;top:0;left:28px;right:28px;height:1px;background:linear-gradient(to right,rgba(91,154,200,.08),rgba(91,154,200,.25) 50%,rgba(91,154,200,.08))}
-
-.founder-text-block p{font-family:var(--serif);font-size:.88rem;line-height:2.4;color:rgba(255,255,255,.65);margin-bottom:18px}
+.founder-text-block p{font-family:var(--serif);font-size:.84rem;line-height:2;color:rgba(255,255,255,.65);margin-bottom:16px;word-break:break-all;overflow-wrap:break-word}
 .founder-text-block p:last-of-type{margin-bottom:0}
 .founder-text-block .hl{color:rgba(184,216,240,.9);font-style:italic}
-
-/* サイン */
 .founder-signature{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:28px;padding-top:22px;border-top:1px solid rgba(200,168,75,.12)}
 .founder-signature-name{font-family:var(--display);font-size:1.2rem;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:.08em;font-style:italic}
 .founder-signature-dot{width:4px;height:4px;border-radius:50%;background:rgba(200,168,75,.5)}
-
-/* フッター */
 .staff-footer-elegant{text-align:center;padding:32px 28px 48px;position:relative;z-index:1}
 .staff-footer-elegant p{font-family:var(--serif);font-size:.82rem;color:rgba(184,216,240,.4);letter-spacing:.06em;font-style:italic}
-
-/* アニメーション */
 .founder-reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
 .founder-reveal-left.visible{opacity:1;transform:translateX(0)}
 .founder-reveal-up{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
@@ -281,13 +313,13 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
 .footer-logo img{width:28px;height:28px;border-radius:50%;opacity:.7}
 .footer-logo-text{font-family:var(--serif);font-size:.95rem;color:rgba(255,255,255,.55)}
 .footer-logo-text span{color:var(--blue)}
-@media(max-width:768px){nav{padding:10px 14px}.nav-links{display:none}.section-wrap{padding:48px 16px}.hero-model-yui img,.hero-model-haruto img{height:380px}.catch-main{font-size:1.8rem}.models-grid{grid-template-columns:1fr 1fr;gap:14px}.model-img-wrap img{height:220px}.use-cases{grid-template-columns:1fr 1fr}.ai-merits{grid-template-columns:1fr 1fr}.pricing-grid{grid-template-columns:1fr 1fr}.price-card{padding:20px 14px}.price-amount{font-size:1.9rem}.why-benefits{grid-template-columns:1fr}.benefit-card{display:flex;align-items:center;gap:16px;text-align:left;padding:16px 18px}.benefit-icon{font-size:1.6rem;margin-bottom:0;flex-shrink:0}footer{flex-direction:column;gap:8px;text-align:center}.founder-img-block img{height:360px}.founder-name-big{font-size:3.5rem}}
+@media(max-width:768px){nav{padding:10px 14px}.nav-links{display:none}.section-wrap{padding:48px 16px}.hero-model-yui img,.hero-model-haruto img{height:380px}.catch-main{font-size:1.8rem}.models-grid{grid-template-columns:1fr 1fr;gap:14px}.model-img-wrap img{height:220px}.use-cases{grid-template-columns:1fr 1fr}.ai-merits{grid-template-columns:1fr 1fr}.pricing-grid{grid-template-columns:1fr 1fr}.price-card{padding:20px 14px}.price-amount{font-size:1.9rem}.why-benefits{grid-template-columns:1fr}.benefit-card{display:flex;align-items:center;gap:16px;text-align:left;padding:16px 18px}.benefit-icon{font-size:1.6rem;margin-bottom:0;flex-shrink:0}footer{flex-direction:column;gap:8px;text-align:center}.founder-img-block img{height:360px}.founder-name-big{font-size:3.5rem}.consult-methods{grid-template-columns:1fr}.compare-table th,.compare-table td{padding:10px 8px;font-size:.78rem}}
 </style>
 </head>
 <body>
 <nav>
   <div class="nav-logo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co." loading="lazy"><div class="nav-logo-text">YUU <span>&</span> Co.</div></div>
-  <ul class="nav-links"><li><a href="#models">Models</a></li><li><a href="#samples">Samples</a></li><li><a href="#why">Why YUU?</a></li><li><a href="#philosophy">Philosophy</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#voice">Voice</a></li><li><a href="#legal">Notes</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
+  <ul class="nav-links"><li><a href="#why">Why?</a></li><li><a href="#compare">比較</a></li><li><a href="#voice">Voice</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#models">Models</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
 </nav>
 
 <section id="hero">
@@ -296,62 +328,26 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
   <div class="hero-light2"></div>
   <div class="floaters" id="floaters"></div>
   <div class="hero-models">
-    <div class="hero-model-yui"><img src="https://i.imgur.com/1OJ17Aq.png" alt="AIモデル 結衣"></div>
-    <div class="hero-model-haruto"><img src="https://i.imgur.com/3drpd9D.png" alt="AIモデル 遥斗"></div>
+    <div class="hero-model-yui"><img src="https://i.imgur.com/1OJ17Aq.png" alt=""></div>
+    <div class="hero-model-haruto"><img src="https://i.imgur.com/3drpd9D.png" alt=""></div>
     <div class="hero-overlay">
-      <p class="catch-main">AIが人の想いを纏う。</p>
-      <span class="catch-icon"><span>🌿</span><span>YUU &amp; Co. · AI Virtual Models</span><span>🕊</span></span>
+      <p class="catch-main" style="text-align:left;padding-left:8%">撮影不要で、<br><span style="padding-left:1.8em">採用・広告を</span><br><span style="padding-left:3.6em">プロ品質へ。</span></p>
+      <span class="catch-icon" style="font-size:.55rem;letter-spacing:.14em"><span>🌿</span><span>不動産 · 建設 · 医療 · 介護向け</span><span>🕊</span></span>
     </div>
   </div>
-  <div class="hero-text">
-    <p class="hero-eyebrow">AI Visual Production</p>
-    <h1 class="hero-title" style="text-align:left">撮影費ゼロ。<br><span style="padding-left:1.5em">制作コスト大幅削減。</span><br>お金を無駄にしない<br><span style="padding-left:3em">次世代の宣伝戦略。</span></h1>
-    <p class="hero-lead">AIモデルたちが、御社のブランドを視覚化します。<br>起用するだけで、ブランドの世界観が変わる。</p>
-  </div>
-</section>
 
-<section class="section-wrap" id="models">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Our AI Models</p><h2 class="section-title reveal">Creative Team ─ AIモデル紹介</h2><div class="section-line reveal"></div>
-    <p class="body-text reveal" style="margin-bottom:32px">YUUのAIモデルたちは、実在しないからこそスキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせてあらゆるシーンを制作できます。</p>
-    <div class="models-grid">
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/ooEWqR6.png" alt="結衣" loading="lazy"><div class="model-badge">結衣 / Yui</div></div><h3 class="model-name">結衣 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yui</span></h3><p class="model-sub">Female AI Model · Pro</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">清楚・知的</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">不動産</span><span class="tag">医療</span><span class="tag">採用</span><span class="tag">建設</span><span class="tag">教育</span><span class="tag">飲食</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/IivBXbL.png" alt="遥斗" loading="lazy"><div class="model-badge">遥斗 / Haruto</div></div><h3 class="model-name">遥斗 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3><p class="model-sub">Male AI Model · Executive</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・プロ</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">不動産</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">採用</span><span class="tag">IT</span><span class="tag">スポーツ</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/6KXgS0F.png" alt="健一" loading="lazy"><div class="model-badge">健一 / Kenichi</div></div><h3 class="model-name">健一 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Kenichi</span></h3><p class="model-sub">Male AI Model · Manager</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">55歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">頼れる上司</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">改修</span><span class="tag">保険</span><span class="tag">介護</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">不動産</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/ykfnmhs.png" alt="智子" loading="lazy"><div class="model-badge">智子 / Tomoko</div></div><h3 class="model-name">智子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tomoko</span></h3><p class="model-sub">Female AI Model · Caring</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">50歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">笑顔が絶えない</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">医療</span><span class="tag">介護</span><span class="tag">リハビリ</span><span class="tag">教育</span><span class="tag">福祉</span><span class="tag">保険</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/43Y2XGV.jpeg" alt="誠" loading="lazy"><div class="model-badge">誠 / Makoto</div></div><h3 class="model-name">誠 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Makoto</span></h3><p class="model-sub">Male AI Model · Senior</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">70歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・真面目</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">介護</span><span class="tag">保険</span><span class="tag">医療</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/MFGU7N5.jpeg" alt="洋子" loading="lazy"><div class="model-badge">洋子 / Yoko</div></div><h3 class="model-name">洋子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yoko</span></h3><p class="model-sub">Female AI Model · Senior</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">68歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">優しく明るい</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">介護</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/Vd8W45o.jpeg" alt="蒼空" loading="lazy"><div class="model-badge">蒼空 / Sora</div></div><h3 class="model-name">蒼空 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Sora</span></h3><p class="model-sub">Child AI Model · Boy</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">4歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">元気・笑顔</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">教育</span><span class="tag">スポーツ</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">育児</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/aW3rYRl.png" alt="紬" loading="lazy"><div class="model-badge">紬 / Tsumugi</div></div><h3 class="model-name">紬 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tsumugi</span></h3><p class="model-sub">Child AI Model · Girl</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">1歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">天真爛漫・癒し</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">育児</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">福祉</span></div></div>
-    </div>
-    <div class="reveal">
-      <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
-        <p class="section-eyebrow reveal">Sample Gallery</p><h3 class="section-title reveal" id="samples" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3><div class="section-line reveal"></div>
-        <p class="body-text reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。詳しくは料金プランをご確認ください。</span></p>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/fcXN2eK.png" alt="結衣"><span class="acc-title">🌿 結衣 / Yui</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="catalog-img-label">マーケティング</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="catalog-img-label">福祉・社会貢献</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="catalog-img-label">工務店・建築</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="catalog-img-label">美容・医療</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="catalog-img-label">不動産・金融</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/esPWG1f.png" alt="遥斗"><span class="acc-title">🌿 遥斗 / Haruto</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="catalog-img-label">採用・説明会</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="catalog-img-label">金融・資産運用</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="catalog-img-label">IT・オフィス</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="catalog-img-label">美容クリニック</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="catalog-img-label">スポーツ・ゴルフ</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗"><span class="acc-title">🌿 結衣 &amp; 遥斗</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="catalog-img-label">展示会・パネル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="catalog-img-label">建設・採用</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="catalog-img-label">不動産・内覧</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="catalog-img-label">採用・HR</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/zkI4efM.png" alt="健一"><span class="acc-title">🌿 健一 / Kenichi</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="catalog-img-label">保険代理店</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子"><span class="acc-title">🌿 智子 / Tomoko</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="catalog-img-label">ケアプランナー</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="catalog-img-label">医療・介護</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子"><span class="acc-title">🌿 誠 &amp; 洋子 / Makoto &amp; Yoko</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/5sFQzhp.jpeg" alt="蒼空&紬"><span class="acc-title">🌿 蒼空 &amp; 紬 / Sora &amp; Tsumugi</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="catalog-img-label">スポーツ・サッカー</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="catalog-img-label">英会話スクール</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="catalog-img-label">小児歯科・歯医者</div></div></div></div></div>
-        <div class="use-cases" style="margin-top:36px">
-          <div class="use-case"><div class="use-case-num">01</div><h4>採用・HR</h4><p>求人広告、会社説明会資料、採用LP。AIモデルが御社の魅力を伝えます。</p></div>
-          <div class="use-case"><div class="use-case-num">02</div><h4>Web・LP</h4><p>コーポレートサイト、サービスLP、ランディングページのビジュアルに。</p></div>
-          <div class="use-case"><div class="use-case-num">03</div><h4>SNS運用</h4><p>LinkedIn・Instagram・X・Facebookへの定期投稿用ビジュアルを月次納品。</p></div>
-          <div class="use-case"><div class="use-case-num">04</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主・投資家向け資料のアイキャッチに。</p></div>
-          <div class="use-case"><div class="use-case-num">05</div><h4>広告・チラシ</h4><p>展示会ブース、パンフレット、プレゼン資料など印刷物にも対応。</p></div>
-          <div class="use-case"><div class="use-case-num">06</div><h4>カスタムシーン</h4><p>「こういう場面で使いたい」のご要望をヒアリングし専用シーンを制作。</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section class="section-wrap" id="why">
   <div class="section-inner">
-    <p class="section-eyebrow reveal">Why YUU?</p><h2 class="section-title reveal">起用するメリット</h2><div class="section-line reveal"></div>
-    <p class="body-text reveal" style="margin-bottom:28px">起用するだけで、ブランドの世界観がこんなにも変わります。</p>
+    <p class="section-eyebrow reveal">Why YUU?</p><h2 class="section-title reveal">こんなお悩みありませんか？</h2><div class="section-line reveal"></div>
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px">
+      <div style="background:#FFF5F5;border-left:3px solid #E88;border-radius:8px;padding:16px 14px"><p style="font-size:.85rem;color:#666;line-height:1.8">🍃 HPの人物写真が<br>古くてバラバラ</p></div>
+      <div style="background:#FFF5F5;border-left:3px solid #E88;border-radius:8px;padding:16px 14px"><p style="font-size:.85rem;color:#666;line-height:1.8">🍃 モデル撮影費が<br>高すぎる</p></div>
+      <div style="background:#FFF5F5;border-left:3px solid #E88;border-radius:8px;padding:16px 14px"><p style="font-size:.85rem;color:#666;line-height:1.8">🍃 採用ページの<br>写真が弱い</p></div>
+      <div style="background:#FFF5F5;border-left:3px solid #E88;border-radius:8px;padding:16px 14px"><p style="font-size:.85rem;color:#666;line-height:1.8">🍃 広告費を<br>もっと削減したい</p></div>
+    </div>
+    <p class="body-text reveal" style="margin-bottom:28px;text-align:center;font-weight:700;color:var(--navy);font-size:1.1rem">↓ YUUなら、こう変わります</p>
     <div class="before-after-wrap reveal"><img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before After 1" loading="lazy"></div>
     <div class="before-after-wrap reveal" style="margin-top:16px"><img src="https://i.imgur.com/kdxljCc.jpeg" alt="Before After 2" loading="lazy"></div>
     <div class="why-benefits" style="margin-top:32px">
@@ -368,50 +364,50 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
   </div>
 </section>
 
-<section class="section-wrap" id="philosophy">
+<section class="section-wrap" id="compare" style="padding:40px 20px">
   <div class="section-inner">
-    <p class="section-eyebrow reveal">Philosophy &amp; Story</p><h2 class="section-title reveal">会社理念と、私の想い</h2><div class="section-line reveal"></div>
-    <div class="philo-story reveal">
-      <p>私がこのビジネスを始めたのは、ひとつのシンプルな問いからです。「なぜ企業のビジュアルは、こんなにも画一的なのか。」</p>
-      <p>AIモデルという選択肢は、その問いへの答えです。<span class="hl">実在しないが故の自由と、AIが持つ再現性の高さ。</span>その組み合わせが、これからの企業ビジュアルを変えると信じています。</p>
-      <div class="philo-icons"><span>🌿</span><span>あなたの想いが、誰かの心に届くまで。YUUは、ずっと寄り添い続けます。</span><span>🕊</span></div>
+    <p class="section-eyebrow reveal">Cost Comparison</p>
+    <h2 class="section-title reveal" style="font-size:clamp(1.2rem,2.5vw,1.8rem)">他社と比較してみてください</h2>
+    <div class="section-line reveal"></div>
+    <div class="reveal" style="overflow:hidden;border-radius:12px;box-shadow:0 4px 20px rgba(26,46,74,.08);font-size:.78rem">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr>
+            <th style="padding:10px 8px;background:#F0F6FF;color:var(--blue);font-family:var(--label);font-size:.56rem;letter-spacing:.1em;text-align:left;width:30%"></th>
+            <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;letter-spacing:.08em;text-align:center">従来の撮影</th>
+            <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;letter-spacing:.08em;text-align:center">大手事務所</th>
+            <th style="padding:10px 6px;background:var(--navy);color:var(--gold);font-family:var(--label);font-size:.56rem;letter-spacing:.08em;text-align:center">YUU &amp; Co.<br><span style="font-size:.48rem;color:rgba(200,168,75,.7)">✦ おすすめ</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid #EEF3F8">
+            <td style="padding:10px 8px;background:#FAFCFF;color:var(--navy);font-weight:600;font-size:.75rem">月額コスト</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">20〜100万円</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">30〜200万円</td>
+            <td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.03);color:var(--blue);font-weight:700">49,800円〜</td>
+          </tr>
+          <tr style="border-top:1px solid #EEF3F8">
+            <td style="padding:10px 8px;background:#F5F9FF;color:var(--navy);font-weight:600;font-size:.75rem">撮影費</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">10〜50万円</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">30万円〜</td>
+            <td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.05);color:var(--blue);font-weight:700">完全ゼロ</td>
+          </tr>
+          <tr style="border-top:1px solid #EEF3F8">
+            <td style="padding:10px 8px;background:#FAFCFF;color:var(--navy);font-weight:600;font-size:.75rem">リスク</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">天候・体調</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">スキャンダル</td>
+            <td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.03);color:var(--blue);font-weight:700">永遠にゼロ</td>
+          </tr>
+          <tr style="border-top:1px solid #EEF3F8">
+            <td style="padding:10px 8px;background:#F5F9FF;color:var(--navy);font-weight:600;font-size:.75rem">活用提案</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">なし</td>
+            <td style="padding:10px 6px;text-align:center;color:#bbb">なし</td>
+            <td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.05);color:var(--blue);font-weight:700">込み ✦</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-</section>
-
-<section class="section-wrap" id="pricing">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Pricing</p><h2 class="section-title reveal">料金プラン</h2><div class="section-line reveal"></div>
-    <div class="pricing-intro reveal"><p>人数が増えるほど<strong>おトクな</strong>料金設計です。</p><p class="savings">🎉 4名起用で1名あたり約39,500円！<br>1名より約41,200円おトク！</p></div>
-    <div class="reveal" style="background:var(--sky);border-radius:10px;padding:18px 20px;margin-bottom:24px">
-      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px">全プラン共通</p>
-      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px">
-        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月5シーン制作（用途無制限）</li>
-        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>HP・SNS・広告・印刷物など全て使用OK</li>
-        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月3回まで無料修正対応</li>
-        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>全国オンライン対応</li>
-        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>電子契約（LINEまたはメール）</li>
-      </ul>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card reveal"><p class="price-num">1名起用</p><p class="price-name">Basic</p><div class="price-amount">¥49,800</div><p class="price-unit">月額（税込）</p><p style="font-size:.8rem;color:var(--blue);margin-top:8px;line-height:1.7">企業イメージに合わせたビジュアル制作</p></div>
-      <div class="price-card featured reveal"><div class="rec-badge">おすすめ</div><p class="price-num">2名起用</p><p class="price-name">Standard</p><div class="price-amount">¥98,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">💰 男女1名ずつで世界観統一</p><p class="price-per">1名あたり約¥49,000</p></div>
-      <div class="price-card reveal"><p class="price-num">3名起用</p><p class="price-name">Premium</p><div class="price-amount">¥129,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">💰 通常比 ¥20,400おトク</p><p class="price-per">1名あたり約¥43,000</p></div>
-      <div class="price-card best-value reveal"><div class="best-badge">最大おトク</div><p class="price-num">4名起用</p><p class="price-name">Ultimate</p><div class="price-amount">¥158,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">🎉 通常比 ¥41,200おトク！</p><p class="price-per">1名あたり約¥39,500</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-wrap" id="legal">
-  <div class="legal-ripple legal-ripple-1"></div><div class="legal-ripple legal-ripple-2"></div><div class="legal-ripple legal-ripple-3"></div>
-  <span class="legal-bg-deco legal-bg-deco-1">🌿</span><span class="legal-bg-deco legal-bg-deco-2">🕊</span><span class="legal-bg-deco legal-bg-deco-3">🌿</span>
-  <div class="section-inner" style="position:relative;z-index:1">
-    <p class="section-eyebrow reveal">Notes</p><h2 class="section-title reveal">ご利用について</h2><div class="section-line reveal"></div>
-    <div class="legal-grid">
-      <div class="legal-box-new"><div class="legal-box-header-new"><span class="legal-float-icon">🌿</span><h4>世界観・モデル保護について</h4></div><ul class="legal-list-new"><li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU &amp; Co.オリジナル制作物です</li><li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li><li>AIモデルの画像であることを明示してご利用ください</li><li>人物の実在を誤解させる使い方はお控えください</li><li>反社会的勢力へのご利用はお断りします</li></ul></div>
-      <div class="legal-box-new"><div class="legal-box-header-new"><span class="legal-float-icon">🕊</span><h4>ご利用範囲・修正対応</h4></div><ul class="legal-list-new"><li>制作したビジュアルは、契約範囲内でご利用いただけます</li><li>ホームページ・SNS・広告・LP・企業PRなど幅広くご利用可能</li><li>企業イメージに合わせた調整を、月3回まで無料対応</li><li>「高級感を強めたい」「柔らかい雰囲気にしたい」など細かな空気感まで丁寧に調整</li><li>4回目以降は追加料金となります</li></ul></div>
-      <div class="legal-box-new"><div class="legal-box-header-new"><span class="legal-float-icon">🌿</span><h4>個人情報の取り扱い</h4></div><ul class="legal-list-new"><li>ご提供いただいた情報はサービス提供のみに使用します</li><li>第三者への提供は法令に基づく場合を除き行いません</li><li>個人情報の開示・訂正・削除はご連絡ください</li><li>電子契約はLINEまたはメールにて締結します</li><li>管轄裁判所：前橋地方裁判所太田支部</li></ul></div>
-    </div>
+    <p style="text-align:center;margin-top:10px;font-size:.68rem;color:#aaa;font-style:italic">※比較数値は一般的な相場を参考にしています。</p>
   </div>
 </section>
 
@@ -446,30 +442,114 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
   </div>
 </section>
 
-<!-- ===== 代表挨拶 ===== -->
+<section class="section-wrap" id="pricing">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">Pricing</p><h2 class="section-title reveal">採用・広告運用プラン</h2><div class="section-line reveal"></div>
+    <div class="pricing-intro reveal"><p>撮影費・モデル費・追加費用すべてゼロ。月額で御社のビジュアルを継続サポートします。</p><p class="savings">🎉 4名起用で1名あたり約39,500円！</p></div>
+    <div class="reveal" style="background:var(--sky);border-radius:10px;padding:18px 20px;margin-bottom:24px">
+      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px">全プラン共通</p>
+      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px">
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月5シーン制作（用途無制限）</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>HP・SNS・広告・印刷物など全て使用OK</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月3回まで無料修正対応</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>全国オンライン対応</li>
+        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>電子契約（LINEまたはメール）</li>
+      </ul>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal"><p class="price-num">1名起用</p><p class="price-name">Basic</p><div class="price-amount">¥49,800</div><p class="price-unit">月額（税込）</p><p style="font-size:.8rem;color:var(--blue);margin-top:8px;line-height:1.7">企業イメージに合わせたビジュアル制作</p></div>
+      <div class="price-card featured reveal"><div class="rec-badge">おすすめ</div><p class="price-num">2名起用</p><p class="price-name">Standard</p><div class="price-amount">¥98,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">💰 男女1名ずつで世界観統一</p><p class="price-per">1名あたり約¥49,000</p></div>
+      <div class="price-card reveal"><p class="price-num">3名起用</p><p class="price-name">Premium</p><div class="price-amount">¥129,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">💰 通常比 ¥20,400おトク</p><p class="price-per">1名あたり約¥43,000</p></div>
+      <div class="price-card best-value reveal"><div class="best-badge">最大おトク</div><p class="price-num">4名起用</p><p class="price-name">Ultimate</p><div class="price-amount">¥158,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">🎉 通常比 ¥41,200おトク！</p><p class="price-per">1名あたり約¥39,500</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" id="models">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">Our AI Models</p><h2 class="section-title reveal">Creative Team ─ AIモデル紹介</h2><div class="section-line reveal"></div>
+    <p class="body-text reveal" style="margin-bottom:32px;font-size:.88rem">YUUのAIモデルたちは、実在しないからこそスキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせてあらゆるシーンを制作できます。</p>
+    <div class="models-grid">
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/ooEWqR6.png" alt="結衣" loading="lazy"><div class="model-badge">結衣 / Yui</div></div><h3 class="model-name">結衣 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yui</span></h3><p class="model-sub">Female AI Model · Pro</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">清楚・知的</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">不動産</span><span class="tag">医療</span><span class="tag">採用</span><span class="tag">建設</span><span class="tag">教育</span><span class="tag">飲食</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/IivBXbL.png" alt="遥斗" loading="lazy"><div class="model-badge">遥斗 / Haruto</div></div><h3 class="model-name">遥斗 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3><p class="model-sub">Male AI Model · Executive</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・プロ</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">不動産</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">採用</span><span class="tag">IT</span><span class="tag">スポーツ</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/6KXgS0F.png" alt="健一" loading="lazy"><div class="model-badge">健一 / Kenichi</div></div><h3 class="model-name">健一 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Kenichi</span></h3><p class="model-sub">Male AI Model · Manager</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">55歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">頼れる上司</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">改修</span><span class="tag">保険</span><span class="tag">介護</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">不動産</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/ykfnmhs.png" alt="智子" loading="lazy"><div class="model-badge">智子 / Tomoko</div></div><h3 class="model-name">智子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tomoko</span></h3><p class="model-sub">Female AI Model · Caring</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">50歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">笑顔が絶えない</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">医療</span><span class="tag">介護</span><span class="tag">リハビリ</span><span class="tag">教育</span><span class="tag">福祉</span><span class="tag">保険</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/43Y2XGV.jpeg" alt="誠" loading="lazy"><div class="model-badge">誠 / Makoto</div></div><h3 class="model-name">誠 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Makoto</span></h3><p class="model-sub">Male AI Model · Senior</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">70歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・真面目</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">介護</span><span class="tag">保険</span><span class="tag">医療</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/MFGU7N5.jpeg" alt="洋子" loading="lazy"><div class="model-badge">洋子 / Yoko</div></div><h3 class="model-name">洋子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yoko</span></h3><p class="model-sub">Female AI Model · Senior</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">68歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">優しく明るい</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">介護</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/Vd8W45o.jpeg" alt="蒼空" loading="lazy"><div class="model-badge">蒼空 / Sora</div></div><h3 class="model-name">蒼空 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Sora</span></h3><p class="model-sub">Child AI Model · Boy</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">4歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">元気・笑顔</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">教育</span><span class="tag">スポーツ</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">育児</span></div></div>
+      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/aW3rYRl.png" alt="紬" loading="lazy"><div class="model-badge">紬 / Tsumugi</div></div><h3 class="model-name">紬 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tsumugi</span></h3><p class="model-sub">Child AI Model · Girl</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">1歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">天真爛漫・癒し</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">育児</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">福祉</span></div></div>
+    </div>
+    <div class="reveal">
+      <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
+        <p class="section-eyebrow reveal">Sample Gallery</p><h3 class="section-title reveal" id="samples" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3><div class="section-line reveal"></div>
+        <p class="body-text reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。詳しくは料金プランをご確認ください。</span></p>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/fcXN2eK.png" alt="結衣"><span class="acc-title">🌿 結衣 / Yui</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="catalog-img-label">マーケティング</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="catalog-img-label">福祉・社会貢献</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="catalog-img-label">工務店・建築</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="catalog-img-label">美容・医療</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="catalog-img-label">不動産・金融</div></div></div></div></div>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/esPWG1f.png" alt="遥斗"><span class="acc-title">🌿 遥斗 / Haruto</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="catalog-img-label">採用・説明会</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="catalog-img-label">金融・資産運用</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="catalog-img-label">IT・オフィス</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="catalog-img-label">美容クリニック</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="catalog-img-label">スポーツ・ゴルフ</div></div></div></div></div>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗"><span class="acc-title">🌿 結衣 &amp; 遥斗</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="catalog-img-label">展示会・パネル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="catalog-img-label">建設・採用</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="catalog-img-label">不動産・内覧</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="catalog-img-label">採用・HR</div></div></div></div></div>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/zkI4efM.png" alt="健一"><span class="acc-title">🌿 健一 / Kenichi</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="catalog-img-label">保険代理店</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div></div></div></div>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子"><span class="acc-title">🌿 智子 / Tomoko</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="catalog-img-label">ケアプランナー</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="catalog-img-label">医療・介護</div></div></div></div></div>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子"><span class="acc-title">🌿 誠 &amp; 洋子 / Makoto &amp; Yoko</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div></div></div></div>
+        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/5sFQzhp.jpeg" alt="蒼空&紬"><span class="acc-title">🌿 蒼空 &amp; 紬 / Sora &amp; Tsumugi</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="catalog-img-label">スポーツ・サッカー</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="catalog-img-label">英会話スクール</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="catalog-img-label">小児歯科・歯医者</div></div></div></div></div>
+        <div class="use-cases" style="margin-top:36px">
+          <div class="use-case"><div class="use-case-num">01</div><h4>採用・HR</h4><p>求人広告、会社説明会資料、採用LP。AIモデルが御社の魅力を伝えます。</p></div>
+          <div class="use-case"><div class="use-case-num">02</div><h4>Web・LP</h4><p>コーポレートサイト、サービスLP、ランディングページのビジュアルに。</p></div>
+          <div class="use-case"><div class="use-case-num">03</div><h4>SNS運用</h4><p>LinkedIn・Instagram・X・Facebookへの定期投稿用ビジュアルを月次納品。</p></div>
+          <div class="use-case"><div class="use-case-num">04</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主・投資家向け資料のアイキャッチに。</p></div>
+          <div class="use-case"><div class="use-case-num">05</div><h4>広告・チラシ</h4><p>展示会ブース、パンフレット、プレゼン資料など印刷物にも対応。</p></div>
+          <div class="use-case"><div class="use-case-num">06</div><h4>カスタムシーン</h4><p>「こういう場面で使いたい」のご要望をヒアリングし専用シーンを制作。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" id="philosophy" style="background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:80px 28px">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(184,216,240,.07),transparent 55%)"></div>
+  <div class="section-inner" style="position:relative;z-index:1;text-align:center">
+    <p class="section-eyebrow reveal" style="color:rgba(184,216,240,.9)">Brand Message</p>
+    <div class="section-line reveal" style="background:linear-gradient(to right,rgba(184,216,240,.6),transparent)"></div>
+    <p class="reveal" style="font-family:var(--serif);font-size:clamp(2.2rem,8vw,4rem);font-weight:300;color:#fff;line-height:1.6;letter-spacing:.08em;margin-bottom:32px">AIが、<br>人の想いを纏う。</p>
+    <div class="reveal" style="width:40px;height:1px;background:rgba(184,216,240,.4);margin:0 auto 28px"></div>
+    <p class="reveal" style="font-family:var(--serif);font-size:.82rem;line-height:2.2;color:rgba(255,255,255,.75);margin:0 auto;padding:0 16px;text-align:left">企業が持つ誠実さ。信頼感。温かさ。その想いを、人物ビジュアルという形で届ける。<span style="display:block;color:#8FCAF0;font-style:italic;margin-top:8px">「どう伝わるか」を、私たちは大切にしています。</span></p>
+    <div class="reveal" style="margin-top:24px;display:flex;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.5);font-family:var(--serif);font-size:.88rem">
+      <span>🌿</span><span>YUU &amp; Co.</span><span>🕊</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" id="legal">
+  <div class="legal-ripple legal-ripple-1"></div><div class="legal-ripple legal-ripple-2"></div><div class="legal-ripple legal-ripple-3"></div>
+  <span class="legal-bg-deco legal-bg-deco-1">🌿</span><span class="legal-bg-deco legal-bg-deco-2">🕊</span><span class="legal-bg-deco legal-bg-deco-3">🌿</span>
+  <div class="section-inner" style="position:relative;z-index:1">
+    <p class="section-eyebrow reveal">Notes</p><h2 class="section-title reveal">ご利用について</h2><div class="section-line reveal"></div>
+    <div class="legal-grid">
+      <div class="legal-box-new"><div class="legal-box-header-new"><span class="legal-float-icon">🌿</span><h4>世界観・モデル保護について</h4></div><ul class="legal-list-new"><li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU &amp; Co.オリジナル制作物です</li><li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li><li>AIモデルの画像であることを明示してご利用ください</li><li>人物の実在を誤解させる使い方はお控えください</li><li>反社会的勢力へのご利用はお断りします</li></ul></div>
+      <div class="legal-box-new"><div class="legal-box-header-new"><span class="legal-float-icon">🕊</span><h4>ご利用範囲・修正対応</h4></div><ul class="legal-list-new"><li>制作したビジュアルは、契約範囲内でご利用いただけます</li><li>ホームページ・SNS・広告・LP・企業PRなど幅広くご利用可能</li><li>企業イメージに合わせた調整を、月3回まで無料対応</li><li>「高級感を強めたい」「柔らかい雰囲気にしたい」など細かな空気感まで丁寧に調整</li><li>4回目以降は追加料金となります</li></ul></div>
+      <div class="legal-box-new"><div class="legal-box-header-new"><span class="legal-float-icon">🌿</span><h4>個人情報の取り扱い</h4></div><ul class="legal-list-new"><li>ご提供いただいた情報はサービス提供のみに使用します</li><li>第三者への提供は法令に基づく場合を除き行いません</li><li>個人情報の開示・訂正・削除はご連絡ください</li><li>電子契約はLINEまたはメールにて締結します</li><li>管轄裁判所：前橋地方裁判所太田支部</li></ul></div>
+    </div>
+  </div>
+</section>
+
 <section id="staff">
   <div class="staff-border-top"></div>
   <div class="staff-section-inner">
     <p class="section-eyebrow founder-reveal-up">Message</p>
     <h2 class="section-title founder-reveal-up" style="margin-bottom:6px">代表挨拶</h2>
     <div class="section-line founder-reveal-up"></div>
-
     <div class="founder-img-block founder-reveal-left">
       <img src="https://i.imgur.com/nWeJ0Bq.png" alt="YUU & Co. 代表 南部祐子" loading="lazy">
       <div class="founder-img-text">
         <div class="founder-gold-line"></div>
         <span class="founder-role-label">Founder &amp; Director</span>
         <p class="founder-name-big">Yuko</p>
-        <p class="founder-location">群馬県在住 &nbsp;·&nbsp; スマホのみで全国対応</p>
+        <p class="founder-location">群馬県在住 &nbsp;·&nbsp; 全国オンライン対応</p>
       </div>
     </div>
-
     <div class="founder-sep founder-reveal-up-2">
       <div class="founder-sep-line"></div>
       <div class="founder-sep-center"><span class="founder-sep-icon">🌿</span></div>
       <div class="founder-sep-line-r"></div>
     </div>
-
     <div class="founder-text-block founder-reveal-up-3">
       <p>このページへお越しいただき、ありがとうございます。</p>
       <p>御社のブランドが持つ誠実さ・信頼感・温かさを、もっと多くの人に届けたい。その想いから、<span class="hl">AIモデルという新しい表現手段</span>を追い求めてきました。</p>
@@ -481,16 +561,14 @@ footer{background:#0D1F35;color:rgba(255,255,255,.38);padding:24px 40px;display:
       </div>
     </div>
   </div>
-  <div class="staff-footer-elegant founder-reveal-up">
-    <p>🌿 &nbsp; お客様の想いを、最高のビジュアルでお届けします。 &nbsp; 🕊</p>
-  </div>
+  
   <div class="staff-border-bottom"></div>
 </section>
 
 <section class="section-wrap" id="contact">
   <div class="section-inner">
     <p class="section-eyebrow">Contact</p><h2 class="section-title">お問い合わせ</h2><div class="section-line"></div>
-    <p class="contact-lead reveal">サービスに関するご質問、お見積もり、ご契約のご相談など、お気軽にLINEまたはメールよりご連絡ください。丁寧にご対応いたします。</p>
+    <p class="contact-lead reveal">「どのプランが合うか分からない」「うちの業種で使えるか？」<br>そんな疑問にも、丁寧にお答えします。<br>まずはお気軽にご相談ください。<br><span style="font-size:.82rem;opacity:.7">Zoom・お電話なし。テキストのみで完結します。</span></p>
     <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a><br>
     <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="linkedin-btn reveal" style="background:#2C5F8A;box-shadow:0 4px 18px rgba(44,95,138,.35)">📧 メールで相談する</a><br>
     <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="linkedin-btn reveal" target="_blank">💼 LinkedInで繋がる</a>
@@ -511,7 +589,7 @@ function toggleAcc(btn){const body=btn.nextElementSibling;const arrow=btn.queryS
 (function(){const wrap=document.getElementById('goldRain');if(!wrap)return;const colors=['rgba(255,215,0,','rgba(255,200,50,','rgba(255,235,100,','rgba(255,180,30,','rgba(255,245,150,'];for(let i=0;i<40;i++){const el=document.createElement('div');el.className='gold-drop';const c=colors[Math.floor(Math.random()*colors.length)];const h=Math.random()*120+40;const op=(Math.random()*.6+.3).toFixed(2);el.style.cssText=`left:${Math.random()*100}%;width:${Math.random()*2+1}px;height:${h}px;background:linear-gradient(to bottom,${c}${op}) 0%,${c}0) 100%);animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*5}s;filter:blur(${Math.random()>.5?'0.5px':'0px'});`;wrap.appendChild(el);}})();
 (function(){const wrap=document.getElementById('floaters');if(!wrap)return;['🌿','🕊','🌿','🕊','🌿','🕊'].forEach((icon,i)=>{const el=document.createElement('div');el.className='floater';el.textContent=icon;el.style.cssText=`left:${8+i*15+Math.random()*6}%;animation-duration:${18+Math.random()*12}s;animation-delay:${Math.random()*14}s;font-size:${1+Math.random()*.5}rem;`;wrap.appendChild(el);});})();
 const io=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*80);}});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.legal-box-new,.founder-reveal-left,.founder-reveal-up,.founder-reveal-up-2,.founder-reveal-up-3').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.legal-box-new,.founder-reveal-left,.founder-reveal-up,.founder-reveal-up-2,.founder-reveal-up-3').forEach(el=>io.observe(el));
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 2px 16px rgba(30,70,120,.1)':'none'});
 </script>
 </body>
