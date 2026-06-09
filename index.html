@@ -7,555 +7,262 @@
 <link rel="icon" href="https://i.imgur.com/18S3zeq.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --sky:#E8F4FF;--white:#fff;--cream:#FAFCFF;
-  --navy:#1A2E4A;--mid:#2A4060;--light:#EEF5FB;
-  --blue:#5B9AC8;--gold:#C8A84B;
-  --serif:'Noto Serif JP',serif;
-  --sans:'Noto Sans JP',sans-serif;
-  --display:'Cormorant Garamond',serif;
-  --label:'Montserrat',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+:root{--sky:#E8F4FF;--navy:#1A2E4A;--mid:#2A4060;--light:#EEF5FB;--blue:#5B9AC8;--gold:#C8A84B;--serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;--display:'Cormorant Garamond',serif;--label:'Montserrat',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:#F0F8FF;color:var(--navy);overflow-x:hidden;font-size:16px;line-height:1.8}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(91,154,200,.15)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(91,154,200,.15);transition:box-shadow .3s}
 .nav-logo{display:flex;align-items:center;gap:8px}
-.nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
 .nav-logo-text{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--navy);letter-spacing:.06em}
 .nav-logo-text span{color:var(--blue)}
 .nav-links{display:flex;gap:20px;list-style:none}
-.nav-links a{font-family:var(--label);font-size:.62rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s}
+.nav-links a{font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--blue)}
-
-/* HERO */
-#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:48px;background:linear-gradient(180deg,#4AAEE0 0%,#75C8EE 15%,#A8DCF0 35%,#C8EAF8 55%,#E0F4FF 75%,#F0F9FF 90%,#fff 100%)}
-.gold-rain{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:2;overflow:hidden}
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:48px;background:linear-gradient(180deg,#4AAEE0 0%,#A8DCF0 35%,#E0F4FF 75%,#fff 100%)}
+.gold-rain{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
 .gold-drop{position:absolute;top:-120px;width:2px;border-radius:99px;animation:goldFall linear infinite;opacity:0}
 @keyframes goldFall{0%{opacity:0;transform:translateY(0)}10%{opacity:.9}80%{opacity:.4}100%{opacity:0;transform:translateY(110vh)}}
-.hero-light{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:360px;height:360px;background:radial-gradient(circle,rgba(255,220,80,.9) 0%,rgba(255,200,50,.5) 20%,transparent 60%);border-radius:50%;animation:lightPulse 2.2s ease-in-out infinite;pointer-events:none;z-index:2;filter:blur(3px)}
-.hero-light2{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:560px;height:560px;background:radial-gradient(circle,transparent 30%,rgba(255,210,80,.12) 45%,transparent 65%);border-radius:50%;animation:lightPulse 2.2s ease-in-out infinite reverse;pointer-events:none;z-index:2}
-@keyframes lightPulse{0%,100%{transform:translateX(-50%) scale(1);opacity:.8}50%{transform:translateX(-50%) scale(1.18);opacity:1}}
+.hero-light{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:360px;height:360px;background:radial-gradient(circle,rgba(255,220,80,.9) 0%,transparent 60%);border-radius:50%;animation:lp 2.2s ease-in-out infinite;pointer-events:none;z-index:2;filter:blur(3px)}
+@keyframes lp{0%,100%{transform:translateX(-50%) scale(1);opacity:.8}50%{transform:translateX(-50%) scale(1.18);opacity:1}}
 .floaters{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
-.floater{position:absolute;animation:floatDrift linear infinite;opacity:0}
-@keyframes floatDrift{0%{opacity:0;transform:translateY(80vh) rotate(0deg)}15%{opacity:.6}85%{opacity:.25}100%{opacity:0;transform:translateY(-15vh) rotate(200deg)}}
-.hero-models{position:relative;z-index:5;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto;padding-top:0}
-.hero-model-yui{width:52%;animation:heroL 1.2s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-60px)}
-.hero-model-haruto{width:52%;animation:heroR 1.2s cubic-bezier(.16,1,.3,1) .2s forwards;opacity:0;transform:translateX(60px)}
-@keyframes heroL{to{opacity:1;transform:translateX(0)}}
-@keyframes heroR{to{opacity:1;transform:translateX(0)}}
+.floater{position:absolute;animation:fd linear infinite;opacity:0}
+@keyframes fd{0%{opacity:0;transform:translateY(80vh) rotate(0deg)}15%{opacity:.6}85%{opacity:.25}100%{opacity:0;transform:translateY(-15vh) rotate(200deg)}}
+.hero-models{position:relative;z-index:5;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto}
+.hero-model-yui{width:52%;animation:hL 1.2s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-60px)}
+.hero-model-haruto{width:52%;animation:hR 1.2s cubic-bezier(.16,1,.3,1) .2s forwards;opacity:0;transform:translateX(60px)}
+@keyframes hL{to{opacity:1;transform:translateX(0)}}@keyframes hR{to{opacity:1;transform:translateX(0)}}
 .hero-model-yui img,.hero-model-haruto img{width:100%;height:85vh;object-fit:cover;object-position:top;display:block}
-.hero-model-yui img{border-radius:0}
-.hero-model-haruto img{border-radius:0}
-.hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:80px 24px 28px;background:linear-gradient(transparent,rgba(8,25,55,.78) 60%);text-align:center;z-index:6;animation:fadeUp 1s ease .9s both}
-.catch-main{font-family:var(--serif);font-size:clamp(1.8rem,6vw,3rem);font-weight:400;color:#fff;letter-spacing:.05em;line-height:1.5;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);text-align:left;padding-left:8%}
+.hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:80px 24px 28px;background:linear-gradient(transparent,rgba(8,25,55,.78) 60%);z-index:6;animation:fU 1s ease .9s both}
+.catch-main{font-family:var(--serif);font-size:clamp(1.8rem,6vw,3rem);font-weight:400;color:#fff;letter-spacing:.05em;line-height:1.5;margin-bottom:8px;text-align:left;padding-left:8%}
 .catch-icon{display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--label);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,235,255,.85)}
-.scroll-indicator{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:5px;animation:fadeUp .8s ease 2s both}
-.scroll-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);animation:scrollDot 1.5s ease-in-out infinite}
-.scroll-dot:nth-child(2){animation-delay:.15s}
-.scroll-dot:nth-child(3){animation-delay:.3s}
-@keyframes scrollDot{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-/* セクション共通 */
-.section-wrap{padding:64px 24px;position:relative;overflow:hidden}
-.section-inner{max-width:680px;margin:0 auto}
-.section-eyebrow{font-family:var(--label);font-size:.65rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:block}
-.section-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:300;line-height:1.35;color:var(--navy);margin-bottom:10px}
-.section-line{width:100%;height:1px;background:linear-gradient(to right,var(--blue),rgba(91,154,200,.2) 60%,transparent);margin-bottom:32px}
-.body-text{font-size:.95rem;line-height:2;color:var(--mid)}
-
-/* アニメーション - シンプルで洗練 */
+.scroll-indicator{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:5px;animation:fU .8s ease 2s both}
+.scroll-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);animation:sd 1.5s ease-in-out infinite}
+.scroll-dot:nth-child(2){animation-delay:.15s}.scroll-dot:nth-child(3){animation-delay:.3s}
+@keyframes sd{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes fU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.sw{padding:64px 24px;position:relative;overflow:hidden}
+.si{max-width:680px;margin:0 auto}
+.ey{font-family:var(--label);font-size:.65rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:block}
+.st{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:300;line-height:1.35;color:var(--navy);margin-bottom:10px}
+.sl{width:100%;height:1px;background:linear-gradient(to right,var(--blue),rgba(91,154,200,.2) 60%,transparent);margin-bottom:32px}
+.bt{font-size:.95rem;line-height:2;color:var(--mid)}
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
-.reveal-scale.visible{opacity:1;transform:scale(1)}
-
-/* WHY */
-#why{background:linear-gradient(160deg,#E8F4FF 0%,#F5FAFF 100%)}
-.before-after-wrap{border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(26,46,74,.12);margin-bottom:20px}
-.before-after-wrap img{width:100%;height:auto;display:block}
-.why-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
-.benefit-card{background:#fff;border-radius:14px;padding:22px 16px;text-align:center;box-shadow:0 4px 20px rgba(26,46,74,.07);border:1px solid rgba(91,154,200,.12);transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease,border-color .3s}
-.benefit-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,46,74,.12);border-color:rgba(91,154,200,.3)}
-.benefit-icon{font-size:2rem;margin-bottom:10px;display:block;animation:iconFloat 4s ease-in-out infinite}
-@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.benefit-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:5px}
-.benefit-desc{font-size:.8rem;color:var(--mid);line-height:1.8}
-.ai-merits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.ai-merit{background:#fff;border-radius:12px;padding:16px 14px;text-align:center;border-top:3px solid var(--blue);box-shadow:0 3px 14px rgba(26,46,74,.06);transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
-.ai-merit:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(26,46,74,.1)}
-.ai-merit-icon{font-size:1.6rem;display:block;margin-bottom:8px}
-.ai-merit-title{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-.ai-merit-desc{font-size:.76rem;color:var(--mid);line-height:1.8}
-
-/* お悩みカード */
-.worry-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
-.worry-card{background:#fff;border-left:3px solid rgba(200,100,100,.3);border-radius:10px;padding:16px 14px;font-size:.84rem;color:var(--navy);font-weight:500;transition:transform .3s ease,box-shadow .3s ease}
-.worry-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(26,46,74,.08)}
-
-/* COMPARE */
-#compare{background:#fff}
-.compare-table-wrap{border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(26,46,74,.08)}
-.compare-table{width:100%;border-collapse:collapse}
-.compare-table th{padding:13px 8px;font-family:var(--label);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;text-align:center;color:var(--mid);background:#F5F9FF}
-.compare-table th:last-child{background:var(--navy);color:var(--gold)}
-.compare-table th:last-child::after{content:'✦ おすすめ';display:block;font-size:.46rem;color:rgba(200,168,75,.65);margin-top:2px}
-.compare-table td{padding:12px 8px;font-size:.8rem;text-align:center;border-top:1px solid rgba(91,154,200,.08);color:var(--mid)}
-.compare-table td:first-child{text-align:left;background:#FAFCFF;color:var(--navy);font-weight:600;font-size:.78rem}
-.compare-table td:last-child{color:var(--blue);font-weight:700;background:rgba(91,154,200,.04)}
-.compare-note{text-align:center;margin-top:10px;font-size:.7rem;color:rgba(26,46,74,.4);font-style:italic}
-
-/* PRICING */
-#pricing{background:linear-gradient(160deg,#EAF4FF,#F5FAFF)}
-.pricing-intro{background:#fff;border-radius:14px;padding:22px;text-align:center;margin-bottom:24px;border:1px solid rgba(91,154,200,.15)}
-.pricing-intro p{font-size:.88rem;color:var(--mid);line-height:1.9}
-.pricing-intro .savings{font-family:var(--serif);font-size:1rem;color:var(--navy);font-weight:500;margin-top:6px}
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.price-card{background:#fff;border:1px solid rgba(91,154,200,.15);border-radius:14px;padding:22px 16px;position:relative;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease,border-color .3s;display:flex;flex-direction:column}
-.price-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(26,46,74,.1);border-color:rgba(91,154,200,.35)}
-.price-card.featured{background:var(--navy);border-color:var(--navy)}
-.price-card.best-value{border:2px solid rgba(200,168,75,.4);background:linear-gradient(135deg,#FFFBF0,#FFF8E6)}
-.rec-badge{position:absolute;top:-1px;right:14px;background:var(--blue);color:#fff;font-family:var(--label);font-size:.52rem;font-weight:600;letter-spacing:.1em;padding:3px 9px;border-radius:0 0 6px 6px}
-.best-badge{position:absolute;top:-1px;right:14px;background:var(--gold);color:#fff;font-family:var(--label);font-size:.52rem;font-weight:600;letter-spacing:.1em;padding:3px 9px;border-radius:0 0 6px 6px}
-.price-num{font-size:1.1rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:4px;border-bottom:2px solid rgba(91,154,200,.2);padding-bottom:5px;display:inline-block}
-.price-card.featured .price-num{color:#fff;border-color:rgba(255,255,255,.15)}
-.price-card.best-value .price-num{color:var(--gold)}
-.price-name{font-family:var(--label);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;display:block}
-.price-card.featured .price-name{color:rgba(184,216,240,.8)}
-.price-card.best-value .price-name{color:var(--gold)}
-.price-amount{font-family:var(--display);font-size:2rem;font-weight:300;color:var(--navy);line-height:1;margin-bottom:2px}
-.price-card.featured .price-amount{color:#fff}
-.price-card.best-value .price-amount{color:var(--gold)}
-.price-unit{font-size:.74rem;color:rgba(26,46,74,.5);margin-bottom:6px}
-.price-card.featured .price-unit{color:rgba(255,255,255,.4)}
-.price-savings{font-size:.76rem;font-weight:600;color:var(--gold);margin-bottom:10px;display:block;background:rgba(200,168,75,.08);padding:5px 9px;border-radius:8px}
-.price-card.featured .price-savings{background:rgba(200,168,75,.12)}
-.price-per{font-size:.74rem;color:rgba(26,46,74,.5);margin-bottom:10px}
-.price-card.featured .price-per{color:rgba(255,255,255,.4)}
-.price-features{list-style:none;border-top:1px solid rgba(91,154,200,.1);padding-top:12px;flex:1}
-.price-card.featured .price-features{border-color:rgba(255,255,255,.1)}
-.price-card.best-value .price-features{border-color:rgba(200,168,75,.15)}
-.price-features li{font-size:.78rem;line-height:1.9;padding:3px 0;color:var(--mid);display:flex;gap:6px;align-items:flex-start}
-.price-card.featured .price-features li{color:rgba(255,255,255,.72)}
-.price-features li::before{content:'✓';color:var(--blue);flex-shrink:0;font-weight:700}
-.price-card.featured .price-features li::before{color:var(--gold)}
-
-/* MODELS */
-#models{background:#fff}
-.models-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 14px;margin-bottom:48px;align-items:start}
-.model-img-wrap{position:relative;overflow:hidden;border-radius:10px;margin-bottom:12px}
-.model-img-wrap img{width:100%;height:240px;object-fit:cover;object-position:top;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
-.model-img-wrap:hover img{transform:scale(1.05)}
-.model-badge{position:absolute;bottom:0;left:0;right:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(10,25,55,.68));font-family:var(--serif);font-size:.88rem;color:#fff;border-radius:0 0 10px 10px}
-.model-name{font-family:var(--serif);font-size:1.45rem;font-weight:300;margin-bottom:2px;margin-top:10px;color:var(--navy)}
-.model-sub{font-family:var(--label);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block}
-.model-profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px}
-.profile-item{background:rgba(91,154,200,.07);padding:7px 9px;border-radius:5px}
-.profile-label{font-family:var(--label);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:2px}
-.profile-value{font-size:.82rem;font-weight:600;color:var(--navy)}
-.model-about-title{font-family:var(--label);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:5px;display:block}
-.model-tags{display:flex;flex-wrap:wrap;gap:4px}
-.tag{padding:3px 9px;border:1px solid rgba(91,154,200,.22);font-family:var(--label);font-size:.52rem;color:var(--blue);border-radius:20px;background:rgba(91,154,200,.04)}
-
-/* ACCORDION */
-.acc-block{margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(91,154,200,.14)}
-.acc-header{display:flex;align-items:center;cursor:pointer;background:#fff;border:none;width:100%;padding:0;min-height:105px;transition:background .2s}
-.acc-header:hover{background:#F8FBFF}
-.acc-cover{width:105px;height:105px;object-fit:cover;flex-shrink:0;display:block}
-.acc-title{font-family:var(--serif);font-size:.93rem;font-weight:400;color:var(--navy);padding:0 14px;flex:1;text-align:left}
-.acc-arrow{font-size:.74rem;color:var(--blue);padding-right:14px;transition:transform .3s;flex-shrink:0}
-.acc-arrow.open{transform:rotate(180deg)}
-.acc-body{display:none;padding:10px;background:#F5FAFF}
-.acc-body.open{display:block}
-.acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.catalog-img-item{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:3/4}
-.catalog-img-item img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s ease}
-.catalog-img-item:hover img{transform:scale(1.06)}
-.catalog-img-label{position:absolute;bottom:0;left:0;right:0;padding:18px 10px 8px;background:linear-gradient(transparent,rgba(10,25,55,.65));color:#fff;font-size:.72rem;font-weight:500;text-align:center}
-
-/* use-cases 横スクロール */
-.use-cases-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:none;margin-top:32px}
-.use-cases-scroll::-webkit-scrollbar{display:none}
-.use-cases-inner{display:flex;gap:12px;padding-right:4px}
-.use-case-card{background:rgba(91,154,200,.06);border:1px solid rgba(91,154,200,.14);border-radius:12px;padding:18px 14px;min-width:148px;flex-shrink:0;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease,border-color .3s}
-.use-case-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(26,46,74,.1);border-color:var(--blue)}
-.use-case-num{font-family:var(--display);font-size:1.5rem;font-weight:300;color:rgba(91,154,200,.35);line-height:1;margin-bottom:7px}
-.use-case-card h4{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:5px}
-.use-case-card p{font-size:.73rem;color:var(--mid);line-height:1.7}
-.swipe-hint{font-size:.66rem;color:rgba(91,154,200,.5);text-align:right;margin-top:6px}
-
-/* VOICE */
-#voice{background:linear-gradient(135deg,#EAF4FF,#F0F9FF)}
-.voice-inner{max-width:640px;margin:0 auto}
-.voice-card{background:#fff;border-radius:16px;padding:34px 26px 30px;box-shadow:0 6px 28px rgba(26,46,74,.08);position:relative;border-top:4px solid var(--blue);margin-bottom:20px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
-.voice-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(26,46,74,.12)}
-.voice-quote{font-size:5rem;color:rgba(91,154,200,.1);line-height:1;position:absolute;top:12px;left:16px;font-family:var(--display);pointer-events:none}
-.voice-text{font-family:var(--serif);font-size:1.1rem;line-height:2;color:var(--navy);margin:22px 0 18px;padding-left:2px}
-.voice-divider{width:30px;height:2px;background:var(--blue);margin-bottom:14px;opacity:.4}
-.voice-meta{display:flex;align-items:center;gap:10px}
-.voice-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:.9rem}
-.voice-company{font-size:.86rem;font-weight:700;color:var(--navy);margin:0}
-.voice-detail{font-size:.72rem;color:rgba(26,46,74,.5);margin:2px 0 0}
-.voice-note{font-size:.68rem;color:rgba(26,46,74,.35);margin-top:16px;text-align:center}
-
-/* PHILOSOPHY */
-#philosophy{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:80px 24px}
-#philosophy::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(184,216,240,.06),transparent 55%)}
-.philo-inner{position:relative;z-index:1;max-width:480px;margin:0 auto;text-align:center}
-.philo-catch{font-family:var(--display);font-size:clamp(2.4rem,8vw,3.8rem);font-weight:300;color:#fff;line-height:1.5;letter-spacing:.08em;margin-bottom:28px}
-.philo-divider{width:36px;height:1px;background:rgba(184,216,240,.25);margin:0 auto 24px}
-.philo-text{font-family:var(--serif);font-size:.88rem;line-height:2.4;color:rgba(255,255,255,.68)}
-.philo-text .hl{color:#8FCAF0;font-style:italic}
-.philo-sig{margin-top:24px;color:rgba(255,255,255,.35);font-family:var(--label);font-size:.58rem;letter-spacing:.18em}
-
-/* LEGAL */
-#legal{background:linear-gradient(145deg,#C8E8FF 0%,#DBF0FF 25%,#EAF6FF 55%,#F2FBFF 100%);position:relative;overflow:hidden}
-.legal-ripple{position:absolute;border-radius:50%;pointer-events:none;animation:rippleExpand ease-out infinite;opacity:0}
-.legal-ripple-1{width:200px;height:200px;top:10%;left:-50px;border:1px solid rgba(91,154,200,.18);animation-duration:6s}
-.legal-ripple-2{width:300px;height:300px;top:30%;right:-80px;border:1px solid rgba(91,154,200,.12);animation-duration:8s;animation-delay:2s}
-@keyframes rippleExpand{0%{transform:scale(.5);opacity:.5}100%{transform:scale(1.8);opacity:0}}
-.legal-grid{display:grid;gap:16px;position:relative;z-index:1}
-.legal-box{background:rgba(255,255,255,.82);border-radius:20px;padding:26px 22px;border:1px solid rgba(255,255,255,.9);box-shadow:0 6px 24px rgba(91,154,200,.1);backdrop-filter:blur(8px);transition:transform .4s ease,box-shadow .4s ease}
-.legal-box:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(91,154,200,.14)}
-.legal-box-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed rgba(91,154,200,.2)}
-.legal-box-header h4{font-size:.92rem;font-weight:700;color:var(--navy);margin:0}
-.legal-float-icon{font-size:1.5rem;flex-shrink:0}
-.legal-list{list-style:none;padding:0;margin:0}
-.legal-list li{font-size:.84rem;line-height:1.95;color:var(--mid);padding:8px 0 8px 22px;border-bottom:1px solid rgba(91,154,200,.08);position:relative}
-.legal-list li:last-child{border-bottom:none;padding-bottom:0}
-.legal-list li::before{content:'🕊';position:absolute;left:0;top:9px;font-size:.58rem;opacity:.5}
-
-/* STAFF */
-#staff{background:#07111F;position:relative;overflow:hidden;padding:0}
-#staff::before{content:'';position:absolute;top:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(91,154,200,.05),transparent 65%);pointer-events:none;z-index:0}
-.staff-border-top{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,.4) 50%,transparent)}
-.staff-border-bottom{height:1px;background:linear-gradient(to right,transparent,rgba(91,154,200,.28) 50%,transparent)}
-.staff-section-inner{max-width:480px;margin:0 auto;position:relative;z-index:1;padding:56px 24px}
-#staff .section-eyebrow{color:rgba(200,168,75,.72);letter-spacing:.28em;margin-bottom:6px}
-#staff .section-title{color:#fff;font-family:var(--display);font-size:clamp(1.7rem,4vw,2.4rem);font-weight:300}
-#staff .section-line{background:linear-gradient(to right,rgba(200,168,75,.38),rgba(91,154,200,.2) 50%,transparent);margin-bottom:36px}
-.founder-img-block{position:relative;overflow:hidden;border-radius:2px}
-.founder-img-block img{width:100%;height:400px;object-fit:cover;object-position:top;display:block;transition:transform .8s ease;filter:brightness(.87) contrast(1.06)}
-.founder-img-block:hover img{transform:scale(1.02)}
-.founder-img-block::before{content:'';position:absolute;inset:0;border:1px solid rgba(200,168,75,.12);z-index:2;pointer-events:none}
-.founder-img-block::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,rgba(7,17,31,.97));z-index:1;pointer-events:none}
-.founder-img-text{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:26px 22px}
-.founder-gold-line{width:26px;height:1px;background:rgba(200,168,75,.65);margin-bottom:12px}
-.founder-role-label{font-family:var(--label);font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(200,168,75,.65);margin-bottom:6px;display:block}
-.founder-name-big{font-family:var(--display);font-size:clamp(2.8rem,9vw,4.2rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:.04em;margin-bottom:8px}
-.founder-location{font-family:var(--label);font-size:.56rem;letter-spacing:.15em;color:rgba(184,216,240,.45)}
-.founder-sep{display:flex;align-items:center;background:#07111F;padding:0 24px}
-.founder-sep-line{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,75,.22),rgba(91,154,200,.12))}
-.founder-sep-line-r{flex:1;height:1px;background:linear-gradient(to left,rgba(200,168,75,.22),rgba(91,154,200,.12))}
-.founder-sep-center{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#07111F;font-size:.7rem;opacity:.4}
-.founder-text-block{background:#07111F;padding:24px 24px 32px}
-.founder-text-block p{font-family:var(--serif);font-size:.85rem;line-height:2.3;color:rgba(255,255,255,.62);margin-bottom:16px;overflow-wrap:break-word}
-.founder-text-block p:last-of-type{margin-bottom:0}
-.founder-text-block .hl{color:rgba(184,216,240,.88);font-style:italic}
-.founder-signature{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid rgba(200,168,75,.09)}
-.founder-signature-name{font-family:var(--display);font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.5);letter-spacing:.08em;font-style:italic}
-.founder-signature-dot{width:4px;height:4px;border-radius:50%;background:rgba(200,168,75,.4)}
-.founder-reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
-.founder-reveal-left.visible{opacity:1;transform:translateX(0)}
-.founder-reveal-up{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-.founder-reveal-up.visible{opacity:1;transform:translateY(0)}
-.founder-reveal-up-2{opacity:0;transform:translateY(24px);transition:opacity .8s ease .15s,transform .8s ease .15s}
-.founder-reveal-up-2.visible{opacity:1;transform:translateY(0)}
-.founder-reveal-up-3{opacity:0;transform:translateY(24px);transition:opacity .8s ease .3s,transform .8s ease .3s}
-.founder-reveal-up-3.visible{opacity:1;transform:translateY(0)}
-
-/* PARTNER */
-#partner{background:linear-gradient(160deg,#0D2137,#1A3A58);padding:56px 24px;position:relative;overflow:hidden}
-#partner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%)}
-#partner .section-eyebrow{color:rgba(200,168,75,.75)}
-#partner .section-title{color:#fff}
-#partner .section-line{background:linear-gradient(to right,rgba(200,168,75,.38),transparent)}
-.partner-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px}
-.partner-card p{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.78);line-height:2;margin-bottom:16px}
-.partner-features{display:grid;gap:9px}
-.partner-feat{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(255,255,255,.78)}
-.partner-feat-gold{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(200,168,75,.9);font-weight:600}
-
-/* CONTACT */
-#contact{background:var(--navy);color:#fff;text-align:center;position:relative;overflow:hidden;padding:80px 24px}
-#contact::before{content:'YUU';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:22vw;font-weight:300;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none}
-.contact-inner{position:relative;z-index:1;max-width:520px;margin:0 auto}
-#contact .section-eyebrow{color:rgba(184,216,240,.75)}
-#contact .section-title{color:#fff}
-#contact .section-line{background:linear-gradient(to right,rgba(184,216,240,.38),transparent);margin:0 auto 26px}
-.consult-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px;margin-bottom:26px;text-align:left}
-.consult-box h3{font-family:var(--serif);font-size:.98rem;color:#fff;margin-bottom:14px;text-align:center;font-weight:400}
-.consult-item{display:flex;align-items:center;gap:8px;font-size:.83rem;color:rgba(255,255,255,.82);margin-bottom:9px}
-.consult-note{font-size:.76rem;color:rgba(255,255,255,.4);text-align:center;margin-top:12px;font-style:italic}
-.contact-lead{font-family:var(--serif);font-size:.92rem;line-height:2;color:rgba(255,255,255,.68);margin-bottom:26px}
-.line-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 38px;background:#06C755;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;margin-bottom:13px;box-shadow:0 4px 18px rgba(6,199,85,.32)}
-.line-btn:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(6,199,85,.4)}
-.linkedin-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 30px;color:#fff;font-family:var(--label);font-size:.68rem;font-weight:500;letter-spacing:.13em;text-decoration:none;border-radius:40px;transition:transform .3s,box-shadow .3s;margin-bottom:13px}
-.linkedin-btn:hover{transform:translateY(-2px)}
-.social-link{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border:1px solid rgba(184,216,240,.25);color:rgba(255,255,255,.8);text-decoration:none;font-family:var(--label);font-size:.65rem;letter-spacing:.11em;border-radius:6px;transition:background .3s,border-color .3s}
-.social-link:hover{background:rgba(91,154,200,.25);border-color:rgba(91,154,200,.4)}
-
-/* DATA BAR */
-.data-bar{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
-.data-bar.visible{transform:scaleX(1)}
-
-/* NEON LINE */
-.neon-line{height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.35),rgba(200,168,75,.25),rgba(91,154,200,.35),transparent);animation:neonGlow 3s ease-in-out infinite}
-@keyframes neonGlow{0%,100%{opacity:.4}50%{opacity:1}}
-
-/* FOOTER */
-footer{background:#04090F;color:rgba(255,255,255,.32);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:.58rem;letter-spacing:.1em}
-.footer-logo{display:flex;align-items:center;gap:8px}
-.footer-logo img{width:24px;height:24px;border-radius:50%;opacity:.55}
-.footer-logo-text{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.48)}
-.footer-logo-text span{color:var(--blue)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{padding:10px 14px}
-  .nav-links{display:none}
-  .section-wrap{padding:48px 16px}
-  .hero-model-yui img,.hero-model-haruto img{height:80vh}
-  .why-benefits{grid-template-columns:1fr}
-  .benefit-card{display:flex;align-items:center;gap:14px;text-align:left;padding:15px}
-  .benefit-icon{font-size:1.5rem;margin-bottom:0;flex-shrink:0;animation:none}
-  .ai-merits{grid-template-columns:1fr 1fr}
-  .pricing-grid{grid-template-columns:1fr 1fr}
-  .price-card{padding:16px 12px}
-  .price-amount{font-size:1.7rem}
-  .models-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .model-img-wrap img{height:190px}
-  footer{flex-direction:column;gap:6px;text-align:center}
-  .founder-img-block img{height:320px}
-  .founder-name-big{font-size:2.8rem}
-}
-
-/* ===== 代表挨拶テキスト改善 ===== */
-.founder-text-block{
-  background:#07111F;
-  padding:32px 28px 40px;
-  position:relative;
-}
-.founder-text-block::before{
-  content:'';position:absolute;top:0;left:28px;right:28px;height:1px;
-  background:linear-gradient(to right,rgba(91,154,200,.05),rgba(91,154,200,.2) 50%,rgba(91,154,200,.05));
-}
-.founder-text-block p{
-  font-family:var(--serif);
-  font-size:.92rem;
-  line-height:2.6;
-  color:rgba(255,255,255,.72);
-  margin-bottom:20px;
-  overflow-wrap:break-word;
-  letter-spacing:.02em;
-}
-.founder-text-block p:last-of-type{margin-bottom:0}
-.founder-text-block .hl{
-  color:rgba(184,216,240,.92);
-  font-style:italic;
-  border-bottom:1px solid rgba(91,154,200,.3);
-  padding-bottom:1px;
-}
-.founder-signature{
-  display:flex;justify-content:flex-end;align-items:center;
-  gap:10px;margin-top:28px;padding-top:20px;
-  border-top:1px solid rgba(200,168,75,.12);
-}
-.founder-signature-name{
-  font-family:var(--display);font-size:1.15rem;font-weight:300;
-  color:rgba(255,255,255,.58);letter-spacing:.1em;font-style:italic;
-}
-.founder-signature-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:rgba(200,168,75,.4);
-}
-
-/* legalアイコンアニメーション */
-@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.legal-float-icon{animation:iconFloat 3s ease-in-out infinite}
-
-
-/* ===== スワイプヒント 目立つバージョン ===== */
-.swipe-hint-bar{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  margin-top:14px;padding:10px 20px;
-  background:linear-gradient(135deg,rgba(91,154,200,.1),rgba(91,154,200,.06));
-  border:1px solid rgba(91,154,200,.25);border-radius:30px;
-  width:fit-content;margin-left:auto;margin-right:auto;
-}
-.swipe-arrow{
-  font-size:1rem;color:var(--blue);
-  animation:swipeArrow 1.2s ease-in-out infinite;
-  display:inline-block;
-}
-.swipe-arrow:last-child{animation-direction:reverse}
-@keyframes swipeArrow{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(4px);opacity:1}}
-.swipe-text{
-  font-family:var(--label);font-size:.68rem;font-weight:600;
-  letter-spacing:.18em;color:var(--blue);text-transform:uppercase;
-}
-
-/* ===== ページ全体のアニメーション強化 ===== */
-
-/* カードの入場アニメーション強化 */
-.use-case-card{
-  transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease,border-color .3s,background .3s !important;
-}
-.use-case-card:hover{
-  transform:translateY(-6px) scale(1.02) !important;
-  box-shadow:0 16px 36px rgba(26,46,74,.13) !important;
-  border-color:var(--blue) !important;
-  background:#fff !important;
-}
-
-/* モデルカードの画像ズームアップ強化 */
-.model-img-wrap{
-  overflow:hidden;border-radius:10px;
-  box-shadow:0 4px 20px rgba(26,46,74,.1);
-  transition:box-shadow .4s ease;
-}
-.model-img-wrap:hover{box-shadow:0 12px 36px rgba(26,46,74,.18)}
-
-/* benefit-cardのホバー強化 */
-.benefit-card::after{
-  content:'';position:absolute;inset:0;border-radius:14px;
-  background:linear-gradient(135deg,rgba(91,154,200,.06),transparent);
-  opacity:0;transition:opacity .4s ease;pointer-events:none;
-}
-.benefit-card{position:relative}
-.benefit-card:hover::after{opacity:1}
-
-/* price-cardのシャイン */
-@keyframes priceShine{0%{left:-100%}100%{left:200%}}
-.price-card{position:relative;overflow:hidden}
-.price-card::after{
-  content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
-  animation:priceShine 4s ease-in-out infinite;
-}
-
-/* アコーディオンのバウンス */
-.acc-block{transition:box-shadow .3s ease}
-.acc-block:focus-within{box-shadow:0 4px 20px rgba(91,154,200,.12)}
-
-/* voiceカードの入場 */
-.voice-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
-  background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));
-  background-size:200% 100%;animation:gradMove 3s linear infinite;
-}
-@keyframes gradMove{0%{background-position:0% 0}100%{background-position:200% 0}}
-.voice-card{position:relative;border-top:none !important}
-
-/* compareテーブルのハイライト */
-.compare-table td:last-child{
-  position:relative;
-  transition:background .3s ease;
-}
-.compare-table tr:hover td:last-child{background:rgba(91,154,200,.1) !important}
-
-/* セクションタイトルの下線アニメーション */
-.section-line{
-  animation:lineGrow 1s cubic-bezier(.16,1,.3,1) both;
-}
-@keyframes lineGrow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1)}}
-
-/* スクロール中のナビ */
-nav{transition:box-shadow .3s ease,background .3s ease}
-
-/* worryカードのホバー */
-.worry-card{
-  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,border-color .3s !important;
-}
-.worry-card:hover{
-  transform:translateY(-4px) !important;
-  box-shadow:0 10px 24px rgba(26,46,74,.1) !important;
-  border-left-color:rgba(200,100,100,.5) !important;
-}
-
-/* ai-meritのホバー強化 */
-.ai-merit:hover{
-  border-top-color:var(--gold) !important;
-  background:linear-gradient(135deg,#fff,#F0F8FF) !important;
-}
-
-/* legalボックスのホバー */
-.legal-box:hover{
-  border-color:rgba(91,154,200,.3) !important;
-}
-
-/* partner-cardのグロー */
-.partner-card{
-  transition:box-shadow .4s ease,border-color .3s;
-}
-.partner-card:hover{
-  box-shadow:0 8px 32px rgba(91,154,200,.15) !important;
-  border-color:rgba(91,154,200,.25) !important;
-}
-
-
-/* ===== スワイプヒント 大きく目立つ ===== */
-.swipe-hint-bar{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:14px !important;
-  margin-top:18px !important;
-  padding:13px 28px !important;
-  background:linear-gradient(135deg,rgba(91,154,200,.15),rgba(91,154,200,.08)) !important;
-  border:1.5px solid rgba(91,154,200,.35) !important;
-  border-radius:40px !important;
-  width:fit-content !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-  box-shadow:0 4px 16px rgba(91,154,200,.15) !important;
-}
-.swipe-arrow{
-  font-size:1.2rem !important;
-  color:var(--blue) !important;
-  font-weight:700 !important;
-  animation:swipeArrow 1s ease-in-out infinite !important;
-  display:inline-block !important;
-}
-.swipe-arrow:last-child{animation-direction:reverse !important}
-@keyframes swipeArrow{0%,100%{transform:translateX(0);opacity:.4}50%{transform:translateX(5px);opacity:1}}
-.swipe-text{
-  font-family:var(--label) !important;
-  font-size:.75rem !important;
-  font-weight:700 !important;
-  letter-spacing:.2em !important;
-  color:var(--blue) !important;
-  text-transform:uppercase !important;
-}
-
-/* ===== legalアイコンアニメーション確実に ===== */
-.legal-float-icon{
-  animation:iconFloat 3s ease-in-out infinite !important;
-  display:inline-block !important;
-}
-@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-
-/* ===== legal-boxのボーダーアニメーション ===== */
-.legal-box::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));
-  background-size:200% 100%;
-  animation:gradSlide 3s linear infinite;
-  border-radius:20px 20px 0 0;
-}
-.legal-box{position:relative;overflow:hidden}
-@keyframes gradSlide{0%{background-position:0% 0}100%{background-position:200% 0}}
-
-
 .reveal-slide-up{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
 .reveal-slide-up.visible{opacity:1;transform:translateY(0)}
-
+.baw{border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(26,46,74,.12);margin-bottom:20px}
+.baw img{width:100%;height:auto;display:block}
+.wbg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.bc{background:#fff;border-radius:14px;padding:22px 16px;text-align:center;box-shadow:0 4px 20px rgba(26,46,74,.07);border:1px solid rgba(91,154,200,.12);transition:transform .4s,box-shadow .4s;position:relative}
+.bc:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,46,74,.12)}
+.bi{font-size:2rem;margin-bottom:10px;display:block}
+.bt2{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+.bd{font-size:.8rem;color:var(--mid);line-height:1.8}
+.amg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.am{background:#fff;border-radius:12px;padding:16px 14px;text-align:center;border-top:3px solid var(--blue);box-shadow:0 3px 14px rgba(26,46,74,.06);transition:transform .4s,box-shadow .4s}
+.am:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(26,46,74,.1)}
+.ami{font-size:1.6rem;display:block;margin-bottom:8px}
+.amt{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.amd{font-size:.76rem;color:var(--mid);line-height:1.8}
+.wg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.wc{background:#fff;border-left:3px solid rgba(200,100,100,.3);border-radius:10px;padding:16px 14px;font-size:.84rem;color:var(--navy);font-weight:500;transition:transform .3s,box-shadow .3s}
+.wc:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(26,46,74,.08)}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pc{background:#fff;border:1px solid rgba(91,154,200,.15);border-radius:14px;padding:22px 16px;position:relative;transition:transform .4s,box-shadow .4s;display:flex;flex-direction:column;overflow:hidden}
+.pc:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(26,46,74,.1)}
+.pc.ft{background:var(--navy);border-color:var(--navy)}
+.pc.bv{border:2px solid rgba(200,168,75,.4);background:linear-gradient(135deg,#FFFBF0,#FFF8E6)}
+.rb{position:absolute;top:-1px;right:14px;background:var(--blue);color:#fff;font-family:var(--label);font-size:.52rem;font-weight:600;padding:3px 9px;border-radius:0 0 6px 6px}
+.bb{position:absolute;top:-1px;right:14px;background:var(--gold);color:#fff;font-family:var(--label);font-size:.52rem;font-weight:600;padding:3px 9px;border-radius:0 0 6px 6px}
+.pn{font-size:1.1rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:4px;border-bottom:2px solid rgba(91,154,200,.2);padding-bottom:5px;display:inline-block}
+.pc.ft .pn{color:#fff;border-color:rgba(255,255,255,.15)}.pc.bv .pn{color:var(--gold)}
+.pname{font-family:var(--label);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;display:block}
+.pc.ft .pname{color:rgba(184,216,240,.8)}.pc.bv .pname{color:var(--gold)}
+.pa{font-family:var(--display);font-size:2rem;font-weight:300;color:var(--navy);line-height:1;margin-bottom:2px}
+.pc.ft .pa{color:#fff}.pc.bv .pa{color:var(--gold)}
+.pu{font-size:.74rem;color:rgba(26,46,74,.5);margin-bottom:6px}
+.pc.ft .pu{color:rgba(255,255,255,.4)}
+.ps{font-size:.76rem;font-weight:600;color:var(--gold);margin-bottom:10px;display:block;background:rgba(200,168,75,.08);padding:5px 9px;border-radius:8px}
+.pp{font-size:.74rem;color:rgba(26,46,74,.5);margin-bottom:10px}
+.pc.ft .pp{color:rgba(255,255,255,.4)}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:28px 14px;margin-bottom:48px;align-items:start}
+.miw{position:relative;overflow:hidden;border-radius:10px;margin-bottom:12px;box-shadow:0 4px 20px rgba(26,46,74,.1);transition:box-shadow .4s}
+.miw img{width:100%;height:240px;object-fit:cover;object-position:top;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.miw:hover img{transform:scale(1.05)}.miw:hover{box-shadow:0 12px 36px rgba(26,46,74,.18)}
+.mb2{position:absolute;bottom:0;left:0;right:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(10,25,55,.68));font-family:var(--serif);font-size:.88rem;color:#fff;border-radius:0 0 10px 10px}
+.mn{font-family:var(--serif);font-size:1.45rem;font-weight:300;margin-bottom:2px;margin-top:10px;color:var(--navy)}
+.ms{font-family:var(--label);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block}
+.mpg{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px}
+.pi{background:rgba(91,154,200,.07);padding:7px 9px;border-radius:5px}
+.pl{font-family:var(--label);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:2px}
+.pv{font-size:.82rem;font-weight:600;color:var(--navy)}
+.mat{font-family:var(--label);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:5px;display:block}
+.mtg{display:flex;flex-wrap:wrap;gap:4px}
+.tag{padding:3px 9px;border:1px solid rgba(91,154,200,.22);font-family:var(--label);font-size:.52rem;color:var(--blue);border-radius:20px;background:rgba(91,154,200,.04)}
+.ab{margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(91,154,200,.14)}
+.ah{display:flex;align-items:center;cursor:pointer;background:#fff;border:none;width:100%;padding:0;min-height:105px;transition:background .2s}
+.ah:hover{background:#F8FBFF}
+.ac{width:105px;height:105px;object-fit:cover;flex-shrink:0;display:block}
+.at{font-family:var(--serif);font-size:.93rem;color:var(--navy);padding:0 14px;flex:1;text-align:left}
+.aa{font-size:.74rem;color:var(--blue);padding-right:14px;transition:transform .3s;flex-shrink:0}
+.aa.open{transform:rotate(180deg)}
+.abody{display:none;padding:10px;background:#F5FAFF}
+.abody.open{display:block}
+.agd{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ci{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:3/4}
+.ci img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.ci:hover img{transform:scale(1.06)}
+.cl{position:absolute;bottom:0;left:0;right:0;padding:18px 10px 8px;background:linear-gradient(transparent,rgba(10,25,55,.65));color:#fff;font-size:.72rem;font-weight:500;text-align:center}
+.ucs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:none;margin-top:32px}
+.ucs::-webkit-scrollbar{display:none}
+.uci{display:flex;gap:12px}
+.ucc{background:rgba(91,154,200,.06);border:1px solid rgba(91,154,200,.14);border-radius:12px;padding:18px 14px;min-width:148px;flex-shrink:0;transition:transform .4s,box-shadow .4s,border-color .3s,background .3s}
+.ucc:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 36px rgba(26,46,74,.13);border-color:var(--blue);background:#fff}
+.ucn{font-family:var(--display);font-size:1.5rem;font-weight:300;color:rgba(91,154,200,.35);line-height:1;margin-bottom:7px}
+.ucc h4{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+.ucc p{font-size:.73rem;color:var(--mid);line-height:1.7}
+.vi{max-width:640px;margin:0 auto}
+.vc{background:#fff;border-radius:16px;padding:34px 26px 30px;box-shadow:0 6px 28px rgba(26,46,74,.08);position:relative;margin-bottom:20px;transition:transform .4s,box-shadow .4s;overflow:hidden}
+.vc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));background-size:200% 100%;animation:gm 3s linear infinite}
+@keyframes gm{0%{background-position:0%}100%{background-position:200%}}
+.vc:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(26,46,74,.12)}
+.vq{font-size:5rem;color:rgba(91,154,200,.1);line-height:1;position:absolute;top:12px;left:16px;font-family:var(--display);pointer-events:none}
+.vt{font-family:var(--serif);font-size:1.1rem;line-height:2;color:var(--navy);margin:22px 0 18px}
+.vd{width:30px;height:2px;background:var(--blue);margin-bottom:14px;opacity:.4}
+.vm{display:flex;align-items:center;gap:10px}
+.vav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.vc2{font-size:.86rem;font-weight:700;color:var(--navy);margin:0}
+.vdet{font-size:.72rem;color:rgba(26,46,74,.5);margin:2px 0 0}
+.vn{font-size:.68rem;color:rgba(26,46,74,.35);margin-top:16px;text-align:center}
+#philosophy{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:80px 24px}
+#philosophy::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%)}
+.phi{position:relative;z-index:1;max-width:480px;margin:0 auto;text-align:center}
+.phc{font-family:var(--display);font-size:clamp(2.4rem,8vw,3.8rem);font-weight:300;color:#fff;line-height:1.5;letter-spacing:.08em;margin-bottom:28px}
+.phd{width:36px;height:1px;background:rgba(184,216,240,.25);margin:0 auto 24px}
+.pht{font-family:var(--serif);font-size:.88rem;line-height:2.4;color:rgba(255,255,255,.68)}
+.pht .hl{color:#8FCAF0;font-style:italic}
+.phs{margin-top:24px;color:rgba(255,255,255,.35);font-family:var(--label);font-size:.58rem;letter-spacing:.18em}
+#legal{background:linear-gradient(145deg,#C8E8FF 0%,#EAF6FF 55%,#F2FBFF 100%);position:relative;overflow:hidden}
+.lr{position:absolute;border-radius:50%;pointer-events:none;animation:re ease-out infinite;opacity:0}
+.lr1{width:200px;height:200px;top:10%;left:-50px;border:1px solid rgba(91,154,200,.18);animation-duration:6s}
+.lr2{width:300px;height:300px;top:30%;right:-80px;border:1px solid rgba(91,154,200,.12);animation-duration:8s;animation-delay:2s}
+@keyframes re{0%{transform:scale(.5);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+.lg{display:grid;gap:16px;position:relative;z-index:1}
+.lb{background:rgba(255,255,255,.82);border-radius:20px;padding:26px 22px;border:1px solid rgba(255,255,255,.9);box-shadow:0 6px 24px rgba(91,154,200,.1);backdrop-filter:blur(8px);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden}
+.lb::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));background-size:200% 100%;animation:gm 3s linear infinite;border-radius:20px 20px 0 0}
+.lb:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(91,154,200,.14)}
+.lbh{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed rgba(91,154,200,.2)}
+.lbh h4{font-size:.92rem;font-weight:700;color:var(--navy);margin:0}
+.lfi{font-size:1.5rem;flex-shrink:0;animation:iF 3s ease-in-out infinite;display:inline-block}
+@keyframes iF{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.ll{list-style:none;padding:0;margin:0}
+.ll li{font-size:.84rem;line-height:1.95;color:var(--mid);padding:8px 0 8px 22px;border-bottom:1px solid rgba(91,154,200,.08);position:relative}
+.ll li:last-child{border-bottom:none;padding-bottom:0}
+.ll li::before{content:'🕊';position:absolute;left:0;top:9px;font-size:.58rem;opacity:.5}
+#staff{background:#07111F;position:relative;overflow:hidden;padding:0}
+.sbt{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,.4) 50%,transparent)}
+.sbb{height:1px;background:linear-gradient(to right,transparent,rgba(91,154,200,.28) 50%,transparent)}
+.ssi{max-width:480px;margin:0 auto;position:relative;z-index:1;padding:56px 24px}
+#staff .ey{color:rgba(200,168,75,.72);letter-spacing:.28em;margin-bottom:6px}
+#staff .st{color:#fff;font-family:var(--display);font-size:clamp(1.7rem,4vw,2.4rem);font-weight:300}
+#staff .sl{background:linear-gradient(to right,rgba(200,168,75,.38),rgba(91,154,200,.2) 50%,transparent);margin-bottom:36px}
+.fib{position:relative;overflow:hidden;border-radius:2px}
+.fib img{width:100%;height:400px;object-fit:cover;object-position:top;display:block;transition:transform .8s;filter:brightness(.87) contrast(1.06)}
+.fib:hover img{transform:scale(1.02)}
+.fib::before{content:'';position:absolute;inset:0;border:1px solid rgba(200,168,75,.12);z-index:2;pointer-events:none}
+.fib::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,rgba(7,17,31,.97));z-index:1;pointer-events:none}
+.fit{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:26px 22px}
+.fgl{width:26px;height:1px;background:rgba(200,168,75,.65);margin-bottom:12px}
+.frl{font-family:var(--label);font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(200,168,75,.65);margin-bottom:6px;display:block}
+.fnb{font-family:var(--display);font-size:clamp(2.8rem,9vw,4.2rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:.04em;margin-bottom:8px}
+.floc{font-family:var(--label);font-size:.56rem;letter-spacing:.15em;color:rgba(184,216,240,.45)}
+.fsep{display:flex;align-items:center;background:#07111F;padding:0 24px}
+.fsl{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,75,.22),rgba(91,154,200,.12))}
+.fslr{flex:1;height:1px;background:linear-gradient(to left,rgba(200,168,75,.22),rgba(91,154,200,.12))}
+.fsc{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#07111F;font-size:.7rem;opacity:.4}
+.ftb{background:#07111F;padding:32px 28px 40px;position:relative}
+.ftb::before{content:'';position:absolute;top:0;left:28px;right:28px;height:1px;background:linear-gradient(to right,rgba(91,154,200,.05),rgba(91,154,200,.2) 50%,rgba(91,154,200,.05))}
+.ftb p{font-family:var(--serif);font-size:.92rem;line-height:2.6;color:rgba(255,255,255,.72);margin-bottom:20px;overflow-wrap:break-word;letter-spacing:.02em}
+.ftb p:last-of-type{margin-bottom:0}
+.ftb .hl{color:rgba(184,216,240,.92);font-style:italic;border-bottom:1px solid rgba(91,154,200,.3);padding-bottom:1px}
+.fsig{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid rgba(200,168,75,.12)}
+.fsn{font-family:var(--display);font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.58);letter-spacing:.1em;font-style:italic}
+.fsd{width:5px;height:5px;border-radius:50%;background:rgba(200,168,75,.4)}
+.frl2{opacity:0;transform:translateX(-30px);transition:opacity .9s,transform .9s cubic-bezier(.16,1,.3,1)}
+.frl2.visible{opacity:1;transform:translateX(0)}
+.fru{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.fru.visible{opacity:1;transform:translateY(0)}
+.fru2{opacity:0;transform:translateY(24px);transition:opacity .8s .15s,transform .8s .15s}
+.fru2.visible{opacity:1;transform:translateY(0)}
+.fru3{opacity:0;transform:translateY(24px);transition:opacity .8s .3s,transform .8s .3s}
+.fru3.visible{opacity:1;transform:translateY(0)}
+#company{background:linear-gradient(160deg,#0D1E32,#1A3050);padding:56px 24px}
+.ci2{max-width:480px;margin:0 auto}
+#company .ey{color:rgba(200,168,75,.75)}
+#company .st{color:#fff}
+#company .sl{background:linear-gradient(to right,rgba(200,168,75,.38),transparent)}
+.ctbl{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-bottom:24px}
+.cr{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)}
+.cr:last-child{border-bottom:none}
+.ck{padding:13px 14px;font-family:var(--label);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center}
+.cv{padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.82);line-height:1.7}
+.prof-box{padding:22px;background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(200,168,75,.15)}
+.prof-title{font-family:var(--label);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,168,75,.7);margin-bottom:14px;display:block}
+.prow{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.prow:last-child{border-bottom:none}
+.pdot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px;opacity:.7}
+.ptxt{font-size:.84rem;color:rgba(255,255,255,.75);line-height:1.7}
+#partner{background:linear-gradient(160deg,#0D2137,#1A3A58);padding:56px 24px;position:relative;overflow:hidden}
+#partner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%)}
+#partner .ey{color:rgba(200,168,75,.75)}
+#partner .st{color:#fff}
+#partner .sl{background:linear-gradient(to right,rgba(200,168,75,.38),transparent)}
+.pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px;transition:box-shadow .4s,border-color .3s}
+.pcard:hover{box-shadow:0 8px 32px rgba(91,154,200,.15);border-color:rgba(91,154,200,.25)}
+.pcard p{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.78);line-height:2;margin-bottom:16px}
+.pf{display:grid;gap:9px}
+.pfi{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(255,255,255,.78)}
+.pfg{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(200,168,75,.9);font-weight:600}
+#contact{background:var(--navy);color:#fff;text-align:center;position:relative;overflow:hidden;padding:80px 24px}
+#contact::before{content:'YUU';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:22vw;font-weight:300;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none}
+.coi{position:relative;z-index:1;max-width:520px;margin:0 auto}
+#contact .ey{color:rgba(184,216,240,.75)}
+#contact .st{color:#fff}
+#contact .sl{background:linear-gradient(to right,rgba(184,216,240,.38),transparent);margin:0 auto 26px}
+.cob{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px;margin-bottom:26px;text-align:left}
+.cob h3{font-family:var(--serif);font-size:.98rem;color:#fff;margin-bottom:14px;text-align:center;font-weight:400}
+.coi2{display:flex;align-items:center;gap:8px;font-size:.83rem;color:rgba(255,255,255,.82);margin-bottom:9px}
+.con{font-size:.76rem;color:rgba(255,255,255,.4);text-align:center;margin-top:12px;font-style:italic}
+.col{font-family:var(--serif);font-size:.92rem;line-height:2;color:rgba(255,255,255,.68);margin-bottom:26px}
+.lb2{display:inline-flex;align-items:center;gap:8px;padding:14px 38px;background:#06C755;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:transform .3s,box-shadow .3s;margin-bottom:13px;box-shadow:0 4px 18px rgba(6,199,85,.32)}
+.lb2:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(6,199,85,.4)}
+.lib{display:inline-flex;align-items:center;gap:8px;padding:11px 30px;color:#fff;font-family:var(--label);font-size:.68rem;font-weight:500;letter-spacing:.13em;text-decoration:none;border-radius:40px;transition:transform .3s;margin-bottom:13px}
+.lib:hover{transform:translateY(-2px)}
+.sl2{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border:1px solid rgba(184,216,240,.25);color:rgba(255,255,255,.8);text-decoration:none;font-family:var(--label);font-size:.65rem;letter-spacing:.11em;border-radius:6px;transition:background .3s,border-color .3s}
+.sl2:hover{background:rgba(91,154,200,.25);border-color:rgba(91,154,200,.4)}
+.db{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.db.visible{transform:scaleX(1)}
+.nl{height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.35),rgba(200,168,75,.25),rgba(91,154,200,.35),transparent);animation:ng 3s ease-in-out infinite}
+@keyframes ng{0%,100%{opacity:.4}50%{opacity:1}}
+.gc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);transition:background .3s,border-color .3s}
+.gc:hover{background:rgba(255,255,255,.08);border-color:rgba(91,154,200,.25)}
+footer{background:#04090F;color:rgba(255,255,255,.32);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:.58rem;letter-spacing:.1em}
+.flogo{display:flex;align-items:center;gap:8px}
+.flogo img{width:24px;height:24px;border-radius:50%;opacity:.55}
+.flt{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.48)}
+.flt span{color:var(--blue)}
+@media(max-width:768px){
+  nav{padding:10px 14px}.nav-links{display:none}.sw{padding:48px 16px}
+  .hero-model-yui img,.hero-model-haruto img{height:80vh}
+  .wbg{grid-template-columns:1fr}.bc{display:flex;align-items:center;gap:14px;text-align:left;padding:15px}.bi{font-size:1.5rem;margin-bottom:0;flex-shrink:0}
+  .pg{grid-template-columns:1fr 1fr}.pc{padding:16px 12px}.pa{font-size:1.7rem}
+  .mg{grid-template-columns:1fr 1fr;gap:12px}.miw img{height:190px}
+  footer{flex-direction:column;gap:6px;text-align:center}
+  .fib img{height:320px}.fnb{font-size:2.8rem}
+  .cr{grid-template-columns:80px 1fr}.ck{font-size:.5rem;padding:11px 10px}.cv{padding:11px 10px;font-size:.8rem}
+}
 </style>
 </head>
 <body>
@@ -564,91 +271,67 @@ nav{transition:box-shadow .3s ease,background .3s ease}
   <ul class="nav-links"><li><a href="#why">Why?</a></li><li><a href="#compare">比較</a></li><li><a href="#voice">Voice</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#models">Models</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
 </nav>
 
-<section id="hero"><div class="scan-overlay"></div>
-  <canvas id="particle-canvas"></canvas>
+<section id="hero">
   <div class="gold-rain" id="goldRain"></div>
   <div class="hero-light"></div>
-  <div class="hero-light2"></div>
   <div class="floaters" id="floaters"></div>
   <div class="scroll-indicator"><div class="scroll-dot"></div><div class="scroll-dot"></div><div class="scroll-dot"></div></div>
   <div class="hero-models">
     <div class="hero-model-yui"><img src="https://i.imgur.com/1OJ17Aq.png" alt=""></div>
     <div class="hero-model-haruto"><img src="https://i.imgur.com/3drpd9D.png" alt=""></div>
     <div class="hero-overlay">
-      <p class="catch-main" style="text-align:left;padding-left:8%">撮影不要で、<br><span style="padding-left:1.8em">採用・広告を</span><br><span style="padding-left:3.6em">プロ品質へ。</span></p>
-      <span class="catch-icon" style="font-size:.55rem;letter-spacing:.14em"><span>🌿</span><span>不動産 · 建設 · 医療 · 介護向け</span><span>🕊</span></span>
+      <p class="catch-main">撮影不要で、<br><span style="padding-left:1.8em">採用・広告を</span><br><span style="padding-left:3.6em">プロ品質へ。</span></p>
+      <span class="catch-icon"><span>🌿</span><span>不動産 · 建設 · 医療 · 介護向け</span><span>🕊</span></span>
     </div>
   </div>
-
 </section>
 
-<!-- 実績数字 -->
 <div style="background:linear-gradient(135deg,#1A2E4A,#2A4870);padding:40px 20px;position:relative;overflow:hidden">
   <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.4),rgba(200,168,75,.3),rgba(91,154,200,.4),transparent);position:absolute;top:0;left:0;right:0"></div>
   <p style="font-family:var(--label);font-size:.58rem;letter-spacing:.22em;color:rgba(91,154,200,.6);text-align:center;margin-bottom:20px">SERVICE DATA</p>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center;max-width:560px;margin:0 auto">
-    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)">
-      <div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="8">0</span><span style="font-size:1.2rem">名</span></div>
-      <p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">AIモデル</p>
-      <div class="data-bar" style="margin-top:10px;width:80%;margin-left:auto;margin-right:auto"></div>
-    </div>
-    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)">
-      <div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="0">0</span><span style="font-size:1.1rem">円</span></div>
-      <p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">撮影費</p>
-      <div class="data-bar" style="margin-top:10px;width:100%"></div>
-    </div>
-    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)">
-      <div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="24">0</span><span style="font-size:1.1rem">h</span></div>
-      <p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">対応時間</p>
-      <div class="data-bar" style="margin-top:10px;width:65%;margin-left:auto;margin-right:auto"></div>
-    </div>
+    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)"><div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="8">0</span><span style="font-size:1.2rem">名</span></div><p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">AIモデル</p><div class="db" style="margin-top:10px;width:80%;margin-left:auto;margin-right:auto"></div></div>
+    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)"><div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="0">0</span><span style="font-size:1.1rem">円</span></div><p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">撮影費</p><div class="db" style="margin-top:10px;width:100%"></div></div>
+    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)"><div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="24">0</span><span style="font-size:1.1rem">h</span></div><p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">対応時間</p><div class="db" style="margin-top:10px;width:65%;margin-left:auto;margin-right:auto"></div></div>
   </div>
   <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.4),rgba(200,168,75,.3),rgba(91,154,200,.4),transparent);position:absolute;bottom:0;left:0;right:0"></div>
 </div>
 
-<section class="section-wrap" id="why" style="background:linear-gradient(160deg,#E8F4FF,#F5FAFF)">
-  <div class="section-inner">
-    <span class="section-eyebrow reveal">Why YUU?</span>
-    <h2 class="section-title reveal">こんなお悩みありませんか？</h2>
-    <div class="section-line reveal"></div>
-    <div class="worry-grid reveal">
-      <div class="worry-card">🍃 HPの人物写真が<br>古くてバラバラ</div>
-      <div class="worry-card">🍃 モデル撮影費が<br>高すぎる</div>
-      <div class="worry-card">🍃 採用ページの<br>写真が弱い</div>
-      <div class="worry-card">🍃 広告費を<br>もっと削減したい</div>
+<section class="sw" id="why" style="background:linear-gradient(160deg,#E8F4FF,#F5FAFF)">
+  <div class="si">
+    <span class="ey reveal">Why YUU?</span><h2 class="st reveal">こんなお悩みありませんか？</h2><div class="sl reveal"></div>
+    <div class="wg reveal">
+      <div class="wc">🍃 HPの人物写真が<br>古くてバラバラ</div><div class="wc">🍃 モデル撮影費が<br>高すぎる</div>
+      <div class="wc">🍃 採用ページの<br>写真が弱い</div><div class="wc">🍃 広告費を<br>もっと削減したい</div>
     </div>
-    <p class="body-text reveal" style="text-align:center;font-weight:700;color:var(--navy);font-size:1.05rem;margin-bottom:20px">↓ YUUなら、こう変わります</p>
-    <div class="before-after-wrap reveal"><img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before After 1" loading="lazy"></div>
-    <div class="before-after-wrap reveal" style="margin-top:14px"><img src="https://i.imgur.com/kdxljCc.jpeg" alt="Before After 2" loading="lazy"></div>
-    <div class="why-benefits" style="margin-top:32px">
-      <div class="benefit-card reveal"><span class="benefit-icon">💡</span><p class="benefit-title">印象が強くなる</p><p class="benefit-desc">透明感と洗練されたビジュアルで、見る人の記憶に深く刻まれるブランドへ。</p></div>
-      <div class="benefit-card reveal"><span class="benefit-icon">🤝</span><p class="benefit-title">信頼感が高まる</p><p class="benefit-desc">誠実さと清潔感のある世界観が、クライアントとの信頼関係を自然に構築します。</p></div>
-      <div class="benefit-card reveal"><span class="benefit-icon">🌟</span><p class="benefit-title">記憶に残りやすい</p><p class="benefit-desc">「なんとなく好き」を設計するYUUのビジュアルが、ブランド価値を最大化します。</p></div>
+    <p class="bt reveal" style="text-align:center;font-weight:700;color:var(--navy);font-size:1.05rem;margin-bottom:20px">↓ YUUなら、こう変わります</p>
+    <div class="baw reveal"><img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before After 1" loading="lazy"></div>
+    <div class="baw reveal" style="margin-top:14px"><img src="https://i.imgur.com/kdxljCc.jpeg" alt="Before After 2" loading="lazy"></div>
+    <div class="wbg" style="margin-top:32px">
+      <div class="bc reveal"><span class="bi">💡</span><p class="bt2">印象が強くなる</p><p class="bd">透明感と洗練されたビジュアルで、見る人の記憶に深く刻まれるブランドへ。</p></div>
+      <div class="bc reveal"><span class="bi">🤝</span><p class="bt2">信頼感が高まる</p><p class="bd">誠実さと清潔感のある世界観が、クライアントとの信頼関係を自然に構築します。</p></div>
+      <div class="bc reveal"><span class="bi">🌟</span><p class="bt2">記憶に残りやすい</p><p class="bd">「なんとなく好き」を設計するYUUのビジュアルが、ブランド価値を最大化します。</p></div>
     </div>
-    <div class="ai-merits" style="margin-top:20px">
-      <div class="ai-merit reveal"><span class="ai-merit-icon">📷</span><p class="ai-merit-title">撮影不要</p><p class="ai-merit-desc">スタジオ・カメラマン手配は不要。</p></div>
-      <div class="ai-merit reveal"><span class="ai-merit-icon">🚌</span><p class="ai-merit-title">交通費ゼロ</p><p class="ai-merit-desc">出張・移動のコストを大幅カット。</p></div>
-      <div class="ai-merit reveal"><span class="ai-merit-icon">⏰</span><p class="ai-merit-title">24時間制作OK</p><p class="ai-merit-desc">いつでもスピーディにモデルを用意。</p></div>
-      <div class="ai-merit reveal"><span class="ai-merit-icon">☀️</span><p class="ai-merit-title">天候に左右されない</p><p class="ai-merit-desc">雨・雪・暑さの影響なく理想の撮影が可能。</p></div>
+    <div class="amg" style="margin-top:20px">
+      <div class="am reveal"><span class="ami">📷</span><p class="amt">撮影不要</p><p class="amd">スタジオ・カメラマン手配は不要。</p></div>
+      <div class="am reveal"><span class="ami">🚌</span><p class="amt">交通費ゼロ</p><p class="amd">出張・移動のコストを大幅カット。</p></div>
+      <div class="am reveal"><span class="ami">⏰</span><p class="amt">24時間制作OK</p><p class="amd">いつでもスピーディにモデルを用意。</p></div>
+      <div class="am reveal"><span class="ami">☀️</span><p class="amt">天候に左右されない</p><p class="amd">雨・雪・暑さの影響なく理想の撮影が可能。</p></div>
     </div>
   </div>
 </section>
 
-<section class="section-wrap" id="compare" style="padding:40px 20px;background:linear-gradient(160deg,#EAF4FF 0%,#F5F9FF 100%)">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Cost Comparison</p>
-    <h2 class="section-title reveal" style="font-size:clamp(1.2rem,2.5vw,1.8rem)">他社と比較してみてください</h2>
-    <div class="section-line reveal"></div>
+<section class="sw" id="compare" style="padding:40px 20px;background:linear-gradient(160deg,#EAF4FF 0%,#F5F9FF 100%)">
+  <div class="si">
+    <p class="ey reveal">Cost Comparison</p><h2 class="st reveal" style="font-size:clamp(1.2rem,2.5vw,1.8rem)">他社と比較してみてください</h2><div class="sl reveal"></div>
     <div class="reveal" style="overflow:hidden;border-radius:12px;box-shadow:0 4px 20px rgba(26,46,74,.08);font-size:.78rem">
       <table style="width:100%;border-collapse:collapse">
-        <thead>
-          <tr>
-            <th style="padding:10px 8px;background:#F0F6FF;color:var(--blue);font-family:var(--label);font-size:.56rem;letter-spacing:.1em;text-align:left;width:30%"></th>
-            <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;letter-spacing:.08em;text-align:center">従来の撮影</th>
-            <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;letter-spacing:.08em;text-align:center">大手事務所</th>
-            <th style="padding:10px 6px;background:var(--navy);color:var(--gold);font-family:var(--label);font-size:.56rem;letter-spacing:.08em;text-align:center">YUU &amp; Co.<br><span style="font-size:.48rem;color:rgba(200,168,75,.7)">✦ おすすめ</span></th>
-          </tr>
-        </thead>
+        <thead><tr>
+          <th style="padding:10px 8px;background:#F0F6FF;color:var(--blue);font-family:var(--label);font-size:.56rem;text-align:left;width:30%"></th>
+          <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;text-align:center">従来の撮影</th>
+          <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;text-align:center">大手事務所</th>
+          <th style="padding:10px 6px;background:var(--navy);color:var(--gold);font-family:var(--label);font-size:.56rem;text-align:center">YUU &amp; Co.<br><span style="font-size:.48rem;color:rgba(200,168,75,.7)">✦ おすすめ</span></th>
+        </tr></thead>
         <tbody>
           <tr style="border-top:1px solid #EEF3F8"><td style="padding:10px 8px;background:#FAFCFF;color:var(--navy);font-weight:600;font-size:.75rem">月額コスト</td><td style="padding:10px 6px;text-align:center;color:#bbb">20〜100万円</td><td style="padding:10px 6px;text-align:center;color:#bbb">30〜200万円</td><td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.03);color:var(--blue);font-weight:700">49,800円〜</td></tr>
           <tr style="border-top:1px solid #EEF3F8"><td style="padding:10px 8px;background:#F5F9FF;color:var(--navy);font-weight:600;font-size:.75rem">撮影費</td><td style="padding:10px 6px;text-align:center;color:#bbb">10〜50万円</td><td style="padding:10px 6px;text-align:center;color:#bbb">30万円〜</td><td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.05);color:var(--blue);font-weight:700">完全ゼロ</td></tr>
@@ -661,414 +344,250 @@ nav{transition:box-shadow .3s ease,background .3s ease}
   </div>
 </section>
 
-<section class="section-wrap" id="pricing" style="position:relative;overflow:hidden;padding:80px 28px"><div class="tech-grid-bg" style="opacity:.5"></div>
-  <div class="section-inner">
-    <!-- こんなお客様に選ばれています -->
-<div class="reveal-slide-up" style="margin-bottom:32px;padding:28px 24px;background:linear-gradient(135deg,#EAF4FF,#F0F9FF);border-radius:18px;border-left:4px solid var(--blue);position:relative;overflow:hidden">
-  <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(91,154,200,.08),transparent 70%);border-radius:50%"></div>
-  <p style="font-family:var(--label);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-weight:600">For You</p>
-  <h3 style="font-family:var(--serif);font-size:1.15rem;color:var(--navy);margin-bottom:18px;font-weight:400">こんなお客様に選ばれています</h3>
-  <div style="display:grid;gap:10px">
-    <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span style="font-size:1rem">🍃</span>採用広告を強化したい</p>
-    <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span style="font-size:1rem">🍃</span>SNS素材を毎月作りたい</p>
-    <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span style="font-size:1rem">🍃</span>広告バナーを外注したい</p>
-    <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span style="font-size:1rem">🍃</span>パンフレット用素材が欲しい</p>
-    <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span style="font-size:1rem">🍃</span>撮影コストを削減したい</p>
-    <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span style="font-size:1rem">🍃</span>社員の顔出しが難しい</p>
-  </div>
-</div>
-</div>
-    <p class="section-eyebrow reveal">Pricing</p><h2 class="section-title reveal">採用・広告運用プラン</h2><div class="section-line reveal"></div>
-    <!-- 制作できるもの -->
-<div class="reveal-zoom" style="margin-bottom:32px;padding:28px 24px;background:var(--sky);border-radius:16px">
-  <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:12px">What We Make</p>
-  <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--navy);margin-bottom:20px;font-weight:400">制作できるもの</h3>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>採用バナー・求人広告画像</div>
-    <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>SNS投稿画像</div>
-    <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>HP・LP掲載用人物ビジュアル</div>
-    <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>会社案内・パンフレット</div>
-    <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>チラシ・展示会パネル</div>
-    <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>企業PR素材・広告クリエイティブ</div>
-  </div>
-</div>
-    <div class="pricing-intro reveal"><p>撮影費・モデル費・追加費用すべてゼロ。月額で御社のビジュアルを継続サポートします。</p><p class="savings">🎉 4名起用で1名あたり約39,500円！</p></div>
+<section class="sw" id="pricing" style="background:linear-gradient(160deg,#EAF4FF,#F5FAFF);padding:80px 28px">
+  <div class="si">
+    <div class="reveal-slide-up" style="margin-bottom:32px;padding:28px 24px;background:linear-gradient(135deg,#EAF4FF,#F0F9FF);border-radius:18px;border-left:4px solid var(--blue)">
+      <p style="font-family:var(--label);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-weight:600">For You</p>
+      <h3 style="font-family:var(--serif);font-size:1.15rem;color:var(--navy);margin-bottom:18px;font-weight:400">こんなお客様に選ばれています</h3>
+      <div style="display:grid;gap:10px">
+        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>採用広告を強化したい</p>
+        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>SNS素材を毎月作りたい</p>
+        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>広告バナーを外注したい</p>
+        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>パンフレット用素材が欲しい</p>
+        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>撮影コストを削減したい</p>
+        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>社員の顔出しが難しい</p>
+      </div>
+    </div>
+    <p class="ey reveal">Pricing</p><h2 class="st reveal">採用・広告運用プラン</h2><div class="sl reveal"></div>
+    <div class="reveal" style="margin-bottom:32px;padding:24px;background:var(--sky);border-radius:16px">
+      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:12px">What We Make</p>
+      <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--navy);margin-bottom:20px;font-weight:400">制作できるもの</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>採用バナー・求人広告画像</div>
+        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>SNS投稿画像</div>
+        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>HP・LP掲載用人物ビジュアル</div>
+        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>会社案内・パンフレット</div>
+        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>チラシ・展示会パネル</div>
+        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>企業PR素材・広告クリエイティブ</div>
+      </div>
+    </div>
     <div class="reveal" style="background:#fff;border:1px solid rgba(91,154,200,.2);border-radius:10px;padding:18px 20px;margin-bottom:24px">
-      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#5B9AC8;margin-bottom:10px;font-weight:600">全プラン共通</p>
+      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-weight:600">全プラン共通</p>
       <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px">
-        <li style="font-size:.82rem;color:#0d1f35;font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:#5B9AC8;flex-shrink:0">✓</span>月5シーン制作（用途無制限）</li>
+        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月5シーン制作（用途無制限）</li>
         <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>採用・SNS・広告・印刷物など全て使用OK</li>
-        <li style="font-size:.82rem;color:#0d1f35;font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:#5B9AC8;flex-shrink:0">✓</span>月3回まで無料修正対応</li>
-        <li style="font-size:.82rem;color:#0d1f35;font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:#5B9AC8;flex-shrink:0">✓</span>全国オンライン対応</li>
-        <li style="font-size:.82rem;color:#0d1f35;font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:#5B9AC8;flex-shrink:0">✓</span>電子契約（LINEまたはメール）</li>
+        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月3回まで無料修正対応</li>
+        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>全国オンライン対応</li>
+        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>電子契約（LINEまたはメール）</li>
       </ul>
     </div>
-    <!-- 月49800円でできること -->
-<div class="reveal-blur" style="margin-bottom:24px;padding:24px;background:linear-gradient(135deg,#1A2E4A,#2A4870);border-radius:14px">
-  <p style="font-family:var(--label);font-size:.6rem;letter-spacing:.16em;color:rgba(200,168,75,.8);margin-bottom:8px">MERIT</p>
-  <h3 style="font-family:var(--serif);font-size:1.1rem;color:#fff;font-weight:300;margin-bottom:14px">得られるメリット</h3>
-  <div style="display:grid;gap:8px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)">
-    <p style="font-size:.82rem;color:rgba(255,255,255,.85);display:flex;gap:8px"><span style="color:var(--gold)">✨</span>撮影不要で人物素材を継続確保</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.85);display:flex;gap:8px"><span style="color:var(--gold)">✨</span>採用・SNS・広告のビジュアルを統一</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.85);display:flex;gap:8px"><span style="color:var(--gold)">✨</span>社員の顔出し不要</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.85);display:flex;gap:8px"><span style="color:var(--gold)">✨</span>制作スピード向上</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.85);display:flex;gap:8px"><span style="color:var(--gold)">✨</span>外注コスト削減</p>
-  </div>
-  <p style="font-family:var(--label);font-size:.58rem;letter-spacing:.14em;color:rgba(200,168,75,.8);margin-bottom:10px">VALUE · 月49,800円でできること</p>
-  <div style="display:grid;gap:8px">
-    <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>企業イメージに合わせた人物ビジュアル制作</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>採用広告・SNS・LP掲載用・チラシ・パンフレット対応</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>月5カット制作・月3回修正無料</p>
-    <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>全国オンライン対応・追加費用なし</p>
-  </div>
-</div>
-    <div class="pricing-grid">
-      <div class="price-card reveal"><p class="price-num">1名起用</p><p class="price-name">Basic</p><div class="price-amount">¥49,800</div><p class="price-unit">月額（税込）</p><ul style="list-style:none;margin-top:10px;display:grid;gap:5px">
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>月5シーン制作</li>
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>採用・SNS・広告利用可</li>
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>修正3回無料</li>
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>結衣または遥斗を選択</li>
-</ul></div>
-      <div class="price-card featured reveal"><div class="rec-badge">おすすめ</div><p class="price-num">2名起用</p><p class="price-name">Standard</p><div class="price-amount">¥98,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">💰 採用強化・企業紹介向け</p>
-<ul style="list-style:none;margin-top:6px;display:grid;gap:5px">
-<li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>男女1名ずつ起用</li>
-<li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>世界観統一</li>
-<li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>月5シーン・採用・SNS・広告利用可</li>
-</ul><p class="price-per">1名あたり約¥49,000</p></div>
-      <div class="price-card reveal"><p class="price-num">3名起用</p><p class="price-name">Premium</p><div class="price-amount">¥129,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">💰 部署紹介・チーム表現向け</p>
-<ul style="list-style:none;margin-top:6px;display:grid;gap:5px">
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>複数ターゲット対応</li>
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>シーン表現強化</li>
-<li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>月5シーン制作</li>
-</ul><p class="price-per">1名あたり約¥43,000</p></div>
-      <div class="price-card best-value reveal"><div class="best-badge">最大おトク</div><p class="price-num">4名起用</p><p class="price-name">Ultimate</p><div class="price-amount">¥158,000</div><p class="price-unit">月額（税込）</p><p class="price-savings">🎉 企業ブランディング向け</p>
-<ul style="list-style:none;margin-top:6px;display:grid;gap:5px">
-<li style="font-size:.78rem;color:#C87800;display:flex;gap:6px"><span>✅</span>家族・企業・採用すべて対応</li>
-<li style="font-size:.78rem;color:#C87800;display:flex;gap:6px"><span>✅</span>ブランド世界観統一</li>
-<li style="font-size:.78rem;color:#C87800;display:flex;gap:6px"><span>✅</span>最大コスパ</li>
-</ul><p class="price-per">1名あたり約¥39,500</p></div>
+    <div class="reveal" style="margin-bottom:24px;padding:24px;background:linear-gradient(135deg,#1A2E4A,#2A4870);border-radius:14px">
+      <p style="font-family:var(--label);font-size:.6rem;letter-spacing:.16em;color:rgba(200,168,75,.8);margin-bottom:10px">VALUE · 月49,800円でできること</p>
+      <div style="display:grid;gap:8px">
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>企業イメージに合わせた人物ビジュアル制作</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>採用広告・SNS・LP・チラシ・パンフレット対応</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>月5カット制作・月3回修正無料</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>全国オンライン対応・追加費用なし</p>
+      </div>
+    </div>
+    <div class="pg">
+      <div class="pc reveal"><p class="pn">1名起用</p><p class="pname">Basic</p><div class="pa">¥49,800</div><p class="pu">月額（税込）</p><ul style="list-style:none;margin-top:10px;display:grid;gap:5px"><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>月5シーン制作</li><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>採用・SNS・広告利用可</li><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>修正3回無料</li></ul></div>
+      <div class="pc ft reveal"><div class="rb">おすすめ</div><p class="pn">2名起用</p><p class="pname">Standard</p><div class="pa">¥98,000</div><p class="pu">月額（税込）</p><p class="ps">💰 採用強化向け</p><ul style="list-style:none;margin-top:6px;display:grid;gap:5px"><li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>男女1名ずつ起用</li><li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>世界観統一</li></ul><p class="pp">1名あたり約¥49,000</p></div>
+      <div class="pc reveal"><p class="pn">3名起用</p><p class="pname">Premium</p><div class="pa">¥129,000</div><p class="pu">月額（税込）</p><p class="ps">💰 部署紹介向け</p><ul style="list-style:none;margin-top:6px;display:grid;gap:5px"><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>複数ターゲット対応</li></ul><p class="pp">1名あたり約¥43,000</p></div>
+      <div class="pc bv reveal"><div class="bb">最大おトク</div><p class="pn">4名起用</p><p class="pname">Ultimate</p><div class="pa">¥158,000</div><p class="pu">月額（税込）</p><p class="ps">🎉 ブランディング向け</p><ul style="list-style:none;margin-top:6px;display:grid;gap:5px"><li style="font-size:.78rem;color:#C87800;display:flex;gap:6px"><span>✅</span>最大コスパ</li></ul><p class="pp">1名あたり約¥39,500</p></div>
     </div>
   </div>
 </section>
 
-
-
-<section class="section-wrap" id="usecases" style="background:linear-gradient(160deg,#0a1628 0%,#1A2E4A 100%);padding:56px 20px;position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(91,154,200,.07),transparent 55%),radial-gradient(ellipse at 80% 30%,rgba(200,168,75,.05),transparent 55%)"></div>
-  <div class="neon-line" style="position:absolute;top:0;left:0;right:0"></div>
-  <div class="section-inner" style="position:relative;z-index:1">
-    <p class="section-eyebrow reveal" style="color:rgba(200,168,75,.8)">Use Cases</p>
-    <h2 class="section-title reveal" style="color:#fff;font-size:clamp(1.2rem,2.5vw,1.9rem)">ご利用シーン</h2>
-    <div class="section-line reveal" style="background:linear-gradient(to right,rgba(200,168,75,.5),transparent)"></div>
+<section class="sw" id="usecases" style="background:linear-gradient(160deg,#0a1628 0%,#1A2E4A 100%);padding:56px 20px;position:relative;overflow:hidden">
+  <div class="nl" style="position:absolute;top:0;left:0;right:0"></div>
+  <div class="si" style="position:relative;z-index:1">
+    <p class="ey reveal" style="color:rgba(200,168,75,.8)">Use Cases</p><h2 class="st reveal" style="color:#fff">ご利用シーン</h2><div class="sl reveal" style="background:linear-gradient(to right,rgba(200,168,75,.5),transparent)"></div>
     <div style="display:grid;gap:14px">
-      <div class="glass-card reveal" style="border-radius:14px;padding:20px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
-        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏢</div>
-        <div>
-          <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">不動産会社</p>
-          <p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">採用LP・広告バナー・物件紹介ビジュアル・営業資料</p>
-          <div class="data-bar" style="margin-top:10px;width:90%"></div>
-        </div>
-      </div>
-      <div class="glass-card reveal" style="border-radius:14px;padding:20px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
-        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏥</div>
-        <div>
-          <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">介護施設・医療機関</p>
-          <p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">求人広告・会社案内・SNS素材・パンフレット</p>
-          <div class="data-bar" style="margin-top:10px;width:75%"></div>
-        </div>
-      </div>
-      <div class="glass-card reveal" style="border-radius:14px;padding:20px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
-        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🔨</div>
-        <div>
-          <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">建設業・工務店</p>
-          <p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">採用ページ・企業紹介・展示会パネル・求人広告</p>
-          <div class="data-bar" style="margin-top:10px;width:80%"></div>
-        </div>
-      </div>
-      <div class="glass-card reveal" style="border-radius:14px;padding:20px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
-        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🚗</div>
-        <div>
-          <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">自動車販売・EC・アパレル</p>
-          <p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">キャンペーン画像・SNS運用・広告クリエイティブ</p>
-          <div class="data-bar" style="margin-top:10px;width:70%"></div>
-        </div>
-      </div>
+      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏢</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">不動産会社</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">採用LP・広告バナー・物件紹介ビジュアル・営業資料</p><div class="db" style="margin-top:10px;width:90%"></div></div></div>
+      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏥</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">介護施設・医療機関</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">求人広告・会社案内・SNS素材・パンフレット</p><div class="db" style="margin-top:10px;width:75%"></div></div></div>
+      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🔨</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">建設業・工務店</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">採用ページ・企業紹介・展示会パネル・求人広告</p><div class="db" style="margin-top:10px;width:80%"></div></div></div>
+      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🚗</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">自動車販売・EC・アパレル</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">キャンペーン画像・SNS運用・広告クリエイティブ</p><div class="db" style="margin-top:10px;width:70%"></div></div></div>
     </div>
   </div>
-  <div class="neon-line" style="position:absolute;bottom:0;left:0;right:0"></div>
+  <div class="nl" style="position:absolute;bottom:0;left:0;right:0"></div>
 </section>
 
-<section class="section-wrap" id="models">
-  <div class="section-inner">
-    
-</div>
-    <p class="section-eyebrow reveal">Our AI Models</p><h2 class="section-title reveal">Creative Team ─ AIモデル紹介</h2><div class="section-line reveal"></div>
-    <p class="body-text reveal" style="margin-bottom:32px;font-size:.88rem">YUUのAIモデルたちは、実在しないからこそスキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせてあらゆるシーンを制作できます。</p>
-    <div class="models-grid">
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/ooEWqR6.png" alt="結衣" loading="lazy"><div class="model-badge">結衣 / Yui</div></div><h3 class="model-name">結衣 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yui</span></h3><p class="model-sub">Female AI Model · Pro</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">清楚・知的</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">不動産</span><span class="tag">医療</span><span class="tag">採用</span><span class="tag">建設</span><span class="tag">教育</span><span class="tag">飲食</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/IivBXbL.png" alt="遥斗" loading="lazy"><div class="model-badge">遥斗 / Haruto</div></div><h3 class="model-name">遥斗 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3><p class="model-sub">Male AI Model · Executive</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">23歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・プロ</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">不動産</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">採用</span><span class="tag">IT</span><span class="tag">スポーツ</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/6KXgS0F.png" alt="健一" loading="lazy"><div class="model-badge">健一 / Kenichi</div></div><h3 class="model-name">健一 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Kenichi</span></h3><p class="model-sub">Male AI Model · Manager</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">55歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">頼れる上司</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">改修</span><span class="tag">保険</span><span class="tag">介護</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">不動産</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/ykfnmhs.png" alt="智子" loading="lazy"><div class="model-badge">智子 / Tomoko</div></div><h3 class="model-name">智子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tomoko</span></h3><p class="model-sub">Female AI Model · Caring</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">50歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">笑顔が絶えない</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">医療</span><span class="tag">介護</span><span class="tag">リハビリ</span><span class="tag">教育</span><span class="tag">福祉</span><span class="tag">保険</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/43Y2XGV.jpeg" alt="誠" loading="lazy"><div class="model-badge">誠 / Makoto</div></div><h3 class="model-name">誠 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Makoto</span></h3><p class="model-sub">Male AI Model · Senior</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">70歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">誠実・真面目</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">介護</span><span class="tag">保険</span><span class="tag">医療</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/MFGU7N5.jpeg" alt="洋子" loading="lazy"><div class="model-badge">洋子 / Yoko</div></div><h3 class="model-name">洋子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yoko</span></h3><p class="model-sub">Female AI Model · Senior</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">68歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">優しく明るい</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">介護</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/Vd8W45o.jpeg" alt="蒼空" loading="lazy"><div class="model-badge">蒼空 / Sora</div></div><h3 class="model-name">蒼空 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Sora</span></h3><p class="model-sub">Child AI Model · Boy</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">4歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">元気・笑顔</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">教育</span><span class="tag">スポーツ</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">育児</span></div></div>
-      <div class="reveal"><div class="model-img-wrap"><img src="https://i.imgur.com/aW3rYRl.png" alt="紬" loading="lazy"><div class="model-badge">紬 / Tsumugi</div></div><h3 class="model-name">紬 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tsumugi</span></h3><p class="model-sub">Child AI Model · Girl</p><div class="model-profile-grid"><div class="profile-item"><span class="profile-label">Age</span><span class="profile-value">1歳</span></div><div class="profile-item"><span class="profile-label">Type</span><span class="profile-value">天真爛漫・癒し</span></div></div><div class="model-about"><p class="model-about-title">活躍する業種</p></div><div class="model-tags"><span class="tag">育児</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">福祉</span></div></div>
+<section class="sw" id="models">
+  <div class="si">
+    <p class="ey reveal">Our AI Models</p><h2 class="st reveal">Creative Team ─ AIモデル紹介</h2><div class="sl reveal"></div>
+    <p class="bt reveal" style="margin-bottom:32px;font-size:.88rem">YUUのAIモデルたちは、実在しないからこそスキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせてあらゆるシーンを制作できます。</p>
+    <div class="mg">
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/ooEWqR6.png" alt="結衣" loading="lazy"><div class="mb2">結衣 / Yui</div></div><h3 class="mn">結衣 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yui</span></h3><p class="ms">Female AI Model · Pro</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">23歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">清楚・知的</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">不動産</span><span class="tag">医療</span><span class="tag">採用</span><span class="tag">建設</span><span class="tag">教育</span><span class="tag">飲食</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/IivBXbL.png" alt="遥斗" loading="lazy"><div class="mb2">遥斗 / Haruto</div></div><h3 class="mn">遥斗 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3><p class="ms">Male AI Model · Executive</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">23歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">誠実・プロ</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">不動産</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">採用</span><span class="tag">IT</span><span class="tag">スポーツ</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/6KXgS0F.png" alt="健一" loading="lazy"><div class="mb2">健一 / Kenichi</div></div><h3 class="mn">健一 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Kenichi</span></h3><p class="ms">Male AI Model · Manager</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">55歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">頼れる上司</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">改修</span><span class="tag">保険</span><span class="tag">介護</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">不動産</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/ykfnmhs.png" alt="智子" loading="lazy"><div class="mb2">智子 / Tomoko</div></div><h3 class="mn">智子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tomoko</span></h3><p class="ms">Female AI Model · Caring</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">50歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">笑顔が絶えない</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">医療</span><span class="tag">介護</span><span class="tag">リハビリ</span><span class="tag">教育</span><span class="tag">福祉</span><span class="tag">保険</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/43Y2XGV.jpeg" alt="誠" loading="lazy"><div class="mb2">誠 / Makoto</div></div><h3 class="mn">誠 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Makoto</span></h3><p class="ms">Male AI Model · Senior</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">70歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">誠実・真面目</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">介護</span><span class="tag">保険</span><span class="tag">医療</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/MFGU7N5.jpeg" alt="洋子" loading="lazy"><div class="mb2">洋子 / Yoko</div></div><h3 class="mn">洋子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yoko</span></h3><p class="ms">Female AI Model · Senior</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">68歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">優しく明るい</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">介護</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/Vd8W45o.jpeg" alt="蒼空" loading="lazy"><div class="mb2">蒼空 / Sora</div></div><h3 class="mn">蒼空 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Sora</span></h3><p class="ms">Child AI Model · Boy</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">4歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">元気・笑顔</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">教育</span><span class="tag">スポーツ</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">育児</span></div></div>
+      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/aW3rYRl.png" alt="紬" loading="lazy"><div class="mb2">紬 / Tsumugi</div></div><h3 class="mn">紬 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tsumugi</span></h3><p class="ms">Child AI Model · Girl</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">1歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">天真爛漫・癒し</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">育児</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">福祉</span></div></div>
     </div>
-    <div class="reveal">
-      <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
-        <p class="section-eyebrow reveal">Sample Gallery</p><h3 class="section-title reveal" id="samples" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3><div class="section-line reveal"></div>
-        <p class="body-text reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。詳しくは料金プランをご確認ください。</span></p>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/fcXN2eK.png" alt="結衣"><span class="acc-title">🌿 結衣 / Yui</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="catalog-img-label">カフェ・飲食</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="catalog-img-label">マーケティング</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="catalog-img-label">福祉・社会貢献</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="catalog-img-label">工務店・建築</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="catalog-img-label">美容・医療</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="catalog-img-label">不動産・金融</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/esPWG1f.png" alt="遥斗"><span class="acc-title">🌿 遥斗 / Haruto</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="catalog-img-label">建設・工事現場</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="catalog-img-label">スポーツ・ジム</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="catalog-img-label">採用・説明会</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="catalog-img-label">金融・資産運用</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="catalog-img-label">IT・オフィス</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="catalog-img-label">美容クリニック</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="catalog-img-label">スポーツ・ゴルフ</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗"><span class="acc-title">🌿 結衣 &amp; 遥斗</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="catalog-img-label">展示会・パネル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="catalog-img-label">建設・採用</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="catalog-img-label">不動産・内覧</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="catalog-img-label">IT・コンサル</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="catalog-img-label">採用・HR</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/zkI4efM.png" alt="健一"><span class="acc-title">🌿 健一 / Kenichi</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="catalog-img-label">保険代理店</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="catalog-img-label">建設・施工</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子"><span class="acc-title">🌿 智子 / Tomoko</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="catalog-img-label">ケアプランナー</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="catalog-img-label">医療・介護</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子"><span class="acc-title">🌿 誠 &amp; 洋子 / Makoto &amp; Yoko</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="catalog-img-label">老人ホーム</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="catalog-img-label">シニア向けサービス</div></div></div></div></div>
-        <div class="acc-block reveal"><button class="acc-header" onclick="toggleAcc(this)"><img class="acc-cover" src="https://i.imgur.com/5sFQzhp.jpeg" alt="蒼空&紬"><span class="acc-title">🌿 蒼空 &amp; 紬 / Sora &amp; Tsumugi</span><span class="acc-arrow">▼</span></button><div class="acc-body"><div class="acc-grid"><div class="catalog-img-item"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="catalog-img-label">スポーツ・サッカー</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="catalog-img-label">英会話スクール</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="catalog-img-label">住宅展示場・記念品</div></div><div class="catalog-img-item"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="catalog-img-label">小児歯科・歯医者</div></div></div></div></div>
-        <div class="use-cases-scroll">
-        <div class="use-cases-inner">
-          <div class="use-case-card"><div class="use-case-num">01</div><h4>採用・HR</h4><p>求人広告・採用LP。AIモデルが御社の魅力を伝えます。</p></div>
-          <div class="use-case-card"><div class="use-case-num">02</div><h4>SNS運用</h4><p>定期投稿用ビジュアルを月次納品。</p></div>
-          <div class="use-case-card"><div class="use-case-num">03</div><h4>広告・LP</h4><p>LP・バナー掲載用の人物ビジュアルを制作。</p></div>
-          <div class="use-case-card"><div class="use-case-num">04</div><h4>広告・チラシ</h4><p>展示会・パンフレット・印刷物に対応。</p></div>
-          <div class="use-case-card"><div class="use-case-num">05</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主向け資料のアイキャッチに。</p></div>
-          <div class="use-case-card"><div class="use-case-num">06</div><h4>カスタム</h4><p>ご要望をヒアリングし専用シーンを制作。</p></div>
-        </div>
-      </div>
-      </div>
-      </div>
+    <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
+      <p class="ey reveal">Sample Gallery</p><h3 class="st reveal" id="samples" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3><div class="sl reveal"></div>
+      <p class="bt reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。</span></p>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/fcXN2eK.png" alt="結衣"><span class="at">🌿 結衣 / Yui</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="cl">建設・工事現場</div></div><div class="ci"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="cl">カフェ・飲食</div></div><div class="ci"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="cl">マーケティング</div></div><div class="ci"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="cl">福祉・社会貢献</div></div><div class="ci"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="cl">IT・コンサル</div></div><div class="ci"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="cl">工務店・建築</div></div><div class="ci"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="cl">美容・医療</div></div><div class="ci"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="cl">不動産・金融</div></div></div></div></div>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/esPWG1f.png" alt="遥斗"><span class="at">🌿 遥斗 / Haruto</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="cl">建設・工事現場</div></div><div class="ci"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="cl">スポーツ・ジム</div></div><div class="ci"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="cl">採用・説明会</div></div><div class="ci"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="cl">金融・資産運用</div></div><div class="ci"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="cl">IT・オフィス</div></div><div class="ci"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="cl">美容クリニック</div></div><div class="ci"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="cl">建設・施工</div></div><div class="ci"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="cl">スポーツ・ゴルフ</div></div></div></div></div>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗"><span class="at">🌿 結衣 &amp; 遥斗</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="cl">展示会・パネル</div></div><div class="ci"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="cl">建設・採用</div></div><div class="ci"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="cl">不動産・内覧</div></div><div class="ci"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="cl">IT・コンサル</div></div><div class="ci"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="cl">IT・コンサル</div></div><div class="ci"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="cl">採用・HR</div></div></div></div></div>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/zkI4efM.png" alt="健一"><span class="at">🌿 健一 / Kenichi</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="cl">保険代理店</div></div><div class="ci"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="cl">建設・施工</div></div></div></div></div>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子"><span class="at">🌿 智子 / Tomoko</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="cl">ケアプランナー</div></div><div class="ci"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="cl">医療・介護</div></div></div></div></div>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子"><span class="at">🌿 誠 &amp; 洋子</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="cl">老人ホーム</div></div><div class="ci"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="cl">シニア向けサービス</div></div></div></div></div>
+      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/5sFQzhp.jpeg" alt="蒼空&紬"><span class="at">🌿 蒼空 &amp; 紬</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="cl">スポーツ・サッカー</div></div><div class="ci"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="cl">英会話スクール</div></div><div class="ci"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="cl">住宅展示場</div></div><div class="ci"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="cl">小児歯科</div></div></div></div></div>
+      <div class="ucs"><div class="uci">
+        <div class="ucc"><div class="ucn">01</div><h4>採用・HR</h4><p>求人広告・採用LP。AIモデルが御社の魅力を伝えます。</p></div>
+        <div class="ucc"><div class="ucn">02</div><h4>SNS運用</h4><p>定期投稿用ビジュアルを月次納品。</p></div>
+        <div class="ucc"><div class="ucn">03</div><h4>広告・LP</h4><p>LP・バナー掲載用の人物ビジュアルを制作。</p></div>
+        <div class="ucc"><div class="ucn">04</div><h4>広告・チラシ</h4><p>展示会・パンフレット・印刷物に対応。</p></div>
+        <div class="ucc"><div class="ucn">05</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主向け資料のアイキャッチに。</p></div>
+        <div class="ucc"><div class="ucn">06</div><h4>カスタム</h4><p>ご要望をヒアリングし専用シーンを制作。</p></div>
+      </div></div>
       <p style="font-size:.68rem;color:rgba(58,130,184,.5);margin-top:4px;text-align:right">← スワイプ →</p>
+    </div>
   </div>
 </section>
 
-<section class="section-wrap" id="voice">
-  <div class="section-inner">
-    <div class="voice-inner">
-      <p class="section-eyebrow reveal">Voice</p><h2 class="section-title reveal">お客様の声</h2><div class="section-line reveal"></div>
-      <p class="body-text reveal" style="margin-bottom:32px;text-align:center">🌿 ご利用いただいた企業様からのご感想 🕊</p>
-      <div class="voice-card reveal">
-        <div class="voice-quote">"</div>
-        <div style="display:flex;gap:10px;align-items:flex-start">
-          <img src="https://i.imgur.com/1uyXQqU.jpeg" alt="制作サンプル" style="width:100px;height:136px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;box-shadow:0 4px 16px rgba(26,46,74,.15)">
-          <div style="flex:1;padding-left:2px">
-            <p class="voice-text">完璧でございます。<br>イメージ通りを超えた。</p>
-            <div class="voice-divider"></div>
-            <div class="voice-meta"><div class="voice-avatar">🏢</div><div><p class="voice-company">合同会社プランBカンパニー 様</p><p class="voice-detail">不動産業 ／ AIモデル：遥斗（Haruto）使用</p></div></div>
-          </div>
-        </div>
+<section class="sw" id="voice">
+  <div class="si"><div class="vi">
+    <p class="ey reveal">Voice</p><h2 class="st reveal">お客様の声</h2><div class="sl reveal"></div>
+    <p class="bt reveal" style="margin-bottom:32px;text-align:center">🌿 ご利用いただいた企業様からのご感想 🕊</p>
+    <div class="vc reveal">
+      <div class="vq">"</div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <img src="https://i.imgur.com/1uyXQqU.jpeg" alt="制作サンプル" style="width:100px;height:136px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;box-shadow:0 4px 16px rgba(26,46,74,.15)">
+        <div style="flex:1;padding-left:2px"><p class="vt">完璧でございます。<br>イメージ通りを超えた。</p><div class="vd"></div><div class="vm"><div class="vav">🏢</div><div><p class="vc2">合同会社プランBカンパニー 様</p><p class="vdet">不動産業 ／ AIモデル：遥斗（Haruto）使用</p></div></div></div>
       </div>
-      <div class="voice-card reveal" style="margin-top:24px">
-        <div class="voice-quote">"</div>
-        <div style="display:flex;gap:10px;align-items:flex-start">
-          <div style="flex:1;padding-left:2px">
-            <p class="voice-text">AIタレントさんが本当に実在する人物のようで素晴らしいです。</p>
-            <div class="voice-divider"></div>
-            <div class="voice-meta"><div class="voice-avatar">🏢</div><div><p class="voice-company">合同会社イゼルローンソフトウェア 様</p><p class="voice-detail">IT・情報システム業 ／ AIモデル：結衣・遥斗 使用</p><a href="https://iserlohn-software.com/it-outsourcing-service/" target="_blank" style="font-size:.76rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:6px">▶ 実際の掲載ページを見る</a></div></div>
-          </div>
-        </div>
-      </div>
-      <p class="voice-note reveal">※掲載はご本人様の許可をいただいております。</p>
     </div>
-  </div>
+    <div class="vc reveal" style="margin-top:24px">
+      <div class="vq">"</div>
+      <div style="flex:1;padding-left:2px"><p class="vt">AIタレントさんが本当に実在する人物のようで素晴らしいです。</p><div class="vd"></div><div class="vm"><div class="vav">🏢</div><div><p class="vc2">合同会社イゼルローンソフトウェア 様</p><p class="vdet">IT・情報システム業 ／ AIモデル：結衣・遥斗 使用</p><a href="https://iserlohn-software.com/it-outsourcing-service/" target="_blank" style="font-size:.76rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:6px">▶ 実際の掲載ページを見る</a></div></div></div>
+    </div>
+    <p class="vn reveal">※掲載はご本人様の許可をいただいております。</p>
+  </div></div>
 </section>
 
 <section id="philosophy">
-  <div class="philo-inner reveal">
-    <p class="philo-catch">AIが、<br>人の想いを纏う。</p>
-    <div class="philo-divider"></div>
-    <p class="philo-text">企業が持つ誠実さ。信頼感。温かさ。その想いを、人物ビジュアルという形で届ける。<span class="hl">「どう伝わるか」を、私たちは大切にしています。</span></p>
-    <p class="philo-sig">🌿 &nbsp; YUU &amp; Co. &nbsp; 🕊</p>
+  <div class="phi reveal">
+    <p class="phc">AIが、<br>人の想いを纏う。</p>
+    <div class="phd"></div>
+    <p class="pht">企業が持つ誠実さ。信頼感。温かさ。その想いを、人物ビジュアルという形で届ける。<span class="hl">「どう伝わるか」を、私たちは大切にしています。</span></p>
+    <p class="phs">🌿 &nbsp; YUU &amp; Co. &nbsp; 🕊</p>
   </div>
 </section>
 
-<section class="section-wrap" id="legal">
-  <div class="legal-ripple legal-ripple-1"></div><div class="legal-ripple legal-ripple-2"></div><div class="legal-ripple legal-ripple-3"></div>
-  <span class="legal-bg-deco legal-bg-deco-1">🌿</span><span class="legal-bg-deco legal-bg-deco-2">🕊</span><span class="legal-bg-deco legal-bg-deco-3">🌿</span>
-  <div class="section-inner" style="position:relative;z-index:1">
-    <p class="section-eyebrow reveal">Notes</p><h2 class="section-title reveal">ご利用について</h2><div class="section-line reveal"></div>
-    <div class="legal-grid">
-      <div class="legal-box"><div class="legal-box-header"><span class="legal-float-icon" style="animation:iconFloat 3s ease-in-out infinite">🌿</span><h4>世界観・モデル保護について</h4></div><ul class="legal-list"><li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU &amp; Co.オリジナル制作物です</li><li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li><li>AIモデルの画像であることを明示してご利用ください</li><li>人物の実在を誤解させる使い方はお控えください</li><li>反社会的勢力へのご利用はお断りします</li></ul></div>
-      <div class="legal-box"><div class="legal-box-header"><span class="legal-float-icon" style="animation:iconFloat 3s ease-in-out infinite">🕊</span><h4>ご利用範囲・修正対応</h4></div><ul class="legal-list"><li>制作したビジュアルは、契約範囲内でご利用いただけます</li><li>採用広告・SNS・LP・チラシ・展示会パネルなど幅広くご利用可能</li><li>企業イメージに合わせた調整を、月3回まで無料対応</li><li>「高級感を強めたい」「柔らかい雰囲気にしたい」など細かな空気感まで丁寧に調整</li><li>4回目以降は追加料金となります</li></ul></div>
-      <div class="legal-box"><div class="legal-box-header"><span class="legal-float-icon" style="animation:iconFloat 3s ease-in-out infinite">🌿</span><h4>個人情報の取り扱い</h4></div><ul class="legal-list"><li>ご提供いただいた情報はサービス提供のみに使用します</li><li>第三者への提供は法令に基づく場合を除き行いません</li><li>個人情報の開示・訂正・削除はご連絡ください</li><li>電子契約はLINEまたはメールにて締結します</li><li>管轄裁判所：前橋地方裁判所太田支部</li></ul></div>
+<section class="sw" id="legal">
+  <div class="lr lr1"></div><div class="lr lr2"></div>
+  <div class="si" style="position:relative;z-index:1">
+    <p class="ey reveal">Notes</p><h2 class="st reveal">ご利用について</h2><div class="sl reveal"></div>
+    <div class="lg">
+      <div class="lb"><div class="lbh"><span class="lfi">🌿</span><h4>世界観・モデル保護について</h4></div><ul class="ll"><li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU &amp; Co.オリジナル制作物です</li><li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li><li>AIモデルの画像であることを明示してご利用ください</li><li>人物の実在を誤解させる使い方はお控えください</li><li>反社会的勢力へのご利用はお断りします</li></ul></div>
+      <div class="lb"><div class="lbh"><span class="lfi">🕊</span><h4>ご利用範囲・修正対応</h4></div><ul class="ll"><li>制作したビジュアルは、契約範囲内でご利用いただけます</li><li>採用広告・SNS・LP・チラシ・展示会パネルなど幅広くご利用可能</li><li>企業イメージに合わせた調整を、月3回まで無料対応</li><li>4回目以降は追加料金となります</li></ul></div>
+      <div class="lb"><div class="lbh"><span class="lfi">🌿</span><h4>個人情報の取り扱い</h4></div><ul class="ll"><li>ご提供いただいた情報はサービス提供のみに使用します</li><li>第三者への提供は法令に基づく場合を除き行いません</li><li>個人情報の開示・訂正・削除はご連絡ください</li><li>電子契約はLINEまたはメールにて締結します</li><li>管轄裁判所：東京地方裁判所</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- 会社情報 -->
-<div class="staff-border-top"></div>
-<div style="background:#07111F;padding:40px 24px 56px">
-<div style="max-width:480px;margin:0 auto">
-<p style="font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,168,75,.7);margin-bottom:8px">Company Info</p>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;margin-bottom:10px">会社情報</h3>
-<div style="height:1px;background:linear-gradient(to right,rgba(200,168,75,.35),transparent);margin-bottom:24px"></div>
-<div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-<div style="display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)"><span style="padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center">屋号</span><span style="padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.8)">YUU &amp; Co.（ユーアンドコー）</span></div>
-<div style="display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)"><span style="padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center">代表者</span><span style="padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.8)">南部 祐子（Yuko Nanbu）</span></div>
-<div style="display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)"><span style="padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center">設立</span><span style="padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.8)">2025年10月</span></div>
-<div style="display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)"><span style="padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center">所在地</span><span style="padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.8)">群馬県館林市（全国オンライン対応）</span></div>
-<div style="display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)"><span style="padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center">事業内容</span><span style="padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.8);line-height:1.7">AIモデルを活用した企業向けビジュアル制作（採用・広告・SNS素材）</span></div>
-<div style="display:grid;grid-template-columns:90px 1fr"><span style="padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center">対応方法</span><span style="padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.8)">完全オンライン（LINE・メールのみ）</span></div>
-</div>
-</div>
-</div>
 <section id="staff">
-  <div class="staff-border-top"></div>
-  <div class="staff-section-inner">
-    <p class="section-eyebrow founder-reveal-up">Message</p>
-    <h2 class="section-title founder-reveal-up" style="margin-bottom:6px">代表挨拶</h2>
-    <div class="section-line founder-reveal-up"></div>
-    <div class="founder-img-block founder-reveal-left">
+  <div class="sbt"></div>
+  <div class="ssi">
+    <p class="ey fru">Message</p><h2 class="st fru" style="margin-bottom:6px">代表挨拶</h2><div class="sl fru"></div>
+    <div class="fib frl2">
       <img src="https://i.imgur.com/nWeJ0Bq.png" alt="YUU & Co. 代表 南部祐子" loading="lazy">
-      <div class="founder-img-text">
-        <div class="founder-gold-line"></div>
-        <span class="founder-role-label">Founder &amp; Director</span>
-        <p class="founder-name-big">Yuko</p>
-        <p class="founder-location">群馬県在住 &nbsp;·&nbsp; 全国オンライン対応</p>
-      </div>
+      <div class="fit"><div class="fgl"></div><span class="frl">Founder &amp; Director</span><p class="fnb">Yuko</p><p class="floc">東京都渋谷区神宮前 &nbsp;·&nbsp; 全国オンライン対応</p></div>
     </div>
-    <div class="founder-sep founder-reveal-up-2">
-      <div class="founder-sep-line"></div>
-      <div class="founder-sep-center"><span class="founder-sep-icon">🌿</span></div>
-      <div class="founder-sep-line-r"></div>
-    </div>
-    <div class="founder-text-block founder-reveal-up-3">
+    <div class="fsep fru2"><div class="fsl"></div><div class="fsc">🌿</div><div class="fslr"></div></div>
+    <div class="ftb fru3">
       <p>このページへお越しいただき、ありがとうございます。</p>
       <p>御社のブランドが持つ誠実さ・信頼感・温かさを、もっと多くの人に届けたい。その想いから、<span class="hl">AIモデルという新しい表現手段</span>を追い求めてきました。</p>
       <p>撮影不要・スキャンダルなし・著作権なし。でも伝わるメッセージは本物です。あなたの会社の想いを、私が形にします。</p>
-      <div class="founder-signature">
-        <span class="founder-signature-dot"></span>
-        <span class="founder-signature-name">YUU &amp; Co. &nbsp; 南部祐子</span>
-        <span class="founder-signature-dot"></span>
-      </div>
+      <div class="fsig"><span class="fsd"></span><span class="fsn">YUU &amp; Co. &nbsp; 南部祐子</span><span class="fsd"></span></div>
     </div>
   </div>
+  <div class="sbb"></div>
+</section>
+
+<section id="company">
+  <div class="ci2">
+    <span class="ey reveal">About</span>
+    <h2 class="st reveal">会社情報・運営者プロフィール</h2>
+    <div class="sl reveal"></div>
+    <div class="ctbl reveal">
+      <div class="cr"><span class="ck">屋号</span><span class="cv">YUU &amp; Co.（ユーアンドコー）</span></div>
+      <div class="cr"><span class="ck">代表者</span><span class="cv">南部 祐子（Yuko Nanbu）</span></div>
+      <div class="cr"><span class="ck">設立</span><span class="cv">2025年10月</span></div>
+      <div class="cr"><span class="ck">所在地</span><span class="cv">〒150-0001 東京都渋谷区神宮前5丁目51番8号 ラ・ポルト青山 2F-7</span></div>
+      <div class="cr"><span class="ck">連絡先</span><span class="cv">yuuco.info@gmail.com</span></div>
+      <div class="cr"><span class="ck">事業内容</span><span class="cv">AIモデルを活用した企業向けビジュアル制作（採用・広告・SNS素材）</span></div>
+      <div class="cr"><span class="ck">対応方法</span><span class="cv">完全オンライン（LINE・メールのみ）全国対応</span></div>
+    </div>
+    <div class="prof-box reveal">
+      <span class="prof-title">Founder Profile ─ 南部 祐子</span>
+      <div class="prow"><div class="pdot"></div><p class="ptxt">2025年よりAIモデルを使った企業向けビジュアル制作に特化したサービスを開始。不動産・建設・医療・介護業界向けの採用ポスター・広告バナー・SNS素材の制作を専門とする。</p></div>
+      <div class="prow"><div class="pdot"></div><p class="ptxt">撮影不要・モデル手配不要のAI制作で、従来の1/10以下のコストでプロ品質のビジュアルを提供。</p></div>
+      <div class="prow"><div class="pdot"></div><p class="ptxt">画像納品にとどまらず、電光掲示板・展示会パネル・採用ポスターなど活用アイデアまで提案するのが強み。</p></div>
+      <div class="prow"><div class="pdot"></div><p class="ptxt">Zoom・電話不要。LINEとメールのみで完結する完全非対面サービスで、全国の企業様に対応中。</p></div>
+    </div>
   </div>
-  
-  <div class="staff-border-bottom"></div>
 </section>
 
 <section id="partner">
-  <div class="section-inner">
-    <span class="section-eyebrow reveal">For Partners</span>
-    <h2 class="section-title reveal">制作会社・動画制作会社・広告代理店様へ</h2>
-    <div class="section-line reveal"></div>
-    <div class="partner-card reveal">
+  <div class="si">
+    <span class="ey reveal">For Partners</span><h2 class="st reveal">制作会社・動画制作会社・広告代理店様へ</h2><div class="sl reveal"></div>
+    <div class="pcard reveal">
       <p>クライアントから「人物写真がない」「モデル撮影の予算がない」「採用サイトを強化したい」そんなご相談はありませんか？</p>
-      <div class="partner-features">
-        <div class="partner-feat"><span>🍃</span>撮影不要・モデル手配不要</div>
-        <div class="partner-feat"><span>🍃</span>同一人物を継続利用可能</div>
-        <div class="partner-feat"><span>🍃</span>HP・採用・SNS・広告・動画に対応</div>
-        <div class="partner-feat-gold"><span>🌿</span>パートナー提携も受け付けています</div>
+      <div class="pf">
+        <div class="pfi"><span>🍃</span>撮影不要・モデル手配不要</div>
+        <div class="pfi"><span>🍃</span>同一人物を継続利用可能</div>
+        <div class="pfi"><span>🍃</span>HP・採用・SNS・広告・動画に対応</div>
+        <div class="pfg"><span>🌿</span>パートナー提携も受け付けています</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section-wrap" id="contact">
-  <div class="section-inner">
-    <p class="section-eyebrow">Contact</p><h2 class="section-title">お問い合わせ</h2><div class="section-line"></div>
-    <div class="consult-box reveal">
+<section class="sw" id="contact">
+  <div class="coi">
+    <p class="ey">Contact</p><h2 class="st">お問い合わせ</h2><div class="sl"></div>
+    <div class="cob reveal">
       <h3>ご相談例</h3>
-      <div class="consult-item"><span>🌿</span>求人応募を増やしたい</div>
-      <div class="consult-item"><span>🌿</span>採用ページを改善したい</div>
-      <div class="consult-item"><span>🌿</span>広告バナー・SNS素材が欲しい</div>
-      <div class="consult-item"><span>🌿</span>会社案内・パンフレットを作りたい</div>
-      <div class="consult-item"><span>🌿</span>どのプランが合うかわからない</div>
-      <p class="consult-note">相談内容がまとまっていなくても大丈夫です。</p>
+      <div class="coi2"><span>🌿</span>求人応募を増やしたい</div>
+      <div class="coi2"><span>🌿</span>採用ページを改善したい</div>
+      <div class="coi2"><span>🌿</span>広告バナー・SNS素材が欲しい</div>
+      <div class="coi2"><span>🌿</span>会社案内・パンフレットを作りたい</div>
+      <div class="coi2"><span>🌿</span>どのプランが合うかわからない</div>
+      <p class="con">相談内容がまとまっていなくても大丈夫です。</p>
     </div>
-    <p class="contact-lead reveal">「どのプランが合うか分からない」「うちの業種で使えるか？」<br>そんな疑問にも、丁寧にお答えします。<br>まずはお気軽にご相談ください。<br><span style="font-size:.82rem;opacity:.7">LINE・メールのみで完結します。Zoom・お電話でのお打ち合わせは不要です。</span></p>
-    <a href="https://lin.ee/5KOWG02" class="line-btn reveal" target="_blank">💬 LINEで相談する</a><br>
-    <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="linkedin-btn reveal" style="background:#2C5F8A;box-shadow:0 4px 18px rgba(44,95,138,.35)">📧 メールで相談する</a><br>
-    <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="linkedin-btn reveal" target="_blank">💼 LinkedInで繋がる</a>
+    <p class="col reveal">「どのプランが合うか分からない」「うちの業種で使えるか？」<br>そんな疑問にも、丁寧にお答えします。<br><span style="font-size:.82rem;opacity:.7">LINE・メールのみで完結します。Zoom・お電話は不要です。</span></p>
+    <a href="https://lin.ee/5KOWG02" class="lb2 reveal" target="_blank">💬 LINEで相談する</a><br>
+    <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="lib reveal" style="background:#2C5F8A;box-shadow:0 4px 18px rgba(44,95,138,.35)">📧 メールで相談する</a><br>
+    <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="lib reveal" target="_blank">💼 LinkedInで繋がる</a>
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px;max-width:360px;margin:0 auto 28px" class="reveal">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%"><a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="social-link" target="_blank">Instagram</a><a href="https://x.com/yuu_co_ltd?s=21" class="social-link" target="_blank">X（Twitter）</a></div>
-      <div style="display:grid;grid-template-columns:1fr;gap:12px;width:50%"><a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="social-link" target="_blank">Facebook</a></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%"><a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="sl2" target="_blank">Instagram</a><a href="https://x.com/yuu_co_ltd?s=21" class="sl2" target="_blank">X（Twitter）</a></div>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;width:50%"><a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="sl2" target="_blank">Facebook</a></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co." loading="lazy"><div class="footer-logo-text">🌿 YUU <span>&</span> Co. 🕊</div></div>
-  <div>© 2026 YUU &amp; Co. 南部祐子 · 群馬県 · All Rights Reserved</div>
+  <div class="flogo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co." loading="lazy"><div class="flt">🌿 YUU <span>&</span> Co. 🕊</div></div>
+  <div>© 2026 YUU &amp; Co. 南部祐子 · 東京都渋谷区神宮前 · All Rights Reserved</div>
 </footer>
 
 <script>
-function toggleAcc(btn){const body=btn.nextElementSibling;const arrow=btn.querySelector('.acc-arrow');body.classList.toggle('open');arrow.classList.toggle('open')}
-
-// ゴールドレイン
-(function(){
-  const wrap=document.getElementById('goldRain');
-  if(!wrap)return;
-  const colors=['rgba(255,215,0,','rgba(255,200,50,','rgba(255,235,100,','rgba(255,180,30,'];
-  for(let i=0;i<40;i++){
-    const el=document.createElement('div');
-    el.className='gold-drop';
-    const c=colors[Math.floor(Math.random()*colors.length)];
-    const h=Math.random()*120+40;
-    const op=(Math.random()*.6+.3).toFixed(2);
-    el.style.cssText=`left:${Math.random()*100}%;width:${Math.random()*2+1}px;height:${h}px;background:linear-gradient(to bottom,${c}${op}) 0%,${c}0) 100%);animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*5}s;`;
-    wrap.appendChild(el);
-  }
-})();
-
-// フローター
-(function(){
-  const wrap=document.getElementById('floaters');
-  if(!wrap)return;
-  ['🌿','🕊','🌿','🕊','🌿','🕊'].forEach((icon,i)=>{
-    const el=document.createElement('div');
-    el.className='floater';
-    el.textContent=icon;
-    el.style.cssText=`left:${8+i*15+Math.random()*6}%;animation-duration:${18+Math.random()*12}s;animation-delay:${Math.random()*14}s;font-size:${1+Math.random()*.4}rem;`;
-    wrap.appendChild(el);
-  });
-})();
-
-// スクロールアニメーション
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach((entry,i)=>{
-    if(entry.isIntersecting){
-      setTimeout(()=>entry.target.classList.add('visible'),i*60);
-    }
-  });
-},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-slide-up,.legal-box,.founder-reveal-left,.founder-reveal-up,.founder-reveal-up-2,.founder-reveal-up-3').forEach(el=>io.observe(el));
-
-// データバー
-const barObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:.3});
-document.querySelectorAll('.data-bar').forEach(el=>barObserver.observe(el));
-
-// カウントアップ
-function animateCount(el,target,duration=1500){
-  let start=0;
-  const step=timestamp=>{
-    if(!start)start=timestamp;
-    const progress=Math.min((timestamp-start)/duration,1);
-    const ease=1-Math.pow(1-progress,3);
-    el.textContent=Math.floor(ease*target).toLocaleString();
-    if(progress<1)requestAnimationFrame(step);
-    else el.textContent=target.toLocaleString();
-  };
-  requestAnimationFrame(step);
-}
-const countObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting&&!e.target.dataset.counted){
-      e.target.dataset.counted='true';
-      animateCount(e.target,parseInt(e.target.dataset.target));
-    }
-  });
-},{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>countObserver.observe(el));
-
-// nav shadow
-window.addEventListener('scroll',()=>{
-  document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 2px 16px rgba(26,46,74,.08)':'none';
-});
-
+function tA(b){const d=b.nextElementSibling,a=b.querySelector('.aa');d.classList.toggle('open');a.classList.toggle('open')}
+(function(){const w=document.getElementById('goldRain');if(!w)return;const c=['rgba(255,215,0,','rgba(255,200,50,','rgba(255,235,100,','rgba(255,180,30,'];for(let i=0;i<40;i++){const e=document.createElement('div');e.className='gold-drop';const col=c[Math.floor(Math.random()*c.length)],h=Math.random()*120+40,op=(Math.random()*.6+.3).toFixed(2);e.style.cssText=`left:${Math.random()*100}%;width:${Math.random()*2+1}px;height:${h}px;background:linear-gradient(to bottom,${col}${op}) 0%,${col}0) 100%);animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*5}s;`;w.appendChild(e)}})();
+(function(){const w=document.getElementById('floaters');if(!w)return;['🌿','🕊','🌿','🕊','🌿','🕊'].forEach((ic,i)=>{const e=document.createElement('div');e.className='floater';e.textContent=ic;e.style.cssText=`left:${8+i*15+Math.random()*6}%;animation-duration:${18+Math.random()*12}s;animation-delay:${Math.random()*14}s;font-size:${1+Math.random()*.4}rem;`;w.appendChild(e)})})();
+const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*60)})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-slide-up,.lb,.frl2,.fru,.fru2,.fru3').forEach(el=>io.observe(el));
+const bo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.3});
+document.querySelectorAll('.db').forEach(el=>bo.observe(el));
+function aC(el,t,d=1500){let s=0;const st=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/d,1),ease=1-Math.pow(1-p,3);el.textContent=Math.floor(ease*t).toLocaleString();if(p<1)requestAnimationFrame(st);else el.textContent=t.toLocaleString()};requestAnimationFrame(st)}
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!x.target.dataset.counted){x.target.dataset.counted='true';aC(x.target,parseInt(x.target.dataset.target))}})},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 2px 16px rgba(26,46,74,.08)':'none'});
 </script>
 </body>
 </html>
