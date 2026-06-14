@@ -59,9 +59,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
   100%{opacity:0;transform:translateY(-10vh) rotate(360deg) scale(1.3)}
 }
 
-.hmdl{position:relative;z-index:4;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto}
-.hmy{width:48%;animation:hsl 1.4s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-80px) scale(.95)}
-.hmh{width:60%;margin-left:-18%;animation:hsr 1.4s cubic-bezier(.16,1,.3,1) .3s forwards;opacity:0;transform:translateX(80px) scale(.95)}
+.hmdl{position:relative;z-index:4;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:100%;margin:0 auto}
+.hmy{width:50%;animation:hsl 1.4s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-80px) scale(.95)}
+.hmh{width:50%;margin-left:0%;animation:hsr 1.4s cubic-bezier(.16,1,.3,1) .3s forwards;opacity:0;transform:translateX(80px) scale(.95)}
 @keyframes hsl{to{opacity:1;transform:translateX(0) scale(1)}}
 @keyframes hsr{to{opacity:1;transform:translateX(0) scale(1)}}
 .hmy img,.hmh img{width:100%;height:85vh;object-fit:cover;object-position:top;display:block}
@@ -360,7 +360,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
       <p class="hsub">撮影なし・モデル手配なし。<br>採用・広告・SNS・ホームページに使える<br>企業向けビジュアルを制作します。</p>
       <div class="hcta">
         <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="btp" target="_blank">📧 メールで相談する</a>
-        <a href="#works" class="bto" onclick="openSamples()">▼ タップして制作事例を見る</a>
+        <a href="#works" class="bto" id="samplesBtn" onclick="openWorks(event)">▼ タップして制作事例を見る</a>
       </div>
     </div>
   </div>
@@ -423,13 +423,10 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 
 <section class="sec" style="background:linear-gradient(160deg,#0a3060,#1a5090)">
   <div class="sec-in">
-    <span class="ey rv">Before / After</span>
-    <h2 class="st rv">人が変わると、<br>会社の印象はここまで変わる。</h2>
+    <span class="ey rv v">Before / After</span>
+    <h2 class="st rv v">人が変わると、<br>会社の印象はここまで変わる。</h2>
     <div class="gdl rv"></div>
-    <div class="rv" style="border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.4);margin-bottom:32px">
-      <img src="https://i.imgur.com/AqXYiWx.png" alt="遥斗" style="width:100%;display:block;object-fit:contain;background:#0a2040">
-    </div>
-    <div class="rv">
+    <div class="rv v">
       <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:8px">
         <span style="font-family:var(--label);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)">BEFORE</span>
         <span style="font-family:var(--label);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">AFTER ✦</span>
@@ -440,13 +437,36 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
           <img src="https://i.imgur.com/kdxljCc.jpeg" alt="After" style="width:100vw;max-width:680px;height:300px;object-fit:cover;object-position:top;display:block">
         </div>
         <div id="baD" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);transform:translateX(-50%)">
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,168,75,.5);font-size:1rem;color:var(--navy);font-weight:700">&#8644;</div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,168,75,.5);font-size:1.2rem;color:var(--navy);font-weight:700">&#8644;</div>
         </div>
       </div>
       <p style="text-align:center;margin-top:12px;font-size:.7rem;color:rgba(255,255,255,.45);font-family:var(--label);letter-spacing:.1em">&#8592; スライドして比較 &#8594;</p>
     </div>
   </div>
 </section>
+<section class="sec" id="works" style="background:linear-gradient(160deg,#0a2a55,#1a4a85)">
+  <div class="sec-in">
+    <span class="ey rv">Works</span>
+    <h2 class="st rv">制作事例・<br>活用イメージ</h2>
+    <div class="gdl rv"></div>
+    <div class="ifr rv">
+      <button class="ifb a" data-f="all">すべて</button>
+      <button class="ifb" data-f="recruit">採用・HR</button>
+      <button class="ifb" data-f="realestate">不動産・建設</button>
+      <button class="ifb" data-f="medical">医療・介護</button>
+      <button class="ifb" data-f="sns">SNS・広告</button>
+    </div>
+    <div id="accList">
+      <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/fcXN2eK.png" alt=""><span class="att">🌿 結衣 — 清潔感・知的・親しみ</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="scap">建設・工事現場</div></div><div class="si2"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="scap">カフェ・飲食</div></div><div class="si2"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="scap">マーケティング</div></div><div class="si2"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="scap">福祉・社会貢献</div></div><div class="si2"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="scap">工務店・建築</div></div><div class="si2"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="scap">美容・医療</div></div><div class="si2"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="scap">不動産・金融</div></div></div></div></div>
+      <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/esPWG1f.png" alt=""><span class="att">🌿 遥斗 — 誠実・信頼・プロ感</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="scap">建設・工事現場</div></div><div class="si2"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="scap">スポーツ・ジム</div></div><div class="si2"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="scap">採用・説明会</div></div><div class="si2"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="scap">金融・資産運用</div></div><div class="si2"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="scap">IT・オフィス</div></div><div class="si2"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="scap">美容クリニック</div></div><div class="si2"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="scap">建設・施工</div></div><div class="si2"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="scap">スポーツ・ゴルフ</div></div></div></div></div>
+      <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/Y1mbzJr.jpeg" alt=""><span class="att">🌿 結衣 &amp; 遥斗 — 二人の世界観</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="scap">展示会・パネル</div></div><div class="si2"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="scap">建設・採用</div></div><div class="si2"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="scap">不動産・内覧</div></div><div class="si2"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="scap">採用・HR</div></div></div></div></div>
+      <div class="sacc rv" data-cat="medical"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/Pn7Pyc9.png" alt=""><span class="att">🌿 智子 — やさしさ・親しみ・信頼</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="scap">ケアプランナー</div></div><div class="si2"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="scap">医療・介護</div></div></div></div></div>
+      <div class="sacc rv" data-cat="medical"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/ZHOTOVp.png" alt=""><span class="att">🌿 誠 &amp; 洋子 — シニア向けビジュアル</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="scap">老人ホーム</div></div><div class="si2"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="scap">シニア向けサービス</div></div></div></div></div>
+      <div class="sacc rv" data-cat="recruit sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/5sFQzhp.jpeg" alt=""><span class="att">🌿 蒼空 &amp; 紬 — 子どもビジュアル</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="scap">スポーツ・サッカー</div></div><div class="si2"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="scap">英会話スクール</div></div><div class="si2"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="scap">住宅展示場</div></div><div class="si2"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="scap">小児歯科</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" style="background:linear-gradient(160deg,#1a4a7a,#0d2a55)">
   <div class="sec-in">
     <span class="ey rv">Why YUU</span>
@@ -588,19 +608,18 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 
 <script>
 
+
+
+
 // ── 制作事例オープン ──
-function openSamples(){
+function openWorks(e){
+  e.preventDefault();
+  var el = document.getElementById('works');
+  if(el) el.scrollIntoView({behavior:'smooth'});
   setTimeout(function(){
-    var first = document.querySelector('#accList .ach');
-    if(first){
-      var body = first.nextElementSibling;
-      var arr = first.querySelector('.aar');
-      if(!body.classList.contains('o')){
-        body.classList.add('o');
-        arr.classList.add('o');
-      }
-    }
-  }, 400);
+    document.querySelectorAll('#accList .acb').forEach(function(b){ b.classList.add('o'); });
+    document.querySelectorAll('#accList .aar').forEach(function(a){ a.classList.add('o'); });
+  }, 600);
 }
 
 // ── ゴールドの雨 ──
