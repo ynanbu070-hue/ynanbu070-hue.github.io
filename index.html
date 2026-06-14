@@ -8,23 +8,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sky:#E8F4FF;--navy:#0d2a55;--mid:#1a4a7a;--blue:#5B9AC8;
+  --sky:#E8F4FF;--navy:#0e3060;--mid:#1a4a7a;--blue:#5B9AC8;
   --gold:#C8A84B;--gold2:#E8C96A;
   --serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;
   --display:'Cormorant Garamond',serif;--label:'Montserrat',sans-serif
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--navy);color:#fff;overflow-x:hidden;line-height:1.8}
+body{font-family:var(--sans);background:#0e3060;color:#fff;overflow-x:hidden;line-height:1.8}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,35,70,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(91,154,200,.2);transition:box-shadow .4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(14,50,100,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(91,154,200,.2);transition:box-shadow .4s}
 .nl{display:flex;align-items:center;gap:8px}
 .nl img{width:36px;height:36px;border-radius:50%;object-fit:cover}
 .nlt{font-family:var(--display);font-size:1.3rem;font-weight:600;color:#fff;letter-spacing:.06em}
 .nlt span{color:var(--gold)}
 .nlk{display:flex;gap:20px;list-style:none}
-.nlk a{font-family:var(--label);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .3s}
+.nlk a{font-family:var(--label);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);text-decoration:none;transition:color .3s;font-weight:600}
 .nlk a:hover{color:var(--gold)}
 
 /* HERO */
@@ -88,7 +88,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 @keyframes sdp{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
 /* STATS */
-.stbar{background:linear-gradient(135deg,#0d3060,#1a5090);padding:40px 20px;border-top:1px solid rgba(200,168,75,.3);border-bottom:1px solid rgba(91,154,200,.2);position:relative;overflow:hidden}
+.stbar{background:linear-gradient(135deg,#1a5aa0,#2a7acc);padding:40px 20px;border-top:1px solid rgba(200,168,75,.3);border-bottom:1px solid rgba(91,154,200,.2);position:relative;overflow:hidden}
 .stbar::before{content:'';position:absolute;top:0;left:-100%;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scanLine 3s ease-in-out infinite}
 @keyframes scanLine{0%{left:-100%}100%{left:100%}}
 .sbi{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:560px;margin:0 auto;text-align:center}
@@ -105,9 +105,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .sec{padding:80px 24px;position:relative}
 .sec-in{max-width:680px;margin:0 auto}
 .ey{font-family:var(--label);font-size:.6rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block}
-.st{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:500;line-height:1.4;margin-bottom:12px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.st{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.4;margin-bottom:12px;color:#fff;text-shadow:0 2px 20px rgba(91,154,200,.4),0 1px 4px rgba(0,0,0,.5)}
 .gdl{width:100%;height:1px;background:linear-gradient(to right,var(--gold),rgba(91,154,200,.4) 50%,transparent);margin-bottom:32px}
-.bt{font-size:.95rem;line-height:2;color:rgba(255,255,255,.92);font-weight:400}
+.bt{font-size:.95rem;line-height:2;color:#fff;font-weight:500}
 
 /* REVEAL アニメーション */
 .rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
@@ -143,7 +143,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .solp span:first-child{color:var(--gold);flex-shrink:0;margin-top:3px}
 
 /* HERO IMAGE section */
-.hero-img-sec{background:linear-gradient(160deg,#0a3060,#1a5090);padding:60px 24px}
+.hero-img-sec{background:linear-gradient(160deg,#1a6ab0,#2a85d5);padding:60px 24px}
 .hero-img-wrap{border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.4);position:relative}
 .hero-img-wrap img{width:100%;display:block;object-fit:cover;max-height:480px;object-position:top}
 .hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(10,40,80,.4));pointer-events:none}
@@ -176,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .bfi:hover::before{transform:scaleX(1)}
 .bfi:hover{transform:translateX(8px)}
 .bfn{font-family:var(--display);font-size:2.8rem;font-weight:300;color:rgba(200,168,75,.25);line-height:1}
-.bft{font-family:var(--serif);font-size:1.1rem;color:#fff;font-weight:600;margin-bottom:6px}
+.bft{font-family:var(--serif);font-size:1.1rem;color:#fff;font-weight:700;margin-bottom:6px;text-shadow:0 0 12px rgba(91,154,200,.3)}
 .bfd{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.9;font-weight:400}
 
 /* PRICING */
@@ -220,7 +220,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .vlk{font-size:.72rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:6px}
 
 /* PHILOSOPHY */
-.phsec{background:linear-gradient(160deg,#0a2040,#1a3a70);text-align:center;padding:100px 24px;position:relative;overflow:hidden}
+.phsec{background:linear-gradient(160deg,#1a4a8a,#2a6ab0);text-align:center;padding:100px 24px;position:relative;overflow:hidden}
 .phsec::before{content:'YUU';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:22vw;font-weight:300;color:rgba(255,255,255,.03);white-space:nowrap;pointer-events:none}
 .phin{position:relative;z-index:1;max-width:480px;margin:0 auto}
 .phm{font-family:var(--display);font-size:clamp(2.4rem,8vw,4rem);font-weight:300;color:#fff;line-height:1.5;letter-spacing:.08em;margin-bottom:28px;text-shadow:0 4px 24px rgba(0,0,0,.3)}
@@ -231,7 +231,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .phs{margin-top:28px;color:rgba(255,255,255,.4);font-family:var(--label);font-size:.56rem;letter-spacing:.22em}
 
 /* LEGAL */
-.lgsec{background:linear-gradient(160deg,#0a2550,#1a4080);padding:64px 24px;position:relative;overflow:hidden}
+.lgsec{background:linear-gradient(160deg,#1a5090,#2a70ba);padding:64px 24px;position:relative;overflow:hidden}
 .lgr{position:absolute;border-radius:50%;pointer-events:none;animation:rexp ease-out infinite;opacity:0}
 .lgr1{width:200px;height:200px;top:10%;left:-50px;border:1px solid rgba(91,154,200,.2);animation-duration:6s}
 .lgr2{width:300px;height:300px;top:40%;right:-80px;border:1px solid rgba(91,154,200,.12);animation-duration:8s;animation-delay:2s}
@@ -250,7 +250,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .lgll li::before{content:'🕊';position:absolute;left:0;top:9px;font-size:.55rem;opacity:.6}
 
 /* STAFF */
-.stfsec{background:#081e3a;padding:0}
+.stfsec{background:#0d3060;padding:0}
 .stfbt{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,.5) 50%,transparent)}
 .stfbb{height:1px;background:linear-gradient(to right,transparent,rgba(91,154,200,.3) 50%,transparent)}
 .stfin{max-width:480px;margin:0 auto;position:relative;z-index:1;padding:64px 24px}
@@ -263,11 +263,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .stfrl{font-family:var(--label);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,168,75,.75);margin-bottom:6px;display:block}
 .stfnm{font-family:var(--display);font-size:clamp(3rem,9vw,4.5rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:.04em;margin-bottom:8px}
 .stflc{font-family:var(--label);font-size:.54rem;letter-spacing:.15em;color:rgba(184,216,240,.45)}
-.stfsp{display:flex;align-items:center;background:#081e3a;padding:0 24px}
+.stfsp{display:flex;align-items:center;background:#0d3060;padding:0 24px}
 .spl{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,75,.25),rgba(91,154,200,.12))}
 .splr{flex:1;height:1px;background:linear-gradient(to left,rgba(200,168,75,.25),rgba(91,154,200,.12))}
 .spic{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:.8rem;opacity:.5}
-.stfmsg{background:#081e3a;padding:32px 24px 48px;max-width:480px;margin:0 auto}
+.stfmsg{background:#0d3060;padding:32px 24px 48px;max-width:480px;margin:0 auto}
 .stfmsg p{font-family:var(--serif);font-size:.95rem;line-height:2.8;color:rgba(255,255,255,.82);margin-bottom:20px;letter-spacing:.02em;font-weight:400}
 .stfmsg em{color:rgba(184,216,240,.95);font-style:italic;border-bottom:1px solid rgba(91,154,200,.35);padding-bottom:1px}
 .stfsg{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:24px;padding-top:18px;border-top:1px solid rgba(200,168,75,.12)}
@@ -275,7 +275,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .sgn{font-family:var(--display);font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:.1em;font-style:italic}
 
 /* COMPANY */
-.cosec{background:linear-gradient(160deg,#0d3060,#1a4a80);padding:64px 24px}
+.cosec{background:linear-gradient(160deg,#1a5aa0,#2a7acc);padding:64px 24px}
 .coin{max-width:480px;margin:0 auto}
 .cotbl{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);margin-bottom:24px}
 .crow{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.07)}
@@ -284,7 +284,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .cov{padding:14px;font-size:.87rem;color:rgba(255,255,255,.9);line-height:1.7;font-weight:400}
 
 /* PARTNER */
-.ptsec{background:linear-gradient(160deg,#0a3060,#1a5090);padding:64px 24px}
+.ptsec{background:linear-gradient(160deg,#1a6ab0,#2a85d5);padding:64px 24px}
 .ptc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:28px 22px;transition:all .4s}
 .ptc:hover{box-shadow:0 16px 48px rgba(91,154,200,.2);border-color:rgba(91,154,200,.35);transform:translateY(-4px)}
 .ptt{font-family:var(--serif);font-size:.92rem;color:rgba(255,255,255,.88);line-height:2.1;margin-bottom:20px;font-weight:400}
@@ -360,7 +360,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
       <p class="hsub">撮影なし・モデル手配なし。<br>採用・広告・SNS・ホームページに使える<br>企業向けビジュアルを制作します。</p>
       <div class="hcta">
         <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="btp" target="_blank">📧 メールで相談する</a>
-        <a href="#works" class="bto" id="samplesBtn" onclick="openWorks(event)">▼ タップして制作事例を見る</a>
+        <a href="#" class="bto" id="samplesBtn" onclick="openWorks(event)">▼ タップして制作事例を見る</a>
       </div>
     </div>
   </div>
@@ -375,7 +375,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
   </div>
 </div>
 
-<section class="sec" id="why" style="background:linear-gradient(160deg,#0d3060,#1a5090)">
+<section class="sec" id="why" style="background:linear-gradient(160deg,#1a5a9a,#2a7acc)">
   <div class="sec-in">
     <span class="ey rv">Our Mission</span>
     <h2 class="st rv">ビジュアルで、<br>企業を変える。</h2>
@@ -390,7 +390,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
   </div>
 </section>
 
-<section class="sec" style="background:linear-gradient(160deg,#0e3060,#1a4a80)">
+<section class="sec" style="background:linear-gradient(160deg,#1a5aa0,#2a78c8)">
   <div class="sec-in">
     <span class="ey rv">Challenges</span>
     <h2 class="st rv">こんなお悩み、<br>ありませんか？</h2>
@@ -421,28 +421,30 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 
 
 
-<section class="sec" style="background:linear-gradient(160deg,#0a3060,#1a5090)">
+<section class="sec" style="background:linear-gradient(160deg,#1a6aaa,#2a80cc)">
   <div class="sec-in">
-    <span class="ey rv v">Before / After</span>
-    <h2 class="st rv v">人が変わると、<br>会社の印象はここまで変わる。</h2>
-    <div class="gdl rv v"></div>
+    <span class="ey rv v" style="color:#fff;font-weight:700">Before / After</span>
+    <h2 class="st rv v" style="font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.3)">人が変わると、<br>会社の印象はここまで変わる。</h2>
+    <div style="height:2px;background:linear-gradient(to right,var(--gold),rgba(91,154,200,.3) 50%,transparent);margin-bottom:28px"></div>
     <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:8px">
-      <span style="font-family:var(--label);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)">BEFORE</span>
-      <span style="font-family:var(--label);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">AFTER ✦</span>
+      <span style="font-family:var(--label);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600">BEFORE</span>
+      <span style="font-family:var(--label);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700">AFTER ✦</span>
     </div>
-    <div style="position:relative;border-radius:16px;overflow:hidden;cursor:ew-resize;user-select:none;box-shadow:0 20px 60px rgba(0,0,0,.4)" id="baS">
-      <img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before" style="width:100%;display:block;height:300px;object-fit:cover;object-position:top">
+    <div style="position:relative;border-radius:20px;overflow:hidden;cursor:ew-resize;user-select:none;box-shadow:0 24px 64px rgba(0,0,0,.5)" id="baS">
+      <img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before" style="width:100%;display:block;height:320px;object-fit:cover;object-position:top">
       <div id="baA" style="position:absolute;top:0;left:0;bottom:0;overflow:hidden;width:50%">
-        <img src="https://i.imgur.com/kdxljCc.jpeg" alt="After" style="width:100vw;max-width:680px;height:300px;object-fit:cover;object-position:top;display:block">
+        <img src="https://i.imgur.com/kdxljCc.jpeg" alt="After" style="width:100vw;max-width:680px;height:320px;object-fit:cover;object-position:top;display:block">
       </div>
       <div id="baD" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);transform:translateX(-50%)">
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,168,75,.5);font-size:1.2rem;color:var(--navy);font-weight:700">&#8644;</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(200,168,75,.7);font-size:1.3rem;color:#1a2e4a;font-weight:900">&#8644;</div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:12px;font-size:.7rem;color:rgba(255,255,255,.45);font-family:var(--label);letter-spacing:.1em">&#8592; スライドして比較 &#8594;</p>
+    <p style="text-align:center;margin-top:14px;font-size:.72rem;color:rgba(255,255,255,.6);font-family:var(--label);letter-spacing:.1em;font-weight:500">&#8592; スライドして比較 &#8594;</p>
   </div>
 </section>
 
+
+<div id="worksDrawer" style="display:none;overflow:hidden;transition:all .5s">
 <section class="sec" id="works" style="background:linear-gradient(160deg,#0a2a55,#1a4a85)">
   <div class="sec-in">
     <span class="ey rv">Works</span>
@@ -465,8 +467,10 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
     </div>
   </div>
 </section>
+</div>
 
-<section class="sec" style="background:linear-gradient(160deg,#1a4a7a,#0d2a55)">
+
+<section class="sec" style="background:linear-gradient(160deg,#2a70b8,#1a5090)">
   <div class="sec-in">
     <span class="ey rv">Why YUU</span>
     <h2 class="st rv">選ばれる理由</h2>
@@ -480,7 +484,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
   </div>
 </section>
 
-<section class="sec" id="pricing" style="background:linear-gradient(160deg,#0d2a55,#1a4a90)">
+<section class="sec" id="pricing" style="background:linear-gradient(160deg,#1a5090,#2a7acc)">
   <div class="sec-in">
     <span class="ey rv">Pricing</span>
     <h2 class="st rv">料金プラン</h2>
@@ -496,7 +500,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
   </div>
 </section>
 
-<section class="sec" id="voice" style="background:linear-gradient(160deg,#1a4a90,#0d2a55)">
+<section class="sec" id="voice" style="background:linear-gradient(160deg,#2a7acc,#1a5090)">
   <div class="sec-in">
     <span class="ey rv">Voice</span>
     <h2 class="st rv">お客様の声</h2>
@@ -613,12 +617,21 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 // ── 制作事例オープン ──
 function openWorks(e){
   e.preventDefault();
-  var el = document.getElementById('works');
-  if(el) el.scrollIntoView({behavior:'smooth'});
-  setTimeout(function(){
-    document.querySelectorAll('#accList .acb').forEach(function(b){ b.classList.add('o'); });
-    document.querySelectorAll('#accList .aar').forEach(function(a){ a.classList.add('o'); });
-  }, 600);
+  var drawer = document.getElementById('worksDrawer');
+  if(!drawer) return;
+  if(drawer.style.display === 'none'){
+    drawer.style.display = 'block';
+    var works = document.getElementById('works');
+    setTimeout(function(){
+      if(works) works.scrollIntoView({behavior:'smooth'});
+      document.querySelectorAll('#accList .acb').forEach(function(b){ b.classList.add('o'); });
+      document.querySelectorAll('#accList .aar').forEach(function(a){ a.classList.add('o'); });
+    }, 100);
+    document.getElementById('samplesBtn').textContent = '▲ 制作事例を閉じる';
+  } else {
+    drawer.style.display = 'none';
+    document.getElementById('samplesBtn').textContent = '▼ タップして制作事例を見る';
+  }
 }
 
 // ── ゴールドの雨 ──
