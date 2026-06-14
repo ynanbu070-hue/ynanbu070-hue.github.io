@@ -3,592 +3,435 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>YUU & Co. | AIビジュアル制作</title>
+<title>YUU &amp; Co. | 企業の魅力を、ビジュアルで伝える。</title>
 <link rel="icon" href="https://i.imgur.com/18S3zeq.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--sky:#E8F4FF;--navy:#1A2E4A;--mid:#2A4060;--light:#EEF5FB;--blue:#5B9AC8;--gold:#C8A84B;--serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;--display:'Cormorant Garamond',serif;--label:'Montserrat',sans-serif}
+:root{--sky:#E8F4FF;--navy:#1A2E4A;--mid:#2A4060;--blue:#5B9AC8;--gold:#C8A84B;--gold2:#E8C96A;--serif:Noto Serif JP,serif;--sans:Noto Sans JP,sans-serif;--display:Cormorant Garamond,serif;--label:Montserrat,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:#F0F8FF;color:var(--navy);overflow-x:hidden;font-size:16px;line-height:1.8}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(91,154,200,.15);transition:box-shadow .3s}
-.nav-logo{display:flex;align-items:center;gap:8px}
-.nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
-.nav-logo-text{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--navy);letter-spacing:.06em}
-.nav-logo-text span{color:var(--blue)}
-.nav-links{display:flex;gap:20px;list-style:none}
-.nav-links a{font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--blue)}
-#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:48px;background:linear-gradient(180deg,#4AAEE0 0%,#A8DCF0 35%,#E0F4FF 75%,#fff 100%)}
-.gold-rain{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
-.gold-drop{position:absolute;top:-120px;width:2px;border-radius:99px;animation:goldFall linear infinite;opacity:0}
-@keyframes goldFall{0%{opacity:0;transform:translateY(0)}10%{opacity:.9}80%{opacity:.4}100%{opacity:0;transform:translateY(110vh)}}
-.hero-light{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:360px;height:360px;background:radial-gradient(circle,rgba(255,220,80,.9) 0%,transparent 60%);border-radius:50%;animation:lp 2.2s ease-in-out infinite;pointer-events:none;z-index:2;filter:blur(3px)}
-@keyframes lp{0%,100%{transform:translateX(-50%) scale(1);opacity:.8}50%{transform:translateX(-50%) scale(1.18);opacity:1}}
-.floaters{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
-.floater{position:absolute;animation:fd linear infinite;opacity:0}
-@keyframes fd{0%{opacity:0;transform:translateY(80vh) rotate(0deg)}15%{opacity:.6}85%{opacity:.25}100%{opacity:0;transform:translateY(-15vh) rotate(200deg)}}
-.hero-models{position:relative;z-index:5;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto}
-.hero-model-yui{width:52%;animation:hL 1.2s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-60px)}
-.hero-model-haruto{width:52%;animation:hR 1.2s cubic-bezier(.16,1,.3,1) .2s forwards;opacity:0;transform:translateX(60px)}
-@keyframes hL{to{opacity:1;transform:translateX(0)}}@keyframes hR{to{opacity:1;transform:translateX(0)}}
-.hero-model-yui img,.hero-model-haruto img{width:100%;height:85vh;object-fit:cover;object-position:top;display:block}
-.hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:80px 24px 28px;background:linear-gradient(transparent,rgba(8,25,55,.78) 60%);z-index:6;animation:fU 1s ease .9s both}
-.catch-main{font-family:var(--serif);font-size:clamp(1.8rem,6vw,3rem);font-weight:400;color:#fff;letter-spacing:.05em;line-height:1.5;margin-bottom:8px;text-align:left;padding-left:8%}
-.catch-icon{display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--label);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,235,255,.85)}
-.scroll-indicator{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:5px;animation:fU .8s ease 2s both}
-.scroll-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);animation:sd 1.5s ease-in-out infinite}
-.scroll-dot:nth-child(2){animation-delay:.15s}.scroll-dot:nth-child(3){animation-delay:.3s}
-@keyframes sd{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
-@keyframes fU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.sw{padding:64px 24px;position:relative;overflow:hidden}
-.si{max-width:680px;margin:0 auto}
-.ey{font-family:var(--label);font-size:.65rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:block}
-.st{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:300;line-height:1.35;color:var(--navy);margin-bottom:10px}
-.sl{width:100%;height:1px;background:linear-gradient(to right,var(--blue),rgba(91,154,200,.2) 60%,transparent);margin-bottom:32px}
-.bt{font-size:.95rem;line-height:2;color:var(--mid)}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-slide-up{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.reveal-slide-up.visible{opacity:1;transform:translateY(0)}
-.baw{border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(26,46,74,.12);margin-bottom:20px}
-.baw img{width:100%;height:auto;display:block}
-.wbg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
-.bc{background:#fff;border-radius:14px;padding:22px 16px;text-align:center;box-shadow:0 4px 20px rgba(26,46,74,.07);border:1px solid rgba(91,154,200,.12);transition:transform .4s,box-shadow .4s;position:relative}
-.bc:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,46,74,.12)}
-.bi{font-size:2rem;margin-bottom:10px;display:block}
-.bt2{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:5px}
-.bd{font-size:.8rem;color:var(--mid);line-height:1.8}
-.amg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.am{background:#fff;border-radius:12px;padding:16px 14px;text-align:center;border-top:3px solid var(--blue);box-shadow:0 3px 14px rgba(26,46,74,.06);transition:transform .4s,box-shadow .4s}
-.am:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(26,46,74,.1)}
-.ami{font-size:1.6rem;display:block;margin-bottom:8px}
-.amt{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-.amd{font-size:.76rem;color:var(--mid);line-height:1.8}
-.wg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
-.wc{background:#fff;border-left:3px solid rgba(200,100,100,.3);border-radius:10px;padding:16px 14px;font-size:.84rem;color:var(--navy);font-weight:500;transition:transform .3s,box-shadow .3s}
-.wc:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(26,46,74,.08)}
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pc{background:#fff;border:1px solid rgba(91,154,200,.15);border-radius:14px;padding:22px 16px;position:relative;transition:transform .4s,box-shadow .4s;display:flex;flex-direction:column;overflow:hidden}
-.pc:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(26,46,74,.1)}
-.pc.ft{background:var(--navy);border-color:var(--navy)}
-.pc.bv{border:2px solid rgba(200,168,75,.4);background:linear-gradient(135deg,#FFFBF0,#FFF8E6)}
-.rb{position:absolute;top:-1px;right:14px;background:var(--blue);color:#fff;font-family:var(--label);font-size:.52rem;font-weight:600;padding:3px 9px;border-radius:0 0 6px 6px}
-.bb{position:absolute;top:-1px;right:14px;background:var(--gold);color:#fff;font-family:var(--label);font-size:.52rem;font-weight:600;padding:3px 9px;border-radius:0 0 6px 6px}
-.pn{font-size:1.1rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:4px;border-bottom:2px solid rgba(91,154,200,.2);padding-bottom:5px;display:inline-block}
-.pc.ft .pn{color:#fff;border-color:rgba(255,255,255,.15)}.pc.bv .pn{color:var(--gold)}
-.pname{font-family:var(--label);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;display:block}
-.pc.ft .pname{color:rgba(184,216,240,.8)}.pc.bv .pname{color:var(--gold)}
-.pa{font-family:var(--display);font-size:2rem;font-weight:300;color:var(--navy);line-height:1;margin-bottom:2px}
-.pc.ft .pa{color:#fff}.pc.bv .pa{color:var(--gold)}
-.pu{font-size:.74rem;color:rgba(26,46,74,.5);margin-bottom:6px}
-.pc.ft .pu{color:rgba(255,255,255,.4)}
-.ps{font-size:.76rem;font-weight:600;color:var(--gold);margin-bottom:10px;display:block;background:rgba(200,168,75,.08);padding:5px 9px;border-radius:8px}
-.pp{font-size:.74rem;color:rgba(26,46,74,.5);margin-bottom:10px}
-.pc.ft .pp{color:rgba(255,255,255,.4)}
-.mg{display:grid;grid-template-columns:1fr 1fr;gap:28px 14px;margin-bottom:48px;align-items:start}
-.miw{position:relative;overflow:hidden;border-radius:10px;margin-bottom:12px;box-shadow:0 4px 20px rgba(26,46,74,.1);transition:box-shadow .4s}
-.miw img{width:100%;height:240px;object-fit:cover;object-position:top;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
-.miw:hover img{transform:scale(1.05)}.miw:hover{box-shadow:0 12px 36px rgba(26,46,74,.18)}
-.mb2{position:absolute;bottom:0;left:0;right:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(10,25,55,.68));font-family:var(--serif);font-size:.88rem;color:#fff;border-radius:0 0 10px 10px}
-.mn{font-family:var(--serif);font-size:1.45rem;font-weight:300;margin-bottom:2px;margin-top:10px;color:var(--navy)}
-.ms{font-family:var(--label);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block}
-.mpg{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px}
-.pi{background:rgba(91,154,200,.07);padding:7px 9px;border-radius:5px}
-.pl{font-family:var(--label);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:2px}
-.pv{font-size:.82rem;font-weight:600;color:var(--navy)}
-.mat{font-family:var(--label);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:5px;display:block}
-.mtg{display:flex;flex-wrap:wrap;gap:4px}
-.tag{padding:3px 9px;border:1px solid rgba(91,154,200,.22);font-family:var(--label);font-size:.52rem;color:var(--blue);border-radius:20px;background:rgba(91,154,200,.04)}
-.ab{margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(91,154,200,.14)}
-.ah{display:flex;align-items:center;cursor:pointer;background:#fff;border:none;width:100%;padding:0;min-height:105px;transition:background .2s}
-.ah:hover{background:#F8FBFF}
-.ac{width:105px;height:105px;object-fit:cover;flex-shrink:0;display:block}
-.at{font-family:var(--serif);font-size:.93rem;color:var(--navy);padding:0 14px;flex:1;text-align:left}
-.aa{font-size:.74rem;color:var(--blue);padding-right:14px;transition:transform .3s;flex-shrink:0}
-.aa.open{transform:rotate(180deg)}
-.abody{display:none;padding:10px;background:#F5FAFF}
-.abody.open{display:block}
-.agd{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ci{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:3/4}
-.ci img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
-.ci:hover img{transform:scale(1.06)}
-.cl{position:absolute;bottom:0;left:0;right:0;padding:18px 10px 8px;background:linear-gradient(transparent,rgba(10,25,55,.65));color:#fff;font-size:.72rem;font-weight:500;text-align:center}
-.ucs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:none;margin-top:32px}
-.ucs::-webkit-scrollbar{display:none}
-.uci{display:flex;gap:12px}
-.ucc{background:rgba(91,154,200,.06);border:1px solid rgba(91,154,200,.14);border-radius:12px;padding:18px 14px;min-width:148px;flex-shrink:0;transition:transform .4s,box-shadow .4s,border-color .3s,background .3s}
-.ucc:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 36px rgba(26,46,74,.13);border-color:var(--blue);background:#fff}
-.ucn{font-family:var(--display);font-size:1.5rem;font-weight:300;color:rgba(91,154,200,.35);line-height:1;margin-bottom:7px}
-.ucc h4{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:5px}
-.ucc p{font-size:.73rem;color:var(--mid);line-height:1.7}
-.vi{max-width:640px;margin:0 auto}
-.vc{background:#fff;border-radius:16px;padding:34px 26px 30px;box-shadow:0 6px 28px rgba(26,46,74,.08);position:relative;margin-bottom:20px;transition:transform .4s,box-shadow .4s;overflow:hidden}
-.vc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));background-size:200% 100%;animation:gm 3s linear infinite}
-@keyframes gm{0%{background-position:0%}100%{background-position:200%}}
-.vc:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(26,46,74,.12)}
-.vq{font-size:5rem;color:rgba(91,154,200,.1);line-height:1;position:absolute;top:12px;left:16px;font-family:var(--display);pointer-events:none}
-.vt{font-family:var(--serif);font-size:1.1rem;line-height:2;color:var(--navy);margin:22px 0 18px}
-.vd{width:30px;height:2px;background:var(--blue);margin-bottom:14px;opacity:.4}
-.vm{display:flex;align-items:center;gap:10px}
-.vav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:.9rem}
-.vc2{font-size:.86rem;font-weight:700;color:var(--navy);margin:0}
-.vdet{font-size:.72rem;color:rgba(26,46,74,.5);margin:2px 0 0}
-.vn{font-size:.68rem;color:rgba(26,46,74,.35);margin-top:16px;text-align:center}
-#philosophy{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:80px 24px}
-#philosophy::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%)}
-.phi{position:relative;z-index:1;max-width:480px;margin:0 auto;text-align:center}
-.phc{font-family:var(--display);font-size:clamp(2.4rem,8vw,3.8rem);font-weight:300;color:#fff;line-height:1.5;letter-spacing:.08em;margin-bottom:28px}
-.phd{width:36px;height:1px;background:rgba(184,216,240,.25);margin:0 auto 24px}
-.pht{font-family:var(--serif);font-size:.88rem;line-height:2.4;color:rgba(255,255,255,.68)}
-.pht .hl{color:#8FCAF0;font-style:italic}
-.phs{margin-top:24px;color:rgba(255,255,255,.35);font-family:var(--label);font-size:.58rem;letter-spacing:.18em}
-#legal{background:linear-gradient(145deg,#C8E8FF 0%,#EAF6FF 55%,#F2FBFF 100%);position:relative;overflow:hidden}
-.lr{position:absolute;border-radius:50%;pointer-events:none;animation:re ease-out infinite;opacity:0}
-.lr1{width:200px;height:200px;top:10%;left:-50px;border:1px solid rgba(91,154,200,.18);animation-duration:6s}
-.lr2{width:300px;height:300px;top:30%;right:-80px;border:1px solid rgba(91,154,200,.12);animation-duration:8s;animation-delay:2s}
-@keyframes re{0%{transform:scale(.5);opacity:.5}100%{transform:scale(1.8);opacity:0}}
-.lg{display:grid;gap:16px;position:relative;z-index:1}
-.lb{background:rgba(255,255,255,.82);border-radius:20px;padding:26px 22px;border:1px solid rgba(255,255,255,.9);box-shadow:0 6px 24px rgba(91,154,200,.1);backdrop-filter:blur(8px);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden}
-.lb::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));background-size:200% 100%;animation:gm 3s linear infinite;border-radius:20px 20px 0 0}
-.lb:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(91,154,200,.14)}
-.lbh{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed rgba(91,154,200,.2)}
-.lbh h4{font-size:.92rem;font-weight:700;color:var(--navy);margin:0}
-.lfi{font-size:1.5rem;flex-shrink:0;animation:iF 3s ease-in-out infinite;display:inline-block}
-@keyframes iF{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.ll{list-style:none;padding:0;margin:0}
-.ll li{font-size:.84rem;line-height:1.95;color:var(--mid);padding:8px 0 8px 22px;border-bottom:1px solid rgba(91,154,200,.08);position:relative}
-.ll li:last-child{border-bottom:none;padding-bottom:0}
-.ll li::before{content:'🕊';position:absolute;left:0;top:9px;font-size:.58rem;opacity:.5}
-#staff{background:#07111F;position:relative;overflow:hidden;padding:0}
-.sbt{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,.4) 50%,transparent)}
-.sbb{height:1px;background:linear-gradient(to right,transparent,rgba(91,154,200,.28) 50%,transparent)}
-.ssi{max-width:480px;margin:0 auto;position:relative;z-index:1;padding:56px 24px}
-#staff .ey{color:rgba(200,168,75,.72);letter-spacing:.28em;margin-bottom:6px}
-#staff .st{color:#fff;font-family:var(--display);font-size:clamp(1.7rem,4vw,2.4rem);font-weight:300}
-#staff .sl{background:linear-gradient(to right,rgba(200,168,75,.38),rgba(91,154,200,.2) 50%,transparent);margin-bottom:36px}
-.fib{position:relative;overflow:hidden;border-radius:2px}
-.fib img{width:100%;height:400px;object-fit:cover;object-position:top;display:block;transition:transform .8s;filter:brightness(.87) contrast(1.06)}
-.fib:hover img{transform:scale(1.02)}
-.fib::before{content:'';position:absolute;inset:0;border:1px solid rgba(200,168,75,.12);z-index:2;pointer-events:none}
-.fib::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,rgba(7,17,31,.97));z-index:1;pointer-events:none}
-.fit{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:26px 22px}
-.fgl{width:26px;height:1px;background:rgba(200,168,75,.65);margin-bottom:12px}
-.frl{font-family:var(--label);font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(200,168,75,.65);margin-bottom:6px;display:block}
-.fnb{font-family:var(--display);font-size:clamp(2.8rem,9vw,4.2rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:.04em;margin-bottom:8px}
-.floc{font-family:var(--label);font-size:.56rem;letter-spacing:.15em;color:rgba(184,216,240,.45)}
-.fsep{display:flex;align-items:center;background:#07111F;padding:0 24px}
-.fsl{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,75,.22),rgba(91,154,200,.12))}
-.fslr{flex:1;height:1px;background:linear-gradient(to left,rgba(200,168,75,.22),rgba(91,154,200,.12))}
-.fsc{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#07111F;font-size:.7rem;opacity:.4}
-.ftb{background:#07111F;padding:32px 28px 40px;position:relative}
-.ftb::before{content:'';position:absolute;top:0;left:28px;right:28px;height:1px;background:linear-gradient(to right,rgba(91,154,200,.05),rgba(91,154,200,.2) 50%,rgba(91,154,200,.05))}
-.ftb p{font-family:var(--serif);font-size:.92rem;line-height:2.6;color:rgba(255,255,255,.72);margin-bottom:20px;overflow-wrap:break-word;letter-spacing:.02em}
-.ftb p:last-of-type{margin-bottom:0}
-.ftb .hl{color:rgba(184,216,240,.92);font-style:italic;border-bottom:1px solid rgba(91,154,200,.3);padding-bottom:1px}
-.fsig{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid rgba(200,168,75,.12)}
-.fsn{font-family:var(--display);font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.58);letter-spacing:.1em;font-style:italic}
-.fsd{width:5px;height:5px;border-radius:50%;background:rgba(200,168,75,.4)}
-.frl2{opacity:0;transform:translateX(-30px);transition:opacity .9s,transform .9s cubic-bezier(.16,1,.3,1)}
-.frl2.visible{opacity:1;transform:translateX(0)}
-.fru{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
-.fru.visible{opacity:1;transform:translateY(0)}
-.fru2{opacity:0;transform:translateY(24px);transition:opacity .8s .15s,transform .8s .15s}
-.fru2.visible{opacity:1;transform:translateY(0)}
-.fru3{opacity:0;transform:translateY(24px);transition:opacity .8s .3s,transform .8s .3s}
-.fru3.visible{opacity:1;transform:translateY(0)}
-#company{background:linear-gradient(160deg,#0D1E32,#1A3050);padding:56px 24px}
-.ci2{max-width:480px;margin:0 auto}
-#company .ey{color:rgba(200,168,75,.75)}
-#company .st{color:#fff}
-#company .sl{background:linear-gradient(to right,rgba(200,168,75,.38),transparent)}
-.ctbl{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-bottom:24px}
-.cr{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)}
-.cr:last-child{border-bottom:none}
-.ck{padding:13px 14px;font-family:var(--label);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center}
-.cv{padding:13px 14px;font-size:.84rem;color:rgba(255,255,255,.82);line-height:1.7}
-.prof-box{padding:22px;background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(200,168,75,.15)}
-.prof-title{font-family:var(--label);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,168,75,.7);margin-bottom:14px;display:block}
-.prow{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.prow:last-child{border-bottom:none}
-.pdot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px;opacity:.7}
-.ptxt{font-size:.84rem;color:rgba(255,255,255,.75);line-height:1.7}
-#partner{background:linear-gradient(160deg,#0D2137,#1A3A58);padding:56px 24px;position:relative;overflow:hidden}
-#partner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(91,154,200,.1),transparent 55%)}
-#partner .ey{color:rgba(200,168,75,.75)}
-#partner .st{color:#fff}
-#partner .sl{background:linear-gradient(to right,rgba(200,168,75,.38),transparent)}
-.pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px;transition:box-shadow .4s,border-color .3s}
-.pcard:hover{box-shadow:0 8px 32px rgba(91,154,200,.15);border-color:rgba(91,154,200,.25)}
-.pcard p{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.78);line-height:2;margin-bottom:16px}
-.pf{display:grid;gap:9px}
-.pfi{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(255,255,255,.78)}
-.pfg{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(200,168,75,.9);font-weight:600}
-#contact{background:var(--navy);color:#fff;text-align:center;position:relative;overflow:hidden;padding:80px 24px}
-#contact::before{content:'YUU';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:22vw;font-weight:300;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none}
-.coi{position:relative;z-index:1;max-width:520px;margin:0 auto}
-#contact .ey{color:rgba(184,216,240,.75)}
-#contact .st{color:#fff}
-#contact .sl{background:linear-gradient(to right,rgba(184,216,240,.38),transparent);margin:0 auto 26px}
-.cob{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px;margin-bottom:26px;text-align:left}
-.cob h3{font-family:var(--serif);font-size:.98rem;color:#fff;margin-bottom:14px;text-align:center;font-weight:400}
-.coi2{display:flex;align-items:center;gap:8px;font-size:.83rem;color:rgba(255,255,255,.82);margin-bottom:9px}
-.con{font-size:.76rem;color:rgba(255,255,255,.4);text-align:center;margin-top:12px;font-style:italic}
-.col{font-family:var(--serif);font-size:.92rem;line-height:2;color:rgba(255,255,255,.68);margin-bottom:26px}
-.lb2{display:inline-flex;align-items:center;gap:8px;padding:14px 38px;background:#06C755;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:transform .3s,box-shadow .3s;margin-bottom:13px;box-shadow:0 4px 18px rgba(6,199,85,.32)}
-.lb2:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(6,199,85,.4)}
-.lib{display:inline-flex;align-items:center;gap:8px;padding:11px 30px;color:#fff;font-family:var(--label);font-size:.68rem;font-weight:500;letter-spacing:.13em;text-decoration:none;border-radius:40px;transition:transform .3s;margin-bottom:13px}
-.lib:hover{transform:translateY(-2px)}
-.sl2{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border:1px solid rgba(184,216,240,.25);color:rgba(255,255,255,.8);text-decoration:none;font-family:var(--label);font-size:.65rem;letter-spacing:.11em;border-radius:6px;transition:background .3s,border-color .3s}
-.sl2:hover{background:rgba(91,154,200,.25);border-color:rgba(91,154,200,.4)}
-.db{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
-.db.visible{transform:scaleX(1)}
-.nl{height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.35),rgba(200,168,75,.25),rgba(91,154,200,.35),transparent);animation:ng 3s ease-in-out infinite}
-@keyframes ng{0%,100%{opacity:.4}50%{opacity:1}}
-.gc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);transition:background .3s,border-color .3s}
-.gc:hover{background:rgba(255,255,255,.08);border-color:rgba(91,154,200,.25)}
-footer{background:#04090F;color:rgba(255,255,255,.32);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:.58rem;letter-spacing:.1em}
-.flogo{display:flex;align-items:center;gap:8px}
-.flogo img{width:24px;height:24px;border-radius:50%;opacity:.55}
-.flt{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.48)}
-.flt span{color:var(--blue)}
-@media(max-width:768px){
-  nav{padding:10px 14px}.nav-links{display:none}.sw{padding:48px 16px}
-  .hero-model-yui img,.hero-model-haruto img{height:80vh}
-  .wbg{grid-template-columns:1fr}.bc{display:flex;align-items:center;gap:14px;text-align:left;padding:15px}.bi{font-size:1.5rem;margin-bottom:0;flex-shrink:0}
-  .pg{grid-template-columns:1fr 1fr}.pc{padding:16px 12px}.pa{font-size:1.7rem}
-  .mg{grid-template-columns:1fr 1fr;gap:12px}.miw img{height:190px}
-  footer{flex-direction:column;gap:6px;text-align:center}
-  .fib img{height:320px}.fnb{font-size:2.8rem}
-  .cr{grid-template-columns:80px 1fr}.ck{font-size:.5rem;padding:11px 10px}.cv{padding:11px 10px;font-size:.8rem}
-}
-</style>
-</head>
+body{font-family:var(--sans);background:#0a1628;color:#fff;overflow-x:hidden;line-height:1.8}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(91,154,200,.15);transition:box-shadow .4s}
+.nl{display:flex;align-items:center;gap:8px}.nl img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.nlt{font-family:var(--display);font-size:1.3rem;font-weight:600;color:#fff;letter-spacing:.06em}.nlt span{color:var(--gold)}
+.nlk{display:flex;gap:20px;list-style:none}.nlk a{font-family:var(--label);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.58);text-decoration:none;transition:color .3s}.nlk a:hover{color:var(--gold)}
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:60px}
+.hsky{position:absolute;inset:0;background:linear-gradient(180deg,#1565b0 0%,#3fa0d8 25%,#7dc8e8 55%,#b0dff5 78%,#e5f5ff 92%,#fff 100%);z-index:0}
+.cls{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.cl{position:absolute;background:rgba(255,255,255,.93);border-radius:50px;filter:blur(1.5px)}
+.cl::before,.cl::after{content:"";position:absolute;background:rgba(255,255,255,.93);border-radius:50%}
+.c1{width:200px;height:58px;top:8%;left:-8%;animation:cmv 34s linear infinite}.c1::before{width:98px;height:78px;top:-34px;left:28px}.c1::after{width:68px;height:58px;top:-24px;left:88px}
+.c2{width:148px;height:44px;top:17%;left:22%;animation:cmv 50s linear infinite 10s}.c2::before{width:78px;height:63px;top:-27px;left:18px}.c2::after{width:54px;height:44px;top:-17px;left:68px}
+.c3{width:255px;height:76px;top:5%;left:56%;animation:cmv 41s linear infinite 5s}.c3::before{width:128px;height:98px;top:-41px;left:40px}.c3::after{width:88px;height:70px;top:-31px;left:112px}
+.c4{width:118px;height:35px;top:29%;left:79%;animation:cmv 37s linear infinite 15s}.c4::before{width:63px;height:53px;top:-21px;left:14px}.c4::after{width:44px;height:37px;top:-13px;left:53px}
+.c5{width:178px;height:53px;top:37%;left:-4%;animation:cmv 45s linear infinite 8s}.c5::before{width:88px;height:70px;top:-30px;left:24px}.c5::after{width:62px;height:51px;top:-21px;left:78px}
+@keyframes cmv{from{transform:translateX(0)}to{transform:translateX(115vw)}}
+.ptcls{position:absolute;inset:0;z-index:2;pointer-events:none}
+.ptcl{position:absolute;animation:pflt linear infinite;opacity:0}
+@keyframes pflt{0%{opacity:0;transform:translateY(100vh) rotate(0deg) scale(.5)}10%{opacity:.8}90%{opacity:.25}100%{opacity:0;transform:translateY(-20vh) rotate(360deg) scale(1.2)}}
+.gshmr{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.sl{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,75,.6),transparent);animation:smv 4s ease-in-out infinite;opacity:0}
+@keyframes smv{0%{opacity:0;left:-100%}50%{opacity:1}100%{opacity:0;left:100%}}
+.hmdl{position:relative;z-index:5;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto}
+.hmy{width:52%;animation:hsl 1.4s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-80px) scale(.95)}
+.hmh{width:52%;animation:hsr 1.4s cubic-bezier(.16,1,.3,1) .3s forwards;opacity:0;transform:translateX(80px) scale(.95)}
+@keyframes hsl{to{opacity:1;transform:translateX(0) scale(1)}}@keyframes hsr{to{opacity:1;transform:translateX(0) scale(1)}}
+.hmy img,.hmh img{width:100%;height:85vh;object-fit:cover;object-position:top;display:block}
+.hov{position:absolute;bottom:0;left:0;right:0;padding:100px 24px 40px;background:linear-gradient(transparent,rgba(6,18,40,.9) 58%);z-index:6}
+.hey{font-family:var(--label);font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:0;animation:fup .8s ease 1.2s forwards}
+.hc{font-family:var(--serif);font-size:clamp(1.9rem,6vw,3.2rem);font-weight:400;color:#fff;letter-spacing:.05em;line-height:1.5;margin-bottom:16px;padding-left:5%}
+.cw{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}.cw.v{opacity:1;transform:translateY(0)}
+.hsub{font-size:.88rem;color:rgba(255,255,255,.72);line-height:2.1;padding-left:5%;opacity:0;animation:fup .8s ease 2s forwards;margin-bottom:24px}
+.hcta{padding-left:5%;display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fup .8s ease 2.3s forwards}
+@keyframes fup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.btp{background:var(--gold);color:var(--navy);padding:14px 28px;font-family:var(--label);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(200,168,75,.4)}.btp:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,168,75,.5)}
+.bto{border:1px solid rgba(255,255,255,.4);color:#fff;padding:14px 28px;font-family:var(--label);font-size:.68rem;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s}.bto:hover{background:rgba(255,255,255,.1)}
+.scrl{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:5px;animation:fup .8s ease 2.8s both}
+.sd{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);animation:sdp 1.5s ease-in-out infinite}.sd:nth-child(2){animation-delay:.15s}.sd:nth-child(3){animation-delay:.3s}
+@keyframes sdp{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+.stbar{background:linear-gradient(135deg,#0d1e35,#1a3050);padding:40px 20px;border-top:1px solid rgba(200,168,75,.2);border-bottom:1px solid rgba(91,154,200,.15);position:relative;overflow:hidden}
+.stbar::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,75,.5),transparent);animation:lgw 3s ease-in-out infinite}
+@keyframes lgw{0%,100%{opacity:.4}50%{opacity:1}}
+.sbi{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:560px;margin:0 auto;text-align:center}
+.sitem{padding:20px 8px;border:1px solid rgba(91,154,200,.2);border-radius:16px;background:rgba(255,255,255,.04);transition:transform .4s,border-color .3s}.sitem:hover{transform:translateY(-4px);border-color:rgba(200,168,75,.4)}
+.snum{font-family:var(--display);font-size:2.4rem;font-weight:300;color:var(--gold);line-height:1}
+.slbl{font-size:.62rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em}
+.sbrr{height:2px;background:linear-gradient(90deg,var(--gold),var(--blue));border-radius:2px;margin-top:10px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}.sbrr.v{transform:scaleX(1)}
+.sec{padding:80px 24px;position:relative}.sec-in{max-width:680px;margin:0 auto}
+.ey{font-family:var(--label);font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block}
+.st{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:300;line-height:1.4;margin-bottom:12px;color:#fff}
+.gdl{width:100%;height:1px;background:linear-gradient(to right,var(--gold),rgba(91,154,200,.3) 50%,transparent);margin-bottom:32px}
+.bt{font-size:.95rem;line-height:2;color:rgba(255,255,255,.72)}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}.rv.v{opacity:1;transform:translateY(0)}
+.mhl{background:rgba(255,255,255,.04);border-left:3px solid var(--gold);padding:28px 24px;margin-top:32px;border-radius:0 12px 12px 0}
+.mpt-row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}.mpt-row:last-child{border-bottom:none}
+.mpic{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.mptxt{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.9}.mptxt strong{color:var(--gold2);font-weight:500;display:block;margin-bottom:2px}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.ccard{background:rgba(255,255,255,.04);border:1px solid rgba(91,154,200,.15);border-radius:14px;padding:20px 16px;font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.7;transition:all .4s}.ccard:hover{transform:translateY(-4px);border-color:rgba(91,154,200,.4);box-shadow:0 12px 32px rgba(91,154,200,.1)}
+.cic{font-size:1.4rem;display:block;margin-bottom:10px}
+.carr{text-align:center;padding:32px 0;font-size:2rem;color:var(--gold);animation:bnc 2s ease-in-out infinite}
+@keyframes bnc{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.sol{background:linear-gradient(135deg,rgba(200,168,75,.1),rgba(91,154,200,.06));border:1px solid rgba(200,168,75,.3);border-radius:16px;padding:28px 22px;text-align:center}
+.solt{font-family:var(--serif);font-size:1.3rem;color:var(--gold);margin-bottom:16px;font-weight:400}
+.solps{display:grid;gap:10px;text-align:left}.solp{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:rgba(255,255,255,.8)}.solp span:first-child{color:var(--gold);flex-shrink:0;margin-top:2px}
+.basec{background:#0a1628;padding:80px 24px}
+.balr{display:flex;justify-content:space-between;padding:0 4px;margin-bottom:8px}
+.ball{font-family:var(--label);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase}
+.bab{color:rgba(255,255,255,.35)}.baa{color:var(--gold)}
+.baw{position:relative;border-radius:16px;overflow:hidden;cursor:ew-resize;user-select:none;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.baimg{width:100%;display:block;height:300px;object-fit:cover;object-position:top}
+.baov{position:absolute;top:0;left:0;bottom:0;overflow:hidden;width:50%}.baov img{width:100vw;max-width:680px;height:300px;object-fit:cover;object-position:top;display:block}
+.badv{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);transform:translateX(-50%)}
+.bahnd{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,168,75,.5);font-size:1rem;color:var(--navy);font-weight:700}
+.baht{text-align:center;margin-top:12px;font-size:.7rem;color:rgba(255,255,255,.35);font-family:var(--label);letter-spacing:.1em}
+.ifr{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0}
+.ifb{padding:8px 18px;border:1px solid rgba(91,154,200,.3);border-radius:24px;background:transparent;color:rgba(255,255,255,.65);font-family:var(--label);font-size:.58rem;letter-spacing:.12em;cursor:pointer;transition:all .3s}.ifb.a,.ifb:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.sacc{margin-bottom:12px;border-radius:14px;overflow:hidden;border:1px solid rgba(91,154,200,.15)}
+.ach{display:flex;align-items:center;cursor:pointer;background:rgba(255,255,255,.04);border:none;width:100%;padding:0;min-height:90px;transition:background .3s}.ach:hover{background:rgba(255,255,255,.07)}
+.ath{width:90px;height:90px;object-fit:cover;flex-shrink:0;display:block}
+.att{font-family:var(--serif);font-size:.95rem;color:#fff;padding:0 16px;flex:1;text-align:left}
+.aar{font-size:.8rem;color:var(--blue);padding-right:16px;transition:transform .3s;flex-shrink:0}.aar.o{transform:rotate(180deg)}
+.acb{display:none;padding:12px;background:rgba(0,0,0,.2)}.acb.o{display:block}
+.sgrd{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.si2{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:3/4}.si2 img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}.si2:hover img{transform:scale(1.08)}
+.scap{position:absolute;bottom:0;left:0;right:0;padding:20px 10px 8px;background:linear-gradient(transparent,rgba(6,18,40,.8));color:#fff;font-size:.72rem;font-weight:500;text-align:center}
+.bfl{margin-top:40px;display:grid;gap:0}
+.bfi{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.07);display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start;transition:transform .3s}.bfi:hover{transform:translateX(6px)}
+.bfn{font-family:var(--display);font-size:2.8rem;font-weight:300;color:rgba(200,168,75,.22);line-height:1}
+.bft{font-family:var(--serif);font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:6px}
+.bfd{font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.9}
+.sexpl{background:rgba(91,154,200,.08);border:1px solid rgba(91,154,200,.2);border-radius:12px;padding:20px;margin-bottom:32px}.sexpl strong{color:var(--gold2);display:block;margin-bottom:10px;font-size:.9rem}.sexpl p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.9}
+.pgrd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.pc{background:rgba(255,255,255,.04);border:1px solid rgba(91,154,200,.15);border-radius:16px;padding:24px 18px;position:relative;transition:all .4s;display:flex;flex-direction:column;overflow:hidden}
+.pc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}.pc:hover::before{transform:scaleX(1)}
+.pc:hover{transform:translateY(-6px);border-color:rgba(91,154,200,.4);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.pc.ft{background:linear-gradient(135deg,rgba(26,46,74,.8),rgba(20,38,64,.8));border-color:rgba(200,168,75,.4)}.pc.ft::before{transform:scaleX(1);background:linear-gradient(90deg,var(--gold),var(--blue),var(--gold))}
+.pc.tr{background:linear-gradient(135deg,rgba(200,168,75,.08),rgba(91,154,200,.05));border-color:rgba(200,168,75,.35)}
+.pbg{position:absolute;top:-1px;right:14px;font-family:var(--label);font-size:.5rem;font-weight:600;padding:4px 10px;border-radius:0 0 8px 8px}.bgr{background:var(--blue);color:#fff}.bgt{background:var(--gold);color:var(--navy)}
+.pll{font-family:var(--label);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;display:block}.pc.ft .pll,.pc.tr .pll{color:var(--gold)}
+.pnm{font-family:var(--serif);font-size:1rem;color:#fff;font-weight:400;margin-bottom:4px}
+.ppr{font-family:var(--display);font-size:2rem;font-weight:300;color:#fff;line-height:1;margin-bottom:4px}.pc.ft .ppr,.pc.tr .ppr{color:var(--gold2)}
+.ppu{font-size:.7rem;color:rgba(255,255,255,.4)}
+.pfs{list-style:none;margin-top:14px;display:grid;gap:7px;flex:1}.pfs li{font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:8px;align-items:flex-start}.pfs li span:first-child{color:var(--gold);flex-shrink:0;margin-top:2px}
+.pds{font-size:.7rem;color:rgba(255,255,255,.38);margin-top:12px;line-height:1.7;border-top:1px solid rgba(255,255,255,.06);padding-top:10px}
+.pstk{font-size:.74rem;color:rgba(255,255,255,.33);text-decoration:line-through;margin-bottom:4px}
+.vcd{background:rgba(255,255,255,.04);border-radius:18px;padding:32px 24px;margin-bottom:20px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.07);transition:all .4s}
+.vcd::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));background-size:200% 100%;animation:gsh 4s linear infinite}
+@keyframes gsh{0%{background-position:0%}100%{background-position:200%}}.vcd:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.vq{font-size:5rem;color:rgba(91,154,200,.1);line-height:1;position:absolute;top:10px;left:14px;font-family:var(--display)}
+.vinn{display:flex;gap:14px;align-items:flex-start}.vim{width:90px;height:122px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.vtt{font-family:var(--serif);font-size:1rem;line-height:2.2;color:#fff;margin:20px 0 16px;flex:1}
+.vdv{width:28px;height:2px;background:var(--blue);margin-bottom:12px;opacity:.5}
+.vc2{font-size:.88rem;font-weight:700;color:#fff}.vdt{font-size:.72rem;color:rgba(255,255,255,.43);margin-top:2px}.vlk{font-size:.72rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:6px}
+.phsec{background:linear-gradient(160deg,#071428,#0d1e35);text-align:center;padding:100px 24px;position:relative;overflow:hidden}
+.phsec::before{content:"YUU";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:22vw;font-weight:300;color:rgba(255,255,255,.02);white-space:nowrap;pointer-events:none}
+.phin{position:relative;z-index:1;max-width:480px;margin:0 auto}
+.phm{font-family:var(--display);font-size:clamp(2.4rem,8vw,4rem);font-weight:300;color:#fff;line-height:1.5;letter-spacing:.08em;margin-bottom:28px}.phm .gd{color:var(--gold)}
+.phl{width:36px;height:1px;background:rgba(255,255,255,.2);margin:0 auto 24px}
+.pht{font-family:var(--serif);font-size:.9rem;line-height:2.6;color:rgba(255,255,255,.65)}.pht em{color:#8FCAF0;font-style:italic}
+.phs{margin-top:28px;color:rgba(255,255,255,.3);font-family:var(--label);font-size:.56rem;letter-spacing:.22em}
+.lgsec{background:linear-gradient(160deg,#0a1e36,#0f2040);padding:64px 24px;position:relative;overflow:hidden}
+.lgr{position:absolute;border-radius:50%;pointer-events:none;animation:rexp ease-out infinite;opacity:0}
+.lgr1{width:200px;height:200px;top:10%;left:-50px;border:1px solid rgba(91,154,200,.18);animation-duration:6s}
+.lgr2{width:300px;height:300px;top:40%;right:-80px;border:1px solid rgba(91,154,200,.1);animation-duration:8s;animation-delay:2s}
+@keyframes rexp{0%{transform:scale(.5);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+.lggrd{display:grid;gap:16px;position:relative;z-index:1}
+.lgb{background:rgba(255,255,255,.04);border-radius:20px;padding:26px 22px;border:1px solid rgba(255,255,255,.07);transition:all .4s;position:relative;overflow:hidden}
+.lgb::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));background-size:200% 100%;animation:gsh 4s linear infinite}.lgb:hover{transform:translateY(-4px);border-color:rgba(91,154,200,.2)}
+.lgbh{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed rgba(91,154,200,.18)}
+.lgic{font-size:1.5rem;animation:ifl 3s ease-in-out infinite}@keyframes ifl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.lgt{font-size:.92rem;font-weight:700;color:#fff}
+.lgll{list-style:none;padding:0;margin:0}.lgll li{font-size:.84rem;line-height:2;color:rgba(255,255,255,.65);padding:8px 0 8px 22px;border-bottom:1px solid rgba(91,154,200,.06);position:relative}.lgll li:last-child{border-bottom:none;padding-bottom:0}.lgll li::before{content:"F54A";position:absolute;left:0;top:9px;font-size:.55rem;opacity:.5}
+.stfsec{background:#06101e;padding:0}
+.stfbt{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,.4) 50%,transparent)}
+.stfbb{height:1px;background:linear-gradient(to right,transparent,rgba(91,154,200,.25) 50%,transparent)}
+.stfin{max-width:480px;margin:0 auto;position:relative;z-index:1;padding:64px 24px}
+.stfpw{position:relative;overflow:hidden;border-radius:2px}.stfph{width:100%;height:400px;object-fit:cover;object-position:top;display:block;filter:brightness(.88) contrast(1.06);transition:transform .8s}.stfpw:hover .stfph{transform:scale(1.03)}
+.stfpw::after{content:"";position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,rgba(6,16,30,.97));pointer-events:none}
+.stfov{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:26px 22px}
+.stfgl{width:26px;height:1px;background:rgba(200,168,75,.65);margin-bottom:12px}
+.stfrl{font-family:var(--label);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,168,75,.7);margin-bottom:6px;display:block}
+.stfnm{font-family:var(--display);font-size:clamp(3rem,9vw,4.5rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:.04em;margin-bottom:8px}
+.stflc{font-family:var(--label);font-size:.54rem;letter-spacing:.15em;color:rgba(184,216,240,.4)}
+.stfsp{display:flex;align-items:center;background:#06101e;padding:0 24px}.spl{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,75,.2),rgba(91,154,200,.1))}.splr{flex:1;height:1px;background:linear-gradient(to left,rgba(200,168,75,.2),rgba(91,154,200,.1))}.spic{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:.8rem;opacity:.4}
+.stfmsg{background:#06101e;padding:32px 24px 48px;max-width:480px;margin:0 auto}.stfmsg p{font-family:var(--serif);font-size:.94rem;line-height:2.8;color:rgba(255,255,255,.72);margin-bottom:20px;letter-spacing:.02em}.stfmsg em{color:rgba(184,216,240,.9);font-style:italic;border-bottom:1px solid rgba(91,154,200,.3);padding-bottom:1px}
+.stfsg{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:24px;padding-top:18px;border-top:1px solid rgba(200,168,75,.1)}.sgd{width:5px;height:5px;border-radius:50%;background:rgba(200,168,75,.4)}.sgn{font-family:var(--display);font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.1em;font-style:italic}
+.cosec{background:linear-gradient(160deg,#0d2137,#1a3050);padding:64px 24px}.coin{max-width:480px;margin:0 auto}
+.cotbl{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-bottom:24px}
+.crow{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.06)}.crow:last-child{border-bottom:none}
+.cok{padding:14px;font-family:var(--label);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.65);background:rgba(255,255,255,.04);display:flex;align-items:center}
+.cov{padding:14px;font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.7}
+.ptsec{background:linear-gradient(160deg,#0d2540,#1a3a58);padding:64px 24px}
+.ptc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:28px 22px;transition:all .4s}.ptc:hover{box-shadow:0 12px 40px rgba(91,154,200,.15);border-color:rgba(91,154,200,.3)}
+.ptt{font-family:var(--serif);font-size:.9rem;color:rgba(255,255,255,.75);line-height:2.1;margin-bottom:20px}
+.ptfs{display:grid;gap:10px}.ptf{display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(255,255,255,.75)}.ptfg{display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(200,168,75,.9);font-weight:600}
+.ctsec{background:var(--navy);text-align:center;padding:90px 24px;position:relative;overflow:hidden}
+.ctsec::before{content:"YUU";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:22vw;font-weight:300;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none}
+.ctin{position:relative;z-index:1;max-width:520px;margin:0 auto}
+.ctbx{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 20px;margin-bottom:28px;text-align:left}
+.ctbx h3{font-family:var(--serif);font-size:1rem;color:#fff;margin-bottom:14px;text-align:center;font-weight:400}
+.ctit{display:flex;align-items:center;gap:10px;font-size:.86rem;color:rgba(255,255,255,.8);margin-bottom:10px}
+.ctld{font-family:var(--serif);font-size:.94rem;line-height:2.1;color:rgba(255,255,255,.7);margin-bottom:28px}
+.btnln{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;background:#06C755;color:#fff;font-family:var(--label);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:14px;box-shadow:0 6px 24px rgba(6,199,85,.35)}.btnln:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(6,199,85,.45)}
+.btnml{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:rgba(91,154,200,.2);border:1px solid rgba(91,154,200,.4);color:#fff;font-family:var(--label);font-size:.68rem;letter-spacing:.13em;text-decoration:none;border-radius:40px;transition:all .3s;margin-bottom:14px}.btnml:hover{background:rgba(91,154,200,.35);transform:translateY(-2px)}
+.ctnot{font-size:.7rem;color:rgba(255,255,255,.33);font-style:italic;margin-top:8px}
+.socr{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:300px;margin:20px auto 0}
+.socb{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 14px;border:1px solid rgba(184,216,240,.2);color:rgba(255,255,255,.7);text-decoration:none;font-family:var(--label);font-size:.6rem;letter-spacing:.1em;border-radius:8px;transition:all .3s}.socb:hover{background:rgba(91,154,200,.2);border-color:rgba(91,154,200,.4);color:#fff}
+.emw{position:fixed;bottom:20px;right:16px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.emb{background:rgba(10,22,40,.96);border:1px solid rgba(200,168,75,.4);border-radius:16px 16px 4px 16px;padding:14px 16px;max-width:200px;font-size:.8rem;color:#fff;line-height:1.7;display:none;backdrop-filter:blur(12px);animation:bpop .3s cubic-bezier(.16,1,.3,1)}.emb.sh{display:block}
+@keyframes bpop{from{opacity:0;transform:scale(.8) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.emi{width:72px;height:72px;cursor:pointer;animation:emfl 3s ease-in-out infinite;filter:drop-shadow(0 4px 12px rgba(200,168,75,.3))}@keyframes emfl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.emi img{width:100%;height:100%;object-fit:contain}
+.cuf{position:fixed;width:8px;height:8px;border-radius:50%;background:rgba(200,168,75,.8);pointer-events:none;z-index:9999;transition:transform .1s;mix-blend-mode:screen}
+.cur{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,168,75,.35);pointer-events:none;z-index:9998;transition:all .15s ease}
+footer{background:#04090f;color:rgba(255,255,255,.3);padding:20px 28px;display:flex;justify-content:space-between;align-items:center;font-family:var(--label);font-size:.56rem;letter-spacing:.1em;flex-wrap:wrap;gap:10px}
+.flogo{display:flex;align-items:center;gap:8px}.flogo img{width:24px;height:24px;border-radius:50%;opacity:.5}
+.flt{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.45)}.flt span{color:var(--blue)}
+.flnk{color:rgba(255,255,255,.35);text-decoration:none;transition:color .3s}.flnk:hover{color:var(--gold)}
+@media(max-width:768px){nav{padding:10px 14px}.nlk{display:none}.hmy img,.hmh img{height:78vh}.cg{grid-template-columns:1fr}.pgrd{grid-template-columns:1fr 1fr}footer{flex-direction:column;text-align:center}}
+</style></head>
 <body>
-<nav>
-  <div class="nav-logo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co." loading="lazy"><div class="nav-logo-text">YUU <span>&</span> Co.</div></div>
-  <ul class="nav-links"><li><a href="#why">Why?</a></li><li><a href="#compare">比較</a></li><li><a href="#voice">Voice</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#models">Models</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
+<div class="cuf" id="cuf"></div><div class="cur" id="cur"></div>
+<nav id="mNav">
+  <div class="nl"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co."><div class="nlt">YUU <span>&amp;</span> Co.</div></div>
+  <ul class="nlk"><li><a href="#why">Mission</a></li><li><a href="#samples">Works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#staff">Message</a></li><li><a href="#contact">Contact</a></li></ul>
 </nav>
-
 <section id="hero">
-  <div class="gold-rain" id="goldRain"></div>
-  <div class="hero-light"></div>
-  <div class="floaters" id="floaters"></div>
-  <div class="scroll-indicator"><div class="scroll-dot"></div><div class="scroll-dot"></div><div class="scroll-dot"></div></div>
-  <div class="hero-models">
-    <div class="hero-model-yui"><img src="https://i.imgur.com/1OJ17Aq.png" alt=""></div>
-    <div class="hero-model-haruto"><img src="https://i.imgur.com/3drpd9D.png" alt=""></div>
-    <div class="hero-overlay">
-      <p class="catch-main">撮影不要で、<br><span style="padding-left:1.8em">採用・広告を</span><br><span style="padding-left:3.6em">プロ品質へ。</span></p>
-      <span class="catch-icon"><span>🌿</span><span>不動産 · 建設 · 医療 · 介護向け</span><span>🕊</span></span>
+  <div class="hsky"></div>
+  <div class="cls"><div class="cl c1"></div><div class="cl c2"></div><div class="cl c3"></div><div class="cl c4"></div><div class="cl c5"></div></div>
+  <div class="ptcls" id="ptcls"></div>
+  <div class="gshmr" id="gshmr"></div>
+  <div class="scrl"><div class="sd"></div><div class="sd"></div><div class="sd"></div></div>
+  <div class="hmdl">
+    <div class="hmy"><img src="https://i.imgur.com/1OJ17Aq.png" alt=""></div>
+    <div class="hmh"><img src="https://i.imgur.com/AqXYiWx.png" alt=""></div>
+    <div class="hov">
+      <p class="hey">Visual Production for Business</p>
+      <h1 class="hc"><span class="cw">御社の魅力を、</span><br><span class="cw" style="padding-left:1.5em;transition-delay:.2s">ビジュアルで</span><br><span class="cw" style="padding-left:3em;transition-delay:.4s">伝える。</span></h1>
+      <p class="hsub">撮影なし・モデル手配なし。<br>採用・広告・SNS・ホームページに使える<br>企業向けビジュアルを制作します。</p>
+      <div class="hcta"><a href="#contact" class="btp">💬 LINEで相談する</a><a href="#samples" class="bto">制作事例を見る</a></div>
     </div>
   </div>
 </section>
-
-<div style="background:linear-gradient(135deg,#1A2E4A,#2A4870);padding:40px 20px;position:relative;overflow:hidden">
-  <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.4),rgba(200,168,75,.3),rgba(91,154,200,.4),transparent);position:absolute;top:0;left:0;right:0"></div>
-  <p style="font-family:var(--label);font-size:.58rem;letter-spacing:.22em;color:rgba(91,154,200,.6);text-align:center;margin-bottom:20px">SERVICE DATA</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center;max-width:560px;margin:0 auto">
-    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)"><div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="8">0</span><span style="font-size:1.2rem">名</span></div><p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">AIモデル</p><div class="db" style="margin-top:10px;width:80%;margin-left:auto;margin-right:auto"></div></div>
-    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)"><div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="0">0</span><span style="font-size:1.1rem">円</span></div><p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">撮影費</p><div class="db" style="margin-top:10px;width:100%"></div></div>
-    <div class="reveal" style="padding:18px 8px;border:1px solid rgba(91,154,200,.2);border-radius:14px;background:rgba(255,255,255,.05)"><div style="font-family:var(--display);font-size:2.4rem;font-weight:300;color:#C8A84B;line-height:1"><span data-target="24">0</span><span style="font-size:1.1rem">h</span></div><p style="font-size:.68rem;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--label);letter-spacing:.1em">対応時間</p><div class="db" style="margin-top:10px;width:65%;margin-left:auto;margin-right:auto"></div></div>
+<div class="stbar">
+  <p style="font-family:var(--label);font-size:.56rem;letter-spacing:.24em;color:rgba(91,154,200,.6);text-align:center;margin-bottom:20px">SERVICE DATA</p>
+  <div class="sbi">
+    <div class="sitem rv"><div class="snum"><span data-target="8">0</span><span style="font-size:1.2rem">名</span></div><p class="slbl">人物ビジュアル</p><div class="sbrr"></div></div>
+    <div class="sitem rv"><div class="snum"><span data-target="0">0</span><span style="font-size:1rem">円</span></div><p class="slbl">撮影費</p><div class="sbrr" style="transition-delay:.2s"></div></div>
+    <div class="sitem rv"><div class="snum"><span data-target="24">0</span><span style="font-size:1rem">h</span></div><p class="slbl">対応時間</p><div class="sbrr" style="transition-delay:.4s"></div></div>
   </div>
-  <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(91,154,200,.4),rgba(200,168,75,.3),rgba(91,154,200,.4),transparent);position:absolute;bottom:0;left:0;right:0"></div>
 </div>
-
-<section class="sw" id="why" style="background:linear-gradient(160deg,#E8F4FF,#F5FAFF)">
-  <div class="si">
-    <span class="ey reveal">Why YUU?</span><h2 class="st reveal">こんなお悩みありませんか？</h2><div class="sl reveal"></div>
-    <div class="wg reveal">
-      <div class="wc">🍃 HPの人物写真が<br>古くてバラバラ</div><div class="wc">🍃 モデル撮影費が<br>高すぎる</div>
-      <div class="wc">🍃 採用ページの<br>写真が弱い</div><div class="wc">🍃 広告費を<br>もっと削減したい</div>
+<section class="sec" id="why" style="background:linear-gradient(160deg,#0a1628,#142238)">
+  <div class="sec-in">
+    <span class="ey rv">Our Mission</span>
+    <h2 class="st rv">AI画像が欲しい、<br>ではありません。</h2>
+    <div class="gdl rv"></div>
+    <p class="bt rv">YUU &amp; Co.が制作するのは、ただのビジュアルではありません。</p>
+    <div class="mhl rv">
+      <div class="mpt-row"><span class="mpic">🏢</span><div class="mptxt"><strong>採用ページを見た人が</strong>「この会社、良さそう」と感じる。</div></div>
+      <div class="mpt-row"><span class="mpic">📢</span><div class="mptxt"><strong>広告を見た人が</strong>「気になる」と思う。</div></div>
+      <div class="mpt-row"><span class="mpic">🌐</span><div class="mptxt"><strong>ホームページを見た人が</strong>「信頼できそう」と感じる。</div></div>
     </div>
-    <p class="bt reveal" style="text-align:center;font-weight:700;color:var(--navy);font-size:1.05rem;margin-bottom:20px">↓ YUUなら、こう変わります</p>
-    <div class="baw reveal"><img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before After 1" loading="lazy"></div>
-    <div class="baw reveal" style="margin-top:14px"><img src="https://i.imgur.com/kdxljCc.jpeg" alt="Before After 2" loading="lazy"></div>
-    <div class="wbg" style="margin-top:32px">
-      <div class="bc reveal"><span class="bi">💡</span><p class="bt2">印象が強くなる</p><p class="bd">透明感と洗練されたビジュアルで、見る人の記憶に深く刻まれるブランドへ。</p></div>
-      <div class="bc reveal"><span class="bi">🤝</span><p class="bt2">信頼感が高まる</p><p class="bd">誠実さと清潔感のある世界観が、クライアントとの信頼関係を自然に構築します。</p></div>
-      <div class="bc reveal"><span class="bi">🌟</span><p class="bt2">記憶に残りやすい</p><p class="bd">「なんとなく好き」を設計するYUUのビジュアルが、ブランド価値を最大化します。</p></div>
-    </div>
-    <div class="amg" style="margin-top:20px">
-      <div class="am reveal"><span class="ami">📷</span><p class="amt">撮影不要</p><p class="amd">スタジオ・カメラマン手配は不要。</p></div>
-      <div class="am reveal"><span class="ami">🚌</span><p class="amt">交通費ゼロ</p><p class="amd">出張・移動のコストを大幅カット。</p></div>
-      <div class="am reveal"><span class="ami">⏰</span><p class="amt">24時間制作OK</p><p class="amd">いつでもスピーディにモデルを用意。</p></div>
-      <div class="am reveal"><span class="ami">☀️</span><p class="amt">天候に左右されない</p><p class="amd">雨・雪・暑さの影響なく理想の撮影が可能。</p></div>
-    </div>
+    <p class="bt rv" style="margin-top:24px">その<strong style="color:#fff">第一印象を設計する</strong>ビジュアル制作です。</p>
   </div>
 </section>
-
-<section class="sw" id="compare" style="padding:40px 20px;background:linear-gradient(160deg,#EAF4FF 0%,#F5F9FF 100%)">
-  <div class="si">
-    <p class="ey reveal">Cost Comparison</p><h2 class="st reveal" style="font-size:clamp(1.2rem,2.5vw,1.8rem)">他社と比較してみてください</h2><div class="sl reveal"></div>
-    <div class="reveal" style="overflow:hidden;border-radius:12px;box-shadow:0 4px 20px rgba(26,46,74,.08);font-size:.78rem">
-      <table style="width:100%;border-collapse:collapse">
-        <thead><tr>
-          <th style="padding:10px 8px;background:#F0F6FF;color:var(--blue);font-family:var(--label);font-size:.56rem;text-align:left;width:30%"></th>
-          <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;text-align:center">従来の撮影</th>
-          <th style="padding:10px 6px;background:#F5F5F5;color:#999;font-family:var(--label);font-size:.56rem;text-align:center">大手事務所</th>
-          <th style="padding:10px 6px;background:var(--navy);color:var(--gold);font-family:var(--label);font-size:.56rem;text-align:center">YUU &amp; Co.<br><span style="font-size:.48rem;color:rgba(200,168,75,.7)">✦ おすすめ</span></th>
-        </tr></thead>
-        <tbody>
-          <tr style="border-top:1px solid #EEF3F8"><td style="padding:10px 8px;background:#FAFCFF;color:var(--navy);font-weight:600;font-size:.75rem">月額コスト</td><td style="padding:10px 6px;text-align:center;color:#bbb">20〜100万円</td><td style="padding:10px 6px;text-align:center;color:#bbb">30〜200万円</td><td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.03);color:var(--blue);font-weight:700">49,800円〜</td></tr>
-          <tr style="border-top:1px solid #EEF3F8"><td style="padding:10px 8px;background:#F5F9FF;color:var(--navy);font-weight:600;font-size:.75rem">撮影費</td><td style="padding:10px 6px;text-align:center;color:#bbb">10〜50万円</td><td style="padding:10px 6px;text-align:center;color:#bbb">30万円〜</td><td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.05);color:var(--blue);font-weight:700">完全ゼロ</td></tr>
-          <tr style="border-top:1px solid #EEF3F8"><td style="padding:10px 8px;background:#FAFCFF;color:var(--navy);font-weight:600;font-size:.75rem">リスク</td><td style="padding:10px 6px;text-align:center;color:#bbb">天候・体調</td><td style="padding:10px 6px;text-align:center;color:#bbb">スキャンダル</td><td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.03);color:var(--blue);font-weight:700">永遠にゼロ</td></tr>
-          <tr style="border-top:1px solid #EEF3F8"><td style="padding:10px 8px;background:#F5F9FF;color:var(--navy);font-weight:600;font-size:.75rem">活用提案</td><td style="padding:10px 6px;text-align:center;color:#bbb">なし</td><td style="padding:10px 6px;text-align:center;color:#bbb">なし</td><td style="padding:10px 6px;text-align:center;background:rgba(26,46,74,.05);color:var(--blue);font-weight:700">込み ✦</td></tr>
-        </tbody>
-      </table>
+<section class="sec" style="background:linear-gradient(160deg,#0f1e32,#1a2e4a)">
+  <div class="sec-in">
+    <span class="ey rv">Challenges</span>
+    <h2 class="st rv">こんなお悩み、<br>ありませんか？</h2>
+    <div class="gdl rv"></div>
+    <div class="cg">
+      <div class="ccard rv"><span class="cic">🖼</span>ホームページの印象が古い</div>
+      <div class="ccard rv"><span class="cic">👥</span>採用ページに人の温度感がない</div>
+      <div class="ccard rv"><span class="cic">📣</span>広告画像が埋もれる</div>
+      <div class="ccard rv"><span class="cic">📱</span>SNSの世界観が統一できない</div>
+      <div class="ccard rv"><span class="cic">🙈</span>社員の顔出しが難しい</div>
+      <div class="ccard rv"><span class="cic">💸</span>撮影費・モデル費がかけられない</div>
+      <div class="ccard rv"><span class="cic">💬</span>会社の魅力がうまく伝わらない</div>
+      <div class="ccard rv"><span class="cic">🎨</span>ビジュアルの質を上げたい</div>
     </div>
-    <p style="text-align:center;margin-top:10px;font-size:.68rem;color:#aaa;font-style:italic">※比較数値は一般的な相場を参考にしています。</p>
-  </div>
-</section>
-
-<section class="sw" id="pricing" style="background:linear-gradient(160deg,#EAF4FF,#F5FAFF);padding:80px 28px">
-  <div class="si">
-    <div class="reveal-slide-up" style="margin-bottom:32px;padding:28px 24px;background:linear-gradient(135deg,#EAF4FF,#F0F9FF);border-radius:18px;border-left:4px solid var(--blue)">
-      <p style="font-family:var(--label);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-weight:600">For You</p>
-      <h3 style="font-family:var(--serif);font-size:1.15rem;color:var(--navy);margin-bottom:18px;font-weight:400">こんなお客様に選ばれています</h3>
-      <div style="display:grid;gap:10px">
-        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>採用広告を強化したい</p>
-        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>SNS素材を毎月作りたい</p>
-        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>広告バナーを外注したい</p>
-        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>パンフレット用素材が欲しい</p>
-        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>撮影コストを削減したい</p>
-        <p style="font-size:.86rem;color:var(--mid);display:flex;gap:8px;align-items:center"><span>🍃</span>社員の顔出しが難しい</p>
-      </div>
-    </div>
-    <p class="ey reveal">Pricing</p><h2 class="st reveal">採用・広告運用プラン</h2><div class="sl reveal"></div>
-    <div class="reveal" style="margin-bottom:32px;padding:24px;background:var(--sky);border-radius:16px">
-      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:12px">What We Make</p>
-      <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--navy);margin-bottom:20px;font-weight:400">制作できるもの</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>採用バナー・求人広告画像</div>
-        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>SNS投稿画像</div>
-        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>HP・LP掲載用人物ビジュアル</div>
-        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>会社案内・パンフレット</div>
-        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>チラシ・展示会パネル</div>
-        <div style="background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;color:var(--navy);display:flex;align-items:center;gap:6px"><span style="color:var(--blue)">🍃</span>企業PR素材・広告クリエイティブ</div>
-      </div>
-    </div>
-    <div class="reveal" style="background:#fff;border:1px solid rgba(91,154,200,.2);border-radius:10px;padding:18px 20px;margin-bottom:24px">
-      <p style="font-family:var(--label);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-weight:600">全プラン共通</p>
-      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 8px">
-        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月5シーン制作（用途無制限）</li>
-        <li style="font-size:.82rem;color:var(--navy);display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>採用・SNS・広告・印刷物など全て使用OK</li>
-        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>月3回まで無料修正対応</li>
-        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>全国オンライン対応</li>
-        <li style="font-size:.82rem;color:var(--navy);font-weight:500;display:flex;gap:6px;align-items:flex-start"><span style="color:var(--blue);flex-shrink:0">✓</span>電子契約（LINEまたはメール）</li>
-      </ul>
-    </div>
-    <div class="reveal" style="margin-bottom:24px;padding:24px;background:linear-gradient(135deg,#1A2E4A,#2A4870);border-radius:14px">
-      <p style="font-family:var(--label);font-size:.6rem;letter-spacing:.16em;color:rgba(200,168,75,.8);margin-bottom:10px">VALUE · 月49,800円でできること</p>
-      <div style="display:grid;gap:8px">
-        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>企業イメージに合わせた人物ビジュアル制作</p>
-        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>採用広告・SNS・LP・チラシ・パンフレット対応</p>
-        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>月5カット制作・月3回修正無料</p>
-        <p style="font-size:.82rem;color:rgba(255,255,255,.75);display:flex;gap:8px"><span style="color:var(--gold)">✦</span>全国オンライン対応・追加費用なし</p>
-      </div>
-    </div>
-    <div class="pg">
-      <div class="pc reveal"><p class="pn">1名起用</p><p class="pname">Basic</p><div class="pa">¥49,800</div><p class="pu">月額（税込）</p><ul style="list-style:none;margin-top:10px;display:grid;gap:5px"><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>月5シーン制作</li><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>採用・SNS・広告利用可</li><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>修正3回無料</li></ul></div>
-      <div class="pc ft reveal"><div class="rb">おすすめ</div><p class="pn">2名起用</p><p class="pname">Standard</p><div class="pa">¥98,000</div><p class="pu">月額（税込）</p><p class="ps">💰 採用強化向け</p><ul style="list-style:none;margin-top:6px;display:grid;gap:5px"><li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>男女1名ずつ起用</li><li style="font-size:.78rem;color:rgba(255,255,255,.7);display:flex;gap:6px"><span style="color:var(--gold)">✅</span>世界観統一</li></ul><p class="pp">1名あたり約¥49,000</p></div>
-      <div class="pc reveal"><p class="pn">3名起用</p><p class="pname">Premium</p><div class="pa">¥129,000</div><p class="pu">月額（税込）</p><p class="ps">💰 部署紹介向け</p><ul style="list-style:none;margin-top:6px;display:grid;gap:5px"><li style="font-size:.78rem;color:var(--mid);display:flex;gap:6px"><span style="color:var(--blue)">✅</span>複数ターゲット対応</li></ul><p class="pp">1名あたり約¥43,000</p></div>
-      <div class="pc bv reveal"><div class="bb">最大おトク</div><p class="pn">4名起用</p><p class="pname">Ultimate</p><div class="pa">¥158,000</div><p class="pu">月額（税込）</p><p class="ps">🎉 ブランディング向け</p><ul style="list-style:none;margin-top:6px;display:grid;gap:5px"><li style="font-size:.78rem;color:#C87800;display:flex;gap:6px"><span>✅</span>最大コスパ</li></ul><p class="pp">1名あたり約¥39,500</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sw" id="usecases" style="background:linear-gradient(160deg,#0a1628 0%,#1A2E4A 100%);padding:56px 20px;position:relative;overflow:hidden">
-  <div class="nl" style="position:absolute;top:0;left:0;right:0"></div>
-  <div class="si" style="position:relative;z-index:1">
-    <p class="ey reveal" style="color:rgba(200,168,75,.8)">Use Cases</p><h2 class="st reveal" style="color:#fff">ご利用シーン</h2><div class="sl reveal" style="background:linear-gradient(to right,rgba(200,168,75,.5),transparent)"></div>
-    <div style="display:grid;gap:14px">
-      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏢</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">不動産会社</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">採用LP・広告バナー・物件紹介ビジュアル・営業資料</p><div class="db" style="margin-top:10px;width:90%"></div></div></div>
-      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏥</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">介護施設・医療機関</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">求人広告・会社案内・SNS素材・パンフレット</p><div class="db" style="margin-top:10px;width:75%"></div></div></div>
-      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🔨</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">建設業・工務店</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">採用ページ・企業紹介・展示会パネル・求人広告</p><div class="db" style="margin-top:10px;width:80%"></div></div></div>
-      <div class="gc reveal" style="border-radius:14px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start"><div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(91,154,200,.3),rgba(91,154,200,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🚗</div><div><p style="font-family:var(--label);font-size:.62rem;letter-spacing:.14em;color:var(--gold);margin-bottom:6px">自動車販売・EC・アパレル</p><p style="font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.8">キャンペーン画像・SNS運用・広告クリエイティブ</p><div class="db" style="margin-top:10px;width:70%"></div></div></div>
-    </div>
-  </div>
-  <div class="nl" style="position:absolute;bottom:0;left:0;right:0"></div>
-</section>
-
-<section class="sw" id="models">
-  <div class="si">
-    <p class="ey reveal">Our AI Models</p><h2 class="st reveal">Creative Team ─ AIモデル紹介</h2><div class="sl reveal"></div>
-    <p class="bt reveal" style="margin-bottom:32px;font-size:.88rem">YUUのAIモデルたちは、実在しないからこそスキャンダルなし・著作権トラブルなし。御社のブランドイメージに合わせてあらゆるシーンを制作できます。</p>
-    <div class="mg">
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/ooEWqR6.png" alt="結衣" loading="lazy"><div class="mb2">結衣 / Yui</div></div><h3 class="mn">結衣 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yui</span></h3><p class="ms">Female AI Model · Pro</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">23歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">清楚・知的</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">不動産</span><span class="tag">医療</span><span class="tag">採用</span><span class="tag">建設</span><span class="tag">教育</span><span class="tag">飲食</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/IivBXbL.png" alt="遥斗" loading="lazy"><div class="mb2">遥斗 / Haruto</div></div><h3 class="mn">遥斗 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Haruto</span></h3><p class="ms">Male AI Model · Executive</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">23歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">誠実・プロ</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">不動産</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">採用</span><span class="tag">IT</span><span class="tag">スポーツ</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/6KXgS0F.png" alt="健一" loading="lazy"><div class="mb2">健一 / Kenichi</div></div><h3 class="mn">健一 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Kenichi</span></h3><p class="ms">Male AI Model · Manager</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">55歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">頼れる上司</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">改修</span><span class="tag">保険</span><span class="tag">介護</span><span class="tag">建設</span><span class="tag">金融</span><span class="tag">不動産</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/ykfnmhs.png" alt="智子" loading="lazy"><div class="mb2">智子 / Tomoko</div></div><h3 class="mn">智子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tomoko</span></h3><p class="ms">Female AI Model · Caring</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">50歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">笑顔が絶えない</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">医療</span><span class="tag">介護</span><span class="tag">リハビリ</span><span class="tag">教育</span><span class="tag">福祉</span><span class="tag">保険</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/43Y2XGV.jpeg" alt="誠" loading="lazy"><div class="mb2">誠 / Makoto</div></div><h3 class="mn">誠 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Makoto</span></h3><p class="ms">Male AI Model · Senior</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">70歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">誠実・真面目</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">介護</span><span class="tag">保険</span><span class="tag">医療</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/MFGU7N5.jpeg" alt="洋子" loading="lazy"><div class="mb2">洋子 / Yoko</div></div><h3 class="mn">洋子 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Yoko</span></h3><p class="ms">Female AI Model · Senior</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">68歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">優しく明るい</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">介護</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">施設</span><span class="tag">福祉</span><span class="tag">シニア</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/Vd8W45o.jpeg" alt="蒼空" loading="lazy"><div class="mb2">蒼空 / Sora</div></div><h3 class="mn">蒼空 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Sora</span></h3><p class="ms">Child AI Model · Boy</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">4歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">元気・笑顔</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">教育</span><span class="tag">スポーツ</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">育児</span></div></div>
-      <div class="reveal"><div class="miw"><img src="https://i.imgur.com/aW3rYRl.png" alt="紬" loading="lazy"><div class="mb2">紬 / Tsumugi</div></div><h3 class="mn">紬 <span style="font-size:.9rem;font-weight:300;color:var(--mid)">Tsumugi</span></h3><p class="ms">Child AI Model · Girl</p><div class="mpg"><div class="pi"><span class="pl">Age</span><span class="pv">1歳</span></div><div class="pi"><span class="pl">Type</span><span class="pv">天真爛漫・癒し</span></div></div><p class="mat">活躍する業種</p><div class="mtg"><span class="tag">育児</span><span class="tag">医療</span><span class="tag">保険</span><span class="tag">不動産</span><span class="tag">英会話</span><span class="tag">福祉</span></div></div>
-    </div>
-    <div style="margin-top:48px;padding-top:40px;border-top:1px solid var(--light)">
-      <p class="ey reveal">Sample Gallery</p><h3 class="st reveal" id="samples" style="font-size:clamp(1.3rem,2.5vw,1.9rem)">制作サンプル ─ モデル別・業種別</h3><div class="sl reveal"></div>
-      <p class="bt reveal" style="margin-bottom:32px">実際に制作したサンプルをご覧ください。御社の業種・用途に合わせてカスタマイズできます。<br><span style="color:var(--blue);font-size:.85rem">※料金は起用するモデルの人数によって異なります。</span></p>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/fcXN2eK.png" alt="結衣"><span class="at">🌿 結衣 / Yui</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="cl">建設・工事現場</div></div><div class="ci"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="cl">カフェ・飲食</div></div><div class="ci"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="cl">マーケティング</div></div><div class="ci"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="cl">福祉・社会貢献</div></div><div class="ci"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="cl">IT・コンサル</div></div><div class="ci"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="cl">工務店・建築</div></div><div class="ci"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="cl">美容・医療</div></div><div class="ci"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="cl">不動産・金融</div></div></div></div></div>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/esPWG1f.png" alt="遥斗"><span class="at">🌿 遥斗 / Haruto</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="cl">建設・工事現場</div></div><div class="ci"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="cl">スポーツ・ジム</div></div><div class="ci"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="cl">採用・説明会</div></div><div class="ci"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="cl">金融・資産運用</div></div><div class="ci"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="cl">IT・オフィス</div></div><div class="ci"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="cl">美容クリニック</div></div><div class="ci"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="cl">建設・施工</div></div><div class="ci"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="cl">スポーツ・ゴルフ</div></div></div></div></div>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/Y1mbzJr.jpeg" alt="結衣&遥斗"><span class="at">🌿 結衣 &amp; 遥斗</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="cl">展示会・パネル</div></div><div class="ci"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="cl">建設・採用</div></div><div class="ci"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="cl">不動産・内覧</div></div><div class="ci"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="cl">IT・コンサル</div></div><div class="ci"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="cl">IT・コンサル</div></div><div class="ci"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="cl">採用・HR</div></div></div></div></div>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/zkI4efM.png" alt="健一"><span class="at">🌿 健一 / Kenichi</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="cl">保険代理店</div></div><div class="ci"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="cl">建設・施工</div></div></div></div></div>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/Pn7Pyc9.png" alt="智子"><span class="at">🌿 智子 / Tomoko</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="cl">ケアプランナー</div></div><div class="ci"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="cl">医療・介護</div></div></div></div></div>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/ZHOTOVp.png" alt="誠&洋子"><span class="at">🌿 誠 &amp; 洋子</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="cl">老人ホーム</div></div><div class="ci"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="cl">シニア向けサービス</div></div></div></div></div>
-      <div class="ab reveal"><button class="ah" onclick="tA(this)"><img class="ac" src="https://i.imgur.com/5sFQzhp.jpeg" alt="蒼空&紬"><span class="at">🌿 蒼空 &amp; 紬</span><span class="aa">▼</span></button><div class="abody"><div class="agd"><div class="ci"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="cl">スポーツ・サッカー</div></div><div class="ci"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="cl">英会話スクール</div></div><div class="ci"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="cl">住宅展示場</div></div><div class="ci"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="cl">小児歯科</div></div></div></div></div>
-      <div class="ucs"><div class="uci">
-        <div class="ucc"><div class="ucn">01</div><h4>採用・HR</h4><p>求人広告・採用LP。AIモデルが御社の魅力を伝えます。</p></div>
-        <div class="ucc"><div class="ucn">02</div><h4>SNS運用</h4><p>定期投稿用ビジュアルを月次納品。</p></div>
-        <div class="ucc"><div class="ucn">03</div><h4>広告・LP</h4><p>LP・バナー掲載用の人物ビジュアルを制作。</p></div>
-        <div class="ucc"><div class="ucn">04</div><h4>広告・チラシ</h4><p>展示会・パンフレット・印刷物に対応。</p></div>
-        <div class="ucc"><div class="ucn">05</div><h4>社内報・IR</h4><p>従業員向け広報紙や株主向け資料のアイキャッチに。</p></div>
-        <div class="ucc"><div class="ucn">06</div><h4>カスタム</h4><p>ご要望をヒアリングし専用シーンを制作。</p></div>
-      </div></div>
-      <p style="font-size:.68rem;color:rgba(58,130,184,.5);margin-top:4px;text-align:right">← スワイプ →</p>
-    </div>
-  </div>
-</section>
-
-<section class="sw" id="voice">
-  <div class="si"><div class="vi">
-    <p class="ey reveal">Voice</p><h2 class="st reveal">お客様の声</h2><div class="sl reveal"></div>
-    <p class="bt reveal" style="margin-bottom:32px;text-align:center">🌿 ご利用いただいた企業様からのご感想 🕊</p>
-    <div class="vc reveal">
-      <div class="vq">"</div>
-      <div style="display:flex;gap:10px;align-items:flex-start">
-        <img src="https://i.imgur.com/1uyXQqU.jpeg" alt="制作サンプル" style="width:100px;height:136px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;box-shadow:0 4px 16px rgba(26,46,74,.15)">
-        <div style="flex:1;padding-left:2px"><p class="vt">完璧でございます。<br>イメージ通りを超えた。</p><div class="vd"></div><div class="vm"><div class="vav">🏢</div><div><p class="vc2">合同会社プランBカンパニー 様</p><p class="vdet">不動産業 ／ AIモデル：遥斗（Haruto）使用</p></div></div></div>
-      </div>
-    </div>
-    <div class="vc reveal" style="margin-top:24px">
-      <div class="vq">"</div>
-      <div style="flex:1;padding-left:2px"><p class="vt">AIタレントさんが本当に実在する人物のようで素晴らしいです。</p><div class="vd"></div><div class="vm"><div class="vav">🏢</div><div><p class="vc2">合同会社イゼルローンソフトウェア 様</p><p class="vdet">IT・情報システム業 ／ AIモデル：結衣・遥斗 使用</p><a href="https://iserlohn-software.com/it-outsourcing-service/" target="_blank" style="font-size:.76rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:6px">▶ 実際の掲載ページを見る</a></div></div></div>
-    </div>
-    <p class="vn reveal">※掲載はご本人様の許可をいただいております。</p>
-  </div></div>
-</section>
-
-<section id="philosophy">
-  <div class="phi reveal">
-    <p class="phc">AIが、<br>人の想いを纏う。</p>
-    <div class="phd"></div>
-    <p class="pht">企業が持つ誠実さ。信頼感。温かさ。その想いを、人物ビジュアルという形で届ける。<span class="hl">「どう伝わるか」を、私たちは大切にしています。</span></p>
-    <p class="phs">🌿 &nbsp; YUU &amp; Co. &nbsp; 🕊</p>
-  </div>
-</section>
-
-<section class="sw" id="legal">
-  <div class="lr lr1"></div><div class="lr lr2"></div>
-  <div class="si" style="position:relative;z-index:1">
-    <p class="ey reveal">Notes</p><h2 class="st reveal">ご利用について</h2><div class="sl reveal"></div>
-    <div class="lg">
-      <div class="lb"><div class="lbh"><span class="lfi">🌿</span><h4>世界観・モデル保護について</h4></div><ul class="ll"><li>結衣・遥斗、およびYUU独自の世界観・ビジュアル設計は、YUU &amp; Co.オリジナル制作物です</li><li>無断転載・再配布・模倣・学習利用・二次利用は固くお断りしております</li><li>AIモデルの画像であることを明示してご利用ください</li><li>人物の実在を誤解させる使い方はお控えください</li><li>反社会的勢力へのご利用はお断りします</li></ul></div>
-      <div class="lb"><div class="lbh"><span class="lfi">🕊</span><h4>ご利用範囲・修正対応</h4></div><ul class="ll"><li>制作したビジュアルは、契約範囲内でご利用いただけます</li><li>採用広告・SNS・LP・チラシ・展示会パネルなど幅広くご利用可能</li><li>企業イメージに合わせた調整を、月3回まで無料対応</li><li>4回目以降は追加料金となります</li></ul></div>
-      <div class="lb"><div class="lbh"><span class="lfi">🌿</span><h4>個人情報の取り扱い</h4></div><ul class="ll"><li>ご提供いただいた情報はサービス提供のみに使用します</li><li>第三者への提供は法令に基づく場合を除き行いません</li><li>個人情報の開示・訂正・削除はご連絡ください</li><li>電子契約はLINEまたはメールにて締結します</li><li>管轄裁判所：東京地方裁判所</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section id="staff">
-  <div class="sbt"></div>
-  <div class="ssi">
-    <p class="ey fru">Message</p><h2 class="st fru" style="margin-bottom:6px">代表挨拶</h2><div class="sl fru"></div>
-    <div class="fib frl2">
-      <img src="https://i.imgur.com/nWeJ0Bq.png" alt="YUU & Co. 代表 南部祐子" loading="lazy">
-      <div class="fit"><div class="fgl"></div><span class="frl">Founder &amp; Director</span><p class="fnb">Yuko</p><p class="floc">東京都渋谷区神宮前 &nbsp;·&nbsp; 全国オンライン対応</p></div>
-    </div>
-    <div class="fsep fru2"><div class="fsl"></div><div class="fsc">🌿</div><div class="fslr"></div></div>
-    <div class="ftb fru3">
-      <p>このページへお越しいただき、ありがとうございます。</p>
-      <p>御社のブランドが持つ誠実さ・信頼感・温かさを、もっと多くの人に届けたい。その想いから、<span class="hl">AIモデルという新しい表現手段</span>を追い求めてきました。</p>
-      <p>撮影不要・スキャンダルなし・著作権なし。でも伝わるメッセージは本物です。あなたの会社の想いを、私が形にします。</p>
-      <div class="fsig"><span class="fsd"></span><span class="fsn">YUU &amp; Co. &nbsp; 南部祐子</span><span class="fsd"></span></div>
-    </div>
-  </div>
-  <div class="sbb"></div>
-</section>
-
-<section id="company">
-  <div class="ci2">
-    <span class="ey reveal">About</span>
-    <h2 class="st reveal">会社情報・運営者プロフィール</h2>
-    <div class="sl reveal"></div>
-    <div class="ctbl reveal">
-      <div class="cr"><span class="ck">屋号</span><span class="cv">YUU &amp; Co.（ユーアンドコー）</span></div>
-      <div class="cr"><span class="ck">代表者</span><span class="cv">南部 祐子（Yuko Nanbu）</span></div>
-      <div class="cr"><span class="ck">設立</span><span class="cv">2025年10月</span></div>
-      <div class="cr"><span class="ck">所在地</span><span class="cv">〒150-0001 東京都渋谷区神宮前5丁目51番8号 ラ・ポルト青山 2F-7</span></div>
-      <div class="cr"><span class="ck">連絡先</span><span class="cv">yuuco.info@gmail.com</span></div>
-      <div class="cr"><span class="ck">事業内容</span><span class="cv">AIモデルを活用した企業向けビジュアル制作（採用・広告・SNS素材）</span></div>
-      <div class="cr"><span class="ck">対応方法</span><span class="cv">完全オンライン（LINE・メールのみ）全国対応</span></div>
-    </div>
-    <div class="prof-box reveal">
-      <span class="prof-title">Founder Profile ─ 南部 祐子</span>
-      <div class="prow"><div class="pdot"></div><p class="ptxt">2025年よりAIモデルを使った企業向けビジュアル制作に特化したサービスを開始。不動産・建設・医療・介護業界向けの採用ポスター・広告バナー・SNS素材の制作を専門とする。</p></div>
-      <div class="prow"><div class="pdot"></div><p class="ptxt">撮影不要・モデル手配不要のAI制作で、従来の1/10以下のコストでプロ品質のビジュアルを提供。</p></div>
-      <div class="prow"><div class="pdot"></div><p class="ptxt">画像納品にとどまらず、電光掲示板・展示会パネル・採用ポスターなど活用アイデアまで提案するのが強み。</p></div>
-      <div class="prow"><div class="pdot"></div><p class="ptxt">Zoom・電話不要。LINEとメールのみで完結する完全非対面サービスで、全国の企業様に対応中。</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="partner">
-  <div class="si">
-    <span class="ey reveal">For Partners</span><h2 class="st reveal">制作会社・動画制作会社・広告代理店様へ</h2><div class="sl reveal"></div>
-    <div class="pcard reveal">
-      <p>クライアントから「人物写真がない」「モデル撮影の予算がない」「採用サイトを強化したい」そんなご相談はありませんか？</p>
-      <div class="pf">
-        <div class="pfi"><span>🍃</span>撮影不要・モデル手配不要</div>
-        <div class="pfi"><span>🍃</span>同一人物を継続利用可能</div>
-        <div class="pfi"><span>🍃</span>HP・採用・SNS・広告・動画に対応</div>
-        <div class="pfg"><span>🌿</span>パートナー提携も受け付けています</div>
+    <div class="carr rv">↓</div>
+    <div class="sol rv">
+      <p class="solt">🌿 YUUなら、解決できます</p>
+      <div class="solps">
+        <div class="solp"><span>✦</span><span>企業イメージに合わせた人物ビジュアルで第一印象を改善</span></div>
+        <div class="solp"><span>✦</span><span>撮影なし・モデル手配なし・天候リスクなし</span></div>
+        <div class="solp"><span>✦</span><span>採用・広告・SNS・LP・パンフレット全対応</span></div>
+        <div class="solp"><span>✦</span><span>清潔感・誠実さ・親しみ・信頼感を設計</span></div>
       </div>
     </div>
   </div>
 </section>
-
-<section class="sw" id="contact">
-  <div class="coi">
-    <p class="ey">Contact</p><h2 class="st">お問い合わせ</h2><div class="sl"></div>
-    <div class="cob reveal">
-      <h3>ご相談例</h3>
-      <div class="coi2"><span>🌿</span>求人応募を増やしたい</div>
-      <div class="coi2"><span>🌿</span>採用ページを改善したい</div>
-      <div class="coi2"><span>🌿</span>広告バナー・SNS素材が欲しい</div>
-      <div class="coi2"><span>🌿</span>会社案内・パンフレットを作りたい</div>
-      <div class="coi2"><span>🌿</span>どのプランが合うかわからない</div>
-      <p class="con">相談内容がまとまっていなくても大丈夫です。</p>
-    </div>
-    <p class="col reveal">「どのプランが合うか分からない」「うちの業種で使えるか？」<br>そんな疑問にも、丁寧にお答えします。<br><span style="font-size:.82rem;opacity:.7">LINE・メールのみで完結します。Zoom・お電話は不要です。</span></p>
-    <a href="https://lin.ee/5KOWG02" class="lb2 reveal" target="_blank">💬 LINEで相談する</a><br>
-    <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="lib reveal" style="background:#2C5F8A;box-shadow:0 4px 18px rgba(44,95,138,.35)">📧 メールで相談する</a><br>
-    <a href="https://www.linkedin.com/in/祐子-南部-7a5532411" class="lib reveal" target="_blank">💼 LinkedInで繋がる</a>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;max-width:360px;margin:0 auto 28px" class="reveal">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%"><a href="https://www.instagram.com/yuu.co.ltd?utm_source=qr" class="sl2" target="_blank">Instagram</a><a href="https://x.com/yuu_co_ltd?s=21" class="sl2" target="_blank">X（Twitter）</a></div>
-      <div style="display:grid;grid-template-columns:1fr;gap:12px;width:50%"><a href="https://www.facebook.com/share/18vYQuLnHR/?mibextid=wwXIfr" class="sl2" target="_blank">Facebook</a></div>
+<section class="basec">
+  <div class="sec-in">
+    <span class="ey rv">Before / After</span>
+    <h2 class="st rv">人が変わると、<br>会社の印象はここまで変わる。</h2>
+    <div class="gdl rv"></div>
+    <p class="bt rv" style="margin-bottom:28px">スライダーを動かして比較してみてください。</p>
+    <div class="rv">
+      <div class="balr"><span class="ball bab">BEFORE</span><span class="ball baa">AFTER ✦</span></div>
+      <div class="baw" id="baS"><img class="baimg" src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before"><div class="baov" id="baA"><img src="https://i.imgur.com/kdxljCc.jpeg" alt="After"></div><div class="badv" id="baD"><div class="bahnd">⇄</div></div></div>
+      <p class="baht">← スライドして比較 →</p>
     </div>
   </div>
 </section>
-
+<section class="sec" id="samples" style="background:linear-gradient(160deg,#0d1e35,#142640)">
+  <div class="sec-in">
+    <span class="ey rv">Works</span>
+    <h2 class="st rv">制作事例・<br>活用イメージ</h2>
+    <div class="gdl rv"></div>
+    <div class="ifr rv">
+      <button class="ifb a" data-f="all">すべて</button>
+      <button class="ifb" data-f="recruit">採用・HR</button>
+      <button class="ifb" data-f="realestate">不動産・建設</button>
+      <button class="ifb" data-f="medical">医療・介護</button>
+      <button class="ifb" data-f="sns">SNS・広告</button>
+    </div>
+    <div id="accList">
+      <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/fcXN2eK.png" alt=""><span class="att">🌿 結衣 — 清潔感・知的・親しみ</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/P2AHzdt.jpeg" loading="lazy"><div class="scap">建設・工事現場</div></div><div class="si2"><img src="https://i.imgur.com/6QjgfYN.png" loading="lazy"><div class="scap">カフェ・飲食</div></div><div class="si2"><img src="https://i.imgur.com/7fUZB1X.png" loading="lazy"><div class="scap">マーケティング</div></div><div class="si2"><img src="https://i.imgur.com/x5fYUAP.png" loading="lazy"><div class="scap">福祉・社会貢献</div></div><div class="si2"><img src="https://i.imgur.com/jYZlSZe.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/lH8LGNg.png" loading="lazy"><div class="scap">工務店・建築</div></div><div class="si2"><img src="https://i.imgur.com/v6n0aQt.png" loading="lazy"><div class="scap">美容・医療</div></div><div class="si2"><img src="https://i.imgur.com/5mmjKIS.png" loading="lazy"><div class="scap">不動産・金融</div></div></div></div></div>
+      <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/esPWG1f.png" alt=""><span class="att">🌿 遥斗 — 誠実・信頼・プロ感</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/RFzRjPn.jpeg" loading="lazy"><div class="scap">建設・工事現場</div></div><div class="si2"><img src="https://i.imgur.com/C5RwDGb.png" loading="lazy"><div class="scap">スポーツ・ジム</div></div><div class="si2"><img src="https://i.imgur.com/wUUfvpp.png" loading="lazy"><div class="scap">採用・説明会</div></div><div class="si2"><img src="https://i.imgur.com/tCr7JbR.png" loading="lazy"><div class="scap">金融・資産運用</div></div><div class="si2"><img src="https://i.imgur.com/pI4qCeX.png" loading="lazy"><div class="scap">IT・オフィス</div></div><div class="si2"><img src="https://i.imgur.com/QWshLly.png" loading="lazy"><div class="scap">美容クリニック</div></div><div class="si2"><img src="https://i.imgur.com/6HYadTW.png" loading="lazy"><div class="scap">建設・施工</div></div><div class="si2"><img src="https://i.imgur.com/OK4tniG.png" loading="lazy"><div class="scap">スポーツ・ゴルフ</div></div></div></div></div>
+      <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/Y1mbzJr.jpeg" alt=""><span class="att">🌿 結衣 &amp; 遥斗 — 二人の世界観</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="scap">展示会・パネル</div></div><div class="si2"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="scap">建設・採用</div></div><div class="si2"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="scap">不動産・内覧</div></div><div class="si2"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="scap">採用・HR</div></div></div></div></div>
+      <div class="sacc rv" data-cat="medical"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/Pn7Pyc9.png" alt=""><span class="att">🌿 智子 — やさしさ・親しみ・信頼</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="scap">ケアプランナー</div></div><div class="si2"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="scap">医療・介護</div></div></div></div></div>
+      <div class="sacc rv" data-cat="medical"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/ZHOTOVp.png" alt=""><span class="att">🌿 誠 &amp; 洋子 — シニア向けビジュアル</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="scap">老人ホーム</div></div><div class="si2"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="scap">シニア向けサービス</div></div></div></div></div>
+      <div class="sacc rv" data-cat="recruit sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/5sFQzhp.jpeg" alt=""><span class="att">🌿 蒼空 &amp; 紬 — 子どもビジュアル</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="scap">スポーツ・サッカー</div></div><div class="si2"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="scap">英会話スクール</div></div><div class="si2"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="scap">住宅展示場</div></div><div class="si2"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="scap">小児歯科</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="sec" style="background:linear-gradient(160deg,#142238,#0a1628)">
+  <div class="sec-in">
+    <span class="ey rv">Why YUU</span><h2 class="st rv">選ばれる理由</h2><div class="gdl rv"></div>
+    <div class="bfl">
+      <div class="bfi rv"><div class="bfn">01</div><div><h3 class="bft">第一印象が整う</h3><p class="bfd">企業イメージに合わせた人物ビジュアルで、見た瞬間の印象を改善します。</p></div></div>
+      <div class="bfi rv"><div class="bfn">02</div><div><h3 class="bft">信頼感が伝わる</h3><p class="bfd">清潔感・誠実さ・親しみを表現し、見る人に安心感を与えます。</p></div></div>
+      <div class="bfi rv"><div class="bfn">03</div><div><h3 class="bft">採用・広告に使いやすい</h3><p class="bfd">求人広告、SNS、LP、パンフレットなど複数媒体で活用できます。</p></div></div>
+      <div class="bfi rv"><div class="bfn">04</div><div><h3 class="bft">撮影コストを大幅削減</h3><p class="bfd">モデル手配、撮影場所、カメラマン、天候リスクをゼロにできます。</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="pricing" style="background:linear-gradient(160deg,#0a1628,#0f2040)">
+  <div class="sec-in">
+    <span class="ey rv">Pricing</span><h2 class="st rv">料金プラン</h2><div class="gdl rv"></div>
+    <div class="sexpl rv"><strong>「1シーン」とは？</strong><p>1つの用途・1つの構図に合わせて制作するビジュアルの単位です。例：採用ページ用メインビジュアル／SNS投稿用画像／広告バナー用画像など</p></div>
+    <div class="pgrd">
+      <div class="pc tr rv"><span class="pbg bgt">初回限定</span><span class="pll">First Trial</span><p class="pnm">トライアル</p><div class="pstk">通常 49,800円</div><div class="ppr">29,800<span class="ppu">円 / 初回のみ（税込）</span></div><ul class="pfs"><li><span>✦</span>月3シーン制作</li><li><span>✦</span>修正2回</li><li><span>✦</span>用途無制限</li><li><span>✦</span>LINE・メール完結</li></ul><p class="pds">まずは小さく試したい企業様向け</p></div>
+      <div class="pc rv"><span class="pll">Light Plan</span><p class="pnm">ライト</p><div class="ppr">49,800<span class="ppu">円 / 月（税込）</span></div><ul class="pfs"><li><span>✦</span>月5シーン制作</li><li><span>✦</span>修正3回</li><li><span>✦</span>採用・SNS・広告利用可</li></ul><p class="pds">採用強化・SNS運用を始めたい企業様に</p></div>
+      <div class="pc ft rv"><span class="pbg bgr">おすすめ</span><span class="pll">Standard Plan</span><p class="pnm">スタンダード</p><div class="ppr">98,000<span class="ppu">円 / 月（税込）</span></div><ul class="pfs"><li><span>✦</span>月5シーン制作</li><li><span>✦</span>複数人物で世界観統一</li><li><span>✦</span>修正3回</li><li><span>✦</span>採用・広告まとめて対応</li></ul><p class="pds">採用と広告を同時に整えたい企業様に</p></div>
+      <div class="pc rv"><span class="pll">Brand Plan</span><p class="pnm">ブランド</p><div class="ppr">129,000<span class="ppu">円 / 月（税込）</span></div><ul class="pfs"><li><span>✦</span>複数ターゲット対応</li><li><span>✦</span>採用・広告・SNS・LP</li><li><span>✦</span>修正3回</li></ul><p class="pds">ブランドイメージを統一したい企業様に</p></div>
+      <div class="pc rv" style="grid-column:1/-1"><span class="pll">Full Plan</span><p class="pnm">フル活用</p><div class="ppr">158,000<span class="ppu">円 / 月（税込）</span></div><ul class="pfs"><li><span>✦</span>複数ビジュアル・複数用途に対応</li><li><span>✦</span>企業ブランディング・部署別採用・キャンペーン展開向け</li><li><span>✦</span>修正3回</li></ul><p class="pds">全社的にビジュアルを強化したい企業様に</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="voice" style="background:linear-gradient(160deg,#0f2040,#0a1628)">
+  <div class="sec-in">
+    <span class="ey rv">Voice</span><h2 class="st rv">お客様の声</h2><div class="gdl rv"></div>
+    <div class="vcd rv"><div class="vq">"</div><div class="vinn"><img class="vim" src="https://i.imgur.com/1uyXQqU.jpeg" alt=""><div style="flex:1"><p class="vtt">完璧でございます。<br>イメージ通りを超えた。</p><div class="vdv"></div><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:.85rem">🏢</div><div><p class="vc2">合同会社プランBカンパニー 様</p><p class="vdt">不動産業</p></div></div></div></div></div>
+    <div class="vcd rv"><div class="vq">"</div><p class="vtt">AIタレントさんが本当に実在する人物のようで素晴らしいです。</p><div class="vdv"></div><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-size:.85rem">💻</div><div><p class="vc2">合同会社イゼルローンソフトウェア 様</p><p class="vdt">IT・情報システム業</p><a href="https://iserlohn-software.com/it-outsourcing-service/" target="_blank" class="vlk">▶ 実際の掲載ページを見る</a></div></div></div>
+    <p style="font-size:.68rem;color:rgba(255,255,255,.3);text-align:center;margin-top:8px">※掲載はご本人様の許可をいただいております。</p>
+  </div>
+</section>
+<section class="phsec">
+  <div class="phin">
+    <p class="phm rv"><span class="gd">企業の想いを、</span><br>ビジュアルで纏う。</p>
+    <div class="phl rv"></div>
+    <p class="pht rv">良い会社なのに、伝わっていない。<br>誠実なのに、印象が弱い。<br>そのもったいなさを、<em>ビジュアルの力で変えたい</em>。<br>企業が持つ温かさ・信頼感・誠実さを、<br>人物ビジュアルという形で届けます。</p>
+    <p class="phs rv">🌿 &nbsp; YUU &amp; Co. &nbsp; 🕊</p>
+  </div>
+</section>
+<section class="lgsec">
+  <div class="sec-in">
+    <span class="ey rv">Notes</span><h2 class="st rv">ご利用について</h2><div class="gdl rv"></div>
+    <div class="lgr lgr1"></div><div class="lgr lgr2"></div>
+    <div class="lggrd">
+      <div class="lgb rv"><div class="lgbh"><span class="lgic">🌿</span><h4 class="lgt">世界観・ビジュアル保護</h4></div><ul class="lgll"><li>本サービスはAI技術を活用して人物ビジュアルを制作しています</li><li>制作した人物は実在の人物ではありません</li><li>無断転載・再配布・模倣・学習利用・二次利用は禁止です</li><li>実在人物と誤解させる使い方はお控えください</li><li>反社会的勢力へのご利用はお断りします</li></ul></div>
+      <div class="lgb rv"><div class="lgbh"><span class="lgic">🕊</span><h4 class="lgt">ご利用範囲・修正対応</h4></div><ul class="lgll"><li>制作したビジュアルは契約範囲内で商用利用可能</li><li>採用広告・SNS・LP・チラシ・展示会パネル等に利用可能</li><li>月3回まで修正無料対応（初回プランは2回）</li><li>4回目以降は追加料金となります</li></ul></div>
+      <div class="lgb rv"><div class="lgbh"><span class="lgic">🌿</span><h4 class="lgt">個人情報・契約</h4></div><ul class="lgll"><li>ご提供いただいた情報はサービス提供のみに使用します</li><li>第三者への提供は法令に基づく場合を除き行いません</li><li>電子契約はLINEまたはメールにて締結します</li><li>管轄裁判所：東京地方裁判所</li></ul></div>
+    </div>
+  </div>
+</section>
+<section class="stfsec" id="staff">
+  <div class="stfbt"></div>
+  <div class="stfin">
+    <span class="ey rv">Message from Founder</span><h2 class="st rv" style="margin-bottom:6px">代表挨拶</h2><div class="gdl rv"></div>
+    <div class="stfpw rv"><img class="stfph" src="https://i.imgur.com/nWeJ0Bq.png" alt="南部祐子"><div class="stfov"><div class="stfgl"></div><span class="stfrl">Founder &amp; Director</span><p class="stfnm">Yuko</p><p class="stflc">東京都港区南青山 · 全国オンライン対応</p></div></div>
+  </div>
+  <div class="stfsp"><div class="spl"></div><div class="spic">🌿</div><div class="splr"></div></div>
+  <div class="stfmsg">
+    <p class="rv">このページへお越しいただき、ありがとうございます。</p>
+    <p class="rv">私がこのサービスを始めたのは、<em>「良い会社なのに、伝わっていない」</em>という現実を変えたいと思ったからです。</p>
+    <p class="rv">誠実に仕事をしている会社が、採用で苦労している。広告が埋もれている。ホームページが古いまま。その「もったいなさ」をビジュアルの力で解決したい。それがYUU &amp; Co.の原点です。</p>
+    <p class="rv">撮影不要・モデル手配不要。でも、<em>御社の想いを伝えるメッセージは本物</em>です。御社の第一印象を、私が一緒に設計します。</p>
+    <div class="stfsg rv"><span class="sgd"></span><span class="sgn">YUU &amp; Co. &nbsp; 南部祐子</span><span class="sgd"></span></div>
+  </div>
+  <div class="stfbb"></div>
+</section>
+<section class="cosec" id="company">
+  <div class="coin">
+    <span class="ey rv">About</span><h2 class="st rv">会社情報</h2><div class="gdl rv"></div>
+    <div class="cotbl rv">
+      <div class="crow"><span class="cok">屋号</span><span class="cov">YUU &amp; Co.（ユーアンドコー）</span></div>
+      <div class="crow"><span class="cok">代表者</span><span class="cov">南部 祐子（Yuko Nanbu）</span></div>
+      <div class="crow"><span class="cok">設立</span><span class="cov">2025年10月</span></div>
+      <div class="crow"><span class="cok">所在地</span><span class="cov">〒107-0062 東京都港区南青山2丁目<br>Ropporte Aoyama 2F-7</span></div>
+      <div class="crow"><span class="cok">連絡先</span><span class="cov">yuuco.info@gmail.com</span></div>
+      <div class="crow"><span class="cok">事業内容</span><span class="cov">AI技術を活用した企業向けビジュアル制作<br>採用広告・SNS・HP・LP・パンフレット用人物ビジュアル制作</span></div>
+      <div class="crow"><span class="cok">対応方法</span><span class="cov">完全オンライン（LINE・メールのみ）全国対応</span></div>
+    </div>
+  </div>
+</section>
+<section class="sec ptsec" id="partner">
+  <div class="sec-in">
+    <span class="ey rv">Partnership</span><h2 class="st rv">制作会社・広告代理店・<br>SNS運用会社様へ</h2><div class="gdl rv"></div>
+    <div class="ptc rv"><p class="ptt">クライアントから「人物写真がない」「モデル撮影の予算がない」「採用サイトを強化したい」そんなご相談はありませんか？外部パートナーとして制作します。</p><div class="ptfs"><div class="ptf"><span>🌿</span>撮影不要・モデル手配不要</div><div class="ptf"><span>🌿</span>同一人物を継続利用可能</div><div class="ptf"><span>🌿</span>HP・採用・SNS・広告・動画に対応</div><div class="ptfg"><span>🕊</span>パートナー提携も受け付けています</div></div></div>
+  </div>
+</section>
+<section class="ctsec" id="contact">
+  <div class="ctin">
+    <span class="ey rv">Contact</span>
+    <h2 class="st rv">今のホームページや採用広告、<br>「なんとなく伝わっていない」と<br>感じていませんか？</h2>
+    <div class="gdl rv" style="margin:0 auto 28px;max-width:200px"></div>
+    <div class="ctbx rv"><h3>ご相談例</h3><div class="ctit"><span>🌿</span>求人応募を増やしたい</div><div class="ctit"><span>🌿</span>採用ページを改善したい</div><div class="ctit"><span>🌿</span>広告バナー・SNS素材が欲しい</div><div class="ctit"><span>🌿</span>会社案内・パンフレットを作りたい</div><div class="ctit"><span>🌿</span>どのプランが合うかわからない</div><p style="font-size:.76rem;color:rgba(255,255,255,.35);text-align:center;margin-top:12px;font-style:italic">相談内容がまとまっていなくても大丈夫です。</p></div>
+    <p class="ctld rv">まずは現在のページや広告を拝見し、<br>どのようなビジュアル改善ができるかご提案します。</p>
+    <a href="https://lin.ee/5KOWG02" class="btnln rv" target="_blank">💬 LINEで相談する</a><br>
+    <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="btnml rv" target="_blank">📧 メールで相談する</a>
+    <p class="ctnot rv">Zoom・電話不要。LINEまたはメールのみで完結します。</p>
+    <div class="socr rv">
+      <a href="https://www.instagram.com/yuu.co.ltd" class="socb" target="_blank">Instagram</a>
+      <a href="https://x.com/yuu_co_ltd" class="socb" target="_blank">X（Twitter）</a>
+      <a href="https://www.linkedin.com/in/%E7%A5%90%E5%AD%90-%E5%8D%97%E9%83%A8-7a5532411" class="socb" target="_blank">LinkedIn</a>
+      <a href="https://www.facebook.com/share/18vYQuLnHR/" class="socb" target="_blank">Facebook</a>
+    </div>
+  </div>
+</section>
 <footer>
-  <div class="flogo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co." loading="lazy"><div class="flt">🌿 YUU <span>&</span> Co. 🕊</div></div>
-  <div class="footer-links"><a href="tokushoho.html" style="color:rgba(255,255,255,.45);text-decoration:none;font-family:var(--label);font-size:.58rem;letter-spacing:.08em;transition:color .2s">特定商取引法に基づく表記</a></div>
-  <div>© 2026 YUU &amp; Co. 南部祐子 · 東京都渋谷区神宮前 · All Rights Reserved</div>
+  <div class="flogo"><img src="https://i.imgur.com/18S3zeq.png" alt="YUU&Co."><div class="flt">🌿 YUU <span>&amp;</span> Co. 🕊</div></div>
+  <a href="tokushoho.html" class="flnk">特定商取引法に基づく表記</a>
+  <div>© 2026 YUU &amp; Co. 南部祐子 · 東京都港区南青山 · All Rights Reserved</div>
 </footer>
-
+<div class="emw" id="emw">
+  <div class="emb" id="emb">どんなお悩みですか？<br>お気軽にご相談ください 🌿</div>
+  <div class="emi" id="emBtn"><img src="https://i.imgur.com/bqUyGuw.png" alt="EMMA"></div>
+</div>
 <script>
-function tA(b){const d=b.nextElementSibling,a=b.querySelector('.aa');d.classList.toggle('open');a.classList.toggle('open')}
-(function(){const w=document.getElementById('goldRain');if(!w)return;const c=['rgba(255,215,0,','rgba(255,200,50,','rgba(255,235,100,','rgba(255,180,30,'];for(let i=0;i<40;i++){const e=document.createElement('div');e.className='gold-drop';const col=c[Math.floor(Math.random()*c.length)],h=Math.random()*120+40,op=(Math.random()*.6+.3).toFixed(2);e.style.cssText=`left:${Math.random()*100}%;width:${Math.random()*2+1}px;height:${h}px;background:linear-gradient(to bottom,${col}${op}) 0%,${col}0) 100%);animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*5}s;`;w.appendChild(e)}})();
-(function(){const w=document.getElementById('floaters');if(!w)return;['🌿','🕊','🌿','🕊','🌿','🕊'].forEach((ic,i)=>{const e=document.createElement('div');e.className='floater';e.textContent=ic;e.style.cssText=`left:${8+i*15+Math.random()*6}%;animation-duration:${18+Math.random()*12}s;animation-delay:${Math.random()*14}s;font-size:${1+Math.random()*.4}rem;`;w.appendChild(e)})})();
-const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*60)})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-slide-up,.lb,.frl2,.fru,.fru2,.fru3').forEach(el=>io.observe(el));
-const bo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.3});
-document.querySelectorAll('.db').forEach(el=>bo.observe(el));
-function aC(el,t,d=1500){let s=0;const st=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/d,1),ease=1-Math.pow(1-p,3);el.textContent=Math.floor(ease*t).toLocaleString();if(p<1)requestAnimationFrame(st);else el.textContent=t.toLocaleString()};requestAnimationFrame(st)}
-const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!x.target.dataset.counted){x.target.dataset.counted='true';aC(x.target,parseInt(x.target.dataset.target))}})},{threshold:.5});
+const cf=document.getElementById('cuf'),cr=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cf.style.left=e.clientX-4+'px';cf.style.top=e.clientY-4+'px';cr.style.left=e.clientX-18+'px';cr.style.top=e.clientY-18+'px'});
+document.querySelectorAll('a,button,.pc,.ccard,.si2').forEach(el=>{el.addEventListener('mouseenter',()=>{cf.style.transform='scale(3)';cr.style.transform='scale(1.5)';cr.style.borderColor='rgba(200,168,75,.6)'});el.addEventListener('mouseleave',()=>{cf.style.transform='scale(1)';cr.style.transform='scale(1)';cr.style.borderColor='rgba(200,168,75,.35)'})});
+(function(){const w=document.getElementById('ptcls');['🌿','🕊','✦','🌿','🕊'].forEach((ic,i)=>{for(let j=0;j<4;j++){const e=document.createElement('div');e.className='ptcl';e.innerHTML=ic;e.style.cssText='left:'+(Math.random()*100)+'%;font-size:'+(0.8+Math.random()*0.8)+'rem;animation-duration:'+(14+Math.random()*12)+'s;animation-delay:'+(Math.random()*14)+'s;';w.appendChild(e)}})})();
+(function(){const w=document.getElementById('gshmr');for(let i=0;i<5;i++){const e=document.createElement('div');e.className='sl';e.style.cssText='top:'+(10+i*20)+'%;width:'+(60+Math.random()*40)+'%;animation-delay:'+(i*0.8)+'s;animation-duration:'+(3+Math.random()*2)+'s;';w.appendChild(e)}})();
+setTimeout(()=>{document.querySelectorAll('.cw').forEach((el,i)=>{setTimeout(()=>el.classList.add('v'),i*300+1200)})},0);
+const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('v'),i*80)})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const bo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.3});
+document.querySelectorAll('.sbrr').forEach(el=>bo.observe(el));
+function cUp(el,t,d=1500){let s=0;const r=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/d,1),e2=1-Math.pow(1-p,3);el.textContent=Math.floor(e2*t);if(p<1)requestAnimationFrame(r);else el.textContent=t};requestAnimationFrame(r)}
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!x.target.dataset.c){x.target.dataset.c='1';cUp(x.target,parseInt(x.target.dataset.target))}})},{threshold:.5});
 document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
-window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 2px 16px rgba(26,46,74,.08)':'none'});
+(function(){const s=document.getElementById('baS'),a=document.getElementById('baA'),d=document.getElementById('baD');if(!s)return;let drag=false;function sp(x){const r=s.getBoundingClientRect(),p=Math.max(5,Math.min(95,(x-r.left)/r.width*100));a.style.width=p+'%';d.style.left=p+'%'}
+s.addEventListener('mousedown',e=>{drag=true;sp(e.clientX)});window.addEventListener('mousemove',e=>{if(drag)sp(e.clientX)});window.addEventListener('mouseup',()=>drag=false);s.addEventListener('touchstart',e=>{drag=true;sp(e.touches[0].clientX)},{passive:true});window.addEventListener('touchmove',e=>{if(drag)sp(e.touches[0].clientX)},{passive:true});window.addEventListener('touchend',()=>drag=false)})();
+function tA(b){const d=b.nextElementSibling,a=b.querySelector('.aar');d.classList.toggle('o');a.classList.toggle('o')}
+document.querySelectorAll('.ifb').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.ifb').forEach(b=>b.classList.remove('a'));this.classList.add('a');const f=this.dataset.f;document.querySelectorAll('.sacc').forEach(ac=>{ac.style.display=(f==='all'||ac.dataset.cat.includes(f))?'':'none'})})});
+const emBtn=document.getElementById('emBtn'),emb=document.getElementById('emb');let bOpen=false;
+emBtn.addEventListener('click',()=>{bOpen=!bOpen;emb.classList.toggle('sh',bOpen)});
+setTimeout(()=>{emb.classList.add('sh');bOpen=true},3500);setTimeout(()=>{if(bOpen){emb.classList.remove('sh');bOpen=false}},8000);
+window.addEventListener('scroll',()=>{document.getElementById('mNav').style.boxShadow=window.scrollY>40?'0 4px 24px rgba(0,0,0,.35)':'none'});
 </script>
-</body>
-</html>
+</body></html>
