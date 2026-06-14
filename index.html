@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 
 .hmdl{position:relative;z-index:4;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:700px;margin:0 auto}
 .hmy{width:48%;animation:hsl 1.4s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateX(-80px) scale(.95)}
-.hmh{width:56%;margin-left:-8%;animation:hsr 1.4s cubic-bezier(.16,1,.3,1) .3s forwards;opacity:0;transform:translateX(80px) scale(.95)}
+.hmh{width:60%;margin-left:-18%;animation:hsr 1.4s cubic-bezier(.16,1,.3,1) .3s forwards;opacity:0;transform:translateX(80px) scale(.95)}
 @keyframes hsl{to{opacity:1;transform:translateX(0) scale(1)}}
 @keyframes hsr{to{opacity:1;transform:translateX(0) scale(1)}}
 .hmy img,.hmh img{width:100%;height:85vh;object-fit:cover;object-position:top;display:block}
@@ -360,7 +360,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
       <p class="hsub">撮影なし・モデル手配なし。<br>採用・広告・SNS・ホームページに使える<br>企業向けビジュアルを制作します。</p>
       <div class="hcta">
         <a href="https://forms.gle/BMDjAY2MhFMHmELp8" class="btp" target="_blank">📧 メールで相談する</a>
-        <a href="#samples" class="bto">▼ タップして制作事例を見る</a>
+        <a href="#works" class="bto" onclick="openSamples()">▼ タップして制作事例を見る</a>
       </div>
     </div>
   </div>
@@ -426,7 +426,9 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
     <span class="ey rv">Before / After</span>
     <h2 class="st rv">人が変わると、<br>会社の印象はここまで変わる。</h2>
     <div class="gdl rv"></div>
-    <p class="bt rv" style="margin-bottom:24px">スライダーを左右に動かして比較してみてください。</p>
+    <div class="rv" style="border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.4);margin-bottom:32px">
+      <img src="https://i.imgur.com/AqXYiWx.png" alt="遥斗" style="width:100%;display:block;object-fit:contain;background:#0a2040">
+    </div>
     <div class="rv">
       <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:8px">
         <span style="font-family:var(--label);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)">BEFORE</span>
@@ -438,10 +440,10 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
           <img src="https://i.imgur.com/kdxljCc.jpeg" alt="After" style="width:100vw;max-width:680px;height:300px;object-fit:cover;object-position:top;display:block">
         </div>
         <div id="baD" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);transform:translateX(-50%)">
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,168,75,.5);font-size:1rem;color:var(--navy);font-weight:700">⇄</div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,168,75,.5);font-size:1rem;color:var(--navy);font-weight:700">&#8644;</div>
         </div>
       </div>
-      <p style="text-align:center;margin-top:12px;font-size:.7rem;color:rgba(255,255,255,.45);font-family:var(--label);letter-spacing:.1em">← スライドして比較 →</p>
+      <p style="text-align:center;margin-top:12px;font-size:.7rem;color:rgba(255,255,255,.45);font-family:var(--label);letter-spacing:.1em">&#8592; スライドして比較 &#8594;</p>
     </div>
   </div>
 </section>
@@ -585,6 +587,22 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 </div>
 
 <script>
+
+// ── 制作事例オープン ──
+function openSamples(){
+  setTimeout(function(){
+    var first = document.querySelector('#accList .ach');
+    if(first){
+      var body = first.nextElementSibling;
+      var arr = first.querySelector('.aar');
+      if(!body.classList.contains('o')){
+        body.classList.add('o');
+        arr.classList.add('o');
+      }
+    }
+  }, 400);
+}
+
 // ── ゴールドの雨 ──
 (function(){
   const w = document.getElementById('goldRain');
