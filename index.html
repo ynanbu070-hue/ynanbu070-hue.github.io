@@ -175,7 +175,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .bfi::before{content:'';position:absolute;left:0;bottom:0;height:1px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .6s}
 .bfi:hover::before{transform:scaleX(1)}
 .bfi:hover{transform:translateX(8px)}
-.bfn{font-family:var(--display);font-size:2.8rem;font-weight:300;color:rgba(200,168,75,.25);line-height:1}
+.bfn{font-family:var(--display);font-size:2.8rem;font-weight:400;color:var(--gold2);line-height:1;text-shadow:0 0 16px rgba(200,168,75,.5)}
 .bft{font-family:var(--serif);font-size:1.1rem;color:#fff;font-weight:700;margin-bottom:6px;text-shadow:0 0 12px rgba(91,154,200,.3)}
 .bfd{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.9;font-weight:400}
 
@@ -280,8 +280,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;display:f
 .cotbl{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);margin-bottom:24px}
 .crow{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid rgba(255,255,255,.07)}
 .crow:last-child{border-bottom:none}
-.cok{padding:14px;font-family:var(--label);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,75,.7);background:rgba(255,255,255,.05);display:flex;align-items:center;font-weight:600}
-.cov{padding:14px;font-size:.87rem;color:rgba(255,255,255,.9);line-height:1.7;font-weight:400}
+.cok{padding:14px;font-family:var(--label);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);background:rgba(255,255,255,.08);display:flex;align-items:center;font-weight:700}
+.cov{padding:14px;font-size:.87rem;color:#fff;line-height:1.7;font-weight:500}
 
 /* PARTNER */
 .ptsec{background:linear-gradient(160deg,#1a6ab0,#2a85d5);padding:64px 24px}
@@ -333,6 +333,34 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
   .pgrd{grid-template-columns:1fr 1fr}
   footer{flex-direction:column;text-align:center}
 }
+
+/* ── 派手アニメーション追加 ── */
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(200,168,75,.3),0 0 40px rgba(91,154,200,.2)}50%{box-shadow:0 0 40px rgba(200,168,75,.6),0 0 80px rgba(91,154,200,.4)}}
+@keyframes borderFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes shimmerText{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes ripple{0%{transform:scale(0);opacity:.8}100%{transform:scale(4);opacity:0}}
+@keyframes slideGlow{0%{left:-100%}100%{left:200%}}
+
+.glow-card{animation:glowPulse 3s ease-in-out infinite}
+.float-anim{animation:floatY 4s ease-in-out infinite}
+
+/* セクションタイトル シマーテキスト */
+.shimmer-title{background:linear-gradient(90deg,#fff 20%,var(--gold2) 50%,#fff 80%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerText 4s linear infinite}
+
+/* ボタンのリップル */
+.btp{position:relative;overflow:hidden}
+.ripple-effect{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);transform:scale(0);animation:ripple .6s linear;pointer-events:none}
+
+/* カードホバー光 */
+.pc::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);animation:slideGlow 3s ease-in-out infinite}
+
+/* スタッツカウント光る */
+.snum{transition:color .3s;animation:glowPulse 2s ease-in-out infinite}
+
+/* セクション区切りウェーブ */
+.wave-divider{position:relative;height:60px;overflow:hidden}
+.wave-divider svg{position:absolute;bottom:0;width:100%;height:60px}
 </style>
 </head>
 <body>
@@ -424,7 +452,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 <section class="sec" style="background:linear-gradient(160deg,#1a6aaa,#2a80cc)">
   <div class="sec-in">
     <span class="ey rv v" style="color:#fff;font-weight:700">Before / After</span>
-    <h2 class="st rv v" style="font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.3)">人が変わると、<br>会社の印象はここまで変わる。</h2>
+    <h2 class="st rv v" style="font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.5)">人が変わると、<br>会社の印象はここまで変わる。</h2>
     <div style="height:2px;background:linear-gradient(to right,var(--gold),rgba(91,154,200,.3) 50%,transparent);margin-bottom:28px"></div>
     <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:8px">
       <span style="font-family:var(--label);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600">BEFORE</span>
@@ -433,7 +461,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
     <div style="position:relative;border-radius:20px;overflow:hidden;cursor:ew-resize;user-select:none;box-shadow:0 24px 64px rgba(0,0,0,.5)" id="baS">
       <img src="https://i.imgur.com/GqKiLhZ.jpeg" alt="Before" style="width:100%;display:block;height:320px;object-fit:cover;object-position:top">
       <div id="baA" style="position:absolute;top:0;left:0;bottom:0;overflow:hidden;width:50%">
-        <img src="https://i.imgur.com/kdxljCc.jpeg" alt="After" style="width:100vw;max-width:680px;height:320px;object-fit:cover;object-position:top;display:block">
+        <img src="https://i.imgur.com/WKDPODc.jpeg" alt="After" style="width:100vw;max-width:680px;height:320px;object-fit:cover;object-position:top;display:block">
       </div>
       <div id="baD" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);transform:translateX(-50%)">
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(200,168,75,.7);font-size:1.3rem;color:#1a2e4a;font-weight:900">&#8644;</div>
@@ -463,6 +491,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
       <div class="sacc rv" data-cat="recruit realestate sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/Y1mbzJr.jpeg" alt=""><span class="att">🌿 結衣 &amp; 遥斗 — 二人の世界観</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/FMsYy8i.jpeg" loading="lazy"><div class="scap">展示会・パネル</div></div><div class="si2"><img src="https://i.imgur.com/Tt65vHu.jpeg" loading="lazy"><div class="scap">建設・採用</div></div><div class="si2"><img src="https://i.imgur.com/1VWLBAO.jpeg" loading="lazy"><div class="scap">不動産・内覧</div></div><div class="si2"><img src="https://i.imgur.com/85v4nL1.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/uzkElU6.png" loading="lazy"><div class="scap">IT・コンサル</div></div><div class="si2"><img src="https://i.imgur.com/u8MU0IL.jpeg" loading="lazy"><div class="scap">採用・HR</div></div></div></div></div>
       <div class="sacc rv" data-cat="medical"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/Pn7Pyc9.png" alt=""><span class="att">🌿 智子 — やさしさ・親しみ・信頼</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/xwfCAKB.png" loading="lazy"><div class="scap">ケアプランナー</div></div><div class="si2"><img src="https://i.imgur.com/QHKijXu.png" loading="lazy"><div class="scap">医療・介護</div></div></div></div></div>
       <div class="sacc rv" data-cat="medical"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/ZHOTOVp.png" alt=""><span class="att">🌿 誠 &amp; 洋子 — シニア向けビジュアル</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/E1Epia2.jpeg" loading="lazy"><div class="scap">老人ホーム</div></div><div class="si2"><img src="https://i.imgur.com/qgVdHXK.jpeg" loading="lazy"><div class="scap">シニア向けサービス</div></div></div></div></div>
+      <div class="sacc rv" data-cat="realestate"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/zkI4efM.png" alt="健一"><span class="att">🌿 健一 — 安心感・管理職・説得力</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/DRd2YzI.png" loading="lazy"><div class="scap">保険代理店</div></div><div class="si2"><img src="https://i.imgur.com/isXS6IZ.png" loading="lazy"><div class="scap">建設・施工</div></div></div></div></div>
       <div class="sacc rv" data-cat="recruit sns"><button class="ach" onclick="tA(this)"><img class="ath" src="https://i.imgur.com/5sFQzhp.jpeg" alt=""><span class="att">🌿 蒼空 &amp; 紬 — 子どもビジュアル</span><span class="aar">▼</span></button><div class="acb"><div class="sgrd"><div class="si2"><img src="https://i.imgur.com/8q289kc.jpeg" loading="lazy"><div class="scap">スポーツ・サッカー</div></div><div class="si2"><img src="https://i.imgur.com/EPSgget.png" loading="lazy"><div class="scap">英会話スクール</div></div><div class="si2"><img src="https://i.imgur.com/lc3hU31.jpeg" loading="lazy"><div class="scap">住宅展示場</div></div><div class="si2"><img src="https://i.imgur.com/m6BPaYK.png" loading="lazy"><div class="scap">小児歯科</div></div></div></div></div>
     </div>
   </div>
@@ -606,7 +635,7 @@ footer{background:#04090f;color:rgba(255,255,255,.35);padding:20px 28px;display:
 
 <div class="emw" id="emw">
   <div class="emb" id="emb">どんなお悩みですか？<br>お気軽にご相談ください 🌿</div>
-  <div class="emi" id="emBtn"><img src="https://i.imgur.com/bqUyGuw.png" alt="EMMA"></div>
+  <div class="emi float-anim" id="emBtn"><img src="https://i.imgur.com/bqUyGuw.png" alt="EMMA"></div>
 </div>
 
 <script>
@@ -633,6 +662,27 @@ function openWorks(e){
     document.getElementById('samplesBtn').textContent = '▼ タップして制作事例を見る';
   }
 }
+
+
+// ── ボタンリップル ──
+document.querySelectorAll('.btp,.btnln,.btnml').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    var r = document.createElement('span');
+    r.className = 'ripple-effect';
+    var rect = btn.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height);
+    r.style.width = r.style.height = size + 'px';
+    r.style.left = (e.clientX - rect.left - size/2) + 'px';
+    r.style.top = (e.clientY - rect.top - size/2) + 'px';
+    btn.appendChild(r);
+    setTimeout(function(){ r.remove(); }, 700);
+  });
+});
+
+// ── セクション入場時にタイトルグロー ──
+document.querySelectorAll('.st').forEach(function(el){
+  el.style.transition = 'text-shadow .5s';
+});
 
 // ── ゴールドの雨 ──
 (function(){
